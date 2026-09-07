@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Code de la route — Belgique</title>
+<title>Code de la route — Belgique (Panneaux & Infractions)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -68,7 +68,7 @@
   }
 
   .app{
-    max-width:640px;
+    max-width:680px;
     margin:0 auto;
     padding:32px 20px 80px;
   }
@@ -87,7 +87,7 @@
     border-radius:10px;
     font-family:'Overpass',sans-serif;
     font-weight:700;
-    font-size:14.5px;
+    font-size:14px;
     color:var(--ink-soft);
     cursor:pointer;
     transition:border-color .15s, color .15s, background .15s;
@@ -128,20 +128,9 @@
     transition:opacity .15s, border-color .15s;
   }
   .cat-chip.off{opacity:0.35;}
-  .cat-dot{
-    width:16px;height:16px;flex:none;
-    border-radius:50%;
-  }
-  .cat-chip .lbl{
-    font-size:13.5px;
-    font-weight:600;
-    line-height:1.25;
-  }
-  .cat-chip .cnt{
-    font-size:12px;
-    color:var(--ink-soft);
-    display:block;
-  }
+  .cat-dot{width:16px;height:16px;flex:none;border-radius:50%;}
+  .cat-chip .lbl{font-size:13.5px;font-weight:600;line-height:1.25;}
+  .cat-chip .cnt{font-size:12px;color:var(--ink-soft);display:block;}
 
   .config-panel{
     background:var(--paper-dim);
@@ -152,15 +141,9 @@
     align-items:center;
     justify-content:space-between;
   }
-  .config-panel label{
-    font-size:14px;
-    font-weight:600;
-    cursor:pointer;
-  }
+  .config-panel label{font-size:14px;font-weight:600;cursor:pointer;}
 
-  .field-row{
-    margin-bottom:28px;
-  }
+  .field-row{margin-bottom:28px;}
   .field-row label{
     display:flex;
     justify-content:space-between;
@@ -168,15 +151,8 @@
     font-weight:600;
     margin-bottom:10px;
   }
-  .field-row .n{
-    font-family:'Overpass',sans-serif;
-    font-weight:800;
-    color:var(--danger-ink);
-  }
-  input[type=range]{
-    width:100%;
-    accent-color:var(--danger);
-  }
+  .field-row .n{font-family:'Overpass',sans-serif;font-weight:800;color:var(--danger-ink);}
+  input[type=range]{width:100%;accent-color:var(--danger);}
 
   .btn{
     font-family:'Overpass',sans-serif;
@@ -191,60 +167,20 @@
     transition:transform .08s ease, filter .12s ease;
   }
   .btn:active{transform:scale(0.98);}
-  .btn-go{
-    background:var(--asphalt);
-    color:var(--paper);
-  }
+  .btn-go{background:var(--asphalt);color:var(--paper);}
   .btn-go:hover{filter:brightness(1.15);}
-  .btn-ghost{
-    background:transparent;
-    border:1.5px solid var(--line);
-    color:var(--ink);
-  }
-  .btn-outline-danger{
-    background:transparent;
-    border:1.5px solid var(--danger);
-    color:var(--danger-ink);
-  }
-  .btn-row{
-    display:flex;
-    gap:10px;
-    margin-top:6px;
-  }
+  .btn-ghost{background:transparent;border:1.5px solid var(--line);color:var(--ink);}
+  .btn-outline-danger{background:transparent;border:1.5px solid var(--danger);color:var(--danger-ink);}
+  .btn-row{display:flex;gap:10px;margin-top:6px;}
   .btn-row .btn{flex:1;}
-  .warn-txt{
-    font-size:13px;
-    color:var(--danger-ink);
-    margin-top:-10px;
-    margin-bottom:20px;
-  }
+  .warn-txt{font-size:13px;color:var(--danger-ink);margin-top:-10px;margin-bottom:20px;}
 
-  .progress-track{
-    display:flex;
-    gap:4px;
-    margin-bottom:6px;
-  }
-  .progress-dash{
-    flex:1;
-    height:6px;
-    border-radius:3px;
-    background:var(--line);
-  }
+  .progress-track{display:flex;gap:4px;margin-bottom:6px;}
+  .progress-dash{flex:1;height:6px;border-radius:3px;background:var(--line);}
   .progress-dash.done{background:var(--asphalt);}
-  .progress-meta{
-    display:flex;
-    justify-content:space-between;
-    font-size:12.5px;
-    color:var(--ink-soft);
-    margin-bottom:16px;
-  }
+  .progress-meta{display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink-soft);margin-bottom:16px;}
 
-  .quiz-top-bar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:12px;
-  }
+  .quiz-top-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
   .timer-badge{
     font-family:'Overpass',sans-serif;
     font-weight:700;
@@ -254,52 +190,14 @@
     border-radius:20px;
     color:var(--danger-ink);
   }
-  .fav-btn{
-    background:none;
-    border:none;
-    cursor:pointer;
-    font-size:20px;
-    padding:0;
-    transition:transform .1s;
-  }
+  .fav-btn{background:none;border:none;cursor:pointer;font-size:20px;padding:0;transition:transform .1s;}
   .fav-btn:hover{transform:scale(1.2);}
 
-  .sign-stage{
-    display:flex;
-    justify-content:center;
-    margin:6px 0 22px;
-  }
-  .sign-shell{
-    width:190px;
-    height:190px;
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  }
-  .sign-shape{
-    position:absolute;
-    inset:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-family:'Overpass',sans-serif;
-    font-weight:800;
-  }
-  .sign-photo{
-    position:absolute;
-    inset:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    opacity:0;
-    transition:opacity .35s ease;
-  }
-  .sign-photo img{
-    max-width:78%;
-    max-height:78%;
-    object-fit:contain;
-  }
+  .sign-stage{display:flex;justify-content:center;margin:6px 0 22px;}
+  .sign-shell{width:190px;height:190px;position:relative;display:flex;align-items:center;justify-content:center;}
+  .sign-shape{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Overpass',sans-serif;font-weight:800;}
+  .sign-photo{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .35s ease;}
+  .sign-photo img{max-width:78%;max-height:78%;object-fit:contain;}
   .sign-photo.loaded{opacity:1;}
 
   .shape-triangle{width:100%;height:100%;clip-path:polygon(50% 4%, 4% 96%, 96% 96%);background:var(--paper);}
@@ -316,28 +214,10 @@
   .sign-code.on-white{color:var(--ink);}
   .sign-code.big-num{font-size:52px;}
 
-  .sign-caption{
-    text-align:center;
-    font-size:12px;
-    color:var(--ink-soft);
-    letter-spacing:0.4px;
-    text-transform:uppercase;
-    margin:-10px 0 22px;
-  }
+  .sign-caption{text-align:center;font-size:12px;color:var(--ink-soft);letter-spacing:0.4px;text-transform:uppercase;margin:-10px 0 22px;}
+  .question-lbl{font-family:'Overpass',sans-serif;font-weight:700;font-size:16.5px;text-align:center;margin-bottom:18px;}
 
-  .question-lbl{
-    font-family:'Overpass',sans-serif;
-    font-weight:700;
-    font-size:16.5px;
-    text-align:center;
-    margin-bottom:18px;
-  }
-
-  .opt-list{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-  }
+  .opt-list{display:flex;flex-direction:column;gap:10px;}
   .opt{
     text-align:left;
     padding:14px 16px;
@@ -368,11 +248,7 @@
 
   .next-wrap{margin-top:20px;}
 
-  .score-stage{
-    display:flex;
-    justify-content:center;
-    margin:10px 0 26px;
-  }
+  .score-stage{display:flex;justify-content:center;margin:10px 0 26px;}
   .score-ring{
     width:170px;height:170px;
     border-radius:50%;
@@ -383,48 +259,18 @@
     align-items:center;
     justify-content:center;
   }
-  .score-ring .pct{
-    font-family:'Overpass',sans-serif;
-    font-weight:800;
-    font-size:40px;
-    color:var(--danger-ink);
-    line-height:1;
-  }
-  .score-ring .frac{
-    font-size:13px;
-    color:var(--ink-soft);
-    margin-top:4px;
-  }
-  .score-msg{
-    text-align:center;
-    font-size:14.5px;
-    color:var(--ink-soft);
-    margin-bottom:26px;
-  }
+  .score-ring .pct{font-family:'Overpass',sans-serif;font-weight:800;font-size:40px;color:var(--danger-ink);line-height:1;}
+  .score-ring .frac{font-size:13px;color:var(--ink-soft);margin-top:4px;}
+  .score-msg{text-align:center;font-size:14.5px;color:var(--ink-soft);margin-bottom:26px;}
 
   .cat-bar-row{margin-bottom:12px;}
   .cat-bar-top{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:5px;}
   .cat-bar-track{height:8px;border-radius:4px;background:var(--paper-dim);overflow:hidden;}
   .cat-bar-fill{height:100%;border-radius:4px;}
 
-  details.err-panel{
-    margin:22px 0;
-    border:1.5px solid var(--line);
-    border-radius:10px;
-    padding:6px 14px;
-  }
-  details.err-panel summary{
-    padding:10px 0;
-    font-weight:700;
-    font-family:'Overpass',sans-serif;
-    cursor:pointer;
-    font-size:14px;
-  }
-  .err-item{
-    padding:10px 0;
-    border-top:1px solid var(--line);
-    font-size:13.5px;
-  }
+  details.err-panel{margin:22px 0;border:1.5px solid var(--line);border-radius:10px;padding:6px 14px;}
+  details.err-panel summary{padding:10px 0;font-weight:700;font-family:'Overpass',sans-serif;cursor:pointer;font-size:14px;}
+  .err-item{padding:10px 0;border-top:1px solid var(--line);font-size:13.5px;}
   .err-item .nm{font-weight:700;}
   .err-item .you{color:var(--danger-ink);}
   .err-item .dsc{color:var(--ink-soft); margin-top:3px;}
@@ -438,49 +284,56 @@
     margin-bottom:22px;
     font-family:'Inter',sans-serif;
   }
-  .repo-cat-head{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    margin:22px 0 10px;
-  }
+  .repo-cat-head{display:flex;align-items:center;gap:8px;margin:22px 0 10px;}
   .repo-cat-head .dot{width:11px;height:11px;border-radius:50%;flex:none;}
-  .repo-cat-head span{
-    font-family:'Overpass',sans-serif;
-    font-weight:700;
-    font-size:13.5px;
-  }
-  .repo-item{
-    display:flex;
-    gap:14px;
-    align-items:flex-start;
-    padding:14px 4px;
-    border-bottom:1px solid var(--line);
-  }
-  .repo-thumb{
-    width:56px;height:56px;
-    flex:none;
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  }
+  .repo-cat-head span{font-family:'Overpass',sans-serif;font-weight:700;font-size:13.5px;}
+  .repo-item{display:flex;gap:14px;align-items:flex-start;padding:14px 4px;border-bottom:1px solid var(--line);}
+  .repo-thumb{width:56px;height:56px;flex:none;position:relative;display:flex;align-items:center;justify-content:center;}
   .repo-thumb .sign-shape{transform:scale(1);}
   .repo-thumb .sign-code{font-size:9px;}
   .repo-thumb .sign-code.big-num{font-size:20px;}
-  .repo-txt .code{
+  .repo-txt .code{font-family:'Overpass',sans-serif;font-weight:800;font-size:12.5px;color:var(--ink-soft);}
+  .repo-txt .nm{font-weight:700;font-size:14.5px;margin:2px 0 4px;}
+  .repo-txt .dsc{font-size:13px;color:var(--ink-soft);line-height:1.4;}
+
+  /* Style Module Infractions */
+  .inf-card{
+    background:var(--paper-dim);
+    border:1.5px solid var(--line);
+    border-radius:12px;
+    padding:16px;
+    margin-bottom:16px;
+  }
+  .inf-card-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:8px;
+  }
+  .inf-degre{
     font-family:'Overpass',sans-serif;
     font-weight:800;
-    font-size:12.5px;
-    color:var(--ink-soft);
+    font-size:12px;
+    text-transform:uppercase;
+    padding:4px 8px;
+    border-radius:6px;
+    background:var(--asphalt);
+    color:var(--paper);
   }
-  .repo-txt .nm{
+  .inf-amende{
+    font-family:'Overpass',sans-serif;
+    font-weight:800;
+    font-size:14px;
+    color:var(--danger-ink);
+  }
+  .inf-title{
+    font-family:'Overpass',sans-serif;
     font-weight:700;
-    font-size:14.5px;
-    margin:2px 0 4px;
+    font-size:16px;
+    margin-bottom:6px;
   }
-  .repo-txt .dsc{
-    font-size:13px;
+  .inf-desc{
+    font-size:13.5px;
     color:var(--ink-soft);
     line-height:1.4;
   }
@@ -498,7 +351,7 @@
 <div class="top-bar">
   <div>
     <span class="brand">Code de la route</span>
-    <div class="sub">Belgique — entraînement intelligent</div>
+    <div class="sub">Belgique — panneaux & infractions</div>
   </div>
 </div>
 <div class="lane"></div>
@@ -506,12 +359,13 @@
 <div class="app">
 
   <div class="tabs">
-    <div class="tab active" id="tab-quiz" onclick="switchMode('quiz')">Quiz Interactif</div>
-    <div class="tab" id="tab-repo" onclick="switchMode('repo')">Répertoire Officiel</div>
+    <div class="tab active" id="tab-quiz" onclick="switchMode('quiz')">Quiz Panneaux</div>
+    <div class="tab" id="tab-repo" onclick="switchMode('repo')">Répertoire</div>
+    <div class="tab" id="tab-inf" onclick="switchMode('inf')">Infractions & Amendes</div>
   </div>
 
+  <!-- VUE QUIZ -->
   <div id="view-quiz">
-
     <div id="quiz-config">
       <h2 class="section-title">Configure ta session</h2>
       <p class="section-sub">Choisis tes catégories et options d'examen.</p>
@@ -572,7 +426,6 @@
       <p class="score-msg" id="summary-msg"></p>
 
       <div id="cat-bars"></div>
-
       <div id="err-panel-wrap"></div>
 
       <div class="btn-row">
@@ -581,9 +434,9 @@
       </div>
       <div class="btn-row" id="review-row" style="margin-top:10px;"></div>
     </div>
-
   </div>
 
+  <!-- VUE REPERTOIRE -->
   <div id="view-repo" class="hidden">
     <h2 class="section-title">Répertoire officiel</h2>
     <p class="section-sub" id="repo-count"></p>
@@ -591,66 +444,45 @@
     <div id="repo-list"></div>
   </div>
 
+  <!-- VUE INFRACTIONS -->
+  <div id="view-inf" class="hidden">
+    <h2 class="section-title">Guide des Infractions & Amendes</h2>
+    <p class="section-sub">Barème officiel belge des perceptions immédiates et degrés de contravention.</p>
+    <input class="repo-search" id="inf-search" placeholder="Rechercher une infraction (ex: ceinture, gsm, vitesse...)" oninput="renderInfractions()">
+    <div id="inf-list"></div>
+  </div>
+
 </div>
 
 <script>
 const PANNEAUX = [
-  {code:"A1a", nom:"Virage dangereux à gauche", cat:"A", desc:"Annonce un virage prononcé vers la gauche. Attention aux dépassements risqués."},
+  {code:"A1a", nom:"Virage dangereux à gauche", cat:"A", desc:"Annonce un virage prononcé vers la gauche."},
   {code:"A1b", nom:"Virage dangereux à droite", cat:"A", desc:"Annonce un virage prononcé vers la droite."},
-  {code:"A1c", nom:"Succession de virages", cat:"A", desc:"Annonce plusieurs virages successifs, le premier à gauche ou à droite."},
-  {code:"A3", nom:"Descente dangereuse", cat:"A", desc:"Indique une pente raide (le pourcentage est indiqué). Utilisez le frein moteur."},
-  {code:"A5", nom:"Montée à forte inclinaison", cat:"A", desc:"Indique une forte côte."},
-  {code:"A7a", nom:"Chaussée rétrécie", cat:"A", desc:"Rétrécissement de la route des deux côtés ou d'un côté précis."},
-  {code:"A9", nom:"Pont mobile", cat:"A", desc:"Approche d'un pont levant ou tournant. Arrêt obligatoire si les feux rouges clignotent."},
-  {code:"A13", nom:"Cassis ou dos d'âne", cat:"A", desc:"Ralentisseur ou bosse sur la chaussée. Réduisez l'allure."},
-  {code:"A15", nom:"Chaussée glissante", cat:"A", desc:"Risque accru de glissade (pluie, verglas, gravillons). Évitez les coups de volant brutaux."},
-  {code:"A21", nom:"Passage pour piétons", cat:"A", desc:"Annonce un passage clouté à proximité. Cédez le passage aux piétons engagés ou s'apprêtant à traverser."},
-  {code:"A23", nom:"Endroit fréquenté par des enfants", cat:"A", desc:"Présence potentielle d'enfants (écoles, aires de jeux). Vitesse fortement conseillée limitée."},
-  {code:"A25", nom:"Passage de cyclistes", cat:"A", desc:"Débouché de cyclistes ou piste cyclable."},
-  {code:"A31", nom:"Travaux", cat:"A", desc:"Présence d'un chantier sur ou le long de la voie publique. Soyez extrêmement vigilant."},
-  {code:"A33", nom:"Feux de circulation", cat:"A", desc:"Annonce des feux tricolores en amont."},
-  {code:"A51", nom:"Danger indéterminé", cat:"A", desc:"Danger particulier annoncé par un panneau additionnel explicatif."},
-
-  {code:"B1", nom:"Cédez le passage", cat:"B", desc:"Triangle pointé vers le bas à bord rouge. Céder le passage aux usagers de la route prioritaire."},
-  {code:"B5", nom:"Stop (Arrêt obligatoire)", cat:"B", desc:"Obligation de marquer l'arrêt complet à la limite de la chaussée transversale, même si la voie est libre."},
-  {code:"B9", nom:"Voie prioritaire", cat:"B", desc:"Losange jaune : vous êtes prioritaire aux intersections de cette route."},
-  {code:"B11", nom:"Fin de voie prioritaire", cat:"B", desc:"Losange barré : fin du statut de route prioritaire."},
-  {code:"B15", nom:"Priorité à l'approche d'une intersection", cat:"B", desc:"Indique que vous avez la priorité à la prochaine intersection."},
-  {code:"B17", nom:"Priorité à droite", cat:"B", desc:"Règle générale de l'intersection : céder le passage à tout venant venant de droite."},
-
-  {code:"C1", nom:"Interdiction de circuler dans les deux sens", cat:"C", desc:"Accès interdit à tout véhicule dans les deux sens."},
+  {code:"B1", nom:"Cédez le passage", cat:"B", desc:"Triangle pointé vers le bas à bord rouge."},
+  {code:"B5", nom:"Stop (Arrêt obligatoire)", cat:"B", desc:"Obligation de marquer l'arrêt complet."},
+  {code:"B9", nom:"Voie prioritaire", cat:"B", desc:"Losange jaune : vous êtes prioritaire."},
   {code:"C3", nom:"Sens interdit", cat:"C", desc:"Interdiction de s'engager dans cette voie."},
-  {code:"C5", nom:"Accès interdit aux automobiles", cat:"C", desc:"Interdit aux voitures et camions."},
-  {code:"C7", nom:"Accès interdit aux motocycles", cat:"C", desc:"Interdit aux motos."},
-  {code:"C11", nom:"Accès interdit aux cyclistes", cat:"C", desc:"Interdit aux vélos."},
-  {code:"C19", nom:"Accès interdit aux piétons", cat:"C", desc:"Interdit aux piétons."},
-  {code:"C23", nom:"Accès interdit aux camions", cat:"C", desc:"Interdit aux véhicules de transport de marchandises."},
   {code:"C35", nom:"Interdiction de dépasser", cat:"C", desc:"Interdiction de dépasser les véhicules à moteur."},
   {code:"C43 30", nom:"Vitesse limitée à 30 km/h", cat:"C", desc:"Vitesse maximale autorisée de 30 km/h.", num:"30"},
-  {code:"C43 50", nom:"Vitesse limitée à 50 km/h", cat:"C", desc:"Vitesse maximale autorisée de 50 km/h (agglomération).", num:"50"},
-  {code:"C43 70", nom:"Vitesse limitée à 70 km/h", cat:"C", desc:"Vitesse maximale autorisée de 70 km/h.", num:"70"},
-  {code:"C43 90", nom:"Vitesse limitée à 90 km/h", cat:"C", desc:"Vitesse maximale autorisée de 90 km/h.", num:"90"},
-  {code:"C45", nom:"Fin de toutes les interdictions locales", cat:"C", desc:"Fin des limitations de vitesse ou interdictions de dépassement précédentes."},
-
-  {code:"D1a", nom:"Direction obligatoire à droite", cat:"D", desc:"Obligation de tourner à droite à l'intersection."},
-  {code:"D1b", nom:"Direction obligatoire à gauche", cat:"D", desc:"Obligation de tourner à gauche à l'intersection."},
-  {code:"D9a", nom:"Piste cyclable obligatoire", cat:"D", desc:"Voie exclusive réservée aux cyclistes."},
-  {code:"D10", nom:"Chemin pour piétons", cat:"D", desc:"Voie réservée exclusivement aux piétons."},
-
-  {code:"E1", nom:"Stationnement interdit", cat:"E", desc:"Interdiction de stationner du côté du panneau. L'arrêt (chargement/déchargement rapide) reste autorisé."},
-  {code:"E3", nom:"Arrêt et stationnement interdits", cat:"E", desc:"Interdiction absolue de s'arrêter et de stationner."},
-  {code:"E9a", nom:"Stationnement autorisé (Parking)", cat:"E", desc:"Indique un emplacement ou un parking autorisé."},
-
-  {code:"F5", nom:"Autoroute", cat:"F", desc:"Début d'autoroute (règles et vitesses autoroutières applicables, interdit aux piétons/vélos)."},
-  {code:"F9", nom:"Route pour automobiles", cat:"F", desc:"Voie réservée aux véhicules automobiles."},
-  {code:"F12a", nom:"Zone résidentielle / Zone de rencontre", cat:"F", desc:"Les piétons y ont la priorité absolue sur toute la largeur. Vitesse max 20 km/h."},
+  {code:"C43 50", nom:"Vitesse limitée à 50 km/h", cat:"C", desc:"Vitesse maximale autorisée de 50 km/h.", num:"50"},
+  {code:"D1a", nom:"Direction obligatoire à droite", cat:"D", desc:"Obligation de tourner à droite."},
+  {code:"E1", nom:"Stationnement interdit", cat:"E", desc:"Interdiction de stationner du côté du panneau."},
+  {code:"E3", nom:"Arrêt et stationnement interdits", cat:"E", desc:"Interdiction absolue."},
+  {code:"F5", nom:"Autoroute", cat:"F", desc:"Début d'autoroute."},
   {code:"F19", nom:"Sens unique", cat:"F", desc:"Indique une rue à sens unique."},
-  {code:"F4a", nom:"Zone 30", cat:"F", desc:"Entrée d'une zone où la vitesse est limitée à 30 km/h sur tout le périmètre."},
-  {code:"F4b", nom:"Fin de zone 30", cat:"F", desc:"Sortie de la zone 30."},
+  {code:"F4a", nom:"Zone 30", cat:"F", desc:"Entrée d'une zone limitée à 30 km/h."},
+];
 
-  {code:"Panonceau 1", nom:"Distance avant le danger", cat:"X", desc:"Indique la distance à laquelle se situe le danger ou la règle annoncée."},
-  {code:"Panonceau 2", nom:"Etendue de la mesure", cat:"X", desc:"Indique la longueur sur laquelle s'applique la prescription (ex: sur 2 km)."},
-  {code:"Panonceau 3", nom:"Répétition / Rappel", cat:"X", desc:"Confirme qu'une interdiction ou obligation est toujours d'application."},
+const INFRACTIONS = [
+  {titre: "Utilisation du GSM au volant", degre: "1er Degré", amende: "174 €", desc: "Tenir un téléphone portable en main à l'arrêt ou en circulation (sauf support fixe). Entraîne souvent un retrait immédiat du permis."},
+  {titre: "Non-port de la ceinture de sécurité", degre: "1er Degré", amende: "174 €", desc: "Obligatoire pour tous les occupants du véhicule équipés d'une ceinture."},
+  {titre: "Franchissement d'une ligne continue", degre: "2ème Degré", amende: "116 €", desc: "Rouler sur ou franchir une ligne blanche continue délimitant les bandes de circulation."},
+  {titre: "Ne pas respecter un feu orange ou rouge", degre: "3ème Degré", amende: "174 €", desc: "S'engager alors que le feu est rouge (ou orange fixe s'il est possible de s'arrêter en sécurité)."},
+  {titre: "Non-respect d'un panneau STOP (B5)", degre: "3ème Degré", amende: "174 €", desc: "Oublier de marquer un temps d'arrêt complet à la ligne d'effet du STOP."},
+  {titre: "Excès de vitesse (en agglomération / zone 30)", degre: "Vitesse", amende: "Variable (53€ + 11€/km/h en plus)", desc: "Dépassement de la vitesse autorisée. Les premiers km/h en excès coûtent 53€ minimum, puis un tarif par km/h excédentaire s'ajoute."},
+  {titre: "Stationnement gênant ou dangereux", degre: "1er / 2ème Degré", amende: "58 € à 116 €", desc: "Se garer sur un passage pour piétons, un trottoir ou une piste cyclable. Risque d'enlèvement par la Mairie/Police."},
+  {titre: "Défaut de clignotant", degre: "1er Degré", amende: "58 €", desc: "Oubli d'avertir les autres usagers d'un changement de direction ou d'une manœuvre."},
+  {titre: "Conduite sous influence d'alcool (Taux 0.22 - 0.35 mg/L LTA)", degre: "Immédiat", amende: "180 € minimum + Tribunal", desc: "Retrait immédiat du permis pour une durée minimale de 3 heures à 6 heures (voire plus selon le taux)."}
 ];
 
 const CATEGORIES = {
@@ -660,18 +492,15 @@ const CATEGORIES = {
   D: {label:"Obligation", color:"var(--obligation)", ink:"var(--obligation-ink)", shape:"circle-blue"},
   E: {label:"Stationnement", color:"var(--station)", ink:"var(--station-ink)", shape:"square-station"},
   F: {label:"Indication", color:"var(--indication)", ink:"var(--indication-ink)", shape:"square-indication"},
-  X: {label:"Panonceaux", color:"var(--extra)", ink:"var(--extra-ink)", shape:"extra"},
 };
 
 const IMAGE_OVERRIDES = {
   "D1a": "Belgian traffic sign D1c.svg",
-  "D1b": "Belgian traffic sign D1e.svg",
 };
 
 let userFavs = JSON.parse(localStorage.getItem('belgium_road_favs') || '[]');
 
 function wikimediaUrl(code){
-  if(code.startsWith("Panonceau")) return "";
   const filename = IMAGE_OVERRIDES[code] || ("Belgian road sign " + code + ".svg");
   return "https://commons.wikimedia.org/wiki/Special:FilePath/" + encodeURIComponent(filename);
 }
@@ -696,9 +525,6 @@ function buildSignShape(p){
   } else if(cat.shape === "circle-blue"){
     inner = `<div class="shape-circle-blue"></div>
       <div class="sign-code on-blue${bigNum}" style="position:absolute;">${label}</div>`;
-  } else if(cat.shape === "extra"){
-    inner = `<div class="shape-extra"></div>
-      <div class="sign-code on-blue" style="position:absolute; font-size:11px; text-align:center; padding:4px;">${p.code}</div>`;
   } else {
     const bg = cat.shape === "square-station" ? "var(--station)" : "var(--indication)";
     inner = `<div class="shape-square" style="background:${bg};"></div>
@@ -734,9 +560,14 @@ let state = {
 function switchMode(mode){
   document.getElementById('tab-quiz').classList.toggle('active', mode === 'quiz');
   document.getElementById('tab-repo').classList.toggle('active', mode === 'repo');
+  document.getElementById('tab-inf').classList.toggle('active', mode === 'inf');
+
   document.getElementById('view-quiz').classList.toggle('hidden', mode !== 'quiz');
   document.getElementById('view-repo').classList.toggle('hidden', mode !== 'repo');
+  document.getElementById('view-inf').classList.toggle('hidden', mode !== 'inf');
+
   if(mode === 'repo') renderRepo();
+  if(mode === 'inf') renderInfractions();
 }
 
 function renderCatGrid(){
@@ -886,10 +717,8 @@ function renderQuestion(){
   renderSign(document.getElementById('sign-shell'), actuel);
   document.getElementById('sign-caption').textContent = actuel.code + " — " + CATEGORIES[actuel.cat].label;
 
-  // Favori state
   const isFav = userFavs.includes(actuel.code);
-  const favBtn = document.getElementById('fav-toggle-btn');
-  favBtn.textContent = isFav ? "⭐" : "☆";
+  document.getElementById('fav-toggle-btn').textContent = isFav ? "⭐" : "☆";
 
   const distractors = shuffled(PANNEAUX.filter(p => p.code !== actuel.code)).slice(0, 3);
   const options = shuffled(distractors.concat([actuel]));
@@ -909,7 +738,6 @@ function renderQuestion(){
   document.getElementById('feedback-zone').innerHTML = '';
   document.getElementById('next-wrap').innerHTML = '';
 
-  // Timer setup
   const timerBadge = document.getElementById('timer-badge');
   if(state.timerEnabled){
     timerBadge.classList.remove('hidden');
@@ -1096,6 +924,40 @@ function renderRepo(){
       renderSign(thumb, p);
     });
   });
+}
+
+function renderInfractions(){
+  const q = document.getElementById('inf-search').value.trim().toLowerCase();
+  let results = INFRACTIONS;
+  if(q){
+    results = INFRACTIONS.filter(inf =>
+      inf.titre.toLowerCase().includes(q) ||
+      inf.degre.toLowerCase().includes(q) ||
+      inf.desc.toLowerCase().includes(q) ||
+      inf.amende.toLowerCase().includes(q)
+    );
+  }
+
+  const list = document.getElementById('inf-list');
+  list.innerHTML = '';
+
+  results.forEach(inf => {
+    const card = document.createElement('div');
+    card.className = 'inf-card';
+    card.innerHTML = `
+      <div class="inf-card-header">
+        <span class="inf-degre">${inf.degre}</span>
+        <span class="inf-amende">${inf.amende}</span>
+      </div>
+      <div class="inf-title">${inf.titre}</div>
+      <div class="inf-desc">${inf.desc}</div>
+    `;
+    list.appendChild(card);
+  });
+
+  if(!results.length){
+    list.innerHTML = `<div style="text-align:center; color:var(--ink-soft); padding:20px;">Aucune infraction ne correspond à votre recherche.</div>`;
+  }
 }
 
 renderCatGrid();
