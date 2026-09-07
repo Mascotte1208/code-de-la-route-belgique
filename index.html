@@ -1953,331 +1953,98 @@ function reviewErrors(){
 }
 
 /* =========================================================
-   PANNEAUX SVG — Graphismes officiels détaillés
+   PANNEAUX SVG — Version corrigée et stable
 ========================================================= */
 
 function dangerTriangle(inner){
   return `
-    <polygon points="90,10 174,158 6,158" fill="#fff" stroke="#c81e2c" stroke-width="11" stroke-linejoin="round"/>
+    <polygon points="90,12 168,154 12,154" fill="#fff" stroke="#c81e2c" stroke-width="12" stroke-linejoin="round"/>
     ${inner}
   `;
 }
 
 function prohibCircle(inner){
   return `
-    <circle cx="90" cy="90" r="78" fill="#fff" stroke="#c81e2c" stroke-width="13"/>
+    <circle cx="90" cy="90" r="76" fill="#fff" stroke="#c81e2c" stroke-width="14"/>
     ${inner}
   `;
 }
 
 function obligCircle(inner){
   return `
-    <circle cx="90" cy="90" r="78" fill="#1c5fa8"/>
+    <circle cx="90" cy="90" r="76" fill="#1c5fa8"/>
     ${inner}
   `;
 }
 
-function makeSignSVG(panel,small=false){
-  const code=escapeHTML(panel.code);
-  const num=escapeHTML(panel.num||"");
-  const stroke=small?6:8;
-  const ink="#171a1f";
-  let content="";
+function makeSignSVG(panel, small=false){
+  const code = escapeHTML(panel.code);
+  const num = escapeHTML(panel.num || "");
+  const ink = "#171a1f";
+  let content = "";
 
-  if(panel.cat==="A"){
-    if(panel.code==="A1a"){
-      content=dangerTriangle(`
-        <path d="M115 62 C80 72 62 98 70 132" fill="none" stroke="${ink}" stroke-width="${stroke*1.2}" stroke-linecap="round"/>
-        <path d="M98 52 L115 62 L98 76" fill="none" stroke="${ink}" stroke-width="${stroke*1.2}" stroke-linecap="round" stroke-linejoin="round"/>
-      `);
-    }else if(panel.code==="A1b"){
-      content=dangerTriangle(`
-        <path d="M65 62 C100 72 118 98 110 132" fill="none" stroke="${ink}" stroke-width="${stroke*1.2}" stroke-linecap="round"/>
-        <path d="M82 52 L65 62 L82 76" fill="none" stroke="${ink}" stroke-width="${stroke*1.2}" stroke-linecap="round" stroke-linejoin="round"/>
-      `);
-    }else if(panel.code==="A1c"){
-      content=dangerTriangle(`
-        <path d="M120 54 C95 62 102 82 80 94 C58 106 65 124 42 134" fill="none" stroke="${ink}" stroke-width="${stroke*1.1}" stroke-linecap="round"/>
-      `);
-    }else if(panel.code==="A3"){
-      content=dangerTriangle(`
-        <path d="M38 68 L142 68 L142 132 Z" fill="none" stroke="${ink}" stroke-width="${stroke}"/>
-        <text x="82" y="115" font-size="${small?15:24}" font-weight="900" fill="${ink}" font-family="Arial">10%</text>
-      `);
-    }else if(panel.code==="A5"){
-      content=dangerTriangle(`
-        <path d="M142 132 L38 132 L142 68 Z" fill="none" stroke="${ink}" stroke-width="${stroke}"/>
-        <text x="82" y="122" font-size="${small?15:24}" font-weight="900" fill="${ink}" font-family="Arial">10%</text>
-      `);
-    }else if(panel.code==="A7a"){
-      content=dangerTriangle(`
-        <path d="M36 68 L70 68 L98 132 L128 132" fill="none" stroke="${ink}" stroke-width="${stroke}" stroke-linejoin="round"/>
-        <path d="M144 68 L110 68 L82 132 L52 132" fill="none" stroke="${ink}" stroke-width="${stroke}" stroke-linejoin="round"/>
-      `);
-    }else if(panel.code==="A9"){
-      content=dangerTriangle(`
-        <path d="M36 132 V94 L66 74 V132 M144 132 V94 L114 74 V132" fill="none" stroke="${ink}" stroke-width="${stroke*0.9}" stroke-linejoin="round"/>
-        <line x1="30" y1="132" x2="150" y2="132" stroke="${ink}" stroke-width="${stroke}"/>
-      `);
-    }else if(panel.code==="A13"){
-      content=dangerTriangle(`
-        <path d="M42 124 Q60 80 90 124 T138 124" fill="none" stroke="${ink}" stroke-width="${stroke*1.2}" stroke-linecap="round"/>
-      `);
-    }else if(panel.code==="A15"){
-      content=dangerTriangle(`
-        <path d="M38 100 Q58 82 78 100 T118 100 T142 100" fill="none" stroke="${ink}" stroke-width="${stroke}" stroke-linecap="round"/>
-        <path d="M38 124 Q58 106 78 124 T118 124 T142 124" fill="none" stroke="${ink}" stroke-width="${stroke}" stroke-linecap="round"/>
-      `);
-    }else if(panel.code==="A21"){
-      content=dangerTriangle(`
-        <circle cx="72" cy="72" r="7" fill="${ink}"/>
-        <path d="M72 82 L72 106 L58 132 M72 96 L94 90 L104 70 M72 96 L58 114" fill="none" stroke="${ink}" stroke-width="${stroke*0.9}" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M102 132 L138 132 M102 120 L138 120 M102 108 L138 108" stroke="${ink}" stroke-width="${stroke*0.7}"/>
-      `);
-    }else if(panel.code==="A23"){
-      content=dangerTriangle(`
-        <circle cx="64" cy="74" r="6" fill="${ink}"/>
-        <path d="M64 83 L64 110 L52 132 M64 96 L76 102 M64 96 L52 102" fill="none" stroke="${ink}" stroke-width="${stroke*0.8}" stroke-linecap="round"/>
-        <circle cx="112" cy="82" r="6" fill="${ink}"/>
-        <path d="M112 91 L112 116 L100 132 M112 102 L124 108 M112 102 L100 108" fill="none" stroke="${ink}" stroke-width="${stroke*0.8}" stroke-linecap="round"/>
-      `);
-    }else if(panel.code==="A25"){
-      content=dangerTriangle(`
-        <circle cx="62" cy="122" r="13" fill="none" stroke="${ink}" stroke-width="${stroke*0.8}"/>
-        <circle cx="118" cy="122" r="13" fill="none" stroke="${ink}" stroke-width="${stroke*0.8}"/>
-        <path d="M62 122 L86 82 L106 122 M86 82 L98 82 L118 122 L98 82" fill="none" stroke="${ink}" stroke-width="${stroke*0.8}" stroke-linecap="round" stroke-linejoin="round"/>
-      `);
-    }else if(panel.code==="A31"){
-      content=dangerTriangle(`
-        <path d="M65 132 L78 90" stroke="${ink}" stroke-width="${stroke}" stroke-linecap="round"/>
-        <path d="M78 90 L112 66 L120 74 L90 102" fill="${ink}"/>
-        <circle cx="67" cy="72" r="6" fill="${ink}"/>
-      `);
-    }else if(panel.code==="A33"){
-      content=dangerTriangle(`
-        <rect x="70" y="62" width="40" height="70" rx="6" fill="${ink}"/>
-        <circle cx="90" cy="80" r="8" fill="#c81e2c"/>
-        <circle cx="90" cy="97" r="8" fill="#e8a400"/>
-        <circle cx="90" cy="114" r="8" fill="#1e7a3c"/>
-      `);
-    }else{
-      content=dangerTriangle(`
-        <rect x="84" y="68" width="12" height="42" rx="4" fill="${ink}"/>
-        <circle cx="90" cy="126" r="6" fill="${ink}"/>
-      `);
+  if(panel.cat === "A"){
+    if(panel.code === "A1a"){
+      content = dangerTriangle(`<path d="M110 65 C85 75 70 100 75 130" fill="none" stroke="${ink}" stroke-width="9" stroke-linecap="round"/><path d="M95 55 L110 65 L95 78" fill="none" stroke="${ink}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>`);
+    } else if(panel.code === "A1b"){
+      content = dangerTriangle(`<path d="M70 65 C95 75 110 100 105 130" fill="none" stroke="${ink}" stroke-width="9" stroke-linecap="round"/><path d="M85 55 L70 65 L85 78" fill="none" stroke="${ink}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>`);
+    } else if(panel.code === "A3" || panel.code === "A5"){
+      content = dangerTriangle(`<text x="90" y="115" text-anchor="middle" font-size="${small?18:28}" font-weight="900" fill="${ink}" font-family="Arial">10%</text>`);
+    } else if(panel.code === "A33"){
+      content = dangerTriangle(`<rect x="74" y="65" width="32" height="60" rx="4" fill="${ink}"/><circle cx="90" cy="80" r="6" fill="#c81e2c"/><circle cx="90" cy="95" r="6" fill="#e8a400"/><circle cx="90" cy="110" r="6" fill="#1e7a3c"/>`);
+    } else {
+      content = dangerTriangle(`<rect x="85" y="70" width="10" height="40" rx="3" fill="${ink}"/><circle cx="90" cy="122" r="5" fill="${ink}"/>`);
     }
-  }else if(panel.cat==="B"){
-    if(panel.code==="B1"){
-      content=`<polygon points="10,28 170,28 90,162" fill="#fff" stroke="#c81e2c" stroke-width="12" stroke-linejoin="round"/>`;
-    }else if(panel.code==="B5"){
-      content=`
-        <polygon points="62,12 118,12 168,62 168,118 118,168 62,168 12,118 12,62" fill="#c81e2c" stroke="#7a0f18" stroke-width="3" stroke-linejoin="round"/>
-        <text x="90" y="104" text-anchor="middle" font-size="${small?16:31}" font-weight="900" fill="#fff" font-family="Arial,sans-serif">STOP</text>
-      `;
-    }else if(panel.code==="B9"){
-      content=`<polygon points="90,12 168,90 90,168 12,90" fill="#e8a400" stroke="${ink}" stroke-width="2.5"/>`;
-    }else if(panel.code==="B11"){
-      content=`
-        <polygon points="90,12 168,90 90,168 12,90" fill="#e8a400" stroke="${ink}" stroke-width="2.5"/>
-        <line x1="32" y1="148" x2="148" y2="32" stroke="#4a4d52" stroke-width="10"/>
-      `;
-    }else if(panel.code==="B15"){
-      content=`
-        <polygon points="90,12 168,90 90,168 12,90" fill="#fff" stroke="${ink}" stroke-width="3"/>
-        <line x1="90" y1="28" x2="90" y2="152" stroke="${ink}" stroke-width="${stroke*1.2}"/>
-        <line x1="28" y1="90" x2="152" y2="90" stroke="${ink}" stroke-width="${stroke*0.6}"/>
-      `;
-    }else{
-      content=`
-        <polygon points="90,12 168,90 90,168 12,90" fill="#fff" stroke="${ink}" stroke-width="3"/>
-        <line x1="90" y1="28" x2="90" y2="152" stroke="${ink}" stroke-width="${stroke*0.6}"/>
-        <line x1="28" y1="90" x2="152" y2="90" stroke="${ink}" stroke-width="${stroke*0.6}"/>
-        <path d="M90 90 L126 74 L126 90 L142 90 L126 106 L126 90 Z" fill="#c81e2c"/>
-      `;
+  } else if(panel.cat === "B"){
+    if(panel.code === "B1"){
+      content = `<polygon points="12,30 168,30 90,160" fill="#fff" stroke="#c81e2c" stroke-width="12" stroke-linejoin="round"/>`;
+    } else if(panel.code === "B5"){
+      content = `<polygon points="60,10 120,10 170,60 170,120 120,170 60,170 10,120 10,60" fill="#c81e2c" stroke="#7a0f18" stroke-width="3" stroke-linejoin="round"/><text x="90" y="102" text-anchor="middle" font-size="${small?16:30}" font-weight="900" fill="#fff" font-family="Arial">STOP</text>`;
+    } else if(panel.code === "B9" || panel.code === "B11"){
+      content = `<polygon points="90,12 168,90 90,168 12,90" fill="#e8a400" stroke="${ink}" stroke-width="2.5"/>` + (panel.code === "B11" ? `<line x1="30" y1="150" x2="150" y2="30" stroke="#4a4d52" stroke-width="10"/>` : ``);
+    } else {
+      content = `<polygon points="90,12 168,90 90,168 12,90" fill="#fff" stroke="${ink}" stroke-width="3"/><line x1="90" y1="25" x2="90" y2="155" stroke="${ink}" stroke-width="6"/><line x1="25" y1="90" x2="155" y2="90" stroke="${ink}" stroke-width="6"/><path d="M90 90 L130 72 L130 90 L145 90 L130 108 L130 90 Z" fill="#c81e2c"/>`;
     }
-  }else if(panel.cat==="C"){
-    if(panel.code==="C1"){
-      content=prohibCircle("");
-    }else if(panel.code==="C3"){
-      content=`
-        <circle cx="90" cy="90" r="78" fill="#c81e2c"/>
-        <rect x="28" y="74" width="124" height="32" rx="4" fill="#fff"/>
-      `;
-    }else if(panel.code==="C5"){
-      content=prohibCircle(`
-        <rect x="48" y="92" width="84" height="26" rx="6" fill="${ink}"/>
-        <path d="M62 92 L76 68 H104 L118 92 Z" fill="${ink}"/>
-        <circle cx="68" cy="122" r="9" fill="${ink}"/>
-        <circle cx="112" cy="122" r="9" fill="${ink}"/>
-      `);
-    }else if(panel.code==="C7"){
-      content=prohibCircle(`
-        <circle cx="58" cy="124" r="10" fill="none" stroke="${ink}" stroke-width="${stroke*0.8}"/>
-        <circle cx="122" cy="124" r="10" fill="none" stroke="${ink}" stroke-width="${stroke*0.8}"/>
-        <path d="M58 124 L82 88 L104 88 L96 104 L122 124 M82 88 L72 72" fill="none" stroke="${ink}" stroke-width="${stroke*0.8}" stroke-linecap="round" stroke-linejoin="round"/>
-      `);
-    }else if(panel.code==="C11"){
-      content=prohibCircle(`
-        <circle cx="54" cy="124" r="14" fill="none" stroke="${ink}" stroke-width="${stroke*0.8}"/>
-        <circle cx="126" cy="124" r="14" fill="none" stroke="${ink}" stroke-width="${stroke*0.8}"/>
-        <path d="M54 124 L82 82 L106 124 M82 82 L98 82 L126 124 L98 82" fill="none" stroke="${ink}" stroke-width="${stroke*0.8}" stroke-linecap="round" stroke-linejoin="round"/>
-      `);
-    }else if(panel.code==="C19"){
-      content=prohibCircle(`
-        <circle cx="90" cy="62" r="9" fill="${ink}"/>
-        <path d="M90 74 L90 108 L72 136 M90 94 L112 86 M90 94 L70 86 M90 108 L110 136" fill="none" stroke="${ink}" stroke-width="${stroke*1.1}" stroke-linecap="round" stroke-linejoin="round"/>
-      `);
-    }else if(panel.code==="C23"){
-      content=prohibCircle(`
-        <rect x="42" y="82" width="68" height="36" rx="4" fill="${ink}"/>
-        <rect x="110" y="96" width="28" height="22" rx="3" fill="${ink}"/>
-        <circle cx="64" cy="126" r="9" fill="${ink}"/>
-        <circle cx="122" cy="126" r="9" fill="${ink}"/>
-      `);
-    }else if(panel.code==="C35"){
-      content=prohibCircle(`
-        <rect x="36" y="98" width="56" height="24" rx="8" fill="${ink}"/>
-        <rect x="88" y="82" width="56" height="24" rx="8" fill="#c81e2c"/>
-      `);
-    }else if(panel.num){
-      content=prohibCircle(`
-        <text x="90" y="112" text-anchor="middle" font-size="${small?22:54}" font-weight="900" fill="${ink}" font-family="Arial,sans-serif">${num}</text>
-      `);
-    }else{
-      content=`
-        <circle cx="90" cy="90" r="78" fill="#fff" stroke="#9aa1aa" stroke-width="3"/>
-        <line x1="36" y1="124" x2="124" y2="36" stroke="#4a4d52" stroke-width="8"/>
-        <line x1="56" y1="144" x2="144" y2="56" stroke="#4a4d52" stroke-width="8"/>
-      `;
+  } else if(panel.cat === "C"){
+    if(panel.code === "C1"){
+      content = prohibCircle("");
+    } else if(panel.code === "C3"){
+      content = `<circle cx="90" cy="90" r="76" fill="#c81e2c"/><rect x="30" y="76" width="120" height="28" rx="4" fill="#fff"/>`;
+    } else if(panel.num){
+      content = prohibCircle(`<text x="90" y="108" text-anchor="middle" font-size="${small?22:52}" font-weight="900" fill="${ink}" font-family="Arial">${num}</text>`);
+    } else {
+      content = `<circle cx="90" cy="90" r="76" fill="#fff" stroke="#9aa1aa" stroke-width="3"/><line x1="35" y1="125" x2="125" y2="35" stroke="#4a4d52" stroke-width="8"/><line x1="55" y1="145" x2="145" y2="55" stroke="#4a4d52" stroke-width="8"/>`;
     }
-  }else if(panel.cat==="D"){
-    if(panel.code==="D1a"){
-      content=obligCircle(`
-        <path d="M90 134 V50 M62 78 L90 50 L118 78" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-      `);
-    }else if(panel.code==="D1b"){
-      content=obligCircle(`
-        <path d="M134 90 H50 M78 62 L50 90 L78 118" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-      `);
-    }else if(panel.code==="D9"){
-      content=obligCircle(`
-        <circle cx="60" cy="124" r="13" fill="none" stroke="#fff" stroke-width="6"/>
-        <circle cx="120" cy="124" r="13" fill="none" stroke="#fff" stroke-width="6"/>
-        <path d="M60 124 L86 80 L110 124 M86 80 L98 80 L120 124" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-      `);
-    }else{
-      content=obligCircle(`
-        <circle cx="90" cy="62" r="9" fill="#fff"/>
-        <path d="M90 74 L90 108 L72 136 M90 92 L112 84 M90 92 L68 84 M90 108 L110 136" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-      `);
+  } else if(panel.cat === "D"){
+    if(panel.code === "D1a"){
+      content = obligCircle(`<path d="M90 130 V50 M65 75 L90 50 L115 75" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>`);
+    } else if(panel.code === "D1b"){
+      content = obligCircle(`<path d="M130 90 H50 M75 65 L50 90 L75 115" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>`);
+    } else {
+      content = obligCircle(`<circle cx="90" cy="65" r="10" fill="#fff"/><path d="M90 78 V110 L70 135 M90 95 L115 88" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>`);
     }
-  }else if(panel.cat==="E"){
-    if(panel.code==="E1"){
-      content=`
-        <circle cx="90" cy="90" r="78" fill="#1c5fa8" stroke="#c81e2c" stroke-width="12"/>
-        <line x1="36" y1="144" x2="144" y2="36" stroke="#c81e2c" stroke-width="14"/>
-      `;
-    }else if(panel.code==="E3"){
-      content=`
-        <circle cx="90" cy="90" r="78" fill="#1c5fa8" stroke="#c81e2c" stroke-width="12"/>
-        <line x1="36" y1="144" x2="144" y2="36" stroke="#c81e2c" stroke-width="13"/>
-        <line x1="36" y1="36" x2="144" y2="144" stroke="#c81e2c" stroke-width="13"/>
-      `;
-    }else{
-      content=`
-        <rect x="12" y="12" width="156" height="156" rx="16" fill="#1c5fa8"/>
-        <text x="90" y="124" text-anchor="middle" font-size="${small?44:96}" font-weight="900" fill="#fff" font-family="Arial,sans-serif">P</text>
-      `;
+  } else if(panel.cat === "E"){
+    if(panel.code === "E1" || panel.code === "E3"){
+      content = `<circle cx="90" cy="90" r="76" fill="#1c5fa8" stroke="#c81e2c" stroke-width="12"/><line x1="35" y1="145" x2="145" y2="35" stroke="#c81e2c" stroke-width="12"/>` + (panel.code === "E3" ? `<line x1="35" y1="35" x2="145" y2="145" stroke="#c81e2c" stroke-width="12"/>` : ``);
+    } else {
+      content = `<rect x="12" y="12" width="156" height="156" rx="14" fill="#1c5fa8"/><text x="90" y="122" text-anchor="middle" font-size="${small?42:90}" font-weight="900" fill="#fff" font-family="Arial">P</text>`;
     }
-  }else if(panel.cat==="F"){
-    if(panel.code==="F1"){
-      content=`
-        <rect x="10" y="44" width="160" height="92" rx="4" fill="#fff" stroke="#c81e2c" stroke-width="8"/>
-        <path d="M26 130 V100 L44 88 V130 M50 130 V78 L70 64 L90 78 V130 M100 130 V102 L116 90 L132 102 V130" fill="none" stroke="${ink}" stroke-width="5" stroke-linejoin="round"/>
-        <line x1="18" y1="130" x2="162" y2="130" stroke="${ink}" stroke-width="6"/>
-      `;
-    }else if(panel.code==="F3"){
-      content=`
-        <rect x="10" y="44" width="160" height="92" rx="4" fill="#fff" stroke="#4a4d52" stroke-width="8"/>
-        <path d="M26 130 V100 L44 88 V130 M50 130 V78 L70 64 L90 78 V130 M100 130 V102 L116 90 L132 102 V130" fill="none" stroke="#9aa1aa" stroke-width="5" stroke-linejoin="round"/>
-        <line x1="18" y1="130" x2="162" y2="130" stroke="#9aa1aa" stroke-width="6"/>
-        <line x1="22" y1="140" x2="158" y2="40" stroke="#4a4d52" stroke-width="9"/>
-      `;
-    }else if(panel.code==="F5"){
-      content=`
-        <rect x="10" y="26" width="160" height="128" rx="8" fill="#1c5fa8"/>
-        <path d="M28 116 H152 M52 116 V78 H128 V116" fill="none" stroke="#fff" stroke-width="8" stroke-linejoin="round"/>
-        <path d="M28 136 H152" stroke="#fff" stroke-width="8"/>
-      `;
-    }else if(panel.code==="F9"){
-      content=`
-        <rect x="10" y="26" width="160" height="128" rx="8" fill="#1c5fa8"/>
-        <rect x="42" y="86" width="96" height="32" rx="10" fill="#fff"/>
-        <rect x="58" y="66" width="64" height="24" rx="8" fill="#fff"/>
-        <circle cx="62" cy="122" r="10" fill="#1c5fa8"/>
-        <circle cx="118" cy="122" r="10" fill="#1c5fa8"/>
-      `;
-    }else if(panel.code==="F12a"){
-      content=`
-        <rect x="12" y="12" width="156" height="156" rx="16" fill="#1c5fa8"/>
-        <path d="M42 134 V94 L64 76 L86 94 V134 Z" fill="#fff"/>
-        <circle cx="116" cy="72" r="8" fill="#fff"/>
-        <path d="M116 84 L116 112 L102 134 M116 98 L134 92 M116 98 L134 112" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round"/>
-        <circle cx="138" cy="130" r="7" fill="#fff"/>
-      `;
-    }else if(panel.code==="F19"){
-      content=`
-        <rect x="10" y="56" width="160" height="68" rx="6" fill="#1c5fa8"/>
-        <path d="M28 90 H138 M108 66 L142 90 L108 114" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-      `;
-    }else if(panel.code==="F4a"){
-      content=`
-        <rect x="12" y="12" width="156" height="156" rx="10" fill="#fff" stroke="${ink}" stroke-width="3"/>
-        <text x="90" y="44" text-anchor="middle" font-size="${small?12:20}" font-weight="900" fill="${ink}" letter-spacing="3">ZONE</text>
-        <circle cx="90" cy="106" r="44" fill="#fff" stroke="#c81e2c" stroke-width="10"/>
-        <text x="90" y="120" text-anchor="middle" font-size="${small?18:36}" font-weight="900" fill="${ink}" font-family="Arial,sans-serif">30</text>
-      `;
-    }else{
-      content=`
-        <rect x="12" y="12" width="156" height="156" rx="10" fill="#fff" stroke="${ink}" stroke-width="3"/>
-        <text x="90" y="44" text-anchor="middle" font-size="${small?12:20}" font-weight="900" fill="${ink}" letter-spacing="3">FIN</text>
-        <circle cx="90" cy="106" r="44" fill="#fff" stroke="#9aa1aa" stroke-width="8"/>
-        <text x="90" y="120" text-anchor="middle" font-size="${small?18:36}" font-weight="900" fill="#9aa1aa" font-family="Arial,sans-serif">30</text>
-        <line x1="52" y1="138" x2="128" y2="74" stroke="#4a4d52" stroke-width="8"/>
-      `;
+  } else if(panel.cat === "F"){
+    if(panel.code === "F1" || panel.code === "F3"){
+      const isFin = panel.code === "F3";
+      content = `<rect x="12" y="45" width="156" height="90" rx="4" fill="#fff" stroke="${isFin?'#4a4d52':'#c81e2c'}" stroke-width="7"/><path d="M28 135 V105 L45 92 V135 M52 135 V82 L72 68 L92 82 V135" fill="none" stroke="${isFin?'#9aa1aa':'#171a1f'}" stroke-width="5" stroke-linejoin="round"/><line x1="20" y1="135" x2="160" y2="135" stroke="${isFin?'#9aa1aa':'#171a1f'}" stroke-width="5"/>` + (isFin ? `<line x1="20" y1="145" x2="160" y2="35" stroke="#4a4d52" stroke-width="8"/>` : ``);
+    } else if(panel.code === "F5" || panel.code === "F9"){
+      content = `<rect x="12" y="25" width="156" height="130" rx="8" fill="#1c5fa8"/><path d="M30 115 H150 M50 115 V80 H130 V115" fill="none" stroke="#fff" stroke-width="8" stroke-linejoin="round"/>`;
+    } else if(panel.code === "F19"){
+      content = `<rect x="12" y="55" width="156" height="70" rx="6" fill="#1c5fa8"/><path d="M30 90 H140 M110 65 L145 90 L110 115" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>`;
+    } else {
+      content = `<rect x="12" y="12" width="156" height="156" rx="10" fill="#fff" stroke="${ink}" stroke-width="3"/><text x="90" y="45" text-anchor="middle" font-size="${small?12:18}" font-weight="900" fill="${ink}" letter-spacing="2">ZONE</text><circle cx="90" cy="105" r="42" fill="#fff" stroke="#c81e2c" stroke-width="9"/><text x="90" y="118" text-anchor="middle" font-size="${small?18:34}" font-weight="900" fill="${ink}" font-family="Arial">30</text>`;
     }
-  }else{
-    if(panel.code==="Panonceau 1"){
-      content=`
-        <rect x="10" y="56" width="160" height="68" rx="6" fill="#fff" stroke="${ink}" stroke-width="4"/>
-        <text x="90" y="100" text-anchor="middle" font-size="${small?16:26}" font-weight="900" fill="${ink}" font-family="Arial,sans-serif">50 m</text>
-      `;
-    }else if(panel.code==="Panonceau 2"){
-      content=`
-        <rect x="10" y="56" width="160" height="68" rx="6" fill="#fff" stroke="${ink}" stroke-width="4"/>
-        <path d="M26 90 H154" stroke="${ink}" stroke-width="6"/>
-        <path d="M26 90 L38 80 M26 90 L38 100 M154 90 L142 80 M154 90 L142 100" fill="none" stroke="${ink}" stroke-width="6" stroke-linecap="round"/>
-      `;
-    }else{
-      content=`
-        <rect x="10" y="56" width="160" height="68" rx="6" fill="#fff" stroke="${ink}" stroke-width="4"/>
-        <rect x="62" y="74" width="56" height="32" rx="4" fill="none" stroke="${ink}" stroke-width="6"/>
-      `;
-    }
+  } else {
+    content = `<rect x="12" y="55" width="156" height="70" rx="6" fill="#fff" stroke="${ink}" stroke-width="4"/><text x="90" y="98" text-anchor="middle" font-size="${small?16:24}" font-weight="900" fill="${ink}" font-family="Arial">50 m</text>`;
   }
 
-  return `
-    <svg
-      class="sign-svg"
-      viewBox="0 0 180 180"
-      preserveAspectRatio="xMidYMid meet"
-      role="img"
-      aria-label="${escapeHTML(panel.nom)}"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      ${content}
-    </svg>
-  `;
+  return `<svg class="sign-svg" viewBox="0 0 180 180" preserveAspectRatio="xMidYMid meet" role="img" aria-label="${escapeHTML(panel.nom)}" xmlns="http://www.w3.org/2000/svg">${content}</svg>`;
 }
 
 function renderProgressDots(){
