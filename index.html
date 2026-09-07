@@ -44,9 +44,7 @@
   }
 
   /* Animations */
-  .fade-in {
-    animation: fadeIn 0.3s ease-out forwards;
-  }
+  .fade-in { animation: fadeIn 0.3s ease-out forwards; }
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
@@ -70,10 +68,7 @@
     letter-spacing:0.3px;
     cursor:pointer;
   }
-  .top-bar .sub{
-    font-size:13px;
-    color:#B9BDC4;
-  }
+  .top-bar .sub{ font-size:13px; color:#B9BDC4; }
   .home-btn-top{
     background:transparent;
     border:1.5px solid #5B6068;
@@ -86,100 +81,32 @@
     transition:background .15s, border-color .15s;
   }
   .home-btn-top:hover{background:rgba(255,255,255,0.1); border-color:#fff;}
-
-  .lane{
-    height:5px;
-    background:repeating-linear-gradient(90deg, var(--paper) 0 22px, transparent 22px 40px);
-    opacity:0.9;
-  }
-
-  .app{
-    max-width:680px;
-    margin:0 auto;
-    padding:32px 20px 80px;
-  }
+  .lane{ height:5px; background:repeating-linear-gradient(90deg, var(--paper) 0 22px, transparent 22px 40px); opacity:0.9; }
+  .app{ max-width:680px; margin:0 auto; padding:32px 20px 80px; }
 
   /* ÉCRAN D'ACCUEIL */
-  .home-container{
-    text-align:center;
-    padding:10px 0;
-  }
-  .home-title{
-    font-family:'Overpass',sans-serif;
-    font-weight:800;
-    font-size:28px;
-    margin-bottom:8px;
-  }
-  .home-sub{
-    color:var(--ink-soft);
-    font-size:15px;
-    margin-bottom:36px;
-  }
-  .menu-cards{
-    display:flex;
-    flex-direction:column;
-    gap:16px;
-  }
+  .home-container{ text-align:center; padding:10px 0; }
+  .home-title{ font-family:'Overpass',sans-serif; font-weight:800; font-size:28px; margin-bottom:8px; }
+  .home-sub{ color:var(--ink-soft); font-size:15px; margin-bottom:36px; }
+  .menu-cards{ display:flex; flex-direction:column; gap:16px; }
   .menu-card{
-    background:var(--paper-dim);
-    border:2px solid var(--line);
-    border-radius:14px;
-    padding:22px 24px;
-    text-align:left;
-    cursor:pointer;
+    background:var(--paper-dim); border:2px solid var(--line); border-radius:14px;
+    padding:22px 24px; text-align:left; cursor:pointer;
     transition:border-color .15s, transform .15s, background .15s, box-shadow .15s;
-    display:flex;
-    align-items:center;
-    gap:20px;
+    display:flex; align-items:center; gap:20px;
   }
-  .menu-card:hover{
-    border-color:var(--asphalt);
-    background:#fff;
-    transform:translateY(-3px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
-  }
+  .menu-card:hover{ border-color:var(--asphalt); background:#fff; transform:translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.06); }
   .menu-icon{font-size:32px;flex:none;}
-  .menu-info h3{
-    font-family:'Overpass',sans-serif;
-    font-weight:800;
-    font-size:18px;
-    margin:0 0 4px;
-  }
-  .menu-info p{
-    margin:0;
-    font-size:13.5px;
-    color:var(--ink-soft);
-    line-height:1.4;
-  }
+  .menu-info h3{ font-family:'Overpass',sans-serif; font-weight:800; font-size:18px; margin:0 0 4px; }
+  .menu-info p{ margin:0; font-size:13.5px; color:var(--ink-soft); line-height:1.4; }
 
-  h2.section-title{
-    font-family:'Overpass',sans-serif;
-    font-weight:800;
-    font-size:22px;
-    margin:0 0 4px;
-  }
-  p.section-sub{
-    color:var(--ink-soft);
-    font-size:14px;
-    margin:0 0 24px;
-  }
+  h2.section-title{ font-family:'Overpass',sans-serif; font-weight:800; font-size:22px; margin:0 0 4px; }
+  p.section-sub{ color:var(--ink-soft); font-size:14px; margin:0 0 24px; }
 
-  .cat-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));
-    gap:10px;
-    margin-bottom:26px;
-  }
+  .cat-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:10px; margin-bottom:26px; }
   .cat-chip{
-    border:1.5px solid var(--line);
-    border-radius:10px;
-    padding:12px 14px;
-    cursor:pointer;
-    display:flex;
-    align-items:center;
-    gap:10px;
-    background:var(--paper);
-    transition:opacity .15s, border-color .15s;
+    border:1.5px solid var(--line); border-radius:10px; padding:12px 14px; cursor:pointer;
+    display:flex; align-items:center; gap:10px; background:var(--paper); transition:opacity .15s, border-color .15s;
   }
   .cat-chip:hover{border-color:var(--asphalt);}
   .cat-chip.off{opacity:0.35;}
@@ -187,39 +114,17 @@
   .cat-chip .lbl{font-size:13.5px;font-weight:600;line-height:1.25;}
   .cat-chip .cnt{font-size:12px;color:var(--ink-soft);display:block;}
 
-  .config-panel{
-    background:var(--paper-dim);
-    padding:16px;
-    border-radius:10px;
-    margin-bottom:22px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-  }
+  .config-panel{ background:var(--paper-dim); padding:16px; border-radius:10px; margin-bottom:22px; display:flex; align-items:center; justify-content:space-between; }
   .config-panel label{font-size:14px;font-weight:600;cursor:pointer;}
 
   .field-row{margin-bottom:28px;}
-  .field-row label{
-    display:flex;
-    justify-content:space-between;
-    font-size:13.5px;
-    font-weight:600;
-    margin-bottom:10px;
-  }
+  .field-row label{ display:flex; justify-content:space-between; font-size:13.5px; font-weight:600; margin-bottom:10px; }
   .field-row .n{font-family:'Overpass',sans-serif;font-weight:800;color:var(--danger-ink);}
   input[type=range]{width:100%;accent-color:var(--danger);}
 
   .btn{
-    font-family:'Overpass',sans-serif;
-    font-weight:700;
-    font-size:15px;
-    border:none;
-    border-radius:10px;
-    padding:15px 20px;
-    cursor:pointer;
-    width:100%;
-    letter-spacing:0.2px;
-    transition:transform .08s ease, filter .12s ease;
+    font-family:'Overpass',sans-serif; font-weight:700; font-size:15px; border:none; border-radius:10px;
+    padding:15px 20px; cursor:pointer; width:100%; letter-spacing:0.2px; transition:transform .08s ease, filter .12s ease;
   }
   .btn:active{transform:scale(0.98);}
   .btn-go{background:var(--asphalt);color:var(--paper);}
@@ -234,15 +139,7 @@
   .progress-dash{flex:1;height:6px;border-radius:3px;background:var(--line); transition:background 0.3s;}
   .progress-dash.done{background:var(--asphalt);}
   .quiz-top-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
-  .timer-badge{
-    font-family:'Overpass',sans-serif;
-    font-weight:700;
-    font-size:13px;
-    background:var(--paper-dim);
-    padding:4px 10px;
-    border-radius:20px;
-    color:var(--danger-ink);
-  }
+  .timer-badge{ font-family:'Overpass',sans-serif; font-weight:700; font-size:13px; background:var(--paper-dim); padding:4px 10px; border-radius:20px; color:var(--danger-ink); }
   .fav-btn{background:none;border:none;cursor:pointer;font-size:20px;padding:0;transition:transform .1s;}
   .fav-btn:hover{transform:scale(1.2);}
 
@@ -272,30 +169,15 @@
 
   .opt-list{display:flex;flex-direction:column;gap:10px;}
   .opt{
-    text-align:left;
-    padding:14px 16px;
-    border:1.5px solid var(--line);
-    border-radius:10px;
-    background:var(--paper);
-    font-size:14.5px;
-    font-weight:500;
-    cursor:pointer;
-    transition:border-color .12s, background .12s;
+    text-align:left; padding:14px 16px; border:1.5px solid var(--line); border-radius:10px; background:var(--paper);
+    font-size:14.5px; font-weight:500; cursor:pointer; transition:border-color .12s, background .12s;
   }
   .opt:hover:not(.locked){border-color:var(--asphalt);}
   .opt.locked{cursor:default;}
   .opt.correct{border-color:var(--good);background:#EAF6EE;color:#155728;font-weight:700;}
   .opt.wrong{border-color:var(--bad);background:#FBEAEA;color:var(--danger-ink);font-weight:700;}
 
-  .feedback{
-    margin-top:18px;
-    padding:14px 16px;
-    border-left:3px solid var(--good);
-    background:var(--paper-dim);
-    font-size:13.5px;
-    line-height:1.5;
-    border-radius:0 8px 8px 0;
-  }
+  .feedback{ margin-top:18px; padding:14px 16px; border-left:3px solid var(--good); background:var(--paper-dim); font-size:13.5px; line-height:1.5; border-radius:0 8px 8px 0; }
   .feedback.bad{border-left-color:var(--bad);}
   .feedback b{display:block; margin-bottom:3px; font-family:'Overpass',sans-serif;}
 
@@ -303,14 +185,8 @@
 
   .score-stage{display:flex;justify-content:center;margin:10px 0 26px;}
   .score-ring{
-    width:170px;height:170px;
-    border-radius:50%;
-    border:12px solid var(--danger);
-    background:var(--paper);
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
+    width:170px;height:170px; border-radius:50%; border:12px solid var(--danger); background:var(--paper);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
   }
   .score-ring .pct{font-family:'Overpass',sans-serif;font-weight:800;font-size:40px;color:var(--danger-ink);line-height:1;}
   .score-ring .frac{font-size:13px;color:var(--ink-soft);margin-top:4px;}
@@ -328,15 +204,7 @@
   .err-item .you{color:var(--danger-ink);}
   .err-item .dsc{color:var(--ink-soft); margin-top:3px;}
 
-  .repo-search{
-    width:100%;
-    padding:12px 14px;
-    border:1.5px solid var(--line);
-    border-radius:10px;
-    font-size:14.5px;
-    margin-bottom:22px;
-    font-family:'Inter',sans-serif;
-  }
+  .repo-search{ width:100%; padding:12px 14px; border:1.5px solid var(--line); border-radius:10px; font-size:14.5px; margin-bottom:22px; font-family:'Inter',sans-serif; }
   .repo-cat-head{display:flex;align-items:center;gap:8px;margin:22px 0 10px;}
   .repo-cat-head .dot{width:11px;height:11px;border-radius:50%;flex:none;}
   .repo-cat-head span{font-family:'Overpass',sans-serif;font-weight:700;font-size:13.5px;}
@@ -349,18 +217,25 @@
   .repo-txt .nm{font-weight:700;font-size:14.5px;margin:2px 0 4px;}
   .repo-txt .dsc{font-size:13px;color:var(--ink-soft);line-height:1.4;}
 
+  /* --- MODULE INFRACTIONS --- */
   .inf-card{
-    background:var(--paper-dim);
-    border:1.5px solid var(--line);
-    border-radius:12px;
-    padding:16px;
-    margin-bottom:16px;
+    background:var(--paper-dim); border:1.5px solid var(--line); border-radius:12px;
+    padding:16px; margin-bottom:16px; position: relative; overflow: hidden;
   }
-  .inf-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
-  .inf-degre{font-family:'Overpass',sans-serif;font-weight:800;font-size:12px;text-transform:uppercase;padding:4px 8px;border-radius:6px;background:var(--asphalt);color:var(--paper);}
-  .inf-amende{font-family:'Overpass',sans-serif;font-weight:800;font-size:14px;color:var(--danger-ink);}
-  .inf-title{font-family:'Overpass',sans-serif;font-weight:700;font-size:16px;margin-bottom:6px;}
-  .inf-desc{font-size:13.5px;color:var(--ink-soft);line-height:1.4;}
+  .inf-card-header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+  
+  /* Codes couleurs par degrés */
+  .inf-degre{ font-family:'Overpass',sans-serif; font-weight:800; font-size:11.5px; text-transform:uppercase; padding:5px 10px; border-radius:6px; color:#fff; }
+  .deg-1 { background: var(--asphalt); }
+  .deg-2 { background: var(--priorite); color: var(--ink) !important; }
+  .deg-3 { background: var(--danger); }
+  .deg-4 { background: #000; box-shadow: 0 0 0 2px var(--danger); }
+  .deg-vit { background: var(--extra); }
+  .deg-alc { background: var(--indication); }
+
+  .inf-amende{ font-family:'Overpass',sans-serif; font-weight:800; font-size:15px; color:var(--ink); }
+  .inf-title{ font-family:'Overpass',sans-serif; font-weight:700; font-size:16px; margin-bottom:8px; line-height: 1.3; }
+  .inf-desc{ font-size:13.5px; color:var(--ink-soft); line-height:1.5; }
 
   .hidden{display:none !important;}
 
@@ -405,8 +280,8 @@
       <div class="menu-card" onclick="switchMode('inf')">
         <div class="menu-icon">⚖️</div>
         <div class="menu-info">
-          <h3>Infractions & Amendes</h3>
-          <p>Découvre le barème officiel des perceptions immédiates et les degrés de contraventions.</p>
+          <h3>Guide des Infractions</h3>
+          <p>Base de données complète : amendes, degrés, alcoolémie, excès de vitesse et tribunal.</p>
         </div>
       </div>
     </div>
@@ -494,15 +369,16 @@
 
   <!-- ================= VUE INFRACTIONS ================= -->
   <div id="view-inf" class="hidden">
-    <h2 class="section-title">Guide des Infractions & Amendes</h2>
-    <p class="section-sub">Barème officiel belge des perceptions immédiates.</p>
-    <input class="repo-search" id="inf-search" placeholder="Rechercher une infraction (ex: ceinture, gsm, vitesse...)" oninput="renderInfractions()">
+    <h2 class="section-title">Barème des Infractions & Amendes</h2>
+    <p class="section-sub">Les règles indispensables pour l'examen théorique en Belgique (Mise à jour 2024/2025).</p>
+    <input class="repo-search" id="inf-search" placeholder="Exemple : GSM, ligne blanche, alcool, clignotant..." oninput="renderInfractions()">
     <div id="inf-list"></div>
   </div>
 
 </div>
 
 <script>
+// Base Panneaux inchangée
 const PANNEAUX = [
   {code:"A1a", nom:"Virage dangereux à gauche", cat:"A", desc:"Annonce un virage prononcé vers la gauche."},
   {code:"A1b", nom:"Virage dangereux à droite", cat:"A", desc:"Annonce un virage prononcé vers la droite."},
@@ -528,17 +404,42 @@ const PANNEAUX = [
   {code:"F4b", nom:"Fin de zone 30", cat:"F", desc:"Sortie de la zone 30."}
 ];
 
+// NOUVELLE BASE DE DONNÉES DES INFRACTIONS COMPLÈTE
 const INFRACTIONS = [
-  {titre: "Utilisation du GSM au volant", degre: "1er Degré", amende: "174 €", desc: "Tenir un téléphone portable en main à l'arrêt ou en circulation. Entraîne un retrait de permis de 15 jours immédiat."},
-  {titre: "Non-port de la ceinture de sécurité", degre: "1er Degré", amende: "174 €", desc: "Obligatoire pour tous les occupants du véhicule équipés d'une ceinture."},
-  {titre: "Franchissement d'une ligne continue", degre: "2ème Degré", amende: "116 €", desc: "Rouler sur ou franchir une ligne blanche continue."},
-  {titre: "Dépassement par la droite", degre: "2ème Degré", amende: "116 €", desc: "Dépasser par la droite un véhicule en mouvement (sauf exceptions prévues au code)."},
-  {titre: "Ne pas respecter un feu rouge", degre: "3ème Degré", amende: "174 €", desc: "S'engager alors que le feu est rouge fixe ou clignotant."},
-  {titre: "Non-respect d'un panneau STOP (B5)", degre: "3ème Degré", amende: "174 €", desc: "Oublier de marquer un temps d'arrêt complet."},
-  {titre: "Excès de vitesse", degre: "Vitesse", amende: "Variable (53€ + 11€/km/h en plus)", desc: "Dépassement de la vitesse autorisée sur la voie publique."},
-  {titre: "Stationnement gênant sur passage piéton", degre: "2ème Degré", amende: "116 €", desc: "Se garer sur un passage clouté ou un trottoir protégeant les piétons."},
-  {titre: "Non-respect de la distance de sécurité", degre: "2ème Degré", amende: "116 €", desc: "Ne pas laisser une distance suffisante par rapport au véhicule qui précède."},
-  {titre: "Conduite sous influence d'alcool", degre: "Immédiat", amende: "180 € minimum + Tribunal", desc: "Taux d'alcoolémie au-delà de 0,5 g/L de sang (ou 0,22 mg/L d'air alvéolaire expiré)."}
+  // 1er Degré
+  {titre: "Oubli du clignotant", degre: "1er Degré", amende: "58 €", desc: "Omettre d'indiquer un changement de direction, un dépassement ou la sortie d'un rond-point."},
+  {titre: "Stationnement interdit (simple)", degre: "1er Degré", amende: "58 €", desc: "Stationner sur une zone non autorisée sans pour autant gêner dangereusement les autres usagers."},
+  {titre: "Circuler sur la bande de bus", degre: "1er Degré", amende: "58 €", desc: "Emprunter une bande de circulation réservée aux autobus (sauf autorisation explicite par panonceau)."},
+  {titre: "Oubli des documents obligatoires", degre: "1er Degré", amende: "58 €", desc: "Ne pas être en mesure de présenter son permis, l'assurance ou le certificat d'immatriculation en cas de contrôle."},
+  
+  // 2ème Degré
+  {titre: "Non-port de la ceinture de sécurité", degre: "2ème Degré", amende: "116 €", desc: "Obligatoire pour tous les occupants du véhicule, à l'avant comme à l'arrière."},
+  {titre: "Franchir un feu orange", degre: "2ème Degré", amende: "116 €", desc: "S'engager alors que le feu est orange, s'il était possible de s'arrêter en toute sécurité."},
+  {titre: "Stationnement dangereux", degre: "2ème Degré", amende: "116 €", desc: "Se garer sur un trottoir, un passage pour piétons, ou une piste cyclable, forçant les usagers vulnérables à se mettre en danger."},
+  {titre: "Conduite sans feux la nuit", degre: "2ème Degré", amende: "116 €", desc: "Oublier d'allumer ses feux de croisement entre la tombée et le lever du jour, ou dans un tunnel."},
+  {titre: "Dépasser par la droite", degre: "2ème Degré", amende: "116 €", desc: "Interdit en Belgique (sauf si la circulation s'effectue en files ininterrompues ou pour dépasser un véhicule tournant à gauche)."},
+  {titre: "Non-respect de la distance de sécurité", degre: "2ème Degré", amende: "116 €", desc: "Coller le véhicule précédent, empêchant un arrêt en toute sécurité en cas de freinage brutal."},
+
+  // 3ème Degré
+  {titre: "Usage du GSM au volant", degre: "3ème Degré", amende: "174 €", desc: "Tenir un téléphone ou un écran en main en conduisant, même à l'arrêt au feu rouge. Souvent accompagné d'un retrait de permis de 8 à 15 jours."},
+  {titre: "Brûler un feu rouge", degre: "3ème Degré", amende: "174 €", desc: "Franchir un carrefour alors que le feu est rouge fixe ou clignotant."},
+  {titre: "Ignorer un STOP (B5) ou Cédez le passage", degre: "3ème Degré", amende: "174 €", desc: "Refus de priorité aux usagers ayant le droit de passage, risquant un accident direct."},
+  {titre: "Franchir une ligne blanche continue", degre: "3ème Degré", amende: "174 €", desc: "Il est strictement interdit de rouler sur ou de franchir une ligne blanche continue."},
+  {titre: "Prendre un sens interdit", degre: "3ème Degré", amende: "174 €", desc: "S'engager dans une voie marquée du panneau C3 (disque rouge à barre blanche)."},
+  {titre: "Mettre en danger un piéton ou cycliste", degre: "3ème Degré", amende: "174 €", desc: "Couper la route ou frôler dangereusement un usager faible."},
+
+  // 4ème Degré / Tribunal
+  {titre: "Faire demi-tour sur autoroute", degre: "4ème Degré", amende: "Tribunal", desc: "Comprend aussi la marche arrière et le contresens sur autoroute. Déchéance du droit de conduire obligatoire."},
+  {titre: "Refus d'obtempérer", degre: "4ème Degré", amende: "Tribunal", desc: "Ignorer les injonctions d'un agent de police qualifié."},
+  {titre: "Délit de fuite", degre: "Délit pénal", amende: "Tribunal", desc: "Quitter les lieux d'un accident pour échapper aux constatations. Peines de prison possibles."},
+
+  // Vitesse
+  {titre: "Excès de vitesse (Agglomération / Zone 30)", degre: "Vitesse", amende: "Dès 53 € + 11 €/km/h", desc: "Le tarif de base est de 53 €, puis 11 € supplémentaires pour chaque km/h de dépassement."},
+  {titre: "Excès de vitesse (Hors agglomération)", degre: "Vitesse", amende: "Dès 53 € + 6 €/km/h", desc: "Le tarif de base est de 53 €, puis 6 € pour chaque km/h supplémentaire."},
+
+  // Alcool
+  {titre: "Alcoolémie (0,5 g/L à 0,8 g/L)", degre: "Alcool", amende: "179 € + Retrait 3h", desc: "Conduite sous influence légère. Retrait de permis immédiat pour 3 heures minimum."},
+  {titre: "Alcoolémie (Supérieure à 0,8 g/L)", degre: "Alcool / Tribunal", amende: "De 420 € à 1200 €", desc: "Retrait de permis de 6 heures minimum ou de 15 jours immédiats selon le taux. Convocation au tribunal probable."}
 ];
 
 const CATEGORIES = {
@@ -550,9 +451,7 @@ const CATEGORIES = {
   F: {label:"Indication", color:"var(--indication)", ink:"var(--indication-ink)", shape:"square-indication"},
 };
 
-const IMAGE_OVERRIDES = {
-  "D1a": "Belgian traffic sign D1c.svg",
-};
+const IMAGE_OVERRIDES = { "D1a": "Belgian traffic sign D1c.svg" };
 
 let userFavs = JSON.parse(localStorage.getItem('belgium_road_favs') || '[]');
 
@@ -566,25 +465,20 @@ function buildSignShape(p){
   const label = p.num ? p.num : p.code;
   const bigNum = p.num ? " big-num" : "";
   let inner = "";
-
   if(cat.shape === "triangle"){
     inner = `<div class="shape-triangle"></div>
       <div style="position:absolute;inset:0;clip-path:polygon(50% 4%, 4% 96%, 96% 96%);background:${cat.color};"></div>
       <div style="position:absolute;inset:9px;clip-path:polygon(50% 4%, 4% 96%, 96% 96%);background:var(--paper);"></div>
       <div class="sign-code on-white${bigNum}" style="position:absolute;">${label}</div>`;
   } else if(cat.shape === "diamond"){
-    inner = `<div class="shape-diamond"></div>
-      <div class="sign-code on-amber${bigNum}" style="position:absolute;">${label}</div>`;
+    inner = `<div class="shape-diamond"></div><div class="sign-code on-amber${bigNum}" style="position:absolute;">${label}</div>`;
   } else if(cat.shape === "circle-red"){
-    inner = `<div class="shape-circle-red"></div>
-      <div class="sign-code on-red${bigNum}" style="position:absolute;">${label}</div>`;
+    inner = `<div class="shape-circle-red"></div><div class="sign-code on-red${bigNum}" style="position:absolute;">${label}</div>`;
   } else if(cat.shape === "circle-blue"){
-    inner = `<div class="shape-circle-blue"></div>
-      <div class="sign-code on-blue${bigNum}" style="position:absolute;">${label}</div>`;
+    inner = `<div class="shape-circle-blue"></div><div class="sign-code on-blue${bigNum}" style="position:absolute;">${label}</div>`;
   } else {
     const bg = cat.shape === "square-station" ? "var(--station)" : "var(--indication)";
-    inner = `<div class="shape-square" style="background:${bg};"></div>
-      <div class="sign-code on-blue${bigNum}" style="position:absolute;">${label}</div>`;
+    inner = `<div class="shape-square" style="background:${bg};"></div><div class="sign-code on-blue${bigNum}" style="position:absolute;">${label}</div>`;
   }
   return inner;
 }
@@ -597,35 +491,18 @@ function renderSign(container, p){
   `;
 }
 
-let state = {
-  categories: Object.keys(CATEGORIES),
-  nbQuestions: 15,
-  timerEnabled: false,
-  panneaux: [],
-  index: 0,
-  score: 0,
-  answered: false,
-  options: [],
-  errors: [],
-  catStats: {},
-  reviewMode: false,
-  timerInterval: null,
-  timeLeft: 15
-};
+let state = { categories: Object.keys(CATEGORIES), nbQuestions: 15, timerEnabled: false, panneaux: [], index: 0, score: 0, answered: false, options: [], errors: [], catStats: {}, reviewMode: false, timerInterval: null, timeLeft: 15 };
 
 function goToHome(){
   clearInterval(state.timerInterval);
-  
   const views = ['quiz', 'repo', 'inf'];
   views.forEach(v => {
     document.getElementById('view-' + v).classList.add('hidden');
     document.getElementById('view-' + v).classList.remove('fade-in');
   });
-
   const home = document.getElementById('view-home');
   home.classList.remove('hidden');
   home.classList.add('fade-in');
-  
   document.getElementById('home-top-btn').style.display = 'none';
 }
 
@@ -637,15 +514,9 @@ function switchMode(mode){
   const views = ['quiz', 'repo', 'inf'];
   views.forEach(v => {
     const el = document.getElementById('view-' + v);
-    if(v === mode){
-      el.classList.remove('hidden');
-      el.classList.add('fade-in');
-    } else {
-      el.classList.add('hidden');
-      el.classList.remove('fade-in');
-    }
+    if(v === mode){ el.classList.remove('hidden'); el.classList.add('fade-in'); } 
+    else { el.classList.add('hidden'); el.classList.remove('fade-in'); }
   });
-
   document.getElementById('home-top-btn').style.display = 'block';
 
   if(mode === 'quiz') goConfig();
@@ -667,134 +538,84 @@ function renderCatGrid(){
       <div><span class="lbl">${cat.label}</span><span class="cnt">${count} panneaux</span></div>`;
     grid.appendChild(chip);
   });
-  updateNbBounds();
-  updateFavLaunchBtn();
+  updateNbBounds(); updateFavLaunchBtn();
 }
 
 function toggleCat(key){
   const i = state.categories.indexOf(key);
-  if(i >= 0){
-    if(state.categories.length === 1) return;
-    state.categories.splice(i, 1);
-  } else {
-    state.categories.push(key);
-  }
+  if(i >= 0){ if(state.categories.length === 1) return; state.categories.splice(i, 1); } 
+  else { state.categories.push(key); }
   document.getElementById('chip-' + key).classList.toggle('off', !state.categories.includes(key));
   updateNbBounds();
 }
 
-function availablePanneaux(){
-  return PANNEAUX.filter(p => state.categories.includes(p.cat));
-}
+function availablePanneaux(){ return PANNEAUX.filter(p => state.categories.includes(p.cat)); }
 
 function updateNbBounds(){
   const max = availablePanneaux().length;
   const slider = document.getElementById('nb-questions');
   const warn = document.getElementById('cfg-warn');
   if(max < 2){
-    warn.textContent = "Pas assez de panneaux dans cette sélection.";
-    warn.classList.remove('hidden');
-    slider.disabled = true;
-    return;
+    warn.textContent = "Pas assez de panneaux dans cette sélection."; warn.classList.remove('hidden'); slider.disabled = true; return;
   }
-  warn.classList.add('hidden');
-  slider.disabled = false;
-  slider.max = max;
-  slider.min = Math.min(5, max);
+  warn.classList.add('hidden'); slider.disabled = false; slider.max = max; slider.min = Math.min(5, max);
   if(parseInt(slider.value) > max) slider.value = max;
   state.nbQuestions = parseInt(slider.value);
   document.getElementById('nb-out').textContent = state.nbQuestions;
 }
-
-function onNbChange(){
-  state.nbQuestions = parseInt(document.getElementById('nb-questions').value);
-  document.getElementById('nb-out').textContent = state.nbQuestions;
-}
-
+function onNbChange(){ state.nbQuestions = parseInt(document.getElementById('nb-questions').value); document.getElementById('nb-out').textContent = state.nbQuestions; }
 function updateFavLaunchBtn(){
-  const countEl = document.getElementById('fav-count');
-  const wrap = document.getElementById('quick-review-launch');
+  const countEl = document.getElementById('fav-count'); const wrap = document.getElementById('quick-review-launch');
   countEl.textContent = userFavs.length;
-  if(userFavs.length > 0) wrap.classList.remove('hidden');
-  else wrap.classList.add('hidden');
+  if(userFavs.length > 0) wrap.classList.remove('hidden'); else wrap.classList.add('hidden');
 }
 
 function shuffled(arr){
   const a = arr.slice();
-  for(let i = a.length - 1; i > 0; i--){
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
+  for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
   return a;
 }
 
 function startQuiz(){
-  const pool = availablePanneaux();
-  if(pool.length < 2) return;
+  const pool = availablePanneaux(); if(pool.length < 2) return;
   state.timerEnabled = document.getElementById('timer-toggle').checked;
   const selection = shuffled(pool).slice(0, state.nbQuestions);
   beginSession(selection, false);
 }
 
 function startFavReview(){
-  const favItems = PANNEAUX.filter(p => userFavs.includes(p.code));
-  if(favItems.length === 0) return;
-  state.timerEnabled = false;
-  beginSession(favItems, true);
+  const favItems = PANNEAUX.filter(p => userFavs.includes(p.code)); if(favItems.length === 0) return;
+  state.timerEnabled = false; beginSession(favItems, true);
 }
 
 function beginSession(panneaux, reviewMode){
-  state.panneaux = panneaux;
-  state.index = 0;
-  state.score = 0;
-  state.answered = false;
-  state.errors = [];
-  state.catStats = {};
-  state.reviewMode = reviewMode;
-
+  state.panneaux = panneaux; state.index = 0; state.score = 0; state.answered = false; state.errors = []; state.catStats = {}; state.reviewMode = reviewMode;
   document.getElementById('quiz-config').classList.add('hidden');
   document.getElementById('quiz-summary').classList.add('hidden');
   document.getElementById('quiz-running').classList.remove('hidden');
   document.getElementById('quiz-running').classList.add('fade-in');
-  renderProgressTrack();
-  renderQuestion();
+  renderProgressTrack(); renderQuestion();
 }
 
 function goConfig(){
-  clearInterval(state.timerInterval);
-  document.getElementById('quiz-summary').classList.add('hidden');
-  document.getElementById('quiz-running').classList.add('hidden');
-  document.getElementById('quiz-config').classList.remove('hidden');
-  updateFavLaunchBtn();
+  clearInterval(state.timerInterval); document.getElementById('quiz-summary').classList.add('hidden'); document.getElementById('quiz-running').classList.add('hidden');
+  document.getElementById('quiz-config').classList.remove('hidden'); updateFavLaunchBtn();
 }
-
-function replaySame(){
-  beginSession(state.panneaux, state.reviewMode);
-}
-
-function reviewErrors(){
-  beginSession(state.errors.map(e => e.panneau), true);
-}
+function replaySame(){ beginSession(state.panneaux, state.reviewMode); }
+function reviewErrors(){ beginSession(state.errors.map(e => e.panneau), true); }
 
 function renderProgressTrack(){
-  const track = document.getElementById('progress-track');
-  track.innerHTML = '';
+  const track = document.getElementById('progress-track'); track.innerHTML = '';
   state.panneaux.forEach((_, i) => {
-    const d = document.createElement('div');
-    d.className = 'progress-dash' + (i < state.index ? ' done' : '');
-    track.appendChild(d);
+    const d = document.createElement('div'); d.className = 'progress-dash' + (i < state.index ? ' done' : ''); track.appendChild(d);
   });
 }
 
 function renderQuestion(){
   clearInterval(state.timerInterval);
-  if(state.index >= state.panneaux.length){
-    showSummary();
-    return;
-  }
+  if(state.index >= state.panneaux.length){ showSummary(); return; }
   renderProgressTrack();
-  document.getElementById('progress-label').textContent =
-    (state.reviewMode ? "Révision — " : "Question ") + (state.index + 1) + " / " + state.panneaux.length;
+  document.getElementById('progress-label').textContent = (state.reviewMode ? "Révision — " : "Question ") + (state.index + 1) + " / " + state.panneaux.length;
   document.getElementById('progress-score').textContent = "Score : " + state.score;
 
   const actuel = state.panneaux[state.index];
@@ -806,214 +627,134 @@ function renderQuestion(){
 
   const distractors = shuffled(PANNEAUX.filter(p => p.code !== actuel.code)).slice(0, 3);
   const options = shuffled(distractors.concat([actuel]));
-  state.options = options;
-  state.answered = false;
+  state.options = options; state.answered = false;
 
-  const list = document.getElementById('opt-list');
-  list.innerHTML = '';
+  const list = document.getElementById('opt-list'); list.innerHTML = '';
   options.forEach((opt, i) => {
-    const btn = document.createElement('div');
-    btn.className = 'opt';
-    btn.textContent = opt.nom;
-    btn.onclick = () => selectOption(i);
-    list.appendChild(btn);
+    const btn = document.createElement('div'); btn.className = 'opt'; btn.textContent = opt.nom; btn.onclick = () => selectOption(i); list.appendChild(btn);
   });
 
-  document.getElementById('feedback-zone').innerHTML = '';
-  document.getElementById('next-wrap').innerHTML = '';
+  document.getElementById('feedback-zone').innerHTML = ''; document.getElementById('next-wrap').innerHTML = '';
 
   const timerBadge = document.getElementById('timer-badge');
   if(state.timerEnabled){
-    timerBadge.classList.remove('hidden');
-    state.timeLeft = 15;
-    timerBadge.textContent = "⏳ " + state.timeLeft + "s";
+    timerBadge.classList.remove('hidden'); state.timeLeft = 15; timerBadge.textContent = "⏳ " + state.timeLeft + "s";
     state.timerInterval = setInterval(() => {
-      state.timeLeft--;
-      timerBadge.textContent = "⏳ " + state.timeLeft + "s";
-      if(state.timeLeft <= 0){
-        clearInterval(state.timerInterval);
-        handleTimeout();
-      }
+      state.timeLeft--; timerBadge.textContent = "⏳ " + state.timeLeft + "s";
+      if(state.timeLeft <= 0){ clearInterval(state.timerInterval); handleTimeout(); }
     }, 1000);
-  } else {
-    timerBadge.classList.add('hidden');
-  }
+  } else { timerBadge.classList.add('hidden'); }
 }
 
 function toggleCurrentFav(){
   const actuel = state.panneaux[state.index];
   const idx = userFavs.indexOf(actuel.code);
-  if(idx >= 0) userFavs.splice(idx, 1);
-  else userFavs.push(actuel.code);
+  if(idx >= 0) userFavs.splice(idx, 1); else userFavs.push(actuel.code);
   localStorage.setItem('belgium_road_favs', JSON.stringify(userFavs));
   document.getElementById('fav-toggle-btn').textContent = userFavs.includes(actuel.code) ? "⭐" : "☆";
   updateFavLaunchBtn();
 }
 
 function handleTimeout(){
-  if(state.answered) return;
-  state.answered = true;
+  if(state.answered) return; state.answered = true;
   const actuel = state.panneaux[state.index];
-  const stats = state.catStats[actuel.cat] || {bon:0, tot:0};
-  stats.tot += 1;
+  const stats = state.catStats[actuel.cat] || {bon:0, tot:0}; stats.tot += 1;
   state.errors.push({panneau: actuel, reponse_donnee: "Temps écoulé"});
   state.catStats[actuel.cat] = stats;
 
   document.querySelectorAll('#opt-list .opt').forEach((el, idx) => {
-    el.classList.add('locked');
-    if(state.options[idx].code === actuel.code) el.classList.add('correct');
+    el.classList.add('locked'); if(state.options[idx].code === actuel.code) el.classList.add('correct');
   });
-
-  const fb = document.getElementById('feedback-zone');
-  fb.innerHTML = `<div class="feedback bad">
-    <b>Temps écoulé ! C'était : ${actuel.nom}</b>
-    ${actuel.desc}
-  </div>`;
-
+  document.getElementById('feedback-zone').innerHTML = `<div class="feedback bad"><b>Temps écoulé ! C'était : ${actuel.nom}</b>${actuel.desc}</div>`;
   const isLast = state.index + 1 >= state.panneaux.length;
-  document.getElementById('next-wrap').innerHTML =
-    `<button class="btn btn-go" onclick="nextQuestion()">${isLast ? 'Voir le résumé' : 'Question suivante'}</button>`;
+  document.getElementById('next-wrap').innerHTML = `<button class="btn btn-go" onclick="nextQuestion()">${isLast ? 'Voir le résumé' : 'Question suivante'}</button>`;
 }
 
 function selectOption(i){
-  if(state.answered) return;
-  clearInterval(state.timerInterval);
-  state.answered = true;
-
-  const actuel = state.panneaux[state.index];
-  const chosenOpt = state.options[i];
-  const isCorrect = chosenOpt.code === actuel.code;
-
-  const stats = state.catStats[actuel.cat] || {bon:0, tot:0};
-  stats.tot += 1;
-  if(isCorrect){
-    state.score += 1;
-    stats.bon += 1;
-  } else {
-    state.errors.push({panneau: actuel, reponse_donnee: chosenOpt.nom});
-  }
+  if(state.answered) return; clearInterval(state.timerInterval); state.answered = true;
+  const actuel = state.panneaux[state.index]; const chosenOpt = state.options[i]; const isCorrect = chosenOpt.code === actuel.code;
+  const stats = state.catStats[actuel.cat] || {bon:0, tot:0}; stats.tot += 1;
+  if(isCorrect){ state.score += 1; stats.bon += 1; } else { state.errors.push({panneau: actuel, reponse_donnee: chosenOpt.nom}); }
   state.catStats[actuel.cat] = stats;
 
   document.querySelectorAll('#opt-list .opt').forEach((el, idx) => {
     el.classList.add('locked');
-    if(state.options[idx].code === actuel.code) el.classList.add('correct');
-    else if(idx === i) el.classList.add('wrong');
+    if(state.options[idx].code === actuel.code) el.classList.add('correct'); else if(idx === i) el.classList.add('wrong');
   });
 
-  const fb = document.getElementById('feedback-zone');
-  fb.innerHTML = `<div class="feedback ${isCorrect ? '' : 'bad'}">
-    <b>${isCorrect ? "Bonne réponse" : "Ce n'était pas ça — c'était : " + actuel.nom}</b>
-    ${actuel.desc}
-  </div>`;
-
+  document.getElementById('feedback-zone').innerHTML = `<div class="feedback ${isCorrect ? '' : 'bad'}"><b>${isCorrect ? "Bonne réponse" : "Ce n'était pas ça — c'était : " + actuel.nom}</b>${actuel.desc}</div>`;
   const isLast = state.index + 1 >= state.panneaux.length;
-  document.getElementById('next-wrap').innerHTML =
-    `<button class="btn btn-go" onclick="nextQuestion()">${isLast ? 'Voir le résumé' : 'Question suivante'}</button>`;
-
+  document.getElementById('next-wrap').innerHTML = `<button class="btn btn-go" onclick="nextQuestion()">${isLast ? 'Voir le résumé' : 'Question suivante'}</button>`;
   document.getElementById('progress-score').textContent = "Score : " + state.score;
 }
 
-function nextQuestion(){
-  state.index += 1;
-  renderQuestion();
-}
+function nextQuestion(){ state.index += 1; renderQuestion(); }
 
 function showSummary(){
   clearInterval(state.timerInterval);
   document.getElementById('quiz-running').classList.add('hidden');
   const sumWrap = document.getElementById('quiz-summary');
-  sumWrap.classList.remove('hidden');
-  sumWrap.classList.add('fade-in');
+  sumWrap.classList.remove('hidden'); sumWrap.classList.add('fade-in');
 
   const total = state.panneaux.length;
   const pct = total ? Math.round(100 * state.score / total) : 0;
-
-  document.getElementById('summary-title').textContent =
-    state.reviewMode ? "Révision terminée" : "Session terminée";
+  document.getElementById('summary-title').textContent = state.reviewMode ? "Révision terminée" : "Session terminée";
   document.getElementById('summary-pct').textContent = pct + "%";
   document.getElementById('summary-frac').textContent = state.score + " / " + total;
 
-  let msg;
-  if(pct >= 90) msg = "Excellent — niveau validé pour l'examen officiel.";
-  else if(pct >= 70) msg = "Bon score, continue à travailler les points faibles.";
-  else msg = "Encore un peu d'entraînement requis avant de te présenter.";
+  let msg = "Encore un peu d'entraînement requis avant de te présenter.";
+  if(pct >= 90) msg = "Excellent — niveau validé pour l'examen officiel."; else if(pct >= 70) msg = "Bon score, continue à travailler les points faibles.";
   document.getElementById('summary-msg').textContent = msg;
 
-  const barsWrap = document.getElementById('cat-bars');
-  barsWrap.innerHTML = '';
+  const barsWrap = document.getElementById('cat-bars'); barsWrap.innerHTML = '';
   Object.keys(state.catStats).forEach(key => {
-    const cat = CATEGORIES[key];
-    const s = state.catStats[key];
-    const p = Math.round(100 * s.bon / s.tot);
-    const row = document.createElement('div');
-    row.className = 'cat-bar-row';
-    row.innerHTML = `
-      <div class="cat-bar-top"><span>${cat.label}</span><span>${s.bon}/${s.tot}</span></div>
-      <div class="cat-bar-track"><div class="cat-bar-fill" style="width:0%; background:${cat.color};"></div></div>
-    `;
+    const cat = CATEGORIES[key]; const s = state.catStats[key]; const p = Math.round(100 * s.bon / s.tot);
+    const row = document.createElement('div'); row.className = 'cat-bar-row';
+    row.innerHTML = `<div class="cat-bar-top"><span>${cat.label}</span><span>${s.bon}/${s.tot}</span></div><div class="cat-bar-track"><div class="cat-bar-fill" style="width:0%; background:${cat.color};"></div></div>`;
     barsWrap.appendChild(row);
-    // Animation de la barre
-    setTimeout(() => {
-      row.querySelector('.cat-bar-fill').style.width = p + '%';
-    }, 100);
+    setTimeout(() => { row.querySelector('.cat-bar-fill').style.width = p + '%'; }, 100);
   });
 
   const errWrap = document.getElementById('err-panel-wrap');
   if(state.errors.length){
-    let items = state.errors.map(e => `
-      <div class="err-item">
-        <div class="nm">[${e.panneau.code}] ${e.panneau.nom}</div>
-        <div class="you">Ta réponse : ${e.reponse_donnee}</div>
-        <div class="dsc">${e.panneau.desc}</div>
-      </div>`).join('');
+    let items = state.errors.map(e => `<div class="err-item"><div class="nm">[${e.panneau.code}] ${e.panneau.nom}</div><div class="you">Ta réponse : ${e.reponse_donnee}</div><div class="dsc">${e.panneau.desc}</div></div>`).join('');
     errWrap.innerHTML = `<details class="err-panel"><summary>Revoir les ${state.errors.length} erreur(s)</summary>${items}</details>`;
-    document.getElementById('review-row').innerHTML =
-      `<button class="btn btn-outline-danger" onclick="reviewErrors()">Refaire mes erreurs (${state.errors.length})</button>`;
-  } else {
-    errWrap.innerHTML = '';
-    document.getElementById('review-row').innerHTML = '';
-  }
+    document.getElementById('review-row').innerHTML = `<button class="btn btn-outline-danger" onclick="reviewErrors()">Refaire mes erreurs (${state.errors.length})</button>`;
+  } else { errWrap.innerHTML = ''; document.getElementById('review-row').innerHTML = ''; }
   updateFavLaunchBtn();
 }
 
 function renderRepo(){
   const q = document.getElementById('repo-search').value.trim().toLowerCase();
   let results = PANNEAUX;
-  if(q){
-    results = PANNEAUX.filter(p =>
-      p.nom.toLowerCase().includes(q) ||
-      p.code.toLowerCase().includes(q) ||
-      p.desc.toLowerCase().includes(q) ||
-      CATEGORIES[p.cat].label.toLowerCase().includes(q)
-    );
-  }
+  if(q){ results = PANNEAUX.filter(p => p.nom.toLowerCase().includes(q) || p.code.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q) || CATEGORIES[p.cat].label.toLowerCase().includes(q) ); }
   document.getElementById('repo-count').textContent = results.length + " panneau(x) — base de " + PANNEAUX.length + " au total.";
 
-  const list = document.getElementById('repo-list');
-  list.innerHTML = '';
+  const list = document.getElementById('repo-list'); list.innerHTML = '';
   Object.keys(CATEGORIES).forEach(key => {
-    const group = results.filter(p => p.cat === key);
-    if(!group.length) return;
-    const cat = CATEGORIES[key];
-    const head = document.createElement('div');
-    head.className = 'repo-cat-head';
+    const group = results.filter(p => p.cat === key); if(!group.length) return;
+    const cat = CATEGORIES[key]; const head = document.createElement('div'); head.className = 'repo-cat-head';
     head.innerHTML = `<div class="dot" style="background:${cat.color};"></div><span>${cat.label}</span>`;
     list.appendChild(head);
-
     group.forEach(p => {
-      const row = document.createElement('div');
-      row.className = 'repo-item';
-      const thumb = document.createElement('div');
-      thumb.className = 'repo-thumb';
-      row.appendChild(thumb);
-      const txt = document.createElement('div');
-      txt.className = 'repo-txt';
+      const row = document.createElement('div'); row.className = 'repo-item';
+      const thumb = document.createElement('div'); thumb.className = 'repo-thumb'; row.appendChild(thumb);
+      const txt = document.createElement('div'); txt.className = 'repo-txt';
       txt.innerHTML = `<div class="code">${p.code}</div><div class="nm">${p.nom}</div><div class="dsc">${p.desc}</div>`;
-      row.appendChild(txt);
-      list.appendChild(row);
-      renderSign(thumb, p);
+      row.appendChild(txt); list.appendChild(row); renderSign(thumb, p);
     });
   });
+}
+
+// Fonction pour déterminer la classe CSS (couleur) selon la gravité
+function getDegClass(deg){
+  if(deg.includes("1er")) return "deg-1";
+  if(deg.includes("2ème")) return "deg-2";
+  if(deg.includes("3ème")) return "deg-3";
+  if(deg.includes("4ème") || deg.includes("Tribunal") || deg.includes("Délit")) return "deg-4";
+  if(deg.includes("Vitesse")) return "deg-vit";
+  if(deg.includes("Alcool")) return "deg-alc";
+  return "deg-1";
 }
 
 function renderInfractions(){
@@ -1021,22 +762,22 @@ function renderInfractions(){
   let results = INFRACTIONS;
   if(q){
     results = INFRACTIONS.filter(inf =>
-      inf.titre.toLowerCase().includes(q) ||
-      inf.degre.toLowerCase().includes(q) ||
-      inf.desc.toLowerCase().includes(q) ||
-      inf.amende.toLowerCase().includes(q)
+      inf.titre.toLowerCase().includes(q) || inf.degre.toLowerCase().includes(q) || inf.desc.toLowerCase().includes(q) || inf.amende.toLowerCase().includes(q)
     );
   }
 
-  const list = document.getElementById('inf-list');
-  list.innerHTML = '';
+  const list = document.getElementById('inf-list'); list.innerHTML = '';
 
   results.forEach(inf => {
     const card = document.createElement('div');
-    card.className = 'inf-card';
+    card.className = 'inf-card fade-in';
+    
+    // Application de la couleur du degré
+    const degClass = getDegClass(inf.degre);
+    
     card.innerHTML = `
       <div class="inf-card-header">
-        <span class="inf-degre">${inf.degre}</span>
+        <span class="inf-degre ${degClass}">${inf.degre}</span>
         <span class="inf-amende">${inf.amende}</span>
       </div>
       <div class="inf-title">${inf.titre}</div>
@@ -1045,9 +786,7 @@ function renderInfractions(){
     list.appendChild(card);
   });
 
-  if(!results.length){
-    list.innerHTML = `<div style="text-align:center; color:var(--ink-soft); padding:20px;">Aucune infraction ne correspond à votre recherche.</div>`;
-  }
+  if(!results.length){ list.innerHTML = `<div style="text-align:center; color:var(--ink-soft); padding:20px;">Aucune infraction ne correspond à votre recherche.</div>`; }
 }
 
 // Initialisation au chargement
