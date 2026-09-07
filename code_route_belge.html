@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Code de la route — Belgique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --asphalt:#1C1F24;
+    --asphalt-2:#262A31;
+    --paper:#F7F7F4;
+    --paper-dim:#EDECE6;
+    --ink:#1C1F24;
+    --ink-soft:#5B6068;
+    --line:#D8D6CD;
+
+    --danger:#C81E2C;
+    --danger-ink:#7A0F18;
+    --obligation:#1C5FA8;
+    --obligation-ink:#0F3D6E;
+    --priorite:#E8A400;
+    --priorite-ink:#7A5400;
+    --station:#3D4EA6;
+    --station-ink:#232E66;
+    --indication:#0E7C86;
+    --indication-ink:#08494F;
+
+    --good:#1E7A3C;
+    --bad:#C81E2C;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .top-bar{
+    background:var(--asphalt);
+    color:var(--paper);
+    padding:18px 24px;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  .top-bar .brand{
+    font-family:'Overpass',sans-serif;
+    font-weight:800;
+    font-size:20px;
+    letter-spacing:0.3px;
+  }
+  .top-bar .sub{
+    font-size:13px;
+    color:#B9BDC4;
+  }
+  .lane{
+    height:5px;
+    background:repeating-linear-gradient(90deg, var(--paper) 0 22px, transparent 22px 40px);
+    opacity:0.9;
+  }
+
+  .app{
+    max-width:640px;
+    margin:0 auto;
+    padding:32px 20px 80px;
+  }
+
+  .tabs{
+    display:flex;
+    gap:8px;
+    margin-bottom:28px;
+  }
+  .tab{
+    flex:1;
+    text-align:center;
+    padding:12px 10px;
+    border:1.5px solid var(--line);
+    background:var(--paper);
+    border-radius:10px;
+    font-family:'Overpass',sans-serif;
+    font-weight:700;
+    font-size:14.5px;
+    color:var(--ink-soft);
+    cursor:pointer;
+    transition:border-color .15s, color .15s, background .15s;
+  }
+  .tab.active{
+    border-color:var(--asphalt);
+    background:var(--asphalt);
+    color:var(--paper);
+  }
+
+  h2.section-title{
+    font-family:'Overpass',sans-serif;
+    font-weight:800;
+    font-size:22px;
+    margin:0 0 4px;
+  }
+  p.section-sub{
+    color:var(--ink-soft);
+    font-size:14px;
+    margin:0 0 24px;
+  }
+
+  .cat-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));
+    gap:10px;
+    margin-bottom:26px;
+  }
+  .cat-chip{
+    border:1.5px solid var(--line);
+    border-radius:10px;
+    padding:12px 14px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:var(--paper);
+    transition:opacity .15s, border-color .15s;
+  }
+  .cat-chip.off{opacity:0.35;}
+  .cat-dot{
+    width:16px;height:16px;flex:none;
+    border-radius:50%;
+  }
+  .cat-chip .lbl{
+    font-size:13.5px;
+    font-weight:600;
+    line-height:1.25;
+  }
+  .cat-chip .cnt{
+    font-size:12px;
+    color:var(--ink-soft);
+    display:block;
+  }
+
+  .field-row{
+    margin-bottom:28px;
+  }
+  .field-row label{
+    display:flex;
+    justify-content:space-between;
+    font-size:13.5px;
+    font-weight:600;
+    margin-bottom:10px;
+  }
+  .field-row .n{
+    font-family:'Overpass',sans-serif;
+    font-weight:800;
+    color:var(--danger-ink);
+  }
+  input[type=range]{
+    width:100%;
+    accent-color:var(--danger);
+  }
+
+  .btn{
+    font-family:'Overpass',sans-serif;
+    font-weight:700;
+    font-size:15px;
+    border:none;
+    border-radius:10px;
+    padding:15px 20px;
+    cursor:pointer;
+    width:100%;
+    letter-spacing:0.2px;
+    transition:transform .08s ease, filter .12s ease;
+  }
+  .btn:active{transform:scale(0.98);}
+  .btn-go{
+    background:var(--asphalt);
+    color:var(--paper);
+  }
+  .btn-go:hover{filter:brightness(1.15);}
+  .btn-ghost{
+    background:transparent;
+    border:1.5px solid var(--line);
+    color:var(--ink);
+  }
+  .btn-outline-danger{
+    background:transparent;
+    border:1.5px solid var(--danger);
+    color:var(--danger-ink);
+  }
+  .btn-row{
+    display:flex;
+    gap:10px;
+    margin-top:6px;
+  }
+  .btn-row .btn{flex:1;}
+  .warn-txt{
+    font-size:13px;
+    color:var(--danger-ink);
+    margin-top:-10px;
+    margin-bottom:20px;
+  }
+
+  .progress-track{
+    display:flex;
+    gap:4px;
+    margin-bottom:6px;
+  }
+  .progress-dash{
+    flex:1;
+    height:6px;
+    border-radius:3px;
+    background:var(--line);
+  }
+  .progress-dash.done{background:var(--asphalt);}
+  .progress-meta{
+    display:flex;
+    justify-content:space-between;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    margin-bottom:22px;
+  }
+
+  .sign-stage{
+    display:flex;
+    justify-content:center;
+    margin:6px 0 22px;
+  }
+  .sign-shell{
+    width:190px;
+    height:190px;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .sign-shape{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Overpass',sans-serif;
+    font-weight:800;
+  }
+  .sign-photo{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    transition:opacity .35s ease;
+  }
+  .sign-photo img{
+    max-width:78%;
+    max-height:78%;
+    object-fit:contain;
+  }
+  .sign-photo.loaded{opacity:1;}
+
+  .shape-triangle{
+    width:100%;height:100%;
+    clip-path:polygon(50% 4%, 4% 96%, 96% 96%);
+    background:var(--paper);
+    border:none;
+  }
+  .shape-triangle::after{
+    content:"";
+    position:absolute; inset:0;
+    clip-path:polygon(50% 4%, 4% 96%, 96% 96%);
+    background:var(--danger);
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+  }
+  .shape-circle-blue{
+    width:100%;height:100%;
+    border-radius:50%;
+    background:var(--obligation);
+  }
+  .shape-circle-red{
+    width:100%;height:100%;
+    border-radius:50%;
+    background:var(--paper);
+    border:12px solid var(--danger);
+  }
+  .shape-diamond{
+    width:76%;height:76%;
+    background:var(--priorite);
+    transform:rotate(45deg);
+  }
+  .shape-square{
+    width:88%;height:88%;
+    border-radius:8px;
+  }
+
+  .sign-code{
+    position:relative;
+    z-index:2;
+    font-size:15px;
+    letter-spacing:0.5px;
+  }
+  .sign-code.on-blue{color:var(--paper);}
+  .sign-code.on-red{color:var(--danger-ink);}
+  .sign-code.on-amber{color:var(--priorite-ink); transform:rotate(-45deg);}
+  .sign-code.on-white{color:var(--ink);}
+  .sign-code.big-num{font-size:52px;}
+
+  .sign-caption{
+    text-align:center;
+    font-size:12px;
+    color:var(--ink-soft);
+    letter-spacing:0.4px;
+    text-transform:uppercase;
+    margin:-10px 0 22px;
+  }
+
+  .question-lbl{
+    font-family:'Overpass',sans-serif;
+    font-weight:700;
+    font-size:16.5px;
+    text-align:center;
+    margin-bottom:18px;
+  }
+
+  .opt-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .opt{
+    text-align:left;
+    padding:14px 16px;
+    border:1.5px solid var(--line);
+    border-radius:10px;
+    background:var(--paper);
+    font-size:14.5px;
+    font-weight:500;
+    cursor:pointer;
+    transition:border-color .12s, background .12s;
+  }
+  .opt:hover:not(.locked){border-color:var(--asphalt);}
+  .opt.locked{cursor:default;}
+  .opt.correct{
+    border-color:var(--good);
+    background:#EAF6EE;
+    color:#155728;
+    font-weight:700;
+  }
+  .opt.wrong{
+    border-color:var(--bad);
+    background:#FBEAEA;
+    color:var(--danger-ink);
+    font-weight:700;
+  }
+
+  .feedback{
+    margin-top:18px;
+    padding:14px 16px;
+    border-left:3px solid var(--good);
+    background:var(--paper-dim);
+    font-size:13.5px;
+    line-height:1.5;
+    border-radius:0 8px 8px 0;
+  }
+  .feedback.bad{border-left-color:var(--bad);}
+  .feedback b{display:block; margin-bottom:3px; font-family:'Overpass',sans-serif;}
+
+  .next-wrap{margin-top:20px;}
+
+  .score-stage{
+    display:flex;
+    justify-content:center;
+    margin:10px 0 26px;
+  }
+  .score-ring{
+    width:170px;height:170px;
+    border-radius:50%;
+    border:12px solid var(--danger);
+    background:var(--paper);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+  }
+  .score-ring .pct{
+    font-family:'Overpass',sans-serif;
+    font-weight:800;
+    font-size:40px;
+    color:var(--danger-ink);
+    line-height:1;
+  }
+  .score-ring .frac{
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-top:4px;
+  }
+  .score-msg{
+    text-align:center;
+    font-size:14.5px;
+    color:var(--ink-soft);
+    margin-bottom:26px;
+  }
+
+  .cat-bar-row{
+    margin-bottom:12px;
+  }
+  .cat-bar-top{
+    display:flex;
+    justify-content:space-between;
+    font-size:12.5px;
+    margin-bottom:5px;
+  }
+  .cat-bar-track{
+    height:8px;
+    border-radius:4px;
+    background:var(--paper-dim);
+    overflow:hidden;
+  }
+  .cat-bar-fill{height:100%; border-radius:4px;}
+
+  details.err-panel{
+    margin:22px 0;
+    border:1.5px solid var(--line);
+    border-radius:10px;
+    padding:6px 14px;
+  }
+  details.err-panel summary{
+    padding:10px 0;
+    font-weight:700;
+    font-family:'Overpass',sans-serif;
+    cursor:pointer;
+    font-size:14px;
+  }
+  .err-item{
+    padding:10px 0;
+    border-top:1px solid var(--line);
+    font-size:13.5px;
+  }
+  .err-item .nm{font-weight:700;}
+  .err-item .you{color:var(--danger-ink);}
+  .err-item .dsc{color:var(--ink-soft); margin-top:3px;}
+
+  .repo-search{
+    width:100%;
+    padding:12px 14px;
+    border:1.5px solid var(--line);
+    border-radius:10px;
+    font-size:14.5px;
+    margin-bottom:22px;
+    font-family:'Inter',sans-serif;
+  }
+  .repo-cat-head{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin:22px 0 10px;
+  }
+  .repo-cat-head .dot{width:11px;height:11px;border-radius:50%;flex:none;}
+  .repo-cat-head span{
+    font-family:'Overpass',sans-serif;
+    font-weight:700;
+    font-size:13.5px;
+  }
+  .repo-item{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    padding:14px 4px;
+    border-bottom:1px solid var(--line);
+  }
+  .repo-thumb{
+    width:56px;height:56px;
+    flex:none;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .repo-thumb .sign-shape{transform:scale(1);}
+  .repo-thumb .sign-code{font-size:9px;}
+  .repo-thumb .sign-code.big-num{font-size:20px;}
+  .repo-txt .code{
+    font-family:'Overpass',sans-serif;
+    font-weight:800;
+    font-size:12.5px;
+    color:var(--ink-soft);
+  }
+  .repo-txt .nm{
+    font-weight:700;
+    font-size:14.5px;
+    margin:2px 0 4px;
+  }
+  .repo-txt .dsc{
+    font-size:13px;
+    color:var(--ink-soft);
+    line-height:1.4;
+  }
+
+  .hidden{display:none !important;}
+
+  @media (max-width:420px){
+    .sign-shell{width:150px;height:150px;}
+    .app{padding:24px 14px 60px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <span class="brand">Code de la route</span>
+  <span class="sub">Belgique — entraînement aux panneaux</span>
+</div>
+<div class="lane"></div>
+
+<div class="app">
+
+  <div class="tabs">
+    <div class="tab active" id="tab-quiz" onclick="switchMode('quiz')">Quiz</div>
+    <div class="tab" id="tab-repo" onclick="switchMode('repo')">Répertoire</div>
+  </div>
+
+  <div id="view-quiz">
+
+    <div id="quiz-config">
+      <h2 class="section-title">Configure ta session</h2>
+      <p class="section-sub">Choisis les catégories et le nombre de questions.</p>
+
+      <div class="cat-grid" id="cat-grid"></div>
+
+      <div class="field-row">
+        <label>Nombre de questions <span class="n" id="nb-out">15</span></label>
+        <input type="range" id="nb-questions" min="5" max="15" value="15" step="1" oninput="onNbChange()">
+      </div>
+      <div class="warn-txt hidden" id="cfg-warn"></div>
+
+      <button class="btn btn-go" onclick="startQuiz()">Démarrer le quiz</button>
+    </div>
+
+    <div id="quiz-running" class="hidden">
+      <div class="progress-track" id="progress-track"></div>
+      <div class="progress-meta">
+        <span id="progress-label">Question 1 / 15</span>
+        <span id="progress-score">Score : 0</span>
+      </div>
+
+      <div class="sign-stage">
+        <div class="sign-shell" id="sign-shell"></div>
+      </div>
+      <div class="sign-caption" id="sign-caption"></div>
+
+      <div class="question-lbl">Quelle est la désignation exacte de ce panneau ?</div>
+      <div class="opt-list" id="opt-list"></div>
+
+      <div id="feedback-zone"></div>
+      <div class="next-wrap" id="next-wrap"></div>
+    </div>
+
+    <div id="quiz-summary" class="hidden">
+      <h2 class="section-title" id="summary-title">Session terminée</h2>
+      <div class="score-stage">
+        <div class="score-ring">
+          <div class="pct" id="summary-pct">0%</div>
+          <div class="frac" id="summary-frac">0 / 0</div>
+        </div>
+      </div>
+      <p class="score-msg" id="summary-msg"></p>
+
+      <div id="cat-bars"></div>
+
+      <div id="err-panel-wrap"></div>
+
+      <div class="btn-row">
+        <button class="btn btn-ghost" onclick="goConfig()">Nouvelle config</button>
+        <button class="btn btn-ghost" onclick="replaySame()">Refaire</button>
+      </div>
+      <div class="btn-row" id="review-row" style="margin-top:10px;"></div>
+    </div>
+
+  </div>
+
+  <div id="view-repo" class="hidden">
+    <h2 class="section-title">Répertoire officiel</h2>
+    <p class="section-sub" id="repo-count"></p>
+    <input class="repo-search" id="repo-search" placeholder="Filtrer par code, nom, catégorie..." oninput="renderRepo()">
+    <div id="repo-list"></div>
+  </div>
+
+</div>
+
+<script>
+const PANNEAUX = [
+  {code:"A1a", nom:"Virage dangereux à gauche", cat:"A", desc:"Annonce un virage prononcé vers la gauche."},
+  {code:"A1b", nom:"Virage dangereux à droite", cat:"A", desc:"Annonce un virage prononcé vers la droite."},
+  {code:"A1c", nom:"Succession de virages", cat:"A", desc:"Annonce plusieurs virages successifs, le premier à gauche ou à droite."},
+  {code:"A3", nom:"Descente dangereuse", cat:"A", desc:"Indique une pente raide (le pourcentage est indiqué)."},
+  {code:"A5", nom:"Montée à forte inclinaison", cat:"A", desc:"Indique une forte côte."},
+  {code:"A7a", nom:"Chaussée rétrécie", cat:"A", desc:"Rétrécissement de la route des deux côtés ou d'un côté précis."},
+  {code:"A9", nom:"Pont mobile", cat:"A", desc:"Approche d'un pont levant ou tournant."},
+  {code:"A13", nom:"Cassis ou dos d'âne", cat:"A", desc:"Ralentisseur ou bosse sur la chaussée."},
+  {code:"A15", nom:"Chaussée glissante", cat:"A", desc:"Risque accru de glissade (pluie, verglas, gravillons)."},
+  {code:"A21", nom:"Passage pour piétons", cat:"A", desc:"Annonce un passage clouté à proximité."},
+  {code:"A23", nom:"Endroit fréquenté par des enfants", cat:"A", desc:"Présence potentielle d'enfants (écoles, aires de jeux)."},
+  {code:"A25", nom:"Passage de cyclistes", cat:"A", desc:"Débouché de cyclistes ou piste cyclable."},
+  {code:"A31", nom:"Travaux", cat:"A", desc:"Présence d'un chantier sur ou le long de la voie publique."},
+  {code:"A33", nom:"Feux de circulation", cat:"A", desc:"Annonce des feux tricolores en amont."},
+  {code:"A51", nom:"Danger indéterminé", cat:"A", desc:"Danger particulier annoncé par un panneau additionnel."},
+
+  {code:"B1", nom:"Cédez le passage", cat:"B", desc:"Triangle pointé vers le bas à bord rouge. Céder le passage aux usagers de la route prioritaire."},
+  {code:"B5", nom:"Stop (Arrêt obligatoire)", cat:"B", desc:"Obligation de marquer l'arrêt complet à la limite de la chaussée transversale."},
+  {code:"B9", nom:"Voie prioritaire", cat:"B", desc:"Losange jaune : vous êtes prioritaire aux intersections de cette route."},
+  {code:"B11", nom:"Fin de voie prioritaire", cat:"B", desc:"Losange barré : fin du statut de route prioritaire."},
+  {code:"B15", nom:"Priorité à l'approche d'une intersection", cat:"B", desc:"Indique que vous avez la priorité à la prochaine intersection."},
+  {code:"B17", nom:"Priorité à droite", cat:"B", desc:"Règle générale de l'intersection : céder le passage à tout venant de droite."},
+
+  {code:"C1", nom:"Interdiction de circuler dans les deux sens", cat:"C", desc:"Accès interdit à tout véhicule dans les deux sens."},
+  {code:"C3", nom:"Sens interdit", cat:"C", desc:"Interdiction de s'engager dans cette voie."},
+  {code:"C5", nom:"Accès interdit aux automobiles", cat:"C", desc:"Interdit aux voitures et camions."},
+  {code:"C7", nom:"Accès interdit aux motocycles", cat:"C", desc:"Interdit aux motos."},
+  {code:"C11", nom:"Accès interdit aux cyclistes", cat:"C", desc:"Interdit aux vélos."},
+  {code:"C19", nom:"Accès interdit aux piétons", cat:"C", desc:"Interdit aux piétons."},
+  {code:"C23", nom:"Accès interdit aux camions", cat:"C", desc:"Interdit aux véhicules de transport de marchandises."},
+  {code:"C35", nom:"Interdiction de dépasser", cat:"C", desc:"Interdiction de dépasser les véhicules à moteur."},
+  {code:"C43 30", nom:"Vitesse limitée à 30 km/h", cat:"C", desc:"Vitesse maximale autorisée de 30 km/h.", num:"30"},
+  {code:"C43 50", nom:"Vitesse limitée à 50 km/h", cat:"C", desc:"Vitesse maximale autorisée de 50 km/h (agglomération).", num:"50"},
+  {code:"C43 70", nom:"Vitesse limitée à 70 km/h", cat:"C", desc:"Vitesse maximale autorisée de 70 km/h.", num:"70"},
+  {code:"C43 90", nom:"Vitesse limitée à 90 km/h", cat:"C", desc:"Vitesse maximale autorisée de 90 km/h.", num:"90"},
+  {code:"C45", nom:"Fin de toutes les interdictions locales", cat:"C", desc:"Fin des limitations de vitesse ou interdictions de dépassement précédentes."},
+
+  {code:"D1a", nom:"Direction obligatoire à droite", cat:"D", desc:"Obligation de tourner à droite à l'intersection."},
+  {code:"D1b", nom:"Direction obligatoire à gauche", cat:"D", desc:"Obligation de tourner à gauche à l'intersection."},
+  {code:"D9a", nom:"Piste cyclable obligatoire", cat:"D", desc:"Voie exclusive réservée aux cyclistes."},
+  {code:"D10", nom:"Chemin pour piétons", cat:"D", desc:"Voie réservée exclusivement aux piétons."},
+
+  {code:"E1", nom:"Stationnement interdit", cat:"E", desc:"Interdiction de stationner du côté du panneau."},
+  {code:"E3", nom:"Arrêt et stationnement interdits", cat:"E", desc:"Interdiction absolue de s'arrêter et de stationner."},
+  {code:"E9a", nom:"Stationnement autorisé (Parking)", cat:"E", desc:"Indique un emplacement ou un parking autorisé."},
+
+  {code:"F5", nom:"Autoroute", cat:"F", desc:"Début d'autoroute (règles et vitesses autoroutières applicables)."},
+  {code:"F9", nom:"Route pour automobiles", cat:"F", desc:"Voie réservée aux véhicules automobiles."},
+  {code:"F12a", nom:"Zone résidentielle / Zone de rencontre", cat:"F", desc:"Les piétons y ont la priorité absolue sur toute la largeur de la voirie."},
+  {code:"F19", nom:"Sens unique", cat:"F", desc:"Indique une rue à sens unique."},
+  {code:"F4a", nom:"Zone 30", cat:"F", desc:"Entrée d'une zone où la vitesse est limitée à 30 km/h sur tout le périmètre."},
+  {code:"F4b", nom:"Fin de zone 30", cat:"F", desc:"Sortie de la zone 30."},
+];
+
+const CATEGORIES = {
+  A: {label:"Danger", color:"var(--danger)", ink:"var(--danger-ink)", shape:"triangle"},
+  B: {label:"Priorité", color:"var(--priorite)", ink:"var(--priorite-ink)", shape:"diamond"},
+  C: {label:"Interdiction", color:"var(--danger)", ink:"var(--danger-ink)", shape:"circle-red"},
+  D: {label:"Obligation", color:"var(--obligation)", ink:"var(--obligation-ink)", shape:"circle-blue"},
+  E: {label:"Stationnement", color:"var(--station)", ink:"var(--station-ink)", shape:"square-station"},
+  F: {label:"Indication", color:"var(--indication)", ink:"var(--indication-ink)", shape:"square-indication"},
+};
+
+const IMAGE_OVERRIDES = {
+  "D1a": "Belgian traffic sign D1c.svg",
+  "D1b": "Belgian traffic sign D1e.svg",
+};
+
+function wikimediaUrl(code){
+  const filename = IMAGE_OVERRIDES[code] || ("Belgian road sign " + code + ".svg");
+  return "https://commons.wikimedia.org/wiki/Special:FilePath/" + encodeURIComponent(filename);
+}
+
+function buildSignShape(p, size){
+  size = size || "big";
+  const cat = CATEGORIES[p.cat];
+  const codeCls = "sign-code" + (size === "small" ? "" : "");
+  let inner = "";
+  const label = p.num ? p.num : p.code;
+  const bigNum = p.num ? " big-num" : "";
+
+  if(cat.shape === "triangle"){
+    inner = `<div class="shape-triangle" style="background:var(--paper);"></div>
+      <div style="position:absolute;inset:0;clip-path:polygon(50% 4%, 4% 96%, 96% 96%);background:${cat.color};"></div>
+      <div style="position:absolute;inset:9px;clip-path:polygon(50% 4%, 4% 96%, 96% 96%);background:var(--paper);"></div>
+      <div class="${codeCls} on-white${bigNum}" style="position:absolute;">${label}</div>`;
+  } else if(cat.shape === "diamond"){
+    inner = `<div class="shape-diamond"></div>
+      <div class="${codeCls} on-amber${bigNum}" style="position:absolute;">${label}</div>`;
+  } else if(cat.shape === "circle-red"){
+    inner = `<div class="shape-circle-red"></div>
+      <div class="${codeCls} on-red${bigNum}" style="position:absolute;">${label}</div>`;
+  } else if(cat.shape === "circle-blue"){
+    inner = `<div class="shape-circle-blue"></div>
+      <div class="${codeCls} on-blue${bigNum}" style="position:absolute;">${label}</div>`;
+  } else {
+    const bg = cat.shape === "square-station" ? "var(--station)" : "var(--indication)";
+    inner = `<div class="shape-square" style="background:${bg};"></div>
+      <div class="${codeCls} on-blue${bigNum}" style="position:absolute;">${label}</div>`;
+  }
+  return inner;
+}
+
+function renderSign(container, p, opts){
+  opts = opts || {};
+  const withPhoto = opts.withPhoto !== false;
+  container.innerHTML = `
+    <div class="sign-shape">${buildSignShape(p)}</div>
+    ${withPhoto ? `<div class="sign-photo"><img src="${wikimediaUrl(p.code)}" onload="this.parentElement.classList.add('loaded')" onerror="this.parentElement.style.display='none'"></div>` : ""}
+  `;
+}
+
+let state = {
+  categories: Object.keys(CATEGORIES),
+  nbQuestions: 15,
+  panneaux: [],
+  index: 0,
+  score: 0,
+  answered: false,
+  chosen: null,
+  options: [],
+  errors: [],
+  catStats: {},
+  reviewMode: false,
+};
+
+function switchMode(mode){
+  document.getElementById('tab-quiz').classList.toggle('active', mode === 'quiz');
+  document.getElementById('tab-repo').classList.toggle('active', mode === 'repo');
+  document.getElementById('view-quiz').classList.toggle('hidden', mode !== 'quiz');
+  document.getElementById('view-repo').classList.toggle('hidden', mode !== 'repo');
+  if(mode === 'repo') renderRepo();
+}
+
+function renderCatGrid(){
+  const grid = document.getElementById('cat-grid');
+  grid.innerHTML = '';
+  Object.keys(CATEGORIES).forEach(key => {
+    const cat = CATEGORIES[key];
+    const count = PANNEAUX.filter(p => p.cat === key).length;
+    const chip = document.createElement('div');
+    chip.className = 'cat-chip' + (state.categories.includes(key) ? '' : ' off');
+    chip.id = 'chip-' + key;
+    chip.onclick = () => toggleCat(key);
+    chip.innerHTML = `<div class="cat-dot" style="background:${cat.color};"></div>
+      <div><span class="lbl">${cat.label}</span><span class="cnt">${count} panneaux</span></div>`;
+    grid.appendChild(chip);
+  });
+  updateNbBounds();
+}
+
+function toggleCat(key){
+  const i = state.categories.indexOf(key);
+  if(i >= 0){
+    if(state.categories.length === 1) return;
+    state.categories.splice(i, 1);
+  } else {
+    state.categories.push(key);
+  }
+  document.getElementById('chip-' + key).classList.toggle('off', !state.categories.includes(key));
+  updateNbBounds();
+}
+
+function availablePanneaux(){
+  return PANNEAUX.filter(p => state.categories.includes(p.cat));
+}
+
+function updateNbBounds(){
+  const max = availablePanneaux().length;
+  const slider = document.getElementById('nb-questions');
+  const warn = document.getElementById('cfg-warn');
+  if(max < 2){
+    warn.textContent = "Pas assez de panneaux dans cette sélection.";
+    warn.classList.remove('hidden');
+    slider.disabled = true;
+    return;
+  }
+  warn.classList.add('hidden');
+  slider.disabled = false;
+  slider.max = max;
+  slider.min = Math.min(5, max);
+  if(parseInt(slider.value) > max) slider.value = max;
+  state.nbQuestions = parseInt(slider.value);
+  document.getElementById('nb-out').textContent = state.nbQuestions;
+}
+
+function onNbChange(){
+  state.nbQuestions = parseInt(document.getElementById('nb-questions').value);
+  document.getElementById('nb-out').textContent = state.nbQuestions;
+}
+
+function shuffled(arr){
+  const a = arr.slice();
+  for(let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function startQuiz(){
+  const pool = availablePanneaux();
+  if(pool.length < 2) return;
+  const selection = shuffled(pool).slice(0, state.nbQuestions);
+  beginSession(selection, false);
+}
+
+function beginSession(panneaux, reviewMode){
+  state.panneaux = panneaux;
+  state.index = 0;
+  state.score = 0;
+  state.answered = false;
+  state.errors = [];
+  state.catStats = {};
+  state.reviewMode = reviewMode;
+
+  document.getElementById('quiz-config').classList.add('hidden');
+  document.getElementById('quiz-summary').classList.add('hidden');
+  document.getElementById('quiz-running').classList.remove('hidden');
+  renderProgressTrack();
+  renderQuestion();
+}
+
+function goConfig(){
+  document.getElementById('quiz-summary').classList.add('hidden');
+  document.getElementById('quiz-running').classList.add('hidden');
+  document.getElementById('quiz-config').classList.remove('hidden');
+}
+
+function replaySame(){
+  beginSession(state.panneaux, false);
+}
+
+function reviewErrors(){
+  beginSession(state.errors.map(e => e.panneau), true);
+}
+
+function renderProgressTrack(){
+  const track = document.getElementById('progress-track');
+  track.innerHTML = '';
+  state.panneaux.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'progress-dash' + (i < state.index ? ' done' : '');
+    track.appendChild(d);
+  });
+}
+
+function renderQuestion(){
+  if(state.index >= state.panneaux.length){
+    showSummary();
+    return;
+  }
+  renderProgressTrack();
+  document.getElementById('progress-label').textContent =
+    (state.reviewMode ? "Révision — question " : "Question ") + (state.index + 1) + " / " + state.panneaux.length;
+  document.getElementById('progress-score').textContent = "Score : " + state.score;
+
+  const actuel = state.panneaux[state.index];
+  renderSign(document.getElementById('sign-shell'), actuel);
+  document.getElementById('sign-caption').textContent = actuel.code + " — " + CATEGORIES[actuel.cat].label;
+
+  const distractors = shuffled(PANNEAUX.filter(p => p.code !== actuel.code)).slice(0, 3);
+  const options = shuffled(distractors.concat([actuel]));
+  state.options = options;
+  state.answered = false;
+  state.chosen = null;
+
+  const list = document.getElementById('opt-list');
+  list.innerHTML = '';
+  options.forEach((opt, i) => {
+    const btn = document.createElement('div');
+    btn.className = 'opt';
+    btn.textContent = opt.nom;
+    btn.onclick = () => selectOption(i);
+    list.appendChild(btn);
+  });
+
+  document.getElementById('feedback-zone').innerHTML = '';
+  document.getElementById('next-wrap').innerHTML = '';
+}
+
+function selectOption(i){
+  if(state.answered) return;
+  state.answered = true;
+  state.chosen = i;
+
+  const actuel = state.panneaux[state.index];
+  const chosenOpt = state.options[i];
+  const isCorrect = chosenOpt.code === actuel.code;
+
+  const stats = state.catStats[actuel.cat] || {bon:0, tot:0};
+  stats.tot += 1;
+  if(isCorrect){
+    state.score += 1;
+    stats.bon += 1;
+  } else {
+    state.errors.push({panneau: actuel, reponse_donnee: chosenOpt.nom});
+  }
+  state.catStats[actuel.cat] = stats;
+
+  document.querySelectorAll('#opt-list .opt').forEach((el, idx) => {
+    el.classList.add('locked');
+    if(state.options[idx].code === actuel.code) el.classList.add('correct');
+    else if(idx === i) el.classList.add('wrong');
+  });
+
+  const fb = document.getElementById('feedback-zone');
+  fb.innerHTML = `<div class="feedback ${isCorrect ? '' : 'bad'}">
+    <b>${isCorrect ? "Bonne réponse" : "Ce n'était pas ça — c'était : " + actuel.nom}</b>
+    ${actuel.desc}
+  </div>`;
+
+  const isLast = state.index + 1 >= state.panneaux.length;
+  document.getElementById('next-wrap').innerHTML =
+    `<button class="btn btn-go" onclick="nextQuestion()">${isLast ? 'Voir le résumé' : 'Question suivante'}</button>`;
+
+  document.getElementById('progress-score').textContent = "Score : " + state.score;
+}
+
+function nextQuestion(){
+  state.index += 1;
+  renderQuestion();
+}
+
+function showSummary(){
+  document.getElementById('quiz-running').classList.add('hidden');
+  document.getElementById('quiz-summary').classList.remove('hidden');
+
+  const total = state.panneaux.length;
+  const pct = total ? Math.round(100 * state.score / total) : 0;
+
+  document.getElementById('summary-title').textContent =
+    state.reviewMode ? "Révision terminée" : "Session terminée";
+  document.getElementById('summary-pct').textContent = pct + "%";
+  document.getElementById('summary-frac').textContent = state.score + " / " + total;
+
+  let msg;
+  if(pct >= 90) msg = "Excellent — ce niveau est largement suffisant pour l'examen.";
+  else if(pct >= 70) msg = "Bon score, encore un peu de pratique sur les catégories faibles.";
+  else msg = "Encore un peu d'entraînement avant l'examen.";
+  document.getElementById('summary-msg').textContent = msg;
+
+  const barsWrap = document.getElementById('cat-bars');
+  barsWrap.innerHTML = '';
+  Object.keys(state.catStats).forEach(key => {
+    const cat = CATEGORIES[key];
+    const s = state.catStats[key];
+    const p = Math.round(100 * s.bon / s.tot);
+    const row = document.createElement('div');
+    row.className = 'cat-bar-row';
+    row.innerHTML = `
+      <div class="cat-bar-top"><span>${cat.label}</span><span>${s.bon}/${s.tot}</span></div>
+      <div class="cat-bar-track"><div class="cat-bar-fill" style="width:${p}%; background:${cat.color};"></div></div>
+    `;
+    barsWrap.appendChild(row);
+  });
+
+  const errWrap = document.getElementById('err-panel-wrap');
+  if(state.errors.length){
+    let items = state.errors.map(e => `
+      <div class="err-item">
+        <div class="nm">[${e.panneau.code}] ${e.panneau.nom}</div>
+        <div class="you">Ta réponse : ${e.reponse_donnee}</div>
+        <div class="dsc">${e.panneau.desc}</div>
+      </div>`).join('');
+    errWrap.innerHTML = `<details class="err-panel"><summary>Revoir les ${state.errors.length} erreur(s)</summary>${items}</details>`;
+    document.getElementById('review-row').innerHTML =
+      `<button class="btn btn-outline-danger" onclick="reviewErrors()">Revoir mes erreurs (${state.errors.length})</button>`;
+  } else {
+    errWrap.innerHTML = '';
+    document.getElementById('review-row').innerHTML = '';
+  }
+}
+
+function renderRepo(){
+  const q = document.getElementById('repo-search').value.trim().toLowerCase();
+  let results = PANNEAUX;
+  if(q){
+    results = PANNEAUX.filter(p =>
+      p.nom.toLowerCase().includes(q) ||
+      p.code.toLowerCase().includes(q) ||
+      p.desc.toLowerCase().includes(q) ||
+      CATEGORIES[p.cat].label.toLowerCase().includes(q)
+    );
+  }
+  document.getElementById('repo-count').textContent = results.length + " panneau(x) — base de " + PANNEAUX.length + " au total.";
+
+  const list = document.getElementById('repo-list');
+  list.innerHTML = '';
+  Object.keys(CATEGORIES).forEach(key => {
+    const group = results.filter(p => p.cat === key);
+    if(!group.length) return;
+    const cat = CATEGORIES[key];
+    const head = document.createElement('div');
+    head.className = 'repo-cat-head';
+    head.innerHTML = `<div class="dot" style="background:${cat.color};"></div><span>${cat.label}</span>`;
+    list.appendChild(head);
+
+    group.forEach(p => {
+      const row = document.createElement('div');
+      row.className = 'repo-item';
+      const thumb = document.createElement('div');
+      thumb.className = 'repo-thumb';
+      row.appendChild(thumb);
+      const txt = document.createElement('div');
+      txt.className = 'repo-txt';
+      txt.innerHTML = `<div class="code">${p.code}</div><div class="nm">${p.nom}</div><div class="dsc">${p.desc}</div>`;
+      row.appendChild(txt);
+      list.appendChild(row);
+      renderSign(thumb, p);
+    });
+  });
+}
+
+renderCatGrid();
+</script>
+</body>
+</html>
