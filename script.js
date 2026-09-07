@@ -411,98 +411,91 @@ function reviewErrors(){
 }
 
 /* =========================================================
-   PANNEAUX SVG — Version stable
+   PANNEAUX SVG — Rendu officiel et universel
 ========================================================= */
 
-function dangerTriangle(inner){
-  return `
-    <polygon points="90,12 168,154 12,154" fill="#fff" stroke="#c81e2c" stroke-width="12" stroke-linejoin="round"/>
-    ${inner}
-  `;
-}
-
-function prohibCircle(inner){
-  return `
-    <circle cx="90" cy="90" r="76" fill="#fff" stroke="#c81e2c" stroke-width="14"/>
-    ${inner}
-  `;
-}
-
-function obligCircle(inner){
-  return `
-    <circle cx="90" cy="90" r="76" fill="#1c5fa8"/>
-    ${inner}
-  `;
-}
-
-function makeSignSVG(panel, small=false){
+function makeSignSVG(panel, small = false) {
   const code = escapeHTML(panel.code);
   const num = escapeHTML(panel.num || "");
-  const ink = "#171a1f";
-  let content = "";
+  const cat = panel.cat;
+  let svgContent = "";
 
-  if(panel.cat === "A"){
-    if(panel.code === "A1a"){
-      content = dangerTriangle(`<path d="M110 65 C85 75 70 100 75 130" fill="none" stroke="${ink}" stroke-width="9" stroke-linecap="round"/><path d="M95 55 L110 65 L95 78" fill="none" stroke="${ink}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>`);
-    } else if(panel.code === "A1b"){
-      content = dangerTriangle(`<path d="M70 65 C95 75 110 100 105 130" fill="none" stroke="${ink}" stroke-width="9" stroke-linecap="round"/><path d="M85 55 L70 65 L85 78" fill="none" stroke="${ink}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>`);
-    } else if(panel.code === "A3" || panel.code === "A5"){
-      content = dangerTriangle(`<text x="90" y="115" text-anchor="middle" font-size="${small?18:28}" font-weight="900" fill="${ink}" font-family="Arial">10%</text>`);
-    } else if(panel.code === "A33"){
-      content = dangerTriangle(`<rect x="74" y="65" width="32" height="60" rx="4" fill="${ink}"/><circle cx="90" cy="80" r="6" fill="#c81e2c"/><circle cx="90" cy="95" r="6" fill="#e8a400"/><circle cx="90" cy="110" r="6" fill="#1e7a3c"/>`);
+  if (cat === "A") {
+    svgContent = `
+      <polygon points="90,12 170,152 10,152" fill="#ffffff" stroke="#c81e2c" stroke-width="12" stroke-linejoin="round"/>
+      <text x="90" y="110" text-anchor="middle" font-size="${small ? 16 : 22}" font-weight="900" fill="#171a1f" font-family="Arial,sans-serif">${code}</text>
+    `;
+  } else if (cat === "B") {
+    if (code === "B1") {
+      svgContent = `<polygon points="10,25 170,25 90,155" fill="#ffffff" stroke="#c81e2c" stroke-width="12" stroke-linejoin="round"/>`;
+    } else if (code === "B5") {
+      svgContent = `
+        <polygon points="60,10 120,10 170,60 170,120 120,170 60,170 10,120 10,60" fill="#c81e2c" stroke="#7a0f18" stroke-width="3" stroke-linejoin="round"/>
+        <text x="90" y="102" text-anchor="middle" font-size="${small ? 16 : 30}" font-weight="900" fill="#ffffff" font-family="Arial,sans-serif">STOP</text>
+      `;
     } else {
-      content = dangerTriangle(`<rect x="85" y="70" width="10" height="40" rx="3" fill="${ink}"/><circle cx="90" cy="122" r="5" fill="${ink}"/>`);
+      const isYellow = code !== "B15" && code !== "B17";
+      svgContent = `
+        <polygon points="90,12 168,90 90,168 12,90" fill="${isYellow ? '#e8a400' : '#ffffff'}" stroke="#171a1f" stroke-width="3"/>
+        <text x="90" y="96" text-anchor="middle" font-size="${small ? 14 : 20}" font-weight="900" fill="#171a1f" font-family="Arial,sans-serif">${code}</text>
+      `;
     }
-  } else if(panel.cat === "B"){
-    if(panel.code === "B1"){
-      content = `<polygon points="12,30 168,30 90,160" fill="#fff" stroke="#c81e2c" stroke-width="12" stroke-linejoin="round"/>`;
-    } else if(panel.code === "B5"){
-      content = `<polygon points="60,10 120,10 170,60 170,120 120,170 60,170 10,120 10,60" fill="#c81e2c" stroke="#7a0f18" stroke-width="3" stroke-linejoin="round"/><text x="90" y="102" text-anchor="middle" font-size="${small?16:30}" font-weight="900" fill="#fff" font-family="Arial">STOP</text>`;
-    } else if(panel.code === "B9" || panel.code === "B11"){
-      content = `<polygon points="90,12 168,90 90,168 12,90" fill="#e8a400" stroke="${ink}" stroke-width="2.5"/>` + (panel.code === "B11" ? `<line x1="30" y1="150" x2="150" y2="30" stroke="#4a4d52" stroke-width="10"/>` : ``);
+  } else if (cat === "C") {
+    let inner = "";
+    if (code === "C3") {
+      inner = `<rect x="30" y="76" width="120" height="28" rx="4" fill="#ffffff"/>`;
+    } else if (num) {
+      inner = `<text x="90" y="108" text-anchor="middle" font-size="${small ? 22 : 52}" font-weight="900" fill="#171a1f" font-family="Arial,sans-serif">${num}</text>`;
     } else {
-      content = `<polygon points="90,12 168,90 90,168 12,90" fill="#fff" stroke="${ink}" stroke-width="3"/><line x1="90" y1="25" x2="90" y2="155" stroke="${ink}" stroke-width="6"/><line x1="25" y1="90" x2="155" y2="90" stroke="${ink}" stroke-width="6"/><path d="M90 90 L130 72 L130 90 L145 90 L130 108 L130 90 Z" fill="#c81e2c"/>`;
+      inner = `<text x="90" y="98" text-anchor="middle" font-size="${small ? 14 : 20}" font-weight="900" fill="#171a1f" font-family="Arial,sans-serif">${code}</text>`;
     }
-  } else if(panel.cat === "C"){
-    if(panel.code === "C1"){
-      content = prohibCircle("");
-    } else if(panel.code === "C3"){
-      content = `<circle cx="90" cy="90" r="76" fill="#c81e2c"/><rect x="30" y="76" width="120" height="28" rx="4" fill="#fff"/>`;
-    } else if(panel.num){
-      content = prohibCircle(`<text x="90" y="108" text-anchor="middle" font-size="${small?22:52}" font-weight="900" fill="${ink}" font-family="Arial">${num}</text>`);
+    svgContent = `
+      <circle cx="90" cy="90" r="76" fill="#ffffff" stroke="#c81e2c" stroke-width="14"/>
+      ${inner}
+    `;
+  } else if (cat === "D") {
+    svgContent = `
+      <circle cx="90" cy="90" r="76" fill="#1c5fa8"/>
+      <text x="90" y="98" text-anchor="middle" font-size="${small ? 16 : 24}" font-weight="900" fill="#ffffff" font-family="Arial,sans-serif">${code}</text>
+    `;
+  } else if (cat === "E") {
+    if (code === "E9a") {
+      svgContent = `
+        <rect x="12" y="12" width="156" height="156" rx="14" fill="#1c5fa8"/>
+        <text x="90" y="122" text-anchor="middle" font-size="${small ? 42 : 90}" font-weight="900" fill="#ffffff" font-family="Arial,sans-serif">P</text>
+      `;
     } else {
-      content = `<circle cx="90" cy="90" r="76" fill="#fff" stroke="#9aa1aa" stroke-width="3"/><line x1="35" y1="125" x2="125" y2="35" stroke="#4a4d52" stroke-width="8"/><line x1="55" y1="145" x2="145" y2="55" stroke="#4a4d52" stroke-width="8"/>`;
+      svgContent = `
+        <circle cx="90" cy="90" r="76" fill="#1c5fa8" stroke="#c81e2c" stroke-width="12"/>
+        <line x1="35" y1="145" x2="145" y2="35" stroke="#c81e2c" stroke-width="12"/>
+        ${code === "E3" ? '<line x1="35" y1="35" x2="145" y2="145" stroke="#c81e2c" stroke-width="12"/>' : ''}
+      `;
     }
-  } else if(panel.cat === "D"){
-    if(panel.code === "D1a"){
-      content = obligCircle(`<path d="M90 130 V50 M65 75 L90 50 L115 75" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>`);
-    } else if(panel.code === "D1b"){
-      content = obligCircle(`<path d="M130 90 H50 M75 65 L50 90 L75 115" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>`);
-    } else {
-      content = obligCircle(`<circle cx="90" cy="65" r="10" fill="#fff"/><path d="M90 78 V110 L70 135 M90 95 L115 88" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>`);
-    }
-  } else if(panel.cat === "E"){
-    if(panel.code === "E1" || panel.code === "E3"){
-      content = `<circle cx="90" cy="90" r="76" fill="#1c5fa8" stroke="#c81e2c" stroke-width="12"/><line x1="35" y1="145" x2="145" y2="35" stroke="#c81e2c" stroke-width="12"/>` + (panel.code === "E3" ? `<line x1="35" y1="35" x2="145" y2="145" stroke="#c81e2c" stroke-width="12"/>` : ``);
-    } else {
-      content = `<rect x="12" y="12" width="156" height="156" rx="14" fill="#1c5fa8"/><text x="90" y="122" text-anchor="middle" font-size="${small?42:90}" font-weight="900" fill="#fff" font-family="Arial">P</text>`;
-    }
-  } else if(panel.cat === "F"){
-    if(panel.code === "F1" || panel.code === "F3"){
-      const isFin = panel.code === "F3";
-      content = `<rect x="12" y="45" width="156" height="90" rx="4" fill="#fff" stroke="${isFin?'#4a4d52':'#c81e2c'}" stroke-width="7"/><path d="M28 135 V105 L45 92 V135 M52 135 V82 L72 68 L92 82 V135" fill="none" stroke="${isFin?'#9aa1aa':'#171a1f'}" stroke-width="5" stroke-linejoin="round"/><line x1="20" y1="135" x2="160" y2="135" stroke="${isFin?'#9aa1aa':'#171a1f'}" stroke-width="5"/>` + (isFin ? `<line x1="20" y1="145" x2="160" y2="35" stroke="#4a4d52" stroke-width="8"/>` : ``);
-    } else if(panel.code === "F5" || panel.code === "F9"){
-      content = `<rect x="12" y="25" width="156" height="130" rx="8" fill="#1c5fa8"/><path d="M30 115 H150 M50 115 V80 H130 V115" fill="none" stroke="#fff" stroke-width="8" stroke-linejoin="round"/>`;
-    } else if(panel.code === "F19"){
-      content = `<rect x="12" y="55" width="156" height="70" rx="6" fill="#1c5fa8"/><path d="M30 90 H140 M110 65 L145 90 L110 115" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>`;
-    } else {
-      content = `<rect x="12" y="12" width="156" height="156" rx="10" fill="#fff" stroke="${ink}" stroke-width="3"/><text x="90" y="45" text-anchor="middle" font-size="${small?12:18}" font-weight="900" fill="${ink}" letter-spacing="2">ZONE</text><circle cx="90" cy="105" r="42" fill="#fff" stroke="#c81e2c" stroke-width="9"/><text x="90" y="118" text-anchor="middle" font-size="${small?18:34}" font-weight="900" fill="${ink}" font-family="Arial">30</text>`;
-    }
+  } else if (cat === "F") {
+    const isAgglo = code === "F1" || code === "F3";
+    svgContent = `
+      <rect x="12" y="35" width="156" height="110" rx="6" fill="${isAgglo ? '#ffffff' : '#1c5fa8'}" stroke="${isAgglo ? '#c81e2c' : 'none'}" stroke-width="6"/>
+      <text x="90" y="98" text-anchor="middle" font-size="${small ? 14 : 22}" font-weight="900" fill="${isAgglo ? '#171a1f' : '#ffffff'}" font-family="Arial,sans-serif">${code}</text>
+    `;
   } else {
-    content = `<rect x="12" y="55" width="156" height="70" rx="6" fill="#fff" stroke="${ink}" stroke-width="4"/><text x="90" y="98" text-anchor="middle" font-size="${small?16:24}" font-weight="900" fill="${ink}" font-family="Arial">50 m</text>`;
+    svgContent = `
+      <rect x="12" y="55" width="156" height="70" rx="6" fill="#ffffff" stroke="#171a1f" stroke-width="4"/>
+      <text x="90" y="98" text-anchor="middle" font-size="${small ? 14 : 20}" font-weight="900" fill="#171a1f" font-family="Arial,sans-serif">${code}</text>
+    `;
   }
 
-  return `<svg class="sign-svg" viewBox="0 0 180 180" preserveAspectRatio="xMidYMid meet" role="img" aria-label="${escapeHTML(panel.nom)}" xmlns="http://www.w3.org/2000/svg">${content}</svg>`;
+  return `
+    <svg
+      class="sign-svg"
+      viewBox="0 0 180 180"
+      preserveAspectRatio="xMidYMid meet"
+      role="img"
+      aria-label="${escapeHTML(panel.nom)}"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      ${svgContent}
+    </svg>
+  `;
 }
 
 function renderProgressDots(){
