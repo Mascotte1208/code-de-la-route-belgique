@@ -1,464 +1,396 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Code de la route — Belgique (Plateforme Complète)</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#171a1f">
+<title>Code de la route — Belgique</title>
 <style>
-  :root{
-    --asphalt:#1C1F24;
-    --asphalt-2:#262A31;
-    --paper:#F7F7F4;
-    --paper-dim:#EDECE6;
-    --ink:#1C1F24;
-    --ink-soft:#5B6068;
-    --line:#D8D6CD;
+:root{--bg:#f3f4f6;--card:#fff;--soft:#f7f8fa;--ink:#171a1f;--muted:#68707a;--line:#e1e4e8;--dark:#171a1f;--red:#c81e2c;--red2:#7a0f18;--blue:#1c5fa8;--amber:#e8a400;--purple:#6b46c1;--teal:#0e7c86;--good:#1e7a3c;--shadow:0 12px 32px rgba(20,25,30,.08)}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+button,input{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible{outline:3px solid rgba(28,95,168,.25);outline-offset:2px}
+.top{position:sticky;top:0;z-index:50;background:var(--dark);color:#fff;padding:14px max(16px,calc((100vw - 1120px)/2));display:flex;justify-content:space-between;align-items:center}
+.brand{font-weight:800;letter-spacing:.2px;cursor:pointer}
+.homebtn{display:none;background:transparent;color:#fff;border:1px solid #555d67;padding:7px 11px;border-radius:10px}
+.lane{height:5px;background:repeating-linear-gradient(90deg,#fff 0 22px,transparent 22px 40px)}
+.offline{position:fixed;right:12px;top:68px;z-index:40;background:#eaf7ee;color:#176331;border:1px solid #c8e6d0;border-radius:999px;padding:5px 9px;font-size:9px;font-weight:800;letter-spacing:.5px;text-transform:uppercase}
+.app{max-width:1120px;margin:auto;padding:24px 18px 84px}
+.view{animation:in .22s ease}
+@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.hidden{display:none!important}
 
-    --danger:#C81E2C;
-    --danger-ink:#7A0F18;
-    --obligation:#1C5FA8;
-    --obligation-ink:#0F3D6E;
-    --priorite:#E8A400;
-    --priorite-ink:#7A5400;
-    --station:#3D4EA6;
-    --station-ink:#232E66;
-    --indication:#0E7C86;
-    --indication-ink:#08494F;
-    --extra:#6B46C1;
-    --extra-ink:#44337A;
+.hero{background:linear-gradient(135deg,#171a1f,#2b3139);color:#fff;border-radius:24px;padding:28px;display:flex;justify-content:space-between;gap:24px;align-items:end;box-shadow:var(--shadow);margin-bottom:16px}
+.eyebrow{font-size:10px;letter-spacing:1.25px;font-weight:800;color:#aeb5bf}
+.hero h1{font-size:31px;line-height:1.05;margin:7px 0 8px;letter-spacing:-.7px}
+.hero p{margin:0;color:#c6cbd1;font-size:14px;max-width:610px}
+.actions{display:flex;gap:8px;flex:none}
+.primary,.ghost,.dangerbtn{border-radius:12px;padding:12px 16px;font-weight:800}
+.primary{background:#fff;color:#171a1f;border:0}
+.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.dangerbtn{background:transparent;color:var(--red2);border:1px solid var(--red)}
+.hero .theme{background:rgba(255,255,255,.08);color:#fff;border:1px solid #555d67;width:44px}
 
-    --good:#1E7A3C;
-    --bad:#C81E2C;
-  }
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.stat,.panel,.practice,.content{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 6px 20px rgba(20,25,30,.05)}
+.stat{padding:16px;display:flex;align-items:center;gap:12px}
+.stat i{width:40px;height:40px;border-radius:12px;background:var(--soft);display:grid;place-items:center;font-style:normal}
+.stat b{display:block;font-size:21px}
+.stat span{font-size:11px;color:var(--muted)}
 
-  *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
-  body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'Inter',system-ui,sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
+.grid{display:grid;grid-template-columns:1.7fr .8fr;gap:16px}
+.sectiontitle{font-size:21px;margin:0}
+.muted{font-size:13px;color:var(--muted);margin:4px 0 14px}
 
-  .fade-in { animation: fadeIn 0.3s ease-out forwards; }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+.practicegrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.practice{padding:15px;text-align:left;display:flex;gap:12px;align-items:center;transition:.15s}
+.practice:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.pic{width:42px;height:42px;border-radius:12px;background:var(--soft);display:grid;place-items:center;font-size:20px}
+.copy{flex:1}
+.copy b{display:block;font-size:14px;margin-bottom:3px}
+.copy small{display:block;color:var(--muted);font-size:11.5px;line-height:1.35}
+.arr{font-size:20px;color:#8b929b}
 
-  .top-bar{
-    background:var(--asphalt);
-    color:var(--paper);
-    padding:18px 24px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  .top-bar .brand{
-    font-family:'Overpass',sans-serif;
-    font-weight:800;
-    font-size:20px;
-    letter-spacing:0.3px;
-    cursor:pointer;
-  }
-  .top-bar .sub{ font-size:13px; color:#B9BDC4; }
-  .home-btn-top{
-    background:transparent;
-    border:1.5px solid #5B6068;
-    color:var(--paper);
-    padding:6px 12px;
-    border-radius:8px;
-    font-size:13px;
-    font-weight:600;
-    cursor:pointer;
-    transition:background .15s, border-color .15s;
-  }
-  .home-btn-top:hover{background:rgba(255,255,255,0.1); border-color:#fff;}
-  .lane{ height:5px; background:repeating-linear-gradient(90deg, var(--paper) 0 22px, transparent 22px 40px); opacity:0.9; }
-  .app{ max-width:720px; margin:0 auto; padding:32px 20px 80px; }
+.progress,.quick,.tip{padding:18px}
+.prow{display:flex;justify-content:space-between;gap:16px}
+.prow strong{font-size:20px}
+.bar{height:10px;background:#eceef1;border-radius:999px;overflow:hidden;margin:15px 0 8px}
+.bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--red),var(--amber));transition:width .4s}
+.meta{display:flex;justify-content:space-between;color:var(--muted);font-size:11px}
+.quick h3,.tip h3{font-size:14px;margin:0 0 7px}
+.quick button{width:100%;border:0;border-top:1px solid #eef0f2;background:none;text-align:left;padding:12px 0;display:flex;justify-content:space-between}
+.tip{margin-top:10px;background:#fff9eb;border-color:#efdcae}
+.tip p{font-size:11.5px;line-height:1.45;color:#6e6244;margin:0}
 
-  /* TABLEAU DE BORD ACCUEIL */
-  .home-container{ text-align:center; padding:10px 0; }
-  .home-title{ font-family:'Overpass',sans-serif; font-weight:800; font-size:28px; margin-bottom:8px; }
-  .home-sub{ color:var(--ink-soft); font-size:15px; margin-bottom:28px; }
-  
-  .stats-banner{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:10px;
-    margin-bottom:30px;
-  }
-  .stat-card{
-    background:var(--paper-dim);
-    border:1px solid var(--line);
-    border-radius:12px;
-    padding:14px 10px;
-    text-align:center;
-  }
-  .stat-val{
-    font-family:'Overpass',sans-serif;
-    font-weight:800;
-    font-size:20px;
-    color:var(--asphalt);
-  }
-  .stat-lbl{
-    font-size:11.5px;
-    color:var(--ink-soft);
-    margin-top:2px;
-    text-transform:uppercase;
-    letter-spacing:0.3px;
-  }
+.content{padding:20px}
+.toolbar{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-bottom:14px}
+.search{width:100%;padding:12px 14px;border:1px solid var(--line);background:var(--card);border-radius:11px;color:var(--ink)}
+.catgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:16px 0}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:11px;padding:12px;display:flex;gap:10px;align-items:center}
+.chip.off{opacity:.35}
+.dot{width:16px;height:16px;border-radius:50%;flex:none}
+.chip b{font-size:13px}
+.chip small{display:block;color:var(--muted);font-size:11px}
 
-  .menu-cards{ display:flex; flex-direction:column; gap:16px; }
-  .menu-card{
-    background:var(--paper-dim); border:2px solid var(--line); border-radius:14px;
-    padding:22px 24px; text-align:left; cursor:pointer;
-    transition:border-color .15s, transform .15s, background .15s, box-shadow .15s;
-    display:flex; align-items:center; gap:20px;
-  }
-  .menu-card:hover{ border-color:var(--asphalt); background:#fff; transform:translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.06); }
-  .menu-icon{font-size:32px;flex:none;}
-  .menu-info h3{ font-family:'Overpass',sans-serif; font-weight:800; font-size:18px; margin:0 0 4px; }
-  .menu-info p{ margin:0; font-size:13.5px; color:var(--ink-soft); line-height:1.4; }
+.config{display:flex;justify-content:space-between;align-items:center;background:var(--soft);padding:14px;border-radius:12px;margin-bottom:15px}
+.row{margin:0 0 20px}
+.row label{display:flex;justify-content:space-between;font-size:13px;font-weight:700;margin-bottom:8px}
+.range{width:100%;accent-color:var(--red)}
+.n{color:var(--red2)}
 
-  h2.section-title{ font-family:'Overpass',sans-serif; font-weight:800; font-size:22px; margin:0 0 4px; }
-  p.section-sub{ color:var(--ink-soft); font-size:14px; margin:0 0 24px; }
+.quiztop{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px;color:var(--muted);font-size:12px}
+.timer{font-weight:800;color:var(--red2);background:var(--soft);padding:5px 9px;border-radius:999px}
+.progressdots{display:flex;gap:3px;margin-bottom:11px}
+.progressdots i{flex:1;height:5px;background:var(--line);border-radius:99px}
+.progressdots i.done{background:var(--dark)}
 
-  .cat-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:10px; margin-bottom:26px; }
-  .cat-chip{
-    border:1.5px solid var(--line); border-radius:10px; padding:12px 14px; cursor:pointer;
-    display:flex; align-items:center; gap:10px; background:var(--paper); transition:opacity .15s, border-color .15s;
-  }
-  .cat-chip:hover{border-color:var(--asphalt);}
-  .cat-chip.off{opacity:0.35;}
-  .cat-dot{width:16px;height:16px;flex:none;border-radius:50%;}
-  .cat-chip .lbl{font-size:13.5px;font-weight:600;line-height:1.25;}
-  .cat-chip .cnt{font-size:12px;color:var(--ink-soft);display:block;}
+.sign{height:200px;display:grid;place-items:center;margin:10px 0}
+.shape{width:170px;height:170px;display:grid;place-items:center;font-weight:900;position:relative}
+.tri{clip-path:polygon(50% 3%,4% 97%,96% 97%);background:var(--red)}
+.tri:after{content:"";position:absolute;inset:10px;clip-path:inherit;background:var(--card)}
+.diamond{width:120px;height:120px;background:var(--amber);transform:rotate(45deg)}
+.circleR{border:12px solid var(--red);border-radius:50%;background:var(--card)}
+.circleB{border-radius:50%;background:var(--blue);color:#fff}
+.square{border-radius:10px;background:var(--blue);color:#fff}
+.code{position:absolute;z-index:2;font-size:14px}
+.big{font-size:48px}
+.ambercode{transform:rotate(-45deg)}
 
-  .config-panel{ background:var(--paper-dim); padding:16px; border-radius:10px; margin-bottom:22px; display:flex; align-items:center; justify-content:space-between; }
-  .config-panel label{font-size:14px;font-weight:600;cursor:pointer;}
+.caption{text-align:center;text-transform:uppercase;letter-spacing:.5px;font-size:10px;color:var(--muted);margin-bottom:17px}
+.question{font-size:17px;font-weight:800;text-align:center;margin-bottom:15px}
+.options{display:flex;flex-direction:column;gap:9px}
+.opt{border:1px solid var(--line);background:var(--card);border-radius:11px;padding:14px;text-align:left;font-size:14px}
+.opt.lock{cursor:default}
+.opt.ok{border-color:var(--good);background:#eaf6ee;color:#155728;font-weight:800}
+.opt.no{border-color:var(--danger);background:#fbeaea;color:var(--red2);font-weight:800}
 
-  .field-row{margin-bottom:28px;}
-  .field-row label{ display:flex; justify-content:space-between; font-size:13.5px; font-weight:600; margin-bottom:10px; }
-  .field-row .n{font-family:'Overpass',sans-serif;font-weight:800;color:var(--danger-ink);}
-  input[type=range]{width:100%;accent-color:var(--danger);}
+.feedback{margin-top:15px;padding:13px;border-left:3px solid var(--good);background:var(--soft);border-radius:0 10px 10px 0;font-size:13px;line-height:1.45}
+.feedback.bad{border-left-color:var(--danger)}
+.feedback b{display:block;margin-bottom:3px}
+.next{margin-top:16px}
 
-  .btn{
-    font-family:'Overpass',sans-serif; font-weight:700; font-size:15px; border:none; border-radius:10px;
-    padding:15px 20px; cursor:pointer; width:100%; letter-spacing:0.2px; transition:transform .08s ease, filter .12s ease;
-  }
-  .btn:active{transform:scale(0.98);}
-  .btn-go{background:var(--asphalt);color:var(--paper);}
-  .btn-go:hover{filter:brightness(1.15);}
-  .btn-ghost{background:transparent;border:1.5px solid var(--line);color:var(--ink);}
-  .btn-outline-danger{background:transparent;border:1.5px solid var(--danger);color:var(--danger-ink);}
-  .btn-row{display:flex;gap:10px;margin-top:6px;}
-  .btn-row .btn{flex:1;}
-  .warn-txt{font-size:13px;color:var(--danger-ink);margin-top:-10px;margin-bottom:20px;}
+.score{text-align:center;margin:10px 0 20px}
+.ring{width:165px;height:165px;border-radius:50%;border:11px solid var(--red);margin:auto;display:grid;place-items:center;align-content:center;background:var(--card)}
+.ring b{font-size:38px}
+.ring span{font-size:12px;color:var(--muted)}
 
-  .progress-track{display:flex;gap:4px;margin-bottom:6px;}
-  .progress-dash{flex:1;height:6px;border-radius:3px;background:var(--line); transition:background 0.3s;}
-  .progress-dash.done{background:var(--asphalt);}
-  .quiz-top-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
-  .timer-badge{ font-family:'Overpass',sans-serif; font-weight:700; font-size:13px; background:var(--paper-dim); padding:4px 10px; border-radius:20px; color:var(--danger-ink); }
-  .fav-btn{background:none;border:none;cursor:pointer;font-size:20px;padding:0;transition:transform .1s;}
-  .fav-btn:hover{transform:scale(1.2);}
+.bars>.brow{margin:0 0 11px}
+.btop{display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px}
+.btrack{height:8px;background:var(--soft);border-radius:99px;overflow:hidden}
+.btrack i{display:block;height:100%;border-radius:inherit}
 
-  .sign-stage{display:flex;justify-content:center;margin:6px 0 22px;}
-  .sign-shell{width:190px;height:190px;position:relative;display:flex;align-items:center;justify-content:center;}
-  .sign-shape{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Overpass',sans-serif;font-weight:800;}
-  .sign-photo{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .35s ease;}
-  .sign-photo img{max-width:78%;max-height:78%;object-fit:contain; filter:drop-shadow(0 4px 6px rgba(0,0,0,0.1));}
-  .sign-photo.loaded{opacity:1;}
+.errors{border:1px solid var(--line);border-radius:11px;padding:7px 12px;margin:18px 0}
+.errors summary{padding:8px 0;font-weight:800;cursor:pointer}
+.err{border-top:1px solid var(--line);padding:9px 0;font-size:12.5px}
+.err .you{color:var(--red2)}
 
-  .shape-triangle{width:100%;height:100%;clip-path:polygon(50% 4%, 4% 96%, 96% 96%);background:var(--paper);}
-  .shape-circle-blue{width:100%;height:100%;border-radius:50%;background:var(--obligation);}
-  .shape-circle-red{width:100%;height:100%;border-radius:50%;background:var(--paper);border:12px solid var(--danger);}
-  .shape-diamond{width:76%;height:76%;background:var(--priorite);transform:rotate(45deg);}
-  .shape-square{width:88%;height:88%;border-radius:8px;}
-  .shape-extra{width:88%;height:88%;border-radius:6px;background:var(--extra);}
+.repohead{display:flex;gap:8px;align-items:center;margin:18px 0 9px;font-weight:800;font-size:13px}
+.repoitem{display:flex;gap:12px;padding:13px;border:1px solid var(--line);border-radius:11px;margin-bottom:7px;background:var(--card)}
+.thumb{width:52px;height:52px;display:grid;place-items:center;position:relative;flex:none}
+.thumb .shape{transform:scale(.28);transform-origin:center}
+.rname{font-weight:800;font-size:14px}
+.rcode{font-size:11px;color:var(--muted);font-weight:800}
+.rdesc{font-size:12px;color:var(--muted);line-height:1.4;margin-top:3px}
 
-  .sign-code{position:relative;z-index:2;font-size:15px;letter-spacing:0.5px;}
-  .sign-code.on-blue{color:var(--paper);}
-  .sign-code.on-red{color:var(--danger-ink);}
-  .sign-code.on-amber{color:var(--priorite-ink); transform:rotate(-45deg);}
-  .sign-code.on-white{color:var(--ink);}
-  .sign-code.big-num{font-size:52px;}
+.inf,.rule{padding:15px;border:1px solid var(--line);border-radius:13px;margin-bottom:9px;background:var(--card)}
+.infhead{display:flex;justify-content:space-between;gap:10px;margin-bottom:8px}
+.badge{font-size:10px;font-weight:900;padding:5px 8px;border-radius:6px;background:var(--dark);color:#fff}
+.d2{background:var(--amber);color:var(--ink)}
+.d3{background:var(--red)}
+.d4{background:#000}
+.dv{background:var(--purple)}
+.da{background:var(--teal)}
+.inf b,.rule b{font-size:15px}
+.inf p,.rule p{font-size:12.5px;line-height:1.5;color:var(--muted);margin:6px 0 0}
 
-  .sign-caption{text-align:center;font-size:12px;color:var(--ink-soft);letter-spacing:0.4px;text-transform:uppercase;margin:-10px 0 22px;}
-  .question-lbl{font-family:'Overpass',sans-serif;font-weight:700;font-size:16.5px;text-align:center;margin-bottom:18px;}
+.actionsrow{display:flex;gap:8px}
+.actionsrow>*{flex:1}
+.empty{text-align:center;padding:20px;color:var(--muted);font-size:13px}
 
-  .opt-list{display:flex;flex-direction:column;gap:10px;}
-  .opt{
-    text-align:left; padding:14px 16px; border:1.5px solid var(--line); border-radius:10px; background:var(--paper);
-    font-size:14.5px; font-weight:500; cursor:pointer; transition:border-color .12s, background .12s;
-  }
-  .opt:hover:not(.locked){border-color:var(--asphalt);}
-  .opt.locked{cursor:default;}
-  .opt.correct{border-color:var(--good);background:#EAF6EE;color:#155728;font-weight:700;}
-  .opt.wrong{border-color:var(--bad);background:#FBEAEA;color:var(--danger-ink);font-weight:700;}
+body.dark{
+  --bg:#0f1216;
+  --card:#181c22;
+  --soft:#222730;
+  --ink:#f3f5f7;
+  --muted:#aab1bb;
+  --line:#343a44
+}
+body.dark .hero{background:linear-gradient(135deg,#171a20,#252b34)}
+body.dark .offline{background:#18261d;color:#8dd4a0;border-color:#2b5136}
+body.dark .tip{background:#29251c;border-color:#4a4028}
 
-  .feedback{ margin-top:18px; padding:14px 16px; border-left:3px solid var(--good); background:var(--paper-dim); font-size:13.5px; line-height:1.5; border-radius:0 8px 8px 0; }
-  .feedback.bad{border-left-color:var(--bad);}
-  .feedback b{display:block; margin-bottom:3px; font-family:'Overpass',sans-serif;}
-
-  .next-wrap{margin-top:20px;}
-
-  .score-stage{display:flex;justify-content:center;margin:10px 0 26px;}
-  .score-ring{
-    width:170px;height:170px; border-radius:50%; border:12px solid var(--danger); background:var(--paper);
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-  }
-  .score-ring .pct{font-family:'Overpass',sans-serif;font-weight:800;font-size:40px;color:var(--danger-ink);line-height:1;}
-  .score-ring .frac{font-size:13px;color:var(--ink-soft);margin-top:4px;}
-  .score-msg{text-align:center;font-size:14.5px;color:var(--ink-soft);margin-bottom:26px;}
-
-  .cat-bar-row{margin-bottom:12px;}
-  .cat-bar-top{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:5px;}
-  .cat-bar-track{height:8px;border-radius:4px;background:var(--paper-dim);overflow:hidden;}
-  .cat-bar-fill{height:100%;border-radius:4px; transition:width 0.6s ease-out;}
-
-  details.err-panel{margin:22px 0;border:1.5px solid var(--line);border-radius:10px;padding:6px 14px;}
-  details.err-panel summary{padding:10px 0;font-weight:700;font-family:'Overpass',sans-serif;cursor:pointer;font-size:14px;}
-  .err-item{padding:10px 0;border-top:1px solid var(--line);font-size:13.5px;}
-  .err-item .nm{font-weight:700;}
-  .err-item .you{color:var(--danger-ink);}
-  .err-item .dsc{color:var(--ink-soft); margin-top:3px;}
-
-  .repo-search{ width:100%; padding:12px 14px; border:1.5px solid var(--line); border-radius:10px; font-size:14.5px; margin-bottom:22px; font-family:'Inter',sans-serif; }
-  .repo-cat-head{display:flex;align-items:center;gap:8px;margin:22px 0 10px;}
-  .repo-cat-head .dot{width:11px;height:11px;border-radius:50%;flex:none;}
-  .repo-cat-head span{font-family:'Overpass',sans-serif;font-weight:700;font-size:13.5px;}
-  .repo-item{display:flex;gap:14px;align-items:flex-start;padding:14px 4px;border-bottom:1px solid var(--line);}
-  .repo-thumb{width:56px;height:56px;flex:none;position:relative;display:flex;align-items:center;justify-content:center;}
-  .repo-thumb .sign-shape{transform:scale(1);}
-  .repo-thumb .sign-code{font-size:9px;}
-  .repo-thumb .sign-code.big-num{font-size:20px;}
-  .repo-txt .code{font-family:'Overpass',sans-serif;font-weight:800;font-size:12.5px;color:var(--ink-soft);}
-  .repo-txt .nm{font-weight:700;font-size:14.5px;margin:2px 0 4px;}
-  .repo-txt .dsc{font-size:13px;color:var(--ink-soft);line-height:1.4;}
-
-  /* Module Infractions */
-  .inf-card{
-    background:var(--paper-dim); border:1.5px solid var(--line); border-radius:12px;
-    padding:16px; margin-bottom:16px; position: relative; overflow: hidden;
-  }
-  .inf-card-header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
-  .inf-degre{ font-family:'Overpass',sans-serif; font-weight:800; font-size:11.5px; text-transform:uppercase; padding:5px 10px; border-radius:6px; color:#fff; }
-  .deg-1 { background: var(--asphalt); }
-  .deg-2 { background: var(--priorite); color: var(--ink) !important; }
-  .deg-3 { background: var(--danger); }
-  .deg-4 { background: #000; box-shadow: 0 0 0 2px var(--danger); }
-  .deg-vit { background: var(--extra); }
-  .deg-alc { background: var(--indication); }
-
-  .inf-amende{ font-family:'Overpass',sans-serif; font-weight:800; font-size:15px; color:var(--ink); }
-  .inf-title{ font-family:'Overpass',sans-serif; font-weight:700; font-size:16px; margin-bottom:8px; line-height: 1.3; }
-  .inf-desc{ font-size:13.5px; color:var(--ink-soft); line-height:1.5; }
-
-  /* Module Règles d'Or */
-  .rule-card{
-    background:var(--paper-dim);
-    border:1.5px solid var(--line);
-    border-radius:12px;
-    padding:18px;
-    margin-bottom:16px;
-  }
-  .rule-card h3{
-    font-family:'Overpass',sans-serif;
-    font-weight:800;
-    font-size:16px;
-    margin:0 0 8px;
-    color:var(--asphalt);
-  }
-  .rule-card p{
-    margin:0;
-    font-size:13.5px;
-    color:var(--ink-soft);
-    line-height:1.5;
-  }
-
-  .hidden{display:none !important;}
-
-  @media (max-width:420px){
-    .sign-shell{width:150px;height:150px;}
-    .app{padding:24px 14px 60px;}
-  }
+@media(max-width:850px){
+  .grid{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  .app{padding:16px 12px 74px}
+  .hero{display:block;padding:22px}
+  .hero h1{font-size:26px}
+  .actions{margin-top:17px}
+  .stats{gap:8px}
+  .stat{padding:12px}
+  .stat b{font-size:19px}
+  .practicegrid,.catgrid{grid-template-columns:1fr}
+  .content{padding:15px}
+  .top{padding:12px}
+  .offline{top:62px;right:8px}
+  .actionsrow{flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
 </style>
 </head>
+
 <body>
+<header class="top">
+  <div class="brand" onclick="home()">Code de la route</div>
+  <button id="homebtn" class="homebtn" onclick="home()">← Accueil</button>
+</header>
 
-<div class="top-bar">
-  <div class="brand" onclick="goToHome()">Code de la route</div>
-  <button class="home-btn-top" id="home-top-btn" onclick="goToHome()" style="display:none;">⬅️ Accueil</button>
-</div>
 <div class="lane"></div>
+<div class="offline">● Hors ligne</div>
 
-<div class="app">
+<main class="app">
 
-  <!-- ================= TABLEAU DE BORD ACCUEIL ================= -->
-  <div id="view-home" class="home-container fade-in">
-    <div class="home-title">Tableau de bord</div>
-    <div class="home-sub">Plateforme d'entraînement officielle — Permis théorique belge</div>
-
-    <div class="stats-banner">
-      <div class="stat-card">
-        <div class="stat-val" id="stat-sessions">0</div>
-        <div class="stat-lbl">Sessions</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-val" id="stat-success">0%</div>
-        <div class="stat-lbl">Réussite</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-val" id="stat-favs">0</div>
-        <div class="stat-lbl">Favoris</div>
-      </div>
+<section id="home" class="view">
+  <div class="hero">
+    <div>
+      <div class="eyebrow">PERMIS THÉORIQUE · BELGIQUE</div>
+      <h1>Prêt à prendre la route ?</h1>
+      <p>Entraîne-toi, corrige tes erreurs et suis ta progression au même endroit.</p>
     </div>
-
-    <div class="menu-cards">
-      <div class="menu-card" onclick="switchMode('quiz')">
-        <div class="menu-icon">🎯</div>
-        <div class="menu-info">
-          <h3>Quiz Panneaux Interactif</h3>
-          <p>Examen blanc chronométré, sélection par catégories, favoris et suivi des erreurs ciblées.</p>
-        </div>
-      </div>
-
-      <div class="menu-card" onclick="switchMode('repo')">
-        <div class="menu-icon">📚</div>
-        <div class="menu-info">
-          <h3>Répertoire Officiel des Panneaux</h3>
-          <p>Base exhaustive de tous les panneaux routiers belges classés (Dangers, Priorités, Interdictions, etc.).</p>
-        </div>
-      </div>
-
-      <div class="menu-card" onclick="switchMode('inf')">
-        <div class="menu-icon">⚖️</div>
-        <div class="menu-info">
-          <h3>Infractions & Degrés (Barème Officiel)</h3>
-          <p>Guide complet des amendes, perceptions immédiates, 1er au 4ème degré, vitesses et alcoolémie.</p>
-        </div>
-      </div>
-
-      <div class="menu-card" onclick="switchMode('rules')">
-        <div class="menu-icon">💡</div>
-        <div class="menu-info">
-          <h3>Règles d'Or & Priorités</h3>
-          <p>Fiches pratiques indispensables sur la priorité à droite, les ronds-points, les trams et les autoroutes.</p>
-        </div>
-      </div>
+    <div class="actions">
+      <button class="primary" onclick="mode('quiz')">🎯 Commencer un quiz</button>
+      <button class="theme" onclick="theme()" aria-label="Changer le thème">☀️</button>
     </div>
   </div>
 
-  <!-- ================= VUE QUIZ ================= -->
-  <div id="view-quiz" class="hidden">
-    <div id="quiz-config">
-      <h2 class="section-title">Configure ta session de quiz</h2>
-      <p class="section-sub">Choisis tes catégories et options d'examen.</p>
+  <div class="stats">
+    <div class="stat"><i>🏁</i><div><b id="ss">0</b><span>Sessions</span></div></div>
+    <div class="stat"><i>📈</i><div><b id="sp">0%</b><span>Réussite globale</span></div></div>
+    <div class="stat"><i>⭐</i><div><b id="sf">0</b><span>Favoris</span></div></div>
+    <div class="stat"><i>🧠</i><div><b id="st">0</b><span>Questions</span></div></div>
+  </div>
 
-      <div class="cat-grid" id="cat-grid"></div>
+  <div class="grid">
+    <div>
+      <h2 class="sectiontitle">S'entraîner</h2>
+      <p class="muted">Choisis la méthode qui te convient aujourd'hui.</p>
 
-      <div class="config-panel">
-        <div>
-          <label for="timer-toggle">⏱️ Chronomètre d'examen</label>
-          <div style="font-size:12px; color:var(--ink-soft);">15 secondes par question</div>
+      <div class="practicegrid">
+        <button class="practice" onclick="mode('quiz')">
+          <span class="pic">🎯</span>
+          <span class="copy"><b>Quiz interactif</b><small>Catégories, chrono et score détaillé</small></span>
+          <span class="arr">→</span>
+        </button>
+
+        <button class="practice" onclick="favReview()">
+          <span class="pic">⭐</span>
+          <span class="copy"><b>Révision ciblée</b><small>Favoris et questions ratées</small></span>
+          <span class="arr">→</span>
+        </button>
+
+        <button class="practice" onclick="mode('repo')">
+          <span class="pic">🚦</span>
+          <span class="copy"><b>Panneaux</b><small>Recherche dans le répertoire</small></span>
+          <span class="arr">→</span>
+        </button>
+
+        <button class="practice" onclick="mode('rules')">
+          <span class="pic">💡</span>
+          <span class="copy"><b>Règles essentielles</b><small>Priorités et situations clés</small></span>
+          <span class="arr">→</span>
+        </button>
+      </div>
+
+      <div class="panel progress">
+        <div class="prow">
+          <div>
+            <b>Ta progression</b>
+            <div class="muted">Continue régulièrement pour consolider tes acquis.</div>
+          </div>
+          <strong id="prog">0%</strong>
         </div>
-        <input type="checkbox" id="timer-toggle" style="width:20px;height:20px;accent-color:var(--danger);">
-      </div>
-
-      <div class="field-row">
-        <label>Nombre de questions <span class="n" id="nb-out">15</span></label>
-        <input type="range" id="nb-questions" min="5" max="25" value="15" step="1" oninput="onNbChange()">
-      </div>
-      <div class="warn-txt hidden" id="cfg-warn"></div>
-
-      <button class="btn btn-go" onclick="startQuiz()">Démarrer le quiz</button>
-      
-      <div id="quick-review-launch" class="hidden" style="margin-top:12px;">
-        <button class="btn btn-outline-danger" onclick="startFavReview()">⭐ Revoir mes favoris & erreurs (<span id="fav-count">0</span>)</button>
-      </div>
-    </div>
-
-    <div id="quiz-running" class="hidden">
-      <div class="progress-track" id="progress-track"></div>
-      
-      <div class="quiz-top-bar">
-        <span id="progress-label" style="font-size:12.5px; color:var(--ink-soft);">Question 1 / 15</span>
-        <div id="timer-badge" class="timer-badge hidden">⏳ 15s</div>
-        <button class="fav-btn" id="fav-toggle-btn" onclick="toggleCurrentFav()" title="Marquer en favori">⭐</button>
-        <span id="progress-score" style="font-size:12.5px; color:var(--ink-soft); font-weight:600;">Score : 0</span>
-      </div>
-
-      <div class="sign-stage">
-        <div class="sign-shell" id="sign-shell"></div>
-      </div>
-      <div class="sign-caption" id="sign-caption"></div>
-
-      <div class="question-lbl">Quelle est la désignation exacte de ce panneau ?</div>
-      <div class="opt-list" id="opt-list"></div>
-
-      <div id="feedback-zone"></div>
-      <div class="next-wrap" id="next-wrap"></div>
-    </div>
-
-    <div id="quiz-summary" class="hidden">
-      <h2 class="section-title" id="summary-title">Session terminée</h2>
-      <div class="score-stage">
-        <div class="score-ring">
-          <div class="pct" id="summary-pct">0%</div>
-          <div class="frac" id="summary-frac">0 / 0</div>
+        <div class="bar"><span id="bar"></span></div>
+        <div class="meta">
+          <span id="progtxt">Aucune session pour le moment</span>
+          <span>🔥 <b id="streak">0</b></span>
         </div>
       </div>
-      <p class="score-msg" id="summary-msg"></p>
-
-      <div id="cat-bars"></div>
-      <div id="err-panel-wrap"></div>
-
-      <div class="btn-row">
-        <button class="btn btn-ghost" onclick="goConfig()">Nouvelle config</button>
-        <button class="btn btn-ghost" onclick="replaySame()">Refaire</button>
-      </div>
-      <div class="btn-row" id="review-row" style="margin-top:10px;"></div>
     </div>
+
+    <aside>
+      <div class="panel quick">
+        <h3>⚡ Actions rapides</h3>
+        <button onclick="mode('quiz')">🎯 Nouveau quiz <span>›</span></button>
+        <button onclick="mode('repo')">📚 Voir les panneaux <span>›</span></button>
+        <button onclick="mode('inf')">⚖️ Infractions <span>›</span></button>
+        <button onclick="mode('rules')">💡 Règles d'or <span>›</span></button>
+      </div>
+
+      <div class="panel tip">
+        <h3>💡 Conseil du jour</h3>
+        <p id="tip">Travaille d'abord les thèmes où ton taux de réussite est le plus faible.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section id="quiz" class="view hidden">
+
+  <div id="cfg" class="content">
+    <h2 class="sectiontitle">Configure ta session</h2>
+    <p class="muted">Sélectionne les catégories et le nombre de questions.</p>
+
+    <div id="cats" class="catgrid"></div>
+
+    <div class="config">
+      <div>
+        <b>⏱️ Chronomètre</b>
+        <div class="muted">15 secondes par question</div>
+      </div>
+      <input id="timer" type="checkbox" style="width:20px;height:20px;accent-color:var(--red)">
+    </div>
+
+    <div class="row">
+      <label>Nombre de questions <span class="n" id="nq">15</span></label>
+      <input id="range" class="range" type="range" min="1" max="25" value="15">
+    </div>
+
+    <div id="warn" class="empty hidden">Pas assez de panneaux dans cette sélection.</div>
+
+    <button class="primary" style="width:100%" onclick="start()">Démarrer le quiz</button>
+
+    <button id="quick" class="dangerbtn" style="width:100%;margin-top:9px" onclick="favReview()">
+      ⭐ Revoir mes favoris & erreurs (<span id="fc">0</span>)
+    </button>
   </div>
 
-  <!-- ================= VUE REPERTOIRE PANNEAUX ================= -->
-  <div id="view-repo" class="hidden">
-    <h2 class="section-title">Répertoire officiel</h2>
-    <p class="section-sub" id="repo-count"></p>
-    <input class="repo-search" id="repo-search" placeholder="Filtrer par code, nom, catégorie..." oninput="renderRepo()">
-    <div id="repo-list"></div>
+  <div id="run" class="content hidden">
+    <div id="dots" class="progressdots"></div>
+
+    <div class="quiztop">
+      <span id="ql">Question 1 / 15</span>
+      <span id="tm" class="timer hidden">⏳ 15s</span>
+      <button style="border:0;background:none;font-size:21px" id="fav" onclick="toggleFav()" aria-label="Favori">☆</button>
+      <span id="qs">Score : 0</span>
+    </div>
+
+    <div id="sign" class="sign"></div>
+    <div id="cap" class="caption"></div>
+
+    <div class="question">Quelle est la désignation exacte de ce panneau ?</div>
+
+    <div id="opts" class="options"></div>
+    <div id="feed"></div>
+    <div id="next" class="next"></div>
   </div>
 
-  <!-- ================= VUE INFRACTIONS & AMENDES ================= -->
-  <div id="view-inf" class="hidden">
-    <h2 class="section-title">Barème des Infractions & Amendes</h2>
-    <p class="section-sub">Guide complet des degrés, amendes de perception immédiate et retraits de permis.</p>
-    <input class="repo-search" id="inf-search" placeholder="Rechercher (ex: GSM, 1er degré, alcool, stop...)" oninput="renderInfractions()">
-    <div id="inf-list"></div>
-  </div>
+  <div id="sum" class="content hidden">
+    <h2 id="stitle" class="sectiontitle">Session terminée</h2>
 
-  <!-- ================= VUE RÈGLES D'OR ================= -->
-  <div id="view-rules" class="hidden">
-    <h2 class="section-title">Règles d'Or & Priorités en Belgique</h2>
-    <p class="section-sub">Les fondamentaux indispensables pour réussir l'examen théorique haut la main.</p>
-    <input class="repo-search" id="rule-search" placeholder="Rechercher une règle (ex: priorité, rond-point, tram...)" oninput="renderRules()">
-    <div id="rule-list"></div>
-  </div>
+    <div class="score">
+      <div class="ring">
+        <b id="pct">0%</b>
+        <span id="frac">0 / 0</span>
+      </div>
+    </div>
 
-</div>
+    <p id="smsg" class="muted" style="text-align:center"></p>
+
+    <div id="bars" class="bars"></div>
+    <div id="errs"></div>
+
+    <div class="actionsrow">
+      <button class="ghost" onclick="cfg()">Nouvelle config</button>
+      <button class="ghost" onclick="replay()">Refaire</button>
+    </div>
+
+    <div id="review" style="margin-top:9px"></div>
+  </div>
+</section>
+
+<section id="repo" class="view hidden">
+  <div class="content">
+    <div class="toolbar">
+      <div>
+        <h2 class="sectiontitle">Répertoire des panneaux</h2>
+        <p id="rc" class="muted"></p>
+      </div>
+    </div>
+
+    <input id="rs" class="search" placeholder="Code, nom, catégorie..." oninput="repo()">
+    <div id="rl"></div>
+  </div>
+</section>
+
+<section id="inf" class="view hidden">
+  <div class="content">
+    <h2 class="sectiontitle">Infractions & amendes</h2>
+    <p class="muted">Données conservées depuis ta base d'origine.</p>
+    <input id="is" class="search" placeholder="GSM, degré, alcool..." oninput="infra()">
+    <div id="il"></div>
+  </div>
+</section>
+
+<section id="rules" class="view hidden">
+  <div class="content">
+    <h2 class="sectiontitle">Règles d'or & priorités</h2>
+    <p class="muted">Données conservées depuis ta base d'origine.</p>
+    <input id="rs2" class="search" placeholder="priorité, tram, rond-point..." oninput="rules()">
+    <div id="rul"></div>
+  </div>
+</section>
+
+</main>
 
 <script>
-// BASE DE DONNÉES ÉTENDUE DES PANNEAUX (Séries A à X)
 const PANNEAUX = [
-  // Série A (Dangers)
+
   {code:"A1a", nom:"Virage dangereux à gauche", cat:"A", desc:"Annonce un virage prononcé vers la gauche."},
   {code:"A1b", nom:"Virage dangereux à droite", cat:"A", desc:"Annonce un virage prononcé vers la droite."},
   {code:"A1c", nom:"Succession de virages", cat:"A", desc:"Annonce plusieurs virages successifs, le premier à gauche."},
@@ -475,7 +407,6 @@ const PANNEAUX = [
   {code:"A33", nom:"Feux de circulation", cat:"A", desc:"Annonce des feux tricolores en amont."},
   {code:"A51", nom:"Danger indéterminé", cat:"A", desc:"Danger particulier précisé par un panonceau additionnel."},
 
-  // Série B (Priorités)
   {code:"B1", nom:"Cédez le passage", cat:"B", desc:"Triangle pointé vers le bas. Céder le passage aux usagers de la voie prioritaire."},
   {code:"B5", nom:"Stop (Arrêt obligatoire)", cat:"B", desc:"Obligation de marquer l'arrêt complet avant la ligne d'effet."},
   {code:"B9", nom:"Voie prioritaire", cat:"B", desc:"Losange jaune : vous êtes prioritaire aux intersections."},
@@ -483,7 +414,6 @@ const PANNEAUX = [
   {code:"B15", nom:"Priorité à l'intersection", cat:"B", desc:"Vous avez la priorité uniquement à la prochaine intersection."},
   {code:"B17", nom:"Priorité à droite", cat:"B", desc:"Règle générale : céder le passage venant de droite."},
 
-  // Série C (Interdictions)
   {code:"C1", nom:"Accès interdit dans les deux sens", cat:"C", desc:"Interdiction à tout conducteur de s'engager."},
   {code:"C3", nom:"Sens interdit", cat:"C", desc:"Interdiction de s'engager dans cette voie."},
   {code:"C5", nom:"Accès interdit aux automobiles", cat:"C", desc:"Interdit aux voitures et camions."},
@@ -498,18 +428,15 @@ const PANNEAUX = [
   {code:"C43 90", nom:"Vitesse limitée à 90 km/h", cat:"C", desc:"Vitesse maximale autorisée de 90 km/h.", num:"90"},
   {code:"C45", nom:"Fin de toutes les interdictions locales", cat:"C", desc:"Fin des limitations de vitesse ou de dépassement."},
 
-  // Série D (Obligations)
   {code:"D1a", nom:"Direction obligatoire à droite", cat:"D", desc:"Obligation de tourner à droite."},
   {code:"D1b", nom:"Direction obligatoire à gauche", cat:"D", desc:"Obligation de tourner à gauche."},
   {code:"D9", nom:"Piste cyclable obligatoire", cat:"D", desc:"Voie exclusive réservée aux cyclistes."},
   {code:"D10", nom:"Chemin pour piétons", cat:"D", desc:"Voie réservée exclusivement aux piétons."},
 
-  // Série E (Stationnement)
   {code:"E1", nom:"Stationnement interdit", cat:"E", desc:"Interdiction de stationner du côté du panneau. L'arrêt reste autorisé."},
   {code:"E3", nom:"Arrêt et stationnement interdits", cat:"E", desc:"Interdiction absolue de s'arrêter et de stationner."},
   {code:"E9a", nom:"Stationnement autorisé (Parking)", cat:"E", desc:"Indique un emplacement ou un parking autorisé."},
 
-  // Série F (Indications)
   {code:"F1", nom:"Commencement d'agglomération", cat:"F", desc:"Vitesse limitée par défaut à 50 km/h (30 km/h à Bruxelles)."},
   {code:"F3", nom:"Fin d'agglomération", cat:"F", desc:"Les règles d'agglomération prennent fin."},
   {code:"F5", nom:"Autoroute", cat:"F", desc:"Début d'autoroute (vitesse min. 70, max. 120 km/h)."},
@@ -519,442 +446,632 @@ const PANNEAUX = [
   {code:"F4a", nom:"Début de zone 30", cat:"F", desc:"Entrée d'une zone où la vitesse est limitée à 30 km/h."},
   {code:"F4b", nom:"Fin de zone 30", cat:"F", desc:"Sortie de la zone 30."},
 
-  // Série X (Panonceaux)
   {code:"Panonceau 1", nom:"Distance avant le danger", cat:"X", desc:"Indique la distance à laquelle se situe le danger ou la règle."},
   {code:"Panonceau 2", nom:"Etendue de la mesure", cat:"X", desc:"Indique la longueur sur laquelle s'applique la prescription."},
-  {code:"Panonceau 3", nom:"Répétition / Rappel", cat:"X", desc:"Confirme qu'une interdiction ou obligation est toujours d'application."},
+  {code:"Panonceau 3", nom:"Répétition / Rappel", cat:"X", desc:"Confirme qu'une interdiction ou obligation est toujours d'application."}
 ];
 
-// BASE DE DONNÉES ÉTENDUE DES INFRACTIONS & AMENDES
 const INFRACTIONS = [
-  // 1er Degré
-  {titre: "Oubli du clignotant", degre: "1er Degré", amende: "58 €", desc: "Omettre d'indiquer un changement de direction, un dépassement ou la sortie d'un rond-point."},
-  {titre: "Stationnement gênant simple", degre: "1er Degré", amende: "58 €", desc: "Stationner sur une zone non autorisée sans gêner gravement la circulation."},
-  {titre: "Circuler sur une bande de bus", degre: "1er Degré", amende: "58 €", desc: "Emprunter une bande réservée aux transports en commun sans autorisation."},
-  {titre: "Défaut de documents à bord", degre: "1er Degré", amende: "58 €", desc: "Ne pas présenter immédiatement son permis, son certificat d'immatriculation ou son assurance."},
-  {titre: "Utilisation abusive des feux de brouillard", degre: "1er Degré", amende: "58 €", desc: "Allumer les feux antibrouillard par temps clair ou pluie légère (éblouissement)."},
 
-  // 2ème Degré
-  {titre: "Non-port de la ceinture de sécurité", degre: "2ème Degré", amende: "116 €", desc: "Obligatoire pour tous les occupants du véhicule (conducteur et passagers)."},
-  {titre: "Franchissement d'un feu orange", degre: "2ème Degré", amende: "116 €", desc: "S'engager au feu orange alors qu'il était possible de s'arrêter en sécurité."},
-  {titre: "Stationnement sur passage pour piétons", degre: "2ème Degré", amende: "116 €", desc: "Se garer sur un passage clouté, un trottoir protégeant les piétons ou une piste cyclable."},
-  {titre: "Conduite sans feux la nuit", degre: "2ème Degré", amende: "116 €", desc: "Oublier d'allumer ses feux de croisement entre la tombée et le lever du jour."},
-  {titre: "Dépassement par la droite", degre: "2ème Degré", amende: "116 €", desc: "Interdit sauf en cas de files ininterrompues de véhicules sur les autres bandes."},
-  {titre: "Non-respect de la distance de sécurité", degre: "2ème Degré", amende: "116 €", desc: "Ne pas laisser une distance suffisante par rapport au véhicule qui précède."},
-  {titre: "Ne pas céder le passage à un piéton engagé", degre: "2ème Degré", amende: "116 €", desc: "Refuser la priorité à un piéton s'engageant sur un passage clouté."},
+  {titre:"Oubli du clignotant",degre:"1er Degré",amende:"58 €",desc:"Omettre d'indiquer un changement de direction, un dépassement ou la sortie d'un rond-point."},
+  {titre:"Stationnement gênant simple",degre:"1er Degré",amende:"58 €",desc:"Stationner sur une zone non autorisée sans gêner gravement la circulation."},
+  {titre:"Circuler sur une bande de bus",degre:"1er Degré",amende:"58 €",desc:"Emprunter une bande réservée aux transports en commun sans autorisation."},
+  {titre:"Défaut de documents à bord",degre:"1er Degré",amende:"58 €",desc:"Ne pas présenter immédiatement son permis, son certificat d'immatriculation ou son assurance."},
+  {titre:"Utilisation abusive des feux de brouillard",degre:"1er Degré",amende:"58 €",desc:"Allumer les feux antibrouillard par temps clair ou pluie légère (éblouissement)."},
 
-  // 3ème Degré
-  {titre: "Usage du GSM au volant", degre: "3ème Degré", amende: "174 €", desc: "Tenir un téléphone ou un écran en main en conduisant. Entraîne un retrait immédiat de permis (15 jours)."},
-  {titre: "Franchir un feu rouge", degre: "3ème Degré", amende: "174 €", desc: "S'engager à un carrefour alors que le feu est rouge fixe ou clignotant."},
-  {titre: "Non-respect d'un panneau STOP (B5)", degre: "3ème Degré", amende: "174 €", desc: "Oublier de marquer un temps d'arrêt complet à la ligne d'effet."},
-  {titre: "Franchir une ligne blanche continue", degre: "3ème Degré", amende: "174 €", desc: "Rouler sur ou franchir une ligne continue délimitant les bandes."},
-  {titre: "Prendre un sens interdit (C3)", degre: "3ème Degré", amende: "174 €", desc: "S'engager dans une rue en sens interdit."},
-  {titre: "Franchir un passage à niveau fermé", degre: "3ème Degré", amende: "174 €", desc: "Passer outre des barrières en mouvement ou des feux rouges clignotants."},
+  {titre:"Non-port de la ceinture de sécurité",degre:"2ème Degré",amende:"116 €",desc:"Obligatoire pour tous les occupants du véhicule (conducteur et passagers)."},
+  {titre:"Franchissement d'un feu orange",degre:"2ème Degré",amende:"116 €",desc:"S'engager au feu orange alors qu'il était possible de s'arrêter en sécurité."},
+  {titre:"Stationnement sur passage pour piétons",degre:"2ème Degré",amende:"116 €",desc:"Se garer sur un passage clouté, un trottoir protégeant les piétons ou une piste cyclable."},
+  {titre:"Conduite sans feux la nuit",degre:"2ème Degré",amende:"116 €",desc:"Oublier d'allumer ses feux de croisement entre la tombée et le lever du jour."},
+  {titre:"Dépassement par la droite",degre:"2ème Degré",amende:"116 €",desc:"Interdit sauf en cas de files ininterrompues de véhicules sur les autres bandes."},
+  {titre:"Non-respect de la distance de sécurité",degre:"2ème Degré",amende:"116 €",desc:"Ne pas laisser une distance suffisante par rapport au véhicule qui précède."},
+  {titre:"Ne pas céder le passage à un piéton engagé",degre:"2ème Degré",amende:"116 €",desc:"Refuser la priorité à un piéton s'engageant sur un passage clouté."},
 
-  // 4ème Degré / Tribunal
-  {titre: "Faire demi-tour sur autoroute", degre: "4ème Degré", amende: "Tribunal", desc: "Comprend la marche arrière et le contresens sur autoroute. Déchéance du permis obligatoire."},
-  {titre: "Refus d'obtempérer", degre: "4ème Degré", amende: "Tribunal", desc: "Ignorer les ordres d'un agent de police qualifié."},
-  {titre: "Courses de vitesse illégales (Street racing)", degre: "4ème Degré", amende: "Tribunal", desc: "Organiser ou participer à des concours de vitesse sur la voie publique."},
-  {titre: "Délit de fuite", degre: "Délit pénal", amende: "Tribunal", desc: "Quitter les lieux d'un accident pour échapper à ses responsabilités."},
+  {titre:"Usage du GSM au volant",degre:"3ème Degré",amende:"174 €",desc:"Tenir un téléphone ou un écran en main en conduisant. Entraîne un retrait immédiat de permis (15 jours)."},
+  {titre:"Franchir un feu rouge",degre:"3ème Degré",amende:"174 €",desc:"S'engager à un carrefour alors que le feu est rouge fixe ou clignotant."},
+  {titre:"Non-respect d'un panneau STOP (B5)",degre:"3ème Degré",amende:"174 €",desc:"Oublier de marquer un temps d'arrêt complet à la ligne d'effet."},
+  {titre:"Franchir une ligne blanche continue",degre:"3ème Degré",amende:"174 €",desc:"Rouler sur ou franchir une ligne continue délimitant les bandes."},
+  {titre:"Prendre un sens interdit (C3)",degre:"3ème Degré",amende:"174 €",desc:"S'engager dans une rue en sens interdit."},
+  {titre:"Franchir un passage à niveau fermé",degre:"3ème Degré",amende:"174 €",desc:"Passer outre des barrières en mouvement ou des feux rouges clignotants."},
 
-  // Vitesse & Alcool
-  {titre: "Excès de vitesse (Agglomération / Zone 30)", degre: "Vitesse", amende: "Dès 53 € + 11 €/km/h", desc: "Tarif de base de 53 €, puis 11 € par km/h excédentaire en zone sensible."},
-  {titre: "Excès de vitesse (Hors agglomération / Autoroute)", degre: "Vitesse", amende: "Dès 53 € + 6 €/km/h", desc: "Tarif de base de 53 €, puis 6 € par km/h excédentaire."},
-  {titre: "Alcoolémie (0,5 g/L à 0,8 g/L)", degre: "Alcool", amende: "179 € + Retrait 3h", desc: "Taux prohibé léger. Retrait immédiat du permis pour 3 heures minimum."},
-  {titre: "Alcoolémie (Supérieure à 0,8 g/L)", degre: "Alcool / Tribunal", amende: "De 420 € à 1200 €", desc: "Retrait immédiat de permis (15 jours) et convocation obligatoire au tribunal de police."}
+  {titre:"Faire demi-tour sur autoroute",degre:"4ème Degré",amende:"Tribunal",desc:"Comprend la marche arrière et le contresens sur autoroute. Déchéance du permis obligatoire."},
+  {titre:"Refus d'obtempérer",degre:"4ème Degré",amende:"Tribunal",desc:"Ignorer les ordres d'un agent de police qualifié."},
+  {titre:"Courses de vitesse illégales (Street racing)",degre:"4ème Degré",amende:"Tribunal",desc:"Organiser ou participer à des concours de vitesse sur la voie publique."},
+  {titre:"Délit de fuite",degre:"Délit pénal",amende:"Tribunal",desc:"Quitter les lieux d'un accident pour échapper à ses responsabilités."},
+
+  {titre:"Excès de vitesse (Agglomération / Zone 30)",degre:"Vitesse",amende:"Dès 53 € + 11 €/km/h",desc:"Tarif de base de 53 €, puis 11 € par km/h excédentaire en zone sensible."},
+  {titre:"Excès de vitesse (Hors agglomération / Autoroute)",degre:"Vitesse",amende:"Dès 53 € + 6 €/km/h",desc:"Tarif de base de 53 €, puis 6 € par km/h excédentaire."},
+  {titre:"Alcoolémie (0,5 g/L à 0,8 g/L)",degre:"Alcool",amende:"179 € + Retrait 3h",desc:"Taux prohibé léger. Retrait immédiat du permis pour 3 heures minimum."},
+  {titre:"Alcoolémie (Supérieure à 0,8 g/L)",degre:"Alcool / Tribunal",amende:"De 420 € à 1200 €",desc:"Retrait immédiat de permis (15 jours) et convocation obligatoire au tribunal de police."}
 ];
 
-// BASE DE DONNÉES RÈGLES D'OR & PRIORITÉS
 const RULES = [
-  {titre: "La Priorité à Droite (Règle générale)", desc: "À toute intersection, vous devez céder le passage à tout conducteur venant de droite, sauf si un signal (panneau, feu, agent) ou une règle spécifique (carrossable vs chemin de terre) en dispose autrement."},
-  {titre: "Les Ronds-Points et Giratoires", desc: "Sauf signalisation contraire (panneau B1 'Cédez le passage' ou B5 'Stop' à l'entrée), la règle de la priorité à droite s'applique DANS le rond-point. Cependant, dans 99% des giratoires modernes en Belgique, le panneau 'Cédez le passage' est placé pour ceux qui s'engagent."},
-  {titre: "La Priorité des Trams", desc: "Le tram a TOUJOURS la priorité, même venant de gauche, sauf s'il sort d'un dépôt ou si des feux tricolores réglant la circulation s'opposent à son passage. Ne coupez jamais la trajectoire d'un tram."},
-  {titre: "Vitesses Maximales en Belgique", desc: "• Agglomération : 50 km/h partout (sauf Région de Bruxelles-Capitale où la règle générale est 30 km/h).<br>• Hors agglomération (Flandre / Wallonie) : 90 km/h.<br>• Autoroutes : 120 km/h (min. 70 km/h)."},
-  {titre: "Arrêt vs Stationnement", desc: "• **L'arrêt** : Immobilisation de courte durée pour embarquer/débarquer des personnes ou charger/décharger des marchandises (le conducteur reste à bord ou à proximité).<br>• **Le stationnement** : Immobilisation qui dépasse le temps nécessaire à l'arrêt."},
-  {titre: "Le couloir de secours (Corridor d'urgence)", desc: "En cas d'embouteillage sur autoroute ou route à 2 bandes ou plus, les véhicules doivent obligatoirement se serrer : ceux de gauche vers la gauche, ceux de droite vers la droite, pour laisser un passage central libre aux services de secours."}
+
+  {titre:"La Priorité à Droite (Règle générale)",desc:"À toute intersection, vous devez céder le passage à tout conducteur venant de droite, sauf si un signal (panneau, feu, agent) ou une règle spécifique (carrossable vs chemin de terre) en dispose autrement."},
+  {titre:"Les Ronds-Points et Giratoires",desc:"Sauf signalisation contraire (panneau B1 'Cédez le passage' ou B5 'Stop' à l'entrée), la règle de la priorité à droite s'applique DANS le rond-point. Cependant, dans 99% des giratoires modernes en Belgique, le panneau 'Cédez le passage' est placé pour ceux qui s'engagent."},
+  {titre:"La Priorité des Trams",desc:"Le tram a TOUJOURS la priorité, même venant de gauche, sauf s'il sort d'un dépôt ou si des feux tricolores réglant la circulation s'opposent à son passage. Ne coupez jamais la trajectoire d'un tram."},
+  {titre:"Vitesses Maximales en Belgique",desc:"• Agglomération : 50 km/h partout (sauf Région de Bruxelles-Capitale où la règle générale est 30 km/h).<br>• Hors agglomération (Flandre / Wallonie) : 90 km/h.<br>• Autoroutes : 120 km/h (min. 70 km/h)."},
+  {titre:"Arrêt vs Stationnement",desc:"• **L'arrêt** : Immobilisation de courte durée pour embarquer/débarquer des personnes ou charger/décharger des marchandises (le conducteur reste à bord ou à proximité).<br>• **Le stationnement** : Immobilisation qui dépasse le temps nécessaire à l'arrêt."},
+  {titre:"Le couloir de secours (Corridor d'urgence)",desc:"En cas d'embouteillage sur autoroute ou route à 2 bandes ou plus, les véhicules doivent obligatoirement se serrer : ceux de gauche vers la gauche, ceux de droite vers la droite, pour laisser un passage central libre aux services de secours."}
 ];
 
-const CATEGORIES = {
-  A: {label:"Danger", color:"var(--danger)", ink:"var(--danger-ink)", shape:"triangle"},
-  B: {label:"Priorité", color:"var(--priorite)", ink:"var(--priorite-ink)", shape:"diamond"},
-  C: {label:"Interdiction", color:"var(--danger)", ink:"var(--danger-ink)", shape:"circle-red"},
-  D: {label:"Obligation", color:"var(--obligation)", ink:"var(--obligation-ink)", shape:"circle-blue"},
-  E: {label:"Stationnement", color:"var(--station)", ink:"var(--station-ink)", shape:"square-station"},
-  F: {label:"Indication", color:"var(--indication)", ink:"var(--indication-ink)", shape:"square-indication"},
+const CATS={
+  A:{label:"Danger",color:"var(--red)",shape:"tri"},
+  B:{label:"Priorité",color:"var(--amber)",shape:"diamond"},
+  C:{label:"Interdiction",color:"var(--red)",shape:"circleR"},
+  D:{label:"Obligation",color:"var(--blue)",shape:"circleB"},
+  E:{label:"Stationnement",color:"var(--purple)",shape:"square"},
+  F:{label:"Indication",color:"var(--teal)",shape:"square"},
+  X:{label:"Panonceaux",color:"var(--purple)",shape:"square"}
 };
 
-const IMAGE_OVERRIDES = { "D1a": "Belgian traffic sign D1c.svg" };
+let favs=load("belgium_road_favs",[]);
+let stats=load("belgium_road_stats",{sessions:0,correct:0,total:0});
+let mistakes=load("belgium_road_mistakes",{});
 
-let userFavs = JSON.parse(localStorage.getItem('belgium_road_favs') || '[]');
-let userStats = JSON.parse(localStorage.getItem('belgium_road_stats') || '{"sessions":0, "correct":0, "total":0}');
+let state={
+  cats:["A","B","C","D","E","F"],
+  n:15,
+  timer:false,
+  pool:[],
+  i:0,
+  score:0,
+  answered:false,
+  opts:[],
+  errors:[],
+  catStats:{},
+  review:false,
+  int:null,
+  time:15
+};
 
-function updateDashboardStats(){
-  document.getElementById('stat-sessions').textContent = userStats.sessions;
-  const pct = userStats.total > 0 ? Math.round(100 * userStats.correct / userStats.total) : 0;
-  document.getElementById('stat-success').textContent = pct + "%";
-  document.getElementById('stat-favs').textContent = userFavs.length;
-}
-
-function wikimediaUrl(code){
-  const filename = IMAGE_OVERRIDES[code] || ("Belgian road sign " + code + ".svg");
-  return "https://commons.wikimedia.org/wiki/Special:FilePath/" + encodeURIComponent(filename);
-}
-
-function buildSignShape(p){
-  const cat = CATEGORIES[p.cat];
-  const label = p.num ? p.num : p.code;
-  const bigNum = p.num ? " big-num" : "";
-  let inner = "";
-  if(cat.shape === "triangle"){
-    inner = `<div class="shape-triangle"></div>
-      <div style="position:absolute;inset:0;clip-path:polygon(50% 4%, 4% 96%, 96% 96%);background:${cat.color};"></div>
-      <div style="position:absolute;inset:9px;clip-path:polygon(50% 4%, 4% 96%, 96% 96%);background:var(--paper);"></div>
-      <div class="sign-code on-white${bigNum}" style="position:absolute;">${label}</div>`;
-  } else if(cat.shape === "diamond"){
-    inner = `<div class="shape-diamond"></div><div class="sign-code on-amber${bigNum}" style="position:absolute;">${label}</div>`;
-  } else if(cat.shape === "circle-red"){
-    inner = `<div class="shape-circle-red"></div><div class="sign-code on-red${bigNum}" style="position:absolute;">${label}</div>`;
-  } else if(cat.shape === "circle-blue"){
-    inner = `<div class="shape-circle-blue"></div><div class="sign-code on-blue${bigNum}" style="position:absolute;">${label}</div>`;
-  } else {
-    const bg = cat.shape === "square-station" ? "var(--station)" : "var(--indication)";
-    inner = `<div class="shape-square" style="background:${bg};"></div><div class="sign-code on-blue${bigNum}" style="position:absolute;">${label}</div>`;
+function load(k,d){
+  try{
+    const x=JSON.parse(localStorage.getItem(k));
+    return x??d;
+  }catch(e){
+    return d;
   }
-  return inner;
 }
 
-function renderSign(container, p){
-  const url = wikimediaUrl(p.code);
-  container.innerHTML = `
-    <div class="sign-shape">${buildSignShape(p)}</div>
-    ${url ? `<div class="sign-photo"><img src="${url}" onload="this.parentElement.classList.add('loaded')" onerror="this.parentElement.style.display='none'"></div>` : ""}
-  `;
+function save(k,v){
+  try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}
 }
 
-let state = { categories: Object.keys(CATEGORIES), nbQuestions: 15, timerEnabled: false, panneaux: [], index: 0, score: 0, answered: false, options: [], errors: [], catStats: {}, reviewMode: false, timerInterval: null, timeLeft: 15 };
-
-function goToHome(){
-  clearInterval(state.timerInterval);
-  const views = ['quiz', 'repo', 'inf', 'rules'];
-  views.forEach(v => {
-    document.getElementById('view-' + v).classList.add('hidden');
-    document.getElementById('view-' + v).classList.remove('fade-in');
-  });
-  const home = document.getElementById('view-home');
-  home.classList.remove('hidden');
-  home.classList.add('fade-in');
-  document.getElementById('home-top-btn').style.display = 'none';
-  updateDashboardStats();
+function $(id){
+  return document.getElementById(id);
 }
 
-function switchMode(mode){
-  clearInterval(state.timerInterval);
-  document.getElementById('view-home').classList.add('hidden');
-  document.getElementById('view-home').classList.remove('fade-in');
-  
-  const views = ['quiz', 'repo', 'inf', 'rules'];
-  views.forEach(v => {
-    const el = document.getElementById('view-' + v);
-    if(v === mode){ el.classList.remove('hidden'); el.classList.add('fade-in'); } 
-    else { el.classList.add('hidden'); el.classList.remove('fade-in'); }
-  });
-  document.getElementById('home-top-btn').style.display = 'block';
-
-  if(mode === 'quiz') goConfig();
-  if(mode === 'repo') renderRepo();
-  if(mode === 'inf') renderInfractions();
-  if(mode === 'rules') renderRules();
+function esc(s){
+  return String(s??"").replace(/[&<>"']/g,m=>({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  }[m]));
 }
 
-function renderCatGrid(){
-  const grid = document.getElementById('cat-grid');
-  grid.innerHTML = '';
-  Object.keys(CATEGORIES).forEach(key => {
-    const cat = CATEGORIES[key];
-    const count = PANNEAUX.filter(p => p.cat === key).length;
-    const chip = document.createElement('div');
-    chip.className = 'cat-chip' + (state.categories.includes(key) ? '' : ' off');
-    chip.id = 'chip-' + key;
-    chip.onclick = () => toggleCat(key);
-    chip.innerHTML = `<div class="cat-dot" style="background:${cat.color};"></div>
-      <div><span class="lbl">${cat.label}</span><span class="cnt">${count} panneaux</span></div>`;
-    grid.appendChild(chip);
-  });
-  updateNbBounds(); updateFavLaunchBtn();
-}
-
-function toggleCat(key){
-  const i = state.categories.indexOf(key);
-  if(i >= 0){ if(state.categories.length === 1) return; state.categories.splice(i, 1); } 
-  else { state.categories.push(key); }
-  document.getElementById('chip-' + key).classList.toggle('off', !state.categories.includes(key));
-  updateNbBounds();
-}
-
-function availablePanneaux(){ return PANNEAUX.filter(p => state.categories.includes(p.cat)); }
-
-function updateNbBounds(){
-  const max = availablePanneaux().length;
-  const slider = document.getElementById('nb-questions');
-  const warn = document.getElementById('cfg-warn');
-  if(max < 2){
-    warn.textContent = "Pas assez de panneaux dans cette sélection."; warn.classList.remove('hidden'); slider.disabled = true; return;
+function shuffle(a){
+  a=[...a];
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
   }
-  warn.classList.add('hidden'); slider.disabled = false; slider.max = max; slider.min = Math.min(5, max);
-  if(parseInt(slider.value) > max) slider.value = max;
-  state.nbQuestions = parseInt(slider.value);
-  document.getElementById('nb-out').textContent = state.nbQuestions;
-}
-function onNbChange(){ state.nbQuestions = parseInt(document.getElementById('nb-questions').value); document.getElementById('nb-out').textContent = state.nbQuestions; }
-function updateFavLaunchBtn(){
-  const countEl = document.getElementById('fav-count'); const wrap = document.getElementById('quick-review-launch');
-  countEl.textContent = userFavs.length;
-  if(userFavs.length > 0) wrap.classList.remove('hidden'); else wrap.classList.add('hidden');
-}
-
-function shuffled(arr){
-  const a = arr.slice();
-  for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
   return a;
 }
 
-function startQuiz(){
-  const pool = availablePanneaux(); if(pool.length < 2) return;
-  state.timerEnabled = document.getElementById('timer-toggle').checked;
-  const selection = shuffled(pool).slice(0, state.nbQuestions);
-  beginSession(selection, false);
+function theme(){
+  document.body.classList.toggle("dark");
+  save("belgium_road_theme",document.body.classList.contains("dark")?"dark":"light");
 }
 
-function startFavReview(){
-  const favItems = PANNEAUX.filter(p => userFavs.includes(p.code)); if(favItems.length === 0) return;
-  state.timerEnabled = false; beginSession(favItems, true);
+function applyTheme(){
+  if(load("belgium_road_theme","light")==="dark"){
+    document.body.classList.add("dark");
+  }
 }
 
-function beginSession(panneaux, reviewMode){
-  state.panneaux = panneaux; state.index = 0; state.score = 0; state.answered = false; state.errors = []; state.catStats = {}; state.reviewMode = reviewMode;
-  document.getElementById('quiz-config').classList.add('hidden');
-  document.getElementById('quiz-summary').classList.add('hidden');
-  document.getElementById('quiz-running').classList.remove('hidden');
-  document.getElementById('quiz-running').classList.add('fade-in');
-  renderProgressTrack(); renderQuestion();
+function hideAll(){
+  ["home","quiz","repo","inf","rules"].forEach(v=>$(v).classList.add("hidden"));
 }
 
-function goConfig(){
-  clearInterval(state.timerInterval); document.getElementById('quiz-summary').classList.add('hidden'); document.getElementById('quiz-running').classList.add('hidden');
-  document.getElementById('quiz-config').classList.remove('hidden'); updateFavLaunchBtn();
-}
-function replaySame(){ beginSession(state.panneaux, state.reviewMode); }
-function reviewErrors(){ beginSession(state.errors.map(e => e.panneau), true); }
-
-function renderProgressTrack(){
-  const track = document.getElementById('progress-track'); track.innerHTML = '';
-  state.panneaux.forEach((_, i) => {
-    const d = document.createElement('div'); d.className = 'progress-dash' + (i < state.index ? ' done' : ''); track.appendChild(d);
-  });
+function mode(v){
+  clearInterval(state.int);
+  hideAll();
+  $(v).classList.remove("hidden");
+  $("homebtn").style.display="block";
+  if(v==="quiz")cfg();
+  if(v==="repo")repo();
+  if(v==="inf")infra();
+  if(v==="rules")rules();
 }
 
-function renderQuestion(){
-  clearInterval(state.timerInterval);
-  if(state.index >= state.panneaux.length){ showSummary(); return; }
-  renderProgressTrack();
-  document.getElementById('progress-label').textContent = (state.reviewMode ? "Révision — " : "Question ") + (state.index + 1) + " / " + state.panneaux.length;
-  document.getElementById('progress-score').textContent = "Score : " + state.score;
-
-  const actuel = state.panneaux[state.index];
-  renderSign(document.getElementById('sign-shell'), actuel);
-  document.getElementById('sign-caption').textContent = actuel.code + " — " + CATEGORIES[actuel.cat].label;
-
-  const isFav = userFavs.includes(actuel.code);
-  document.getElementById('fav-toggle-btn').textContent = isFav ? "⭐" : "☆";
-
-  const distractors = shuffled(PANNEAUX.filter(p => p.code !== actuel.code)).slice(0, 3);
-  const options = shuffled(distractors.concat([actuel]));
-  state.options = options; state.answered = false;
-
-  const list = document.getElementById('opt-list'); list.innerHTML = '';
-  options.forEach((opt, i) => {
-    const btn = document.createElement('div'); btn.className = 'opt'; btn.textContent = opt.nom; btn.onclick = () => selectOption(i); list.appendChild(btn);
-  });
-
-  document.getElementById('feedback-zone').innerHTML = ''; document.getElementById('next-wrap').innerHTML = '';
-
-  const timerBadge = document.getElementById('timer-badge');
-  if(state.timerEnabled){
-    timerBadge.classList.remove('hidden'); state.timeLeft = 15; timerBadge.textContent = "⏳ " + state.timeLeft + "s";
-    state.timerInterval = setInterval(() => {
-      state.timeLeft--; timerBadge.textContent = "⏳ " + state.timeLeft + "s";
-      if(state.timeLeft <= 0){ clearInterval(state.timerInterval); handleTimeout(); }
-    }, 1000);
-  } else { timerBadge.classList.add('hidden'); }
+function home(){
+  clearInterval(state.int);
+  hideAll();
+  $("home").classList.remove("hidden");
+  $("homebtn").style.display="none";
+  dash();
 }
 
-function toggleCurrentFav(){
-  const actuel = state.panneaux[state.index];
-  const idx = userFavs.indexOf(actuel.code);
-  if(idx >= 0) userFavs.splice(idx, 1); else userFavs.push(actuel.code);
-  localStorage.setItem('belgium_road_favs', JSON.stringify(userFavs));
-  document.getElementById('fav-toggle-btn').textContent = userFavs.includes(actuel.code) ? "⭐" : "☆";
-  updateFavLaunchBtn();
+function setN(v){
+  state.n=+v;
+  $("nq").textContent=v;
 }
 
-function handleTimeout(){
-  if(state.answered) return; state.answered = true;
-  const actuel = state.panneaux[state.index];
-  const stats = state.catStats[actuel.cat] || {bon:0, tot:0}; stats.tot += 1;
-  state.errors.push({panneau: actuel, reponse_donnee: "Temps écoulé"});
-  state.catStats[actuel.cat] = stats;
-
-  document.querySelectorAll('#opt-list .opt').forEach((el, idx) => {
-    el.classList.add('locked'); if(state.options[idx].code === actuel.code) el.classList.add('correct');
-  });
-  document.getElementById('feedback-zone').innerHTML = `<div class="feedback bad"><b>Temps écoulé ! C'était : ${actuel.nom}</b>${actuel.desc}</div>`;
-  const isLast = state.index + 1 >= state.panneaux.length;
-  document.getElementById('next-wrap').innerHTML = `<button class="btn btn-go" onclick="nextQuestion()">${isLast ? 'Voir le résumé' : 'Question suivante'}</button>`;
+function dash(){
+  const p=stats.total?Math.round(100*stats.correct/stats.total):0;
+  $("ss").textContent=stats.sessions;
+  $("sp").textContent=p+"%";
+  $("sf").textContent=favs.length;
+  $("st").textContent=stats.total;
+  $("prog").textContent=p+"%";
+  $("bar").style.width=p+"%";
+  $("progtxt").textContent=stats.total
+    ? `${stats.correct} bonne${stats.correct>1?"s":""} réponse${stats.correct>1?"s":""} sur ${stats.total}`
+    : "Aucune session pour le moment";
+  $("fc").textContent=favs.length;
+  $("quick").style.display=favs.length?"block":"none";
+  $("streak").textContent=load("belgium_road_streak",0);
 }
 
-function selectOption(i){
-  if(state.answered) return; clearInterval(state.timerInterval); state.answered = true;
-  const actuel = state.panneaux[state.index]; const chosenOpt = state.options[i]; const isCorrect = chosenOpt.code === actuel.code;
-  const stats = state.catStats[actuel.cat] || {bon:0, tot:0}; stats.tot += 1;
-  if(isCorrect){ state.score += 1; stats.bon += 1; } else { state.errors.push({panneau: actuel, reponse_donnee: chosenOpt.nom}); }
-  state.catStats[actuel.cat] = stats;
+function renderCats(){
+  const g=$("cats");
+  g.innerHTML="";
 
-  document.querySelectorAll('#opt-list .opt').forEach((el, idx) => {
-    el.classList.add('locked');
-    if(state.options[idx].code === actuel.code) el.classList.add('correct'); else if(idx === i) el.classList.add('wrong');
+  Object.keys(CATS).filter(k=>k!=="X").forEach(k=>{
+    const n=PANNEAUX.filter(p=>p.cat===k).length;
+    const x=document.createElement("div");
+
+    x.className="chip"+(state.cats.includes(k)?"":" off");
+
+    x.onclick=()=>{
+      if(state.cats.includes(k)){
+        if(state.cats.length===1)return;
+        state.cats=state.cats.filter(c=>c!==k);
+      }else{
+        state.cats.push(k);
+      }
+      renderCats();
+    };
+
+    x.innerHTML=`<span class="dot" style="background:${CATS[k].color}"></span><div><b>${CATS[k].label}</b><small>${n} panneaux</small></div>`;
+    g.appendChild(x);
   });
 
-  document.getElementById('feedback-zone').innerHTML = `<div class="feedback ${isCorrect ? '' : 'bad'}"><b>${isCorrect ? "Bonne réponse" : "Ce n'était pas ça — c'était : " + actuel.nom}</b>${actuel.desc}</div>`;
-  const isLast = state.index + 1 >= state.panneaux.length;
-  document.getElementById('next-wrap').innerHTML = `<button class="btn btn-go" onclick="nextQuestion()">${isLast ? 'Voir le résumé' : 'Question suivante'}</button>`;
-  document.getElementById('progress-score').textContent = "Score : " + state.score;
+  bounds();
 }
 
-function nextQuestion(){ state.index += 1; renderQuestion(); }
+function bounds(){
+  const max=PANNEAUX.filter(p=>state.cats.includes(p.cat)).length;
+  const r=$("range");
 
-function showSummary(){
-  clearInterval(state.timerInterval);
-  
-  // Enregistrement des stats globales
-  userStats.sessions += 1;
-  userStats.correct += state.score;
-  userStats.total += state.panneaux.length;
-  localStorage.setItem('belgium_road_stats', JSON.stringify(userStats));
+  r.max=Math.max(1,max);
 
-  document.getElementById('quiz-running').classList.add('hidden');
-  const sumWrap = document.getElementById('quiz-summary');
-  sumWrap.classList.remove('hidden'); sumWrap.classList.add('fade-in');
+  if(+r.value>max)r.value=max;
 
-  const total = state.panneaux.length;
-  const pct = total ? Math.round(100 * state.score / total) : 0;
-  document.getElementById('summary-title').textContent = state.reviewMode ? "Révision terminée" : "Session terminée";
-  document.getElementById('summary-pct').textContent = pct + "%";
-  document.getElementById('summary-frac').textContent = state.score + " / " + total;
+  state.n=Math.max(1,+r.value);
+  $("nq").textContent=state.n;
+  $("warn").classList.toggle("hidden",max>=2);
+}
 
-  let msg = "Encore un peu d'entraînement requis avant de te présenter.";
-  if(pct >= 90) msg = "Excellent — niveau validé pour l'examen officiel."; else if(pct >= 70) msg = "Bon score, continue à travailler les points faibles.";
-  document.getElementById('summary-msg').textContent = msg;
+function cfg(){
+  clearInterval(state.int);
+  $("run").classList.add("hidden");
+  $("sum").classList.add("hidden");
+  $("cfg").classList.remove("hidden");
+  renderCats();
+  dash();
+}
 
-  const barsWrap = document.getElementById('cat-bars'); barsWrap.innerHTML = '';
-  Object.keys(state.catStats).forEach(key => {
-    const cat = CATEGORIES[key]; const s = state.catStats[key]; const p = Math.round(100 * s.bon / s.tot);
-    const row = document.createElement('div'); row.className = 'cat-bar-row';
-    row.innerHTML = `<div class="cat-bar-top"><span>${cat.label}</span><span>${s.bon}/${s.tot}</span></div><div class="cat-bar-track"><div class="cat-bar-fill" style="width:0%; background:${cat.color};"></div></div>`;
-    barsWrap.appendChild(row);
-    setTimeout(() => { row.querySelector('.cat-bar-fill').style.width = p + '%'; }, 100);
+function start(){
+  const p=PANNEAUX.filter(x=>state.cats.includes(x.cat));
+
+  if(p.length<2)return;
+
+  state.timer=$("timer").checked;
+  state.pool=shuffle(p).slice(0,state.n);
+
+  begin(false);
+}
+
+function favReview(){
+  const fav=favs.map(c=>PANNEAUX.find(p=>p.code===c)).filter(Boolean);
+  const wrong=Object.keys(mistakes).map(c=>PANNEAUX.find(p=>p.code===c)).filter(Boolean);
+
+  const list=shuffle(
+    [...new Map([...fav,...wrong].map(p=>[p.code,p])).values()]
+  );
+
+  if(!list.length){
+    mode("quiz");
+    return;
+  }
+
+  state.pool=list;
+  state.timer=false;
+  begin(true);
+}
+
+function begin(review){
+  state.i=0;
+  state.score=0;
+  state.errors=[];
+  state.catStats={};
+  state.review=review;
+  state.answered=false;
+
+  $("cfg").classList.add("hidden");
+  $("sum").classList.add("hidden");
+  $("run").classList.remove("hidden");
+
+  question();
+}
+
+function replay(){
+  begin(state.review);
+}
+
+function dots(){
+  $("dots").innerHTML=state.pool
+    .map((_,i)=>`<i class="${i<state.i?"done":""}"></i>`)
+    .join("");
+}
+
+function sign(p){
+  const c=CATS[p.cat]||CATS.X;
+  const n=p.num||p.code;
+
+  return `<div class="shape ${c.shape}">
+    <span class="code ${p.num?"big":""} ${p.cat==="B"?"ambercode":""}">${esc(n)}</span>
+  </div>`;
+}
+
+function question(){
+  clearInterval(state.int);
+
+  if(state.i>=state.pool.length){
+    return summary();
+  }
+
+  dots();
+
+  const p=state.pool[state.i];
+
+  $("ql").textContent=
+    `${state.review?"Révision":"Question"} ${state.i+1} / ${state.pool.length}`;
+
+  $("qs").textContent="Score : "+state.score;
+
+  $("fav").textContent=favs.includes(p.code)?"⭐":"☆";
+
+  $("sign").innerHTML=sign(p);
+
+  $("cap").textContent=
+    `${p.code} — ${CATS[p.cat]?.label||"Panonceau"}`;
+
+  const d=shuffle(
+    PANNEAUX.filter(x=>x.code!==p.code)
+  ).slice(0,3);
+
+  state.opts=shuffle([...d,p]);
+  state.answered=false;
+
+  $("opts").innerHTML=state.opts
+    .map((o,i)=>`<button class="opt" onclick="answer(${i})">${esc(o.nom)}</button>`)
+    .join("");
+
+  $("feed").innerHTML="";
+  $("next").innerHTML="";
+
+  if(state.timer){
+    $("tm").classList.remove("hidden");
+    state.time=15;
+    $("tm").textContent="⏳ 15s";
+
+    state.int=setInterval(()=>{
+      state.time--;
+      $("tm").textContent="⏳ "+state.time+"s";
+
+      if(state.time<=0){
+        timeout();
+      }
+    },1000);
+  }else{
+    $("tm").classList.add("hidden");
+  }
+}
+
+function timeout(){
+  if(state.answered)return;
+  clearInterval(state.int);
+  finishAnswer(-1);
+}
+
+function answer(i){
+  if(state.answered)return;
+  clearInterval(state.int);
+  finishAnswer(i);
+}
+
+function finishAnswer(i){
+  state.answered=true;
+
+  const p=state.pool[state.i];
+  const chosen=i>=0?state.opts[i]:null;
+  const ok=chosen&&chosen.code===p.code;
+  const s=state.catStats[p.cat]||{bon:0,tot:0};
+
+  s.tot++;
+
+  if(ok){
+    state.score++;
+    s.bon++;
+  }else{
+    state.errors.push({
+      panneau:p,
+      reponse_donnee:chosen?chosen.nom:"Temps écoulé"
+    });
+
+    mistakes[p.code]=(mistakes[p.code]||0)+1;
+    save("belgium_road_mistakes",mistakes);
+  }
+
+  state.catStats[p.cat]=s;
+
+  document.querySelectorAll("#opts .opt").forEach((el,j)=>{
+    el.classList.add("lock");
+
+    if(state.opts[j].code===p.code){
+      el.classList.add("ok");
+    }else if(j===i){
+      el.classList.add("no");
+    }
   });
 
-  const errWrap = document.getElementById('err-panel-wrap');
-  if(state.errors.length){
-    let items = state.errors.map(e => `<div class="err-item"><div class="nm">[${e.panneau.code}] ${e.panneau.nom}</div><div class="you">Ta réponse : ${e.reponse_donnee}</div><div class="dsc">${e.panneau.desc}</div></div>`).join('');
-    errWrap.innerHTML = `<details class="err-panel"><summary>Revoir les ${state.errors.length} erreur(s)</summary>${items}</details>`;
-    document.getElementById('review-row').innerHTML = `<button class="btn btn-outline-danger" onclick="reviewErrors()">Refaire mes erreurs (${state.errors.length})</button>`;
-  } else { errWrap.innerHTML = ''; document.getElementById('review-row').innerHTML = ''; }
-  updateFavLaunchBtn();
+  $("feed").innerHTML=`
+    <div class="feedback ${ok?"":"bad"}">
+      <b>${
+        ok
+          ? "Bonne réponse"
+          : i<0
+            ? "Temps écoulé — c’était : "+esc(p.nom)
+            : "Ce n’était pas ça — c’était : "+esc(p.nom)
+      }</b>
+      ${esc(p.desc)}
+    </div>`;
+
+  $("next").innerHTML=
+    `<button class="primary" style="width:100%" onclick="next()">Question suivante</button>`;
+
+  $("qs").textContent="Score : "+state.score;
 }
 
-function renderRepo(){
-  const q = document.getElementById('repo-search').value.trim().toLowerCase();
-  let results = PANNEAUX;
-  if(q){ results = PANNEAUX.filter(p => p.nom.toLowerCase().includes(q) || p.code.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q) || CATEGORIES[p.cat].label.toLowerCase().includes(q) ); }
-  document.getElementById('repo-count').textContent = results.length + " panneau(x) — base de " + PANNEAUX.length + " au total.";
+function next(){
+  state.i++;
+  question();
+}
 
-  const list = document.getElementById('repo-list'); list.innerHTML = '';
-  Object.keys(CATEGORIES).forEach(key => {
-    const group = results.filter(p => p.cat === key); if(!group.length) return;
-    const cat = CATEGORIES[key]; const head = document.createElement('div'); head.className = 'repo-cat-head';
-    head.innerHTML = `<div class="dot" style="background:${cat.color};"></div><span>${cat.label}</span>`;
-    list.appendChild(head);
-    group.forEach(p => {
-      const row = document.createElement('div'); row.className = 'repo-item';
-      const thumb = document.createElement('div'); thumb.className = 'repo-thumb'; row.appendChild(thumb);
-      const txt = document.createElement('div'); txt.className = 'repo-txt';
-      txt.innerHTML = `<div class="code">${p.code}</div><div class="nm">${p.nom}</div><div class="dsc">${p.desc}</div>`;
-      row.appendChild(txt); list.appendChild(row); renderSign(thumb, p);
+function toggleFav(){
+  const p=state.pool[state.i];
+  const i=favs.indexOf(p.code);
+
+  if(i>=0){
+    favs.splice(i,1);
+  }else{
+    favs.push(p.code);
+  }
+
+  save("belgium_road_favs",favs);
+
+  $("fav").textContent=
+    favs.includes(p.code)?"⭐":"☆";
+
+  dash();
+}
+
+function summary(){
+  clearInterval(state.int);
+
+  const total=state.pool.length;
+  const p=total?Math.round(100*state.score/total):0;
+
+  if(!state.review){
+    stats.sessions++;
+    stats.correct+=state.score;
+    stats.total+=total;
+    save("belgium_road_stats",stats);
+  }
+
+  $("run").classList.add("hidden");
+  $("sum").classList.remove("hidden");
+
+  $("stitle").textContent=
+    state.review?"Révision terminée":"Session terminée";
+
+  $("pct").textContent=p+"%";
+  $("frac").textContent=`${state.score} / ${total}`;
+
+  $("smsg").textContent=
+    p>=90
+      ? "Excellent — très bon niveau."
+      : p>=70
+        ? "Bon score, continue à travailler tes points faibles."
+        : "Encore un peu d’entraînement requis.";
+
+  $("bars").innerHTML=Object.entries(state.catStats)
+    .map(([k,s])=>`
+      <div class="brow">
+        <div class="btop">
+          <span>${CATS[k].label}</span>
+          <span>${s.bon}/${s.tot}</span>
+        </div>
+        <div class="btrack">
+          <i style="width:${Math.round(100*s.bon/s.tot)}%;background:${CATS[k].color}"></i>
+        </div>
+      </div>
+    `)
+    .join("");
+
+  $("errs").innerHTML=state.errors.length
+    ? `<details class="errors">
+        <summary>Revoir les ${state.errors.length} erreur(s)</summary>
+        ${state.errors.map(e=>`
+          <div class="err">
+            <b>[${esc(e.panneau.code)}] ${esc(e.panneau.nom)}</b>
+            <div class="you">Ta réponse : ${esc(e.reponse_donnee)}</div>
+            <div>${esc(e.panneau.desc)}</div>
+          </div>
+        `).join("")}
+      </details>`
+    : "";
+
+  $("review").innerHTML=state.errors.length
+    ? `<button class="dangerbtn" style="width:100%" onclick="reviewErrors()">Refaire mes erreurs (${state.errors.length})</button>`
+    : "";
+
+  dash();
+}
+
+function reviewErrors(){
+  state.pool=state.errors.map(e=>e.panneau);
+  state.timer=false;
+  begin(true);
+}
+
+function repo(){
+  const q=$("rs").value.toLowerCase().trim();
+  const list=$("rl");
+
+  const arr=PANNEAUX.filter(p=>
+    !q ||
+    [p.code,p.nom,p.desc,CATS[p.cat]?.label]
+      .join(" ")
+      .toLowerCase()
+      .includes(q)
+  );
+
+  $("rc").textContent=
+    `${arr.length} panneau(x) — base de ${PANNEAUX.length}`;
+
+  list.innerHTML="";
+
+  Object.keys(CATS).forEach(k=>{
+    const a=arr.filter(p=>p.cat===k);
+
+    if(!a.length)return;
+
+    list.insertAdjacentHTML(
+      "beforeend",
+      `<div class="repohead">
+        <span class="dot" style="background:${CATS[k].color}"></span>
+        ${CATS[k].label}
+      </div>`
+    );
+
+    a.forEach(p=>{
+      list.insertAdjacentHTML(
+        "beforeend",
+        `<div class="repoitem">
+          <div class="thumb">${sign(p)}</div>
+          <div>
+            <div class="rcode">${esc(p.code)}</div>
+            <div class="rname">${esc(p.nom)}</div>
+            <div class="rdesc">${esc(p.desc)}</div>
+          </div>
+        </div>`
+      );
     });
   });
 }
 
-function getDegClass(deg){
-  if(deg.includes("1er")) return "deg-1";
-  if(deg.includes("2ème")) return "deg-2";
-  if(deg.includes("3ème")) return "deg-3";
-  if(deg.includes("4ème") || deg.includes("Tribunal") || deg.includes("Délit")) return "deg-4";
-  if(deg.includes("Vitesse")) return "deg-vit";
-  if(deg.includes("Alcool")) return "deg-alc";
-  return "deg-1";
-}
+function infra(){
+  const q=$("is").value.toLowerCase().trim();
 
-function renderInfractions(){
-  const q = document.getElementById('inf-search').value.trim().toLowerCase();
-  let results = INFRACTIONS;
-  if(q){
-    results = INFRACTIONS.filter(inf =>
-      inf.titre.toLowerCase().includes(q) || inf.degre.toLowerCase().includes(q) || inf.desc.toLowerCase().includes(q) || inf.amende.toLowerCase().includes(q)
-    );
-  }
+  const a=INFRACTIONS.filter(x=>
+    !q ||
+    [x.titre,x.degre,x.amende,x.desc]
+      .join(" ")
+      .toLowerCase()
+      .includes(q)
+  );
 
-  const list = document.getElementById('inf-list'); list.innerHTML = '';
-  results.forEach(inf => {
-    const card = document.createElement('div');
-    card.className = 'inf-card fade-in';
-    const degClass = getDegClass(inf.degre);
-    card.innerHTML = `
-      <div class="inf-card-header">
-        <span class="inf-degre ${degClass}">${inf.degre}</span>
-        <span class="inf-amende">${inf.amende}</span>
+  $("il").innerHTML=a.length
+    ? a.map(x=>`
+      <div class="inf">
+        <div class="infhead">
+          <span class="badge ${
+            x.degre.includes("2ème")
+              ?"d2"
+              :x.degre.includes("3ème")
+                ?"d3"
+                :x.degre.includes("4ème") ||
+                 x.degre.includes("Tribunal") ||
+                 x.degre.includes("Délit")
+                  ?"d4"
+                  :x.degre.includes("Vitesse")
+                    ?"dv"
+                    :x.degre.includes("Alcool")
+                      ?"da"
+                      :""
+          }">${esc(x.degre)}</span>
+          <b>${esc(x.amende)}</b>
+        </div>
+        <b>${esc(x.titre)}</b>
+        <p>${esc(x.desc)}</p>
       </div>
-      <div class="inf-title">${inf.titre}</div>
-      <div class="inf-desc">${inf.desc}</div>
-    `;
-    list.appendChild(card);
-  });
-  if(!results.length){ list.innerHTML = `<div style="text-align:center; color:var(--ink-soft); padding:20px;">Aucune infraction ne correspond à votre recherche.</div>`; }
+    `).join("")
+    : `<div class="empty">Aucune infraction ne correspond.</div>`;
 }
 
-function renderRules(){
-  const q = document.getElementById('rule-search').value.trim().toLowerCase();
-  let results = RULES;
-  if(q){
-    results = RULES.filter(r => r.titre.toLowerCase().includes(q) || r.desc.toLowerCase().includes(q));
+function rules(){
+  const q=$("rs2").value.toLowerCase().trim();
+
+  const a=RULES.filter(x=>
+    !q ||
+    [x.titre,x.desc]
+      .join(" ")
+      .toLowerCase()
+      .includes(q)
+  );
+
+  $("rul").innerHTML=a.length
+    ? a.map(x=>`
+      <div class="rule">
+        <b>${esc(x.titre)}</b>
+        <p>${x.desc}</p>
+      </div>
+    `).join("")
+    : `<div class="empty">Aucune règle ne correspond.</div>`;
+}
+
+$("range").addEventListener("input",e=>setN(e.target.value));
+
+document.addEventListener("keydown",e=>{
+  if($("run").classList.contains("hidden"))return;
+
+  if(e.key>="1"&&e.key<="4"&&!state.answered){
+    answer(+e.key-1);
   }
 
-  const list = document.getElementById('rule-list'); list.innerHTML = '';
-  results.forEach(r => {
-    const card = document.createElement('div');
-    card.className = 'rule-card fade-in';
-    card.innerHTML = `
-      <h3>${r.titre}</h3>
-      <p>${r.desc}</p>
-    `;
-    list.appendChild(card);
-  });
-  if(!results.length){ list.innerHTML = `<div style="text-align:center; color:var(--ink-soft); padding:20px;">Aucune règle ne correspond à votre recherche.</div>`; }
-}
+  if(e.key==="Enter"&&state.answered){
+    next();
+  }
 
-// Initialisation
-renderCatGrid();
-updateDashboardStats();
+  if(e.key.toLowerCase()==="f"){
+    toggleFav();
+  }
+
+  if(e.key==="Escape"){
+    home();
+  }
+});
+
+applyTheme();
+renderCats();
+dash();
 </script>
+
 </body>
 </html>
