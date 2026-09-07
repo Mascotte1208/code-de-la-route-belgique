@@ -1541,7 +1541,7 @@ input:focus-visible{
 <script>
 
 /* =========================================================
-   DONNEES — CONSERVEES DE TON CODE ORIGINAL
+   DONNEES
 ========================================================= */
 
 const PANNEAUX = [
@@ -1608,13 +1608,11 @@ const PANNEAUX = [
 ];
 
 const INFRACTIONS = [
-
   {"titre":"Oubli du clignotant","degre":"1er Degré","amende":"58 €","desc":"Omettre d'indiquer un changement de direction, un dépassement ou la sortie d'un rond-point."},
   {"titre":"Stationnement gênant simple","degre":"1er Degré","amende":"58 €","desc":"Stationner sur une zone non autorisée sans gêner gravement la circulation."},
   {"titre":"Circuler sur une bande de bus","degre":"1er Degré","amende":"58 €","desc":"Emprunter une bande réservée aux transports en commun sans autorisation."},
   {"titre":"Défaut de documents à bord","degre":"1er Degré","amende":"58 €","desc":"Ne pas présenter immédiatement son permis, son certificat d'immatriculation ou son assurance."},
   {"titre":"Utilisation abusive des feux de brouillard","degre":"1er Degré","amende":"58 €","desc":"Allumer les feux antibrouillard par temps clair ou pluie légère (éblouissement)."},
-
   {"titre":"Non-port de la ceinture de sécurité","degre":"2ème Degré","amende":"116 €","desc":"Obligatoire pour tous les occupants du véhicule (conducteur et passagers)."},
   {"titre":"Franchissement d'un feu orange","degre":"2ème Degré","amende":"116 €","desc":"S'engager au feu orange alors qu'il était possible de s'arrêter en sécurité."},
   {"titre":"Stationnement sur passage pour piétons","degre":"2ème Degré","amende":"116 €","desc":"Se garer sur un passage clouté, un trottoir protégeant les piétons ou une piste cyclable."},
@@ -1622,40 +1620,30 @@ const INFRACTIONS = [
   {"titre":"Dépassement par la droite","degre":"2ème Degré","amende":"116 €","desc":"Interdit sauf en cas de files ininterrompues de véhicules sur les autres bandes."},
   {"titre":"Non-respect de la distance de sécurité","degre":"2ème Degré","amende":"116 €","desc":"Ne pas laisser une distance suffisante par rapport au véhicule qui précède."},
   {"titre":"Ne pas céder le passage à un piéton engagé","degre":"2ème Degré","amende":"116 €","desc":"Refuser la priorité à un piéton s'engageant sur un passage clouté."},
-
   {"titre":"Usage du GSM au volant","degre":"3ème Degré","amende":"174 €","desc":"Tenir un téléphone ou un écran en main en conduisant. Entraîne un retrait immédiat de permis (15 jours)."},
   {"titre":"Franchir un feu rouge","degre":"3ème Degré","amende":"174 €","desc":"S'engager à un carrefour alors que le feu est rouge fixe ou clignotant."},
   {"titre":"Non-respect d'un panneau STOP (B5)","degre":"3ème Degré","amende":"174 €","desc":"Oublier de marquer un temps d'arrêt complet à la ligne d'effet."},
   {"titre":"Franchir une ligne blanche continue","degre":"3ème Degré","amende":"174 €","desc":"Rouler sur ou franchir une ligne continue délimitant les bandes."},
   {"titre":"Prendre un sens interdit (C3)","degre":"3ème Degré","amende":"174 €","desc":"S'engager dans une rue en sens interdit."},
   {"titre":"Franchir un passage à niveau fermé","degre":"3ème Degré","amende":"174 €","desc":"Passer outre des barrières en mouvement ou des feux rouges clignotants."},
-
   {"titre":"Faire demi-tour sur autoroute","degre":"4ème Degré","amende":"Tribunal","desc":"Comprend la marche arrière et le contresens sur autoroute. Déchéance du permis obligatoire."},
   {"titre":"Refus d'obtempérer","degre":"4ème Degré","amende":"Tribunal","desc":"Ignorer les ordres d'un agent de police qualifié."},
   {"titre":"Courses de vitesse illégales (Street racing)","degre":"4ème Degré","amende":"Tribunal","desc":"Organiser ou participer à des concours de vitesse sur la voie publique."},
   {"titre":"Délit de fuite","degre":"Délit pénal","amende":"Tribunal","desc":"Quitter les lieux d'un accident pour échapper à ses responsabilités."},
-
   {"titre":"Excès de vitesse (Agglomération / Zone 30)","degre":"Vitesse","amende":"Dès 53 € + 11 €/km/h","desc":"Tarif de base de 53 €, puis 11 € par km/h excédentaire en zone sensible."},
   {"titre":"Excès de vitesse (Hors agglomération / Autoroute)","degre":"Vitesse","amende":"Dès 53 € + 6 €/km/h","desc":"Tarif de base de 53 €, puis 6 € par km/h excédentaire."},
   {"titre":"Alcoolémie (0,5 g/L à 0,8 g/L)","degre":"Alcool","amende":"179 € + Retrait 3h","desc":"Taux prohibé léger. Retrait immédiat du permis pour 3 heures minimum."},
   {"titre":"Alcoolémie (Supérieure à 0,8 g/L)","degre":"Alcool / Tribunal","amende":"De 420 € à 1200 €","desc":"Retrait immédiat de permis (15 jours) et convocation obligatoire au tribunal de police."}
-
 ];
 
 const RULES = [
-
   {"titre":"La Priorité à Droite (Règle générale)","desc":"À toute intersection, vous devez céder le passage à tout conducteur venant de droite, sauf si un signal (panneau, feu, agent) ou une règle spécifique (carrossable vs chemin de terre) en dispose autrement."},
   {"titre":"Les Ronds-Points et Giratoires","desc":"Sauf signalisation contraire (panneau B1 'Cédez le passage' ou B5 'Stop' à l'entrée), la règle de la priorité à droite s'applique DANS le rond-point. Cependant, dans 99% des giratoires modernes en Belgique, le panneau 'Cédez le passage' est placé pour ceux qui s'engagent."},
   {"titre":"La Priorité des Trams","desc":"Le tram a TOUJOURS la priorité, même venant de gauche, sauf s'il sort d'un dépôt ou si des feux tricolores réglant la circulation s'opposent à son passage. Ne coupez jamais la trajectoire d'un tram."},
   {"titre":"Vitesses Maximales en Belgique","desc":"• Agglomération : 50 km/h partout (sauf Région de Bruxelles-Capitale où la règle générale est 30 km/h).<br>• Hors agglomération (Flandre / Wallonie) : 90 km/h.<br>• Autoroutes : 120 km/h (min. 70 km/h)."},
   {"titre":"Arrêt vs Stationnement","desc":"• **L'arrêt** : Immobilisation de courte durée pour embarquer/débarquer des personnes ou charger/décharger des marchandises (le conducteur reste à bord ou à proximité).<br>• **Le stationnement** : Immobilisation qui dépasse le temps nécessaire à l'arrêt."},
   {"titre":"Le couloir de secours (Corridor d'urgence)","desc":"En cas d'embouteillage sur autoroute ou route à 2 bandes ou plus, les véhicules doivent obligatoirement se serrer : ceux de gauche vers la gauche, ceux de droite vers la droite, pour laisser un passage central libre aux services de secours."}
-
 ];
-
-/* =========================================================
-   CATEGORIES
-========================================================= */
 
 const CATEGORIES = {
   A:{label:"Danger",color:"var(--red)"},
@@ -1668,7 +1656,7 @@ const CATEGORIES = {
 };
 
 /* =========================================================
-   STOCKAGE PERSISTANT (window.storage — pas de localStorage)
+   STOCKAGE PERSISTANT
 ========================================================= */
 
 const DEFAULT_APP_DATA = {
@@ -1682,44 +1670,26 @@ const DEFAULT_APP_DATA = {
 let appData = JSON.parse(JSON.stringify(DEFAULT_APP_DATA));
 
 async function loadAppData(){
-
   try{
-
     const result = await window.storage.get("app-state", false);
-
     if(result && typeof result.value==="string"){
-
       const parsed = JSON.parse(result.value);
-
       appData = {
         ...DEFAULT_APP_DATA,
         ...parsed,
         stats:{...DEFAULT_APP_DATA.stats, ...(parsed.stats||{})}
       };
-
     }
-
-  }catch(e){
-    /* Pas encore de données enregistrées : on garde les valeurs par défaut. */
-  }
+  }catch(e){}
 }
 
 async function saveAppData(){
-
   try{
-
-    await window.storage.set(
-      "app-state",
-      JSON.stringify(appData),
-      false
-    );
-
+    await window.storage.set("app-state", JSON.stringify(appData), false);
   }catch(e){
     console.error("Échec de la sauvegarde :", e);
   }
 }
-
-/* Raccourcis pour garder le reste du code lisible */
 
 function favorites(){ return appData.favorites; }
 function stats(){ return appData.stats; }
@@ -1745,10 +1715,6 @@ function $(id){
   return document.getElementById(id);
 }
 
-/* =========================================================
-   SECURITE HTML
-========================================================= */
-
 function escapeHTML(value){
   return String(value ?? "").replace(
     /[&<>"']/g,
@@ -1762,60 +1728,37 @@ function escapeHTML(value){
   );
 }
 
-/* =========================================================
-   ANIMATION DE COMPTAGE (fluidité des chiffres)
-========================================================= */
-
 function animateCount(element,from,to,suffix,duration=550){
-
   if(from===to){
     element.textContent=to+suffix;
     return;
   }
-
   const start=performance.now();
-
   function tick(now){
-
     const progress=Math.min(1,(now-start)/duration);
     const eased=1-Math.pow(1-progress,3);
     const value=Math.round(from+(to-from)*eased);
-
     element.textContent=value+suffix;
-
     if(progress<1){
       requestAnimationFrame(tick);
     }
-
   }
-
   requestAnimationFrame(tick);
 }
 
-/* =========================================================
-   UTILITAIRES
-========================================================= */
-
 function shuffle(array){
   const copy=array.slice();
-
   for(let i=copy.length-1;i>0;i--){
     const j=Math.floor(Math.random()*(i+1));
     [copy[i],copy[j]]=[copy[j],copy[i]];
   }
-
   return copy;
 }
 
 function updateHomeStats(){
-
   const total=stats().total;
   const correct=stats().correct;
-
-  const percentage=
-    total>0
-      ? Math.round(100*correct/total)
-      : 0;
+  const percentage=total>0?Math.round(100*correct/total):0;
 
   const prevSessions=Number($("statSessions").textContent)||0;
   const prevQuestions=Number($("statQuestions").textContent)||0;
@@ -1849,328 +1792,170 @@ function updateHomeStats(){
       : "none";
 }
 
-/* =========================================================
-   THEME
-========================================================= */
-
 async function toggleTheme(){
-
   document.body.classList.toggle("dark");
-
-  appData.theme=
-    document.body.classList.contains("dark")
-      ? "dark"
-      : "light";
-
-  $("themeButton").textContent=
-    appData.theme==="dark" ? "🌙" : "☀️";
-
+  appData.theme=document.body.classList.contains("dark")?"dark":"light";
+  $("themeButton").textContent=appData.theme==="dark"?"🌙":"☀️";
   await saveAppData();
 }
 
 function applyTheme(){
-
   if(appData.theme==="dark"){
     document.body.classList.add("dark");
     $("themeButton").textContent="🌙";
   }
 }
 
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
 function hideViews(){
-
-  [
-    "home",
-    "quiz",
-    "repo",
-    "infractions",
-    "rules"
-  ].forEach(id=>{
+  ["home","quiz","repo","infractions","rules"].forEach(id=>{
     $(id).classList.add("hidden");
   });
-
 }
 
 function goHome(){
-
   clearInterval(state.timerId);
-
   hideViews();
-
   $("home").classList.remove("hidden");
-
   $("homeButton").style.display="none";
-
   updateHomeStats();
 }
 
 function showQuiz(){
-
   clearInterval(state.timerId);
-
   hideViews();
-
   $("quiz").classList.remove("hidden");
-
   $("homeButton").style.display="block";
-
   configureQuiz();
 }
 
 function showRepo(){
-
   hideViews();
-
   $("repo").classList.remove("hidden");
-
   $("homeButton").style.display="block";
-
   renderRepository();
 }
 
 function showInfractions(){
-
   hideViews();
-
   $("infractions").classList.remove("hidden");
-
   $("homeButton").style.display="block";
-
   renderInfractions();
 }
 
 function showRules(){
-
   hideViews();
-
   $("rules").classList.remove("hidden");
-
   $("homeButton").style.display="block";
-
   renderRules();
 }
 
-/* =========================================================
-   CONFIGURATION QUIZ
-========================================================= */
-
 function renderCategorySelector(){
-
   const grid=$("categoryGrid");
-
   grid.innerHTML="";
 
   Object.keys(CATEGORIES)
     .filter(key=>key!=="X")
     .forEach(key=>{
-
       const category=CATEGORIES[key];
-
-      const count=
-        PANNEAUX.filter(p=>p.cat===key).length;
-
+      const count=PANNEAUX.filter(p=>p.cat===key).length;
       const button=document.createElement("button");
-
       button.type="button";
-
-      button.className=
-        "cat-chip"+
-        (
-          state.categories.includes(key)
-            ? ""
-            : " off"
-        );
-
+      button.className="cat-chip"+(state.categories.includes(key)?"":" off");
       button.innerHTML=`
-        <span
-          class="dot"
-          style="background:${category.color}"
-        ></span>
-
+        <span class="dot" style="background:${category.color}"></span>
         <span>
           <b>${category.label}</b>
           <small>${count} panneaux</small>
         </span>
       `;
-
       button.onclick=()=>{
-
         if(state.categories.includes(key)){
-
-          if(state.categories.length===1){
-            return;
-          }
-
-          state.categories=
-            state.categories.filter(c=>c!==key);
-
+          if(state.categories.length===1) return;
+          state.categories=state.categories.filter(c=>c!==key);
         }else{
-
           state.categories.push(key);
-
         }
-
         renderCategorySelector();
       };
-
       grid.appendChild(button);
-
     });
 
   updateQuestionBounds();
 }
 
 function updateQuestionBounds(){
-
-  const available=
-    PANNEAUX.filter(
-      p=>state.categories.includes(p.cat)
-    ).length;
-
+  const available=PANNEAUX.filter(p=>state.categories.includes(p.cat)).length;
   const slider=$("questionCount");
-
   slider.max=Math.max(1,available);
-
   if(Number(slider.value)>available){
     slider.value=available;
   }
-
-  state.questionCount=
-    Math.max(1,Number(slider.value));
-
-  $("questionCountValue").textContent=
-    state.questionCount;
-
-  $("quizWarning").classList.toggle(
-    "hidden",
-    available>=2
-  );
+  state.questionCount=Math.max(1,Number(slider.value));
+  $("questionCountValue").textContent=state.questionCount;
+  $("quizWarning").classList.toggle("hidden",available>=2);
 }
 
 function configureQuiz(){
-
   clearInterval(state.timerId);
-
   $("quizRunning").classList.add("hidden");
   $("quizSummary").classList.add("hidden");
   $("quizConfig").classList.remove("hidden");
-
   renderCategorySelector();
   updateHomeStats();
 }
 
-/* =========================================================
-   DEMARRAGE
-========================================================= */
-
 function startQuiz(){
-
-  const pool=
-    PANNEAUX.filter(
-      p=>state.categories.includes(p.cat)
-    );
-
-  if(pool.length<2){
-    return;
-  }
-
-  state.timer=
-    $("timerEnabled").checked;
-
-  state.questions=
-    shuffle(pool).slice(0,state.questionCount);
-
+  const pool=PANNEAUX.filter(p=>state.categories.includes(p.cat));
+  if(pool.length<2) return;
+  state.timer=$("timerEnabled").checked;
+  state.questions=shuffle(pool).slice(0,state.questionCount);
   beginSession(false);
 }
 
 function beginSession(review){
-
   clearInterval(state.timerId);
-
   state.index=0;
   state.score=0;
   state.errors=[];
   state.categoryStats={};
   state.review=review;
   state.answered=false;
-
   $("quizConfig").classList.add("hidden");
   $("quizSummary").classList.add("hidden");
   $("quizRunning").classList.remove("hidden");
-
   renderQuestion();
 }
 
-/* =========================================================
-   REVISION
-========================================================= */
-
 function startReview(){
-
   const reviewMap=new Map();
-
   favorites().forEach(code=>{
-
-    const panel=
-      PANNEAUX.find(
-        p=>p.code===code
-      );
-
-    if(panel){
-      reviewMap.set(panel.code,panel);
-    }
-
+    const panel=PANNEAUX.find(p=>p.code===code);
+    if(panel) reviewMap.set(panel.code,panel);
   });
-
   Object.keys(mistakes()).forEach(code=>{
-
-    const panel=
-      PANNEAUX.find(
-        p=>p.code===code
-      );
-
-    if(panel){
-      reviewMap.set(panel.code,panel);
-    }
-
+    const panel=PANNEAUX.find(p=>p.code===code);
+    if(panel) reviewMap.set(panel.code,panel);
   });
-
-  const list=
-    shuffle(Array.from(reviewMap.values()));
-
+  const list=shuffle(Array.from(reviewMap.values()));
   if(!list.length){
-
     showQuiz();
-
     return;
   }
-
   state.questions=list;
   state.timer=false;
-
   beginSession(true);
 }
 
 function reviewErrors(){
-
-  state.questions=
-    state.errors.map(
-      error=>error.panel
-    );
-
+  state.questions=state.errors.map(error=>error.panel);
   state.timer=false;
-
   beginSession(true);
 }
 
 /* =========================================================
-   PANNEAUX SVG — formes et couleurs officielles belges
+   PANNEAUX SVG — Graphismes officiels détaillés
 ========================================================= */
 
-/* Gabarit triangle de danger (série A) : fond blanc, liseré rouge, pointe en haut */
 function dangerTriangle(inner){
   return `
     <polygon points="90,10 174,158 6,158" fill="#fff" stroke="#c81e2c" stroke-width="11" stroke-linejoin="round"/>
@@ -2178,7 +1963,6 @@ function dangerTriangle(inner){
   `;
 }
 
-/* Gabarit disque d'interdiction (série C) : fond blanc, liseré rouge épais */
 function prohibCircle(inner){
   return `
     <circle cx="90" cy="90" r="78" fill="#fff" stroke="#c81e2c" stroke-width="13"/>
@@ -2186,7 +1970,6 @@ function prohibCircle(inner){
   `;
 }
 
-/* Gabarit disque d'obligation (série D) : fond bleu plein */
 function obligCircle(inner){
   return `
     <circle cx="90" cy="90" r="78" fill="#1c5fa8"/>
@@ -2195,346 +1978,292 @@ function obligCircle(inner){
 }
 
 function makeSignSVG(panel,small=false){
-
   const code=escapeHTML(panel.code);
   const num=escapeHTML(panel.num||"");
   const stroke=small?6:8;
   const ink="#171a1f";
-
   let content="";
 
-  /* ================= A — DANGERS (triangle rouge/blanc) ================= */
-
   if(panel.cat==="A"){
-
     if(panel.code==="A1a"){
       content=dangerTriangle(`
-        <path d="M112 68 C82 78 66 100 74 128" fill="none" stroke="${ink}" stroke-width="${stroke}" stroke-linecap="round"/>
+        <path d="M115 62 C80 72 62 98 70 132" fill="none" stroke="${ink}" stroke-width="${stroke*1.2}" stroke-linecap="round"/>
+        <path d="M98 52 L115 62 L98 76" fill="none" stroke="${ink}" stroke-width="${stroke*1.2}" stroke-linecap="round" stroke-linejoin="round"/>
       `);
     }else if(panel.code==="A1b"){
       content=dangerTriangle(`
-        <path d="M68 68 C98 78 114 100 106 128" fill="none" stroke="${ink}" stroke-width="${stroke}" stroke-linecap="round"/>
+        <path d="M65 62 C100 72 118 98 110 132" fill="none" stroke="${ink}" stroke-width="${stroke*1.2}" stroke-linecap="round"/>
+        <path d="M82 52 L65 62 L82 76" fill="none" stroke="${ink}" stroke-width="${stroke*1.2}" stroke-linecap="round" stroke-linejoin="round"/>
       `);
     }else if(panel.code==="A1c"){
       content=dangerTriangle(`
-        <path d="M118 66 C95 72 100 90 80 96 C60 102 65 120 46 128" fill="none" stroke="${ink}" stroke-width="${stroke}" stroke-linecap="round"/>
+        <path d="M120 54 C95 62 102 82 80 94 C58 106 65 124 42 134" fill="none" stroke="${ink}" stroke-width="${stroke*1.1}" stroke-linecap="round"/>
       `);
     }else if(panel.code==="A3"){
       content=dangerTriangle(`
-        <path d="M52 72 L128 72 L52 128 Z" fill="none" stroke="${ink}" stroke-width="${stroke}"/>
-        <text x="76" y="118" font-size="${small?16:26}" font-weight="900" fill="${ink}">%</text>
+        <path d="M38 68 L142 68 L142 132 Z" fill="none" stroke="${ink}" stroke-width="${stroke}"/>
+        <text x="82" y="115" font-size="${small?15:24}" font-weight="900" fill="${ink}" font-family="Arial">10%</text>
       `);
     }else if(panel.code==="A5"){
       content=dangerTriangle(`
-        <path d="M128 128 L52 128 L128 72 Z" fill="none" stroke="${ink}" stroke-width="${stroke}"/>
-        <text x="84" y="116" font-size="${small?16:26}" font-weight="900" fill="${ink}">%</text>
+        <path d="M142 132 L38 132 L142 68 Z" fill="none" stroke="${ink}" stroke-width="${stroke}"/>
+        <text x="82" y="122" font-size="${small?15:24}" font-weight="900" fill="${ink}" font-family="Arial">10%</text>
       `);
     }else if(panel.code==="A7a"){
       content=dangerTriangle(`
-        <path d="M40 76 L72 76 L100 128 L132 128 M132 76 L100 76 L72 128 L40 128" fill="none" stroke="${ink}" stroke-width="${stroke*0.85}" stroke-linejoin="round"/>
+        <path d="M36 68 L70 68 L98 132 L128 132" fill="none" stroke="${ink}" stroke-width="${stroke}" stroke-linejoin="round"/>
+        <path d="M144 68 L110 68 L82 132 L52 132" fill="none" stroke="${ink}" stroke-width="${stroke}" stroke-linejoin="round"/>
       `);
     }else if(panel.code==="A9"){
       content=dangerTriangle(`
-        <path d="M40 128 V100 L70 78 V128 M120 128 V100 L90 78 V128" fill="none" stroke="${ink}" stroke-width="${stroke*0.85}" stroke-linejoin="round"/>
-        <line x1="40" y1="128" x2="120" y2="128" stroke="${ink}" stroke-width="${stroke*0.85}"/>
+        <path d="M36 132 V94 L66 74 V132 M144 132 V94 L114 74 V132" fill="none" stroke="${ink}" stroke-width="${stroke*0.9}" stroke-linejoin="round"/>
+        <line x1="30" y1="132" x2="150" y2="132" stroke="${ink}" stroke-width="${stroke}"/>
       `);
     }else if(panel.code==="A13"){
       content=dangerTriangle(`
-        <path d="M46 122 L70 84 L94 122 L118 84" fill="none" stroke="${ink}" stroke-width="${stroke}" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M42 124 Q60 80 90 124 T138 124" fill="none" stroke="${ink}" stroke-width="${stroke*1.2}" stroke-linecap="round"/>
       `);
     }else if(panel.code==="A15"){
       content=dangerTriangle(`
-        <path d="M42 100 Q58 84 74 100 T106 100 T138 100" fill="none" stroke="${ink}" stroke-width="${stroke*0.85}" stroke-linecap="round"/>
-        <path d="M42 122 Q58 106 74 122 T106 122 T138 122" fill="none" stroke="${ink}" stroke-width="${stroke*0.85}" stroke-linecap="round"/>
+        <path d="M38 100 Q58 82 78 100 T118 100 T142 100" fill="none" stroke="${ink}" stroke-width="${stroke}" stroke-linecap="round"/>
+        <path d="M38 124 Q58 106 78 124 T118 124 T142 124" fill="none" stroke="${ink}" stroke-width="${stroke}" stroke-linecap="round"/>
       `);
     }else if(panel.code==="A21"){
       content=dangerTriangle(`
-        <circle cx="70" cy="78" r="7" fill="${ink}"/>
-        <path d="M70 88 L70 108 L58 128 M70 100 L86 96 L96 78 M70 100 L58 116" fill="none" stroke="${ink}" stroke-width="${stroke*0.8}" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M96 128 L128 128 M96 118 L128 118 M96 108 L128 108" stroke="${ink}" stroke-width="${stroke*0.55}"/>
+        <circle cx="72" cy="72" r="7" fill="${ink}"/>
+        <path d="M72 82 L72 106 L58 132 M72 96 L94 90 L104 70 M72 96 L58 114" fill="none" stroke="${ink}" stroke-width="${stroke*0.9}" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M102 132 L138 132 M102 120 L138 120 M102 108 L138 108" stroke="${ink}" stroke-width="${stroke*0.7}"/>
       `);
     }else if(panel.code==="A23"){
       content=dangerTriangle(`
-        <circle cx="66" cy="78" r="7" fill="${ink}"/>
-        <path d="M66 88 L66 112 L54 128 M66 100 L78 108 M66 100 L54 108" fill="none" stroke="${ink}" stroke-width="${stroke*0.75}" stroke-linecap="round"/>
-        <circle cx="106" cy="88" r="6" fill="${ink}"/>
-        <path d="M106 96 L106 116 L96 128 M106 106 L116 112 M106 106 L96 112" fill="none" stroke="${ink}" stroke-width="${stroke*0.7}" stroke-linecap="round"/>
+        <circle cx="64" cy="74" r="6" fill="${ink}"/>
+        <path d="M64 83 L64 110 L52 132 M64 96 L76 102 M64 96 L52 102" fill="none" stroke="${ink}" stroke-width="${stroke*0.8}" stroke-linecap="round"/>
+        <circle cx="112" cy="82" r="6" fill="${ink}"/>
+        <path d="M112 91 L112 116 L100 132 M112 102 L124 108 M112 102 L100 108" fill="none" stroke="${ink}" stroke-width="${stroke*0.8}" stroke-linecap="round"/>
       `);
     }else if(panel.code==="A25"){
       content=dangerTriangle(`
-        <circle cx="60" cy="120" r="15" fill="none" stroke="${ink}" stroke-width="${stroke*0.8}"/>
-        <circle cx="112" cy="120" r="15" fill="none" stroke="${ink}" stroke-width="${stroke*0.8}"/>
-        <path d="M60 120 L82 84 L100 120 M82 84 L96 84 M112 120 L96 84" fill="none" stroke="${ink}" stroke-width="${stroke*0.75}" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="62" cy="122" r="13" fill="none" stroke="${ink}" stroke-width="${stroke*0.8}"/>
+        <circle cx="118" cy="122" r="13" fill="none" stroke="${ink}" stroke-width="${stroke*0.8}"/>
+        <path d="M62 122 L86 82 L106 122 M86 82 L98 82 L118 122 L98 82" fill="none" stroke="${ink}" stroke-width="${stroke*0.8}" stroke-linecap="round" stroke-linejoin="round"/>
       `);
     }else if(panel.code==="A31"){
       content=dangerTriangle(`
-        <path d="M70 128 L82 92" stroke="${ink}" stroke-width="${stroke*0.8}" stroke-linecap="round"/>
-        <path d="M82 92 L108 70 L114 78 L92 98" fill="${ink}"/>
-        <circle cx="72" cy="76" r="7" fill="${ink}"/>
+        <path d="M65 132 L78 90" stroke="${ink}" stroke-width="${stroke}" stroke-linecap="round"/>
+        <path d="M78 90 L112 66 L120 74 L90 102" fill="${ink}"/>
+        <circle cx="67" cy="72" r="6" fill="${ink}"/>
       `);
     }else if(panel.code==="A33"){
       content=dangerTriangle(`
-        <rect x="72" y="66" width="36" height="66" rx="6" fill="none" stroke="${ink}" stroke-width="${stroke*0.7}"/>
-        <circle cx="90" cy="82" r="7" fill="#c81e2c"/>
-        <circle cx="90" cy="99" r="7" fill="#e8a400"/>
-        <circle cx="90" cy="116" r="7" fill="#1e7a3c"/>
+        <rect x="70" y="62" width="40" height="70" rx="6" fill="${ink}"/>
+        <circle cx="90" cy="80" r="8" fill="#c81e2c"/>
+        <circle cx="90" cy="97" r="8" fill="#e8a400"/>
+        <circle cx="90" cy="114" r="8" fill="#1e7a3c"/>
       `);
     }else{
-      /* A51 danger indéterminé */
       content=dangerTriangle(`
-        <rect x="85" y="72" width="10" height="42" rx="4" fill="${ink}"/>
+        <rect x="84" y="68" width="12" height="42" rx="4" fill="${ink}"/>
         <circle cx="90" cy="126" r="6" fill="${ink}"/>
       `);
     }
-
-  /* ================= B — PRIORITE ================= */
-
   }else if(panel.cat==="B"){
-
     if(panel.code==="B1"){
-      /* Cédez le passage : triangle pointe en bas, blanc, liseré rouge, sans pictogramme */
-      content=`
-        <polygon points="8,30 172,30 90,164" fill="#fff" stroke="#c81e2c" stroke-width="11" stroke-linejoin="round"/>
-      `;
+      content=`<polygon points="10,28 170,28 90,162" fill="#fff" stroke="#c81e2c" stroke-width="12" stroke-linejoin="round"/>`;
     }else if(panel.code==="B5"){
-      /* STOP : octogone rouge plein, texte blanc */
       content=`
-        <polygon points="65,14 115,14 166,65 166,115 115,166 65,166 14,115 14,65" fill="#c81e2c" stroke="#7a0f18" stroke-width="3" stroke-linejoin="round"/>
-        <text x="90" y="103" text-anchor="middle" font-size="${small?15:30}" font-weight="900" fill="#fff" font-family="Arial,sans-serif">STOP</text>
+        <polygon points="62,12 118,12 168,62 168,118 118,168 62,168 12,118 12,62" fill="#c81e2c" stroke="#7a0f18" stroke-width="3" stroke-linejoin="round"/>
+        <text x="90" y="104" text-anchor="middle" font-size="${small?16:31}" font-weight="900" fill="#fff" font-family="Arial,sans-serif">STOP</text>
       `;
     }else if(panel.code==="B9"){
-      /* Voie prioritaire : losange jaune plein, liseré fin blanc/noir */
-      content=`
-        <polygon points="90,14 166,90 90,166 14,90" fill="#e8a400" stroke="${ink}" stroke-width="2"/>
-      `;
+      content=`<polygon points="90,12 168,90 90,168 12,90" fill="#e8a400" stroke="${ink}" stroke-width="2.5"/>`;
     }else if(panel.code==="B11"){
-      /* Fin de voie prioritaire : même losange, barré en gris/noir */
       content=`
-        <polygon points="90,14 166,90 90,166 14,90" fill="#e8a400" stroke="${ink}" stroke-width="2"/>
-        <line x1="34" y1="146" x2="146" y2="34" stroke="#4a4d52" stroke-width="${stroke*1.1}"/>
+        <polygon points="90,12 168,90 90,168 12,90" fill="#e8a400" stroke="${ink}" stroke-width="2.5"/>
+        <line x1="32" y1="148" x2="148" y2="32" stroke="#4a4d52" stroke-width="10"/>
       `;
     }else if(panel.code==="B15"){
-      /* Priorité à la prochaine intersection : losange blanc, route prioritaire en trait épais */
       content=`
-        <polygon points="90,14 166,90 90,166 14,90" fill="#fff" stroke="${ink}" stroke-width="3"/>
-        <line x1="90" y1="30" x2="90" y2="150" stroke="${ink}" stroke-width="${stroke}"/>
-        <line x1="34" y1="90" x2="146" y2="90" stroke="${ink}" stroke-width="${stroke*0.55}"/>
+        <polygon points="90,12 168,90 90,168 12,90" fill="#fff" stroke="${ink}" stroke-width="3"/>
+        <line x1="90" y1="28" x2="90" y2="152" stroke="${ink}" stroke-width="${stroke*1.2}"/>
+        <line x1="28" y1="90" x2="152" y2="90" stroke="${ink}" stroke-width="${stroke*0.6}"/>
       `;
     }else{
-      /* B17 priorité à droite */
       content=`
-        <polygon points="90,14 166,90 90,166 14,90" fill="#fff" stroke="${ink}" stroke-width="3"/>
-        <line x1="90" y1="30" x2="90" y2="150" stroke="${ink}" stroke-width="${stroke*0.55}"/>
-        <line x1="34" y1="90" x2="146" y2="90" stroke="${ink}" stroke-width="${stroke*0.55}"/>
-        <path d="M90 90 L124 76 L124 90 L138 90 L124 104 L124 90 Z" fill="#c81e2c"/>
+        <polygon points="90,12 168,90 90,168 12,90" fill="#fff" stroke="${ink}" stroke-width="3"/>
+        <line x1="90" y1="28" x2="90" y2="152" stroke="${ink}" stroke-width="${stroke*0.6}"/>
+        <line x1="28" y1="90" x2="152" y2="90" stroke="${ink}" stroke-width="${stroke*0.6}"/>
+        <path d="M90 90 L126 74 L126 90 L142 90 L126 106 L126 90 Z" fill="#c81e2c"/>
       `;
     }
-
-  /* ================= C — INTERDICTIONS ================= */
-
   }else if(panel.cat==="C"){
-
     if(panel.code==="C1"){
       content=prohibCircle("");
     }else if(panel.code==="C3"){
-      /* Sens interdit : disque rouge plein, barre blanche horizontale */
       content=`
         <circle cx="90" cy="90" r="78" fill="#c81e2c"/>
-        <rect x="34" y="76" width="112" height="28" rx="3" fill="#fff"/>
+        <rect x="28" y="74" width="124" height="32" rx="4" fill="#fff"/>
       `;
     }else if(panel.code==="C5"){
       content=prohibCircle(`
-        <rect x="52" y="94" width="76" height="24" rx="6" fill="${ink}"/>
-        <rect x="62" y="78" width="56" height="20" rx="8" fill="${ink}"/>
-        <circle cx="66" cy="120" r="8" fill="${ink}"/>
-        <circle cx="114" cy="120" r="8" fill="${ink}"/>
+        <rect x="48" y="92" width="84" height="26" rx="6" fill="${ink}"/>
+        <path d="M62 92 L76 68 H104 L118 92 Z" fill="${ink}"/>
+        <circle cx="68" cy="122" r="9" fill="${ink}"/>
+        <circle cx="112" cy="122" r="9" fill="${ink}"/>
       `);
     }else if(panel.code==="C7"){
       content=prohibCircle(`
-        <circle cx="62" cy="122" r="9" fill="none" stroke="${ink}" stroke-width="${stroke*0.75}"/>
-        <circle cx="118" cy="122" r="9" fill="none" stroke="${ink}" stroke-width="${stroke*0.75}"/>
-        <path d="M62 122 L82 90 L100 90 L96 104 L118 122 M82 90 L74 76" fill="none" stroke="${ink}" stroke-width="${stroke*0.7}" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="58" cy="124" r="10" fill="none" stroke="${ink}" stroke-width="${stroke*0.8}"/>
+        <circle cx="122" cy="124" r="10" fill="none" stroke="${ink}" stroke-width="${stroke*0.8}"/>
+        <path d="M58 124 L82 88 L104 88 L96 104 L122 124 M82 88 L72 72" fill="none" stroke="${ink}" stroke-width="${stroke*0.8}" stroke-linecap="round" stroke-linejoin="round"/>
       `);
     }else if(panel.code==="C11"){
       content=prohibCircle(`
-        <circle cx="58" cy="122" r="14" fill="none" stroke="${ink}" stroke-width="${stroke*0.75}"/>
-        <circle cx="112" cy="122" r="14" fill="none" stroke="${ink}" stroke-width="${stroke*0.75}"/>
-        <path d="M58 122 L80 84 L100 122 M80 84 L94 84 M112 122 L94 84" fill="none" stroke="${ink}" stroke-width="${stroke*0.7}" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="54" cy="124" r="14" fill="none" stroke="${ink}" stroke-width="${stroke*0.8}"/>
+        <circle cx="126" cy="124" r="14" fill="none" stroke="${ink}" stroke-width="${stroke*0.8}"/>
+        <path d="M54 124 L82 82 L106 124 M82 82 L98 82 L126 124 L98 82" fill="none" stroke="${ink}" stroke-width="${stroke*0.8}" stroke-linecap="round" stroke-linejoin="round"/>
       `);
     }else if(panel.code==="C19"){
       content=prohibCircle(`
-        <circle cx="90" cy="70" r="8" fill="${ink}"/>
-        <path d="M90 80 L90 108 L74 130 M90 96 L108 90 M90 96 L74 90 M90 108 L106 130" fill="none" stroke="${ink}" stroke-width="${stroke*0.85}" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="90" cy="62" r="9" fill="${ink}"/>
+        <path d="M90 74 L90 108 L72 136 M90 94 L112 86 M90 94 L70 86 M90 108 L110 136" fill="none" stroke="${ink}" stroke-width="${stroke*1.1}" stroke-linecap="round" stroke-linejoin="round"/>
       `);
     }else if(panel.code==="C23"){
       content=prohibCircle(`
-        <rect x="46" y="86" width="60" height="32" rx="3" fill="${ink}"/>
-        <rect x="106" y="98" width="26" height="20" rx="3" fill="${ink}"/>
-        <circle cx="64" cy="122" r="8" fill="${ink}"/>
-        <circle cx="118" cy="122" r="8" fill="${ink}"/>
+        <rect x="42" y="82" width="68" height="36" rx="4" fill="${ink}"/>
+        <rect x="110" y="96" width="28" height="22" rx="3" fill="${ink}"/>
+        <circle cx="64" cy="126" r="9" fill="${ink}"/>
+        <circle cx="122" cy="126" r="9" fill="${ink}"/>
       `);
     }else if(panel.code==="C35"){
       content=prohibCircle(`
-        <rect x="40" y="96" width="50" height="22" rx="8" fill="${ink}"/>
-        <rect x="88" y="86" width="52" height="22" rx="8" fill="#c81e2c"/>
+        <rect x="36" y="98" width="56" height="24" rx="8" fill="${ink}"/>
+        <rect x="88" y="82" width="56" height="24" rx="8" fill="#c81e2c"/>
       `);
     }else if(panel.num){
-      /* C43 xx : limitation de vitesse */
       content=prohibCircle(`
-        <text x="90" y="110" text-anchor="middle" font-size="${small?20:52}" font-weight="900" fill="${ink}" font-family="Arial,sans-serif">${num}</text>
+        <text x="90" y="112" text-anchor="middle" font-size="${small?22:54}" font-weight="900" fill="${ink}" font-family="Arial,sans-serif">${num}</text>
       `);
     }else{
-      /* C45 fin de toutes les interdictions : disque blanc, PAS de liseré rouge, bandes obliques grises */
       content=`
         <circle cx="90" cy="90" r="78" fill="#fff" stroke="#9aa1aa" stroke-width="3"/>
-        <line x1="42" y1="118" x2="118" y2="42" stroke="#4a4d52" stroke-width="7"/>
-        <line x1="62" y1="138" x2="138" y2="62" stroke="#4a4d52" stroke-width="7"/>
-        <line x1="42" y1="138" x2="60" y2="120" stroke="#4a4d52" stroke-width="7"/>
+        <line x1="36" y1="124" x2="124" y2="36" stroke="#4a4d52" stroke-width="8"/>
+        <line x1="56" y1="144" x2="144" y2="56" stroke="#4a4d52" stroke-width="8"/>
       `;
     }
-
-  /* ================= D — OBLIGATIONS (disque bleu) ================= */
-
   }else if(panel.cat==="D"){
-
     if(panel.code==="D1a"){
       content=obligCircle(`
-        <path d="M50 90 H122 M96 64 L124 90 L96 116" fill="none" stroke="#fff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M90 134 V50 M62 78 L90 50 L118 78" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
       `);
     }else if(panel.code==="D1b"){
       content=obligCircle(`
-        <path d="M130 90 H58 M84 64 L56 90 L84 116" fill="none" stroke="#fff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M134 90 H50 M78 62 L50 90 L78 118" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
       `);
     }else if(panel.code==="D9"){
       content=obligCircle(`
-        <circle cx="64" cy="122" r="12" fill="none" stroke="#fff" stroke-width="6"/>
-        <circle cx="116" cy="122" r="12" fill="none" stroke="#fff" stroke-width="6"/>
-        <path d="M64 122 L84 82 L104 122 M84 82 L96 82 M116 122 L96 82" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="60" cy="124" r="13" fill="none" stroke="#fff" stroke-width="6"/>
+        <circle cx="120" cy="124" r="13" fill="none" stroke="#fff" stroke-width="6"/>
+        <path d="M60 124 L86 80 L110 124 M86 80 L98 80 L120 124" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
       `);
     }else{
-      /* D10 chemin pour piétons */
       content=obligCircle(`
-        <circle cx="90" cy="66" r="9" fill="#fff"/>
-        <path d="M90 78 L90 108 L74 132 M90 92 L108 86 M90 92 L106 78 M90 108 L106 132" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="90" cy="62" r="9" fill="#fff"/>
+        <path d="M90 74 L90 108 L72 136 M90 92 L112 84 M90 92 L68 84 M90 108 L110 136" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
       `);
     }
-
-  /* ================= E — STATIONNEMENT (disque bleu, liseré/marque rouge) ================= */
-
   }else if(panel.cat==="E"){
-
     if(panel.code==="E1"){
-      /* Stationnement interdit : disque bleu, liseré rouge, une barre rouge oblique */
       content=`
         <circle cx="90" cy="90" r="78" fill="#1c5fa8" stroke="#c81e2c" stroke-width="12"/>
-        <line x1="42" y1="138" x2="138" y2="42" stroke="#c81e2c" stroke-width="${stroke*1.3}"/>
+        <line x1="36" y1="144" x2="144" y2="36" stroke="#c81e2c" stroke-width="14"/>
       `;
     }else if(panel.code==="E3"){
-      /* Arrêt et stationnement interdits : disque bleu, liseré rouge, croix rouge */
       content=`
         <circle cx="90" cy="90" r="78" fill="#1c5fa8" stroke="#c81e2c" stroke-width="12"/>
-        <line x1="42" y1="138" x2="138" y2="42" stroke="#c81e2c" stroke-width="${stroke*1.15}"/>
-        <line x1="42" y1="42" x2="138" y2="138" stroke="#c81e2c" stroke-width="${stroke*1.15}"/>
+        <line x1="36" y1="144" x2="144" y2="36" stroke="#c81e2c" stroke-width="13"/>
+        <line x1="36" y1="36" x2="144" y2="144" stroke="#c81e2c" stroke-width="13"/>
       `;
     }else{
-      /* E9a parking : carré bleu plein, lettre P blanche */
       content=`
-        <rect x="14" y="14" width="152" height="152" rx="14" fill="#1c5fa8"/>
-        <text x="90" y="120" text-anchor="middle" font-size="${small?42:92}" font-weight="900" fill="#fff" font-family="Arial,sans-serif">P</text>
+        <rect x="12" y="12" width="156" height="156" rx="16" fill="#1c5fa8"/>
+        <text x="90" y="124" text-anchor="middle" font-size="${small?44:96}" font-weight="900" fill="#fff" font-family="Arial,sans-serif">P</text>
       `;
     }
-
-  /* ================= F — INDICATIONS ================= */
-
   }else if(panel.cat==="F"){
-
     if(panel.code==="F1"){
-      /* Début d'agglomération : panneau blanc rectangulaire, liseré rouge, silhouette de ville */
       content=`
-        <rect x="10" y="46" width="160" height="88" rx="4" fill="#fff" stroke="#c81e2c" stroke-width="7"/>
-        <path d="M28 122 V96 L44 86 V122 M50 122 V78 L68 66 L86 78 V122 M96 122 V102 L110 92 L124 102 V122" fill="none" stroke="${ink}" stroke-width="5" stroke-linejoin="round"/>
-        <line x1="20" y1="122" x2="152" y2="122" stroke="${ink}" stroke-width="5"/>
+        <rect x="10" y="44" width="160" height="92" rx="4" fill="#fff" stroke="#c81e2c" stroke-width="8"/>
+        <path d="M26 130 V100 L44 88 V130 M50 130 V78 L70 64 L90 78 V130 M100 130 V102 L116 90 L132 102 V130" fill="none" stroke="${ink}" stroke-width="5" stroke-linejoin="round"/>
+        <line x1="18" y1="130" x2="162" y2="130" stroke="${ink}" stroke-width="6"/>
       `;
     }else if(panel.code==="F3"){
-      /* Fin d'agglomération : même panneau, barré en diagonal grise */
       content=`
-        <rect x="10" y="46" width="160" height="88" rx="4" fill="#fff" stroke="#4a4d52" stroke-width="7"/>
-        <path d="M28 122 V96 L44 86 V122 M50 122 V78 L68 66 L86 78 V122 M96 122 V102 L110 92 L124 102 V122" fill="none" stroke="#9aa1aa" stroke-width="5" stroke-linejoin="round"/>
-        <line x1="20" y1="122" x2="152" y2="122" stroke="#9aa1aa" stroke-width="5"/>
-        <line x1="26" y1="132" x2="154" y2="48" stroke="#4a4d52" stroke-width="8"/>
+        <rect x="10" y="44" width="160" height="92" rx="4" fill="#fff" stroke="#4a4d52" stroke-width="8"/>
+        <path d="M26 130 V100 L44 88 V130 M50 130 V78 L70 64 L90 78 V130 M100 130 V102 L116 90 L132 102 V130" fill="none" stroke="#9aa1aa" stroke-width="5" stroke-linejoin="round"/>
+        <line x1="18" y1="130" x2="162" y2="130" stroke="#9aa1aa" stroke-width="6"/>
+        <line x1="22" y1="140" x2="158" y2="40" stroke="#4a4d52" stroke-width="9"/>
       `;
     }else if(panel.code==="F5"){
-      /* Autoroute : rectangle bleu, pictogramme de pont/route */
       content=`
-        <rect x="10" y="30" width="160" height="120" rx="6" fill="#1c5fa8"/>
-        <path d="M30 110 H150 M50 110 V80 H130 V110" fill="none" stroke="#fff" stroke-width="8" stroke-linejoin="round"/>
-        <path d="M30 130 H150" stroke="#fff" stroke-width="8"/>
+        <rect x="10" y="26" width="160" height="128" rx="8" fill="#1c5fa8"/>
+        <path d="M28 116 H152 M52 116 V78 H128 V116" fill="none" stroke="#fff" stroke-width="8" stroke-linejoin="round"/>
+        <path d="M28 136 H152" stroke="#fff" stroke-width="8"/>
       `;
     }else if(panel.code==="F9"){
-      /* Route pour automobiles : rectangle bleu, silhouette de voiture */
       content=`
-        <rect x="10" y="30" width="160" height="120" rx="6" fill="#1c5fa8"/>
-        <rect x="46" y="86" width="88" height="30" rx="10" fill="#fff"/>
-        <rect x="60" y="70" width="60" height="22" rx="8" fill="#fff"/>
-        <circle cx="64" cy="120" r="9" fill="#1c5fa8"/>
-        <circle cx="116" cy="120" r="9" fill="#1c5fa8"/>
+        <rect x="10" y="26" width="160" height="128" rx="8" fill="#1c5fa8"/>
+        <rect x="42" y="86" width="96" height="32" rx="10" fill="#fff"/>
+        <rect x="58" y="66" width="64" height="24" rx="8" fill="#fff"/>
+        <circle cx="62" cy="122" r="10" fill="#1c5fa8"/>
+        <circle cx="118" cy="122" r="10" fill="#1c5fa8"/>
       `;
     }else if(panel.code==="F12a"){
-      /* Zone résidentielle / de rencontre : carré bleu, maison + personnage + ballon */
       content=`
-        <rect x="14" y="14" width="152" height="152" rx="14" fill="#1c5fa8"/>
-        <path d="M46 128 V96 L64 82 L82 96 V128 Z" fill="#fff"/>
-        <circle cx="112" cy="76" r="8" fill="#fff"/>
-        <path d="M112 86 L112 110 L100 128 M112 98 L128 92 M112 98 L128 110" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round"/>
-        <circle cx="132" cy="126" r="7" fill="#fff"/>
+        <rect x="12" y="12" width="156" height="156" rx="16" fill="#1c5fa8"/>
+        <path d="M42 134 V94 L64 76 L86 94 V134 Z" fill="#fff"/>
+        <circle cx="116" cy="72" r="8" fill="#fff"/>
+        <path d="M116 84 L116 112 L102 134 M116 98 L134 92 M116 98 L134 112" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <circle cx="138" cy="130" r="7" fill="#fff"/>
       `;
     }else if(panel.code==="F19"){
-      /* Sens unique : rectangle bleu, flèche blanche */
       content=`
-        <rect x="10" y="58" width="160" height="64" rx="4" fill="#1c5fa8"/>
-        <path d="M28 90 H132 M108 70 L134 90 L108 110" fill="none" stroke="#fff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="10" y="56" width="160" height="68" rx="6" fill="#1c5fa8"/>
+        <path d="M28 90 H138 M108 66 L142 90 L108 114" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
       `;
     }else if(panel.code==="F4a"){
-      /* Début de zone 30 : panneau carré blanc, texte ZONE + disque rouge 30 */
       content=`
-        <rect x="14" y="14" width="152" height="152" rx="8" fill="#fff" stroke="${ink}" stroke-width="3"/>
-        <text x="90" y="46" text-anchor="middle" font-size="${small?12:19}" font-weight="900" fill="${ink}" letter-spacing="2">ZONE</text>
-        <circle cx="90" cy="104" r="42" fill="#fff" stroke="#c81e2c" stroke-width="9"/>
-        <text x="90" y="118" text-anchor="middle" font-size="${small?18:34}" font-weight="900" fill="${ink}" font-family="Arial,sans-serif">30</text>
+        <rect x="12" y="12" width="156" height="156" rx="10" fill="#fff" stroke="${ink}" stroke-width="3"/>
+        <text x="90" y="44" text-anchor="middle" font-size="${small?12:20}" font-weight="900" fill="${ink}" letter-spacing="3">ZONE</text>
+        <circle cx="90" cy="106" r="44" fill="#fff" stroke="#c81e2c" stroke-width="10"/>
+        <text x="90" y="120" text-anchor="middle" font-size="${small?18:36}" font-weight="900" fill="${ink}" font-family="Arial,sans-serif">30</text>
       `;
     }else{
-      /* F4b fin de zone 30 */
       content=`
-        <rect x="14" y="14" width="152" height="152" rx="8" fill="#fff" stroke="${ink}" stroke-width="3"/>
-        <text x="90" y="46" text-anchor="middle" font-size="${small?12:19}" font-weight="900" fill="${ink}" letter-spacing="2">FIN</text>
-        <circle cx="90" cy="104" r="42" fill="#fff" stroke="#9aa1aa" stroke-width="7"/>
-        <text x="90" y="118" text-anchor="middle" font-size="${small?18:34}" font-weight="900" fill="#9aa1aa" font-family="Arial,sans-serif">30</text>
-        <line x1="56" y1="132" x2="124" y2="76" stroke="#4a4d52" stroke-width="7"/>
+        <rect x="12" y="12" width="156" height="156" rx="10" fill="#fff" stroke="${ink}" stroke-width="3"/>
+        <text x="90" y="44" text-anchor="middle" font-size="${small?12:20}" font-weight="900" fill="${ink}" letter-spacing="3">FIN</text>
+        <circle cx="90" cy="106" r="44" fill="#fff" stroke="#9aa1aa" stroke-width="8"/>
+        <text x="90" y="120" text-anchor="middle" font-size="${small?18:36}" font-weight="900" fill="#9aa1aa" font-family="Arial,sans-serif">30</text>
+        <line x1="52" y1="138" x2="128" y2="74" stroke="#4a4d52" stroke-width="8"/>
       `;
     }
-
-  /* ================= X — PANONCEAUX (plaques blanches sous les panneaux) ================= */
-
   }else{
-
     if(panel.code==="Panonceau 1"){
       content=`
-        <rect x="12" y="58" width="156" height="64" rx="5" fill="#fff" stroke="${ink}" stroke-width="4"/>
-        <text x="90" y="100" text-anchor="middle" font-size="${small?16:24}" font-weight="900" fill="${ink}" font-family="Arial,sans-serif">50 m</text>
+        <rect x="10" y="56" width="160" height="68" rx="6" fill="#fff" stroke="${ink}" stroke-width="4"/>
+        <text x="90" y="100" text-anchor="middle" font-size="${small?16:26}" font-weight="900" fill="${ink}" font-family="Arial,sans-serif">50 m</text>
       `;
     }else if(panel.code==="Panonceau 2"){
       content=`
-        <rect x="12" y="58" width="156" height="64" rx="5" fill="#fff" stroke="${ink}" stroke-width="4"/>
-        <path d="M28 90 H152" stroke="${ink}" stroke-width="6"/>
-        <path d="M28 90 L40 82 M28 90 L40 98 M152 90 L140 82 M152 90 L140 98" fill="none" stroke="${ink}" stroke-width="6" stroke-linecap="round"/>
+        <rect x="10" y="56" width="160" height="68" rx="6" fill="#fff" stroke="${ink}" stroke-width="4"/>
+        <path d="M26 90 H154" stroke="${ink}" stroke-width="6"/>
+        <path d="M26 90 L38 80 M26 90 L38 100 M154 90 L142 80 M154 90 L142 100" fill="none" stroke="${ink}" stroke-width="6" stroke-linecap="round"/>
       `;
     }else{
       content=`
-        <rect x="12" y="58" width="156" height="64" rx="5" fill="#fff" stroke="${ink}" stroke-width="4"/>
-        <rect x="62" y="76" width="56" height="28" rx="4" fill="none" stroke="${ink}" stroke-width="6"/>
+        <rect x="10" y="56" width="160" height="68" rx="6" fill="#fff" stroke="${ink}" stroke-width="4"/>
+        <rect x="62" y="74" width="56" height="32" rx="4" fill="none" stroke="${ink}" stroke-width="6"/>
       `;
     }
-
   }
 
   return `
@@ -2551,12 +2280,7 @@ function makeSignSVG(panel,small=false){
   `;
 }
 
-/* =========================================================
-   QUESTION
-========================================================= */
-
 function renderProgressDots(){
-
   $("progressDots").innerHTML=
     state.questions
       .map(
@@ -2570,34 +2294,26 @@ function renderProgressDots(){
 }
 
 function renderQuestion(){
-
   clearInterval(state.timerId);
 
   if(state.index>=state.questions.length){
-
     showSummary();
-
     return;
   }
 
   renderProgressDots();
 
-  const panel=
-    state.questions[state.index];
+  const panel=state.questions[state.index];
 
   $("quizProgress").textContent=
     `${state.review?"Révision":"Question"} ${state.index+1} / ${state.questions.length}`;
 
-  $("quizScore").textContent=
-    "Score : "+state.score;
+  $("quizScore").textContent="Score : "+state.score;
 
   $("favoriteButton").textContent=
-    favorites().includes(panel.code)
-      ? "⭐"
-      : "☆";
+    favorites().includes(panel.code) ? "⭐" : "☆";
 
-  $("signStage").innerHTML=
-    makeSignSVG(panel,false);
+  $("signStage").innerHTML=makeSignSVG(panel,false);
 
   $("signCaption").textContent=
     `${panel.code} — ${CATEGORIES[panel.cat]?.label||"Panonceau"}`;
@@ -2609,12 +2325,7 @@ function renderQuestion(){
       )
     ).slice(0,3);
 
-  state.options=
-    shuffle([
-      panel,
-      ...distractors
-    ]);
-
+  state.options=shuffle([panel,...distractors]);
   state.answered=false;
 
   $("optionList").innerHTML=
@@ -2635,273 +2346,146 @@ function renderQuestion(){
   $("nextButtonZone").innerHTML="";
 
   if(state.timer){
-
     state.seconds=15;
-
     $("timerDisplay").classList.remove("hidden");
     $("timerDisplay").classList.remove("low");
+    $("timerDisplay").textContent="⏳ 15s";
 
-    $("timerDisplay").textContent=
-      "⏳ 15s";
+    state.timerId=setInterval(()=>{
+      state.seconds--;
+      $("timerDisplay").textContent="⏳ "+state.seconds+"s";
+      $("timerDisplay").classList.toggle("low",state.seconds<=5);
 
-    state.timerId=
-      setInterval(()=>{
-
-        state.seconds--;
-
-        $("timerDisplay").textContent=
-          "⏳ "+state.seconds+"s";
-
-        $("timerDisplay").classList.toggle(
-          "low",
-          state.seconds<=5
-        );
-
-        if(state.seconds<=0){
-
-          clearInterval(state.timerId);
-
-          timeoutQuestion();
-
-        }
-
-      },1000);
-
+      if(state.seconds<=0){
+        clearInterval(state.timerId);
+        timeoutQuestion();
+      }
+    },1000);
   }else{
-
     $("timerDisplay").classList.add("hidden");
-
   }
 }
 
-/* =========================================================
-   REPONSE
-========================================================= */
-
 function timeoutQuestion(){
-
-  if(state.answered){
-    return;
-  }
-
+  if(state.answered) return;
   completeAnswer(-1);
 }
 
 function answerQuestion(index){
-
-  if(state.answered){
-    return;
-  }
-
+  if(state.answered) return;
   clearInterval(state.timerId);
-
   completeAnswer(index);
 }
 
 async function completeAnswer(selectedIndex){
-
   state.answered=true;
 
-  const panel=
-    state.questions[state.index];
+  const panel=state.questions[state.index];
+  const selected=selectedIndex>=0?state.options[selectedIndex]:null;
+  const correct=selected && selected.code===panel.code;
 
-  const selected=
-    selectedIndex>=0
-      ? state.options[selectedIndex]
-      : null;
-
-  const correct=
-    selected &&
-    selected.code===panel.code;
-
-  const categoryState=
-    state.categoryStats[panel.cat] ||
-    {correct:0,total:0};
-
+  const categoryState=state.categoryStats[panel.cat]||{correct:0,total:0};
   categoryState.total++;
 
   if(correct){
-
     state.score++;
-
     categoryState.correct++;
-
   }else{
-
     state.errors.push({
       panel,
-      answer:selected
-        ? selected.nom
-        : "Temps écoulé"
+      answer:selected?selected.nom:"Temps écoulé"
     });
-
-    appData.mistakes[panel.code]=
-      (appData.mistakes[panel.code]||0)+1;
-
+    appData.mistakes[panel.code]=(appData.mistakes[panel.code]||0)+1;
     await saveAppData();
-
   }
 
-  state.categoryStats[panel.cat]=
-    categoryState;
+  state.categoryStats[panel.cat]=categoryState;
 
   document
     .querySelectorAll("#optionList .option")
-    .forEach(
-      (element,index)=>{
-
-        element.classList.add("locked");
-
-        if(
-          state.options[index].code===
-          panel.code
-        ){
-
-          element.classList.add("correct");
-
-        }else if(index===selectedIndex){
-
-          element.classList.add("wrong");
-
-        }
-
+    .forEach((element,index)=>{
+      element.classList.add("locked");
+      if(state.options[index].code===panel.code){
+        element.classList.add("correct");
+      }else if(index===selectedIndex){
+        element.classList.add("wrong");
       }
-    );
+    });
 
   $("feedbackZone").innerHTML=`
-
-    <div
-      class="feedback ${correct?"":"bad"}"
-    >
-
+    <div class="feedback ${correct?"":"bad"}">
       <b>
         ${
           correct
             ? "Bonne réponse"
             : selectedIndex<0
-              ? "Temps écoulé — c’était : "
-                + escapeHTML(panel.nom)
-              : "Ce n’était pas ça — c’était : "
-                + escapeHTML(panel.nom)
+              ? "Temps écoulé — c’était : "+escapeHTML(panel.nom)
+              : "Ce n’était pas ça — c’était : "+escapeHTML(panel.nom)
         }
       </b>
-
       ${escapeHTML(panel.desc)}
-
     </div>
   `;
 
   $("nextButtonZone").innerHTML=`
-
     <button
       class="primary"
       style="width:100%"
       onclick="nextQuestion()"
     >
-      ${
-        state.index+1>=state.questions.length
-          ? "Voir le résumé"
-          : "Question suivante"
-      }
+      ${state.index+1>=state.questions.length?"Voir le résumé":"Question suivante"}
     </button>
-
   `;
 
-  $("quizScore").textContent=
-    "Score : "+state.score;
+  $("quizScore").textContent="Score : "+state.score;
 }
 
 function nextQuestion(){
-
   state.index++;
-
   renderQuestion();
 }
 
-/* =========================================================
-   FAVORIS
-========================================================= */
-
 async function toggleFavorite(){
-
-  const panel=
-    state.questions[state.index];
-
-  const index=
-    appData.favorites.indexOf(panel.code);
+  const panel=state.questions[state.index];
+  const index=appData.favorites.indexOf(panel.code);
 
   if(index>=0){
-
     appData.favorites.splice(index,1);
-
   }else{
-
     appData.favorites.push(panel.code);
-
   }
 
   const button=$("favoriteButton");
-
-  button.textContent=
-    favorites().includes(panel.code)
-      ? "⭐"
-      : "☆";
-
+  button.textContent=favorites().includes(panel.code)?"⭐":"☆";
   button.classList.remove("pop");
   void button.offsetWidth;
   button.classList.add("pop");
 
   await saveAppData();
-
   updateHomeStats();
 }
 
-/* =========================================================
-   RESUME
-========================================================= */
-
 async function showSummary(){
-
   clearInterval(state.timerId);
 
-  const total=
-    state.questions.length;
-
-  const percentage=
-    total
-      ? Math.round(100*state.score/total)
-      : 0;
+  const total=state.questions.length;
+  const percentage=total?Math.round(100*state.score/total):0;
 
   if(!state.review){
-
     appData.stats.sessions++;
-
-    appData.stats.correct+=
-      state.score;
-
-    appData.stats.total+=
-      total;
-
+    appData.stats.correct+=state.score;
+    appData.stats.total+=total;
     await saveAppData();
-
   }
 
-  $("quizRunning")
-    .classList.add("hidden");
+  $("quizRunning").classList.add("hidden");
+  $("quizSummary").classList.remove("hidden");
 
-  $("quizSummary")
-    .classList.remove("hidden");
-
-  $("summaryTitle").textContent=
-    state.review
-      ? "Révision terminée"
-      : "Session terminée";
-
+  $("summaryTitle").textContent=state.review?"Révision terminée":"Session terminée";
   $("summaryPercent").textContent="0%";
   animateCount($("summaryPercent"),0,percentage,"%",700);
 
-  $("summaryFraction").textContent=
-    `${state.score} / ${total}`;
+  $("summaryFraction").textContent=`${state.score} / ${total}`;
 
   $("summaryMessage").textContent=
     percentage>=90
@@ -2911,477 +2495,231 @@ async function showSummary(){
         : "Encore un peu d’entraînement requis.";
 
   $("categoryResults").innerHTML=
-    Object.entries(
-      state.categoryStats
-    )
-    .map(
-      ([category,result])=>{
-
-        const percent=
-          Math.round(
-            100*result.correct/result.total
-          );
-
+    Object.entries(state.categoryStats)
+      .map(([category,result])=>{
+        const percent=Math.round(100*result.correct/result.total);
         return `
           <div class="category-result">
-
             <div class="category-result-top">
               <span>${CATEGORIES[category].label}</span>
               <span>${result.correct}/${result.total}</span>
             </div>
-
             <div class="category-track">
-              <span
-                data-target="${percent}"
-                style="
-                  background:${CATEGORIES[category].color};
-                "
-              ></span>
+              <span data-target="${percent}" style="background:${CATEGORIES[category].color};"></span>
             </div>
-
           </div>
         `;
-
-      }
-    )
-    .join("");
+      })
+      .join("");
 
   requestAnimationFrame(()=>{
-
     document
       .querySelectorAll("#categoryResults .category-track span")
       .forEach(element=>{
         element.style.width=element.dataset.target+"%";
       });
-
   });
 
   if(state.errors.length){
-
     $("errorResults").innerHTML=`
-
       <details class="errors">
-
-        <summary>
-          Revoir les ${state.errors.length} erreur(s)
-        </summary>
-
+        <summary>Revoir les ${state.errors.length} erreur(s)</summary>
         ${
           state.errors
             .map(
               error=>`
-
                 <div class="error">
-
-                  <b>
-                    [${escapeHTML(error.panel.code)}]
-                    ${escapeHTML(error.panel.nom)}
-                  </b>
-
-                  <div class="your-answer">
-                    Ta réponse :
-                    ${escapeHTML(error.answer)}
-                  </div>
-
-                  <div>
-                    ${escapeHTML(error.panel.desc)}
-                  </div>
-
+                  <b>[${escapeHTML(error.panel.code)}] ${escapeHTML(error.panel.nom)}</b>
+                  <div class="your-answer">Ta réponse : ${escapeHTML(error.answer)}</div>
+                  <div>${escapeHTML(error.panel.desc)}</div>
                 </div>
               `
             )
             .join("")
         }
-
       </details>
     `;
-
     $("reviewErrorsZone").innerHTML=`
-
-      <button
-        class="danger"
-        style="width:100%"
-        onclick="reviewErrors()"
-      >
+      <button class="danger" style="width:100%" onclick="reviewErrors()">
         Refaire mes erreurs (${state.errors.length})
       </button>
-
     `;
-
   }else{
-
     $("errorResults").innerHTML="";
     $("reviewErrorsZone").innerHTML="";
-
   }
 
   updateHomeStats();
 }
 
-/* =========================================================
-   REPLAY
-========================================================= */
-
 function replayQuiz(){
-
   beginSession(state.review);
 }
 
-/* =========================================================
-   REPERTOIRE
-========================================================= */
-
 function renderRepository(){
-
-  const query=
-    $("repoSearch")
-      .value
-      .trim()
-      .toLowerCase();
-
-  const results=
-    PANNEAUX.filter(panel=>{
-
-      if(!query){
-        return true;
-      }
-
-      return [
-        panel.code,
-        panel.nom,
-        panel.desc,
-        CATEGORIES[panel.cat]?.label
-      ]
+  const query=$("repoSearch").value.trim().toLowerCase();
+  const results=PANNEAUX.filter(panel=>{
+    if(!query) return true;
+    return [panel.code,panel.nom,panel.desc,CATEGORIES[panel.cat]?.label]
       .join(" ")
       .toLowerCase()
       .includes(query);
+  });
 
-    });
+  $("repoCount").textContent=`${results.length} panneau(x) — base de ${PANNEAUX.length}`;
 
-  $("repoCount").textContent=
-    `${results.length} panneau(x) — base de ${PANNEAUX.length}`;
-
-  const list=
-    $("repoList");
-
+  const list=$("repoList");
   list.innerHTML="";
   list.classList.remove("fade-list");
   void list.offsetWidth;
   list.classList.add("fade-list");
 
-  Object.keys(CATEGORIES)
-    .forEach(category=>{
+  Object.keys(CATEGORIES).forEach(category=>{
+    const group=results.filter(panel=>panel.cat===category);
+    if(!group.length) return;
 
-      const group=
-        results.filter(
-          panel=>panel.cat===category
-        );
+    list.insertAdjacentHTML(
+      "beforeend",
+      `
+        <div class="repo-head">
+          <span class="dot" style="background:${CATEGORIES[category].color}"></span>
+          ${CATEGORIES[category].label}
+        </div>
+      `
+    );
 
-      if(!group.length){
-        return;
-      }
-
+    group.forEach(panel=>{
       list.insertAdjacentHTML(
         "beforeend",
         `
-          <div class="repo-head">
-
-            <span
-              class="dot"
-              style="background:${CATEGORIES[category].color}"
-            ></span>
-
-            ${CATEGORIES[category].label}
-
+          <div class="repo-item">
+            <div class="repo-thumb">
+              ${makeSignSVG(panel,true)}
+            </div>
+            <div>
+              <div class="repo-code">${escapeHTML(panel.code)}</div>
+              <div class="repo-name">${escapeHTML(panel.nom)}</div>
+              <div class="repo-desc">${escapeHTML(panel.desc)}</div>
+            </div>
           </div>
         `
       );
-
-      group.forEach(panel=>{
-
-        list.insertAdjacentHTML(
-          "beforeend",
-          `
-            <div class="repo-item">
-
-              <div class="repo-thumb">
-                ${makeSignSVG(panel,true)}
-              </div>
-
-              <div>
-
-                <div class="repo-code">
-                  ${escapeHTML(panel.code)}
-                </div>
-
-                <div class="repo-name">
-                  ${escapeHTML(panel.nom)}
-                </div>
-
-                <div class="repo-desc">
-                  ${escapeHTML(panel.desc)}
-                </div>
-
-              </div>
-
-            </div>
-          `
-        );
-
-      });
-
     });
+  });
 
   if(!results.length){
-
-    list.innerHTML=`
-      <div class="empty">
-        Aucun panneau ne correspond à cette recherche.
-      </div>
-    `;
-
+    list.innerHTML=`<div class="empty">Aucun panneau ne correspond à cette recherche.</div>`;
   }
 }
-
-/* =========================================================
-   INFRACTIONS
-========================================================= */
 
 function renderInfractions(){
-
-  const query=
-    $("infractionSearch")
-      .value
-      .trim()
-      .toLowerCase();
-
-  const results=
-    INFRACTIONS.filter(item=>{
-
-      if(!query){
-        return true;
-      }
-
-      return [
-        item.titre,
-        item.degre,
-        item.amende,
-        item.desc
-      ]
+  const query=$("infractionSearch").value.trim().toLowerCase();
+  const results=INFRACTIONS.filter(item=>{
+    if(!query) return true;
+    return [item.titre,item.degre,item.amende,item.desc]
       .join(" ")
       .toLowerCase()
       .includes(query);
-
-    });
+  });
 
   const list=$("infractionList");
-
   list.classList.remove("fade-list");
   void list.offsetWidth;
   list.classList.add("fade-list");
 
-  list.innerHTML=
-    results.length
+  list.innerHTML=results.length
+    ? results
+        .map(item=>{
+          let badgeClass="";
+          if(item.degre.includes("2ème")){
+            badgeClass="badge-2";
+          }else if(item.degre.includes("3ème")){
+            badgeClass="badge-3";
+          }else if(
+            item.degre.includes("4ème") ||
+            item.degre.includes("Tribunal") ||
+            item.degre.includes("Délit")
+          ){
+            badgeClass="badge-4";
+          }else if(item.degre.includes("Vitesse")){
+            badgeClass="badge-vitesse";
+          }else if(item.degre.includes("Alcool")){
+            badgeClass="badge-alcool";
+          }
 
-      ? results
-          .map(item=>{
-
-            let badgeClass="";
-
-            if(item.degre.includes("2ème")){
-              badgeClass="badge-2";
-            }else if(item.degre.includes("3ème")){
-              badgeClass="badge-3";
-            }else if(
-              item.degre.includes("4ème") ||
-              item.degre.includes("Tribunal") ||
-              item.degre.includes("Délit")
-            ){
-              badgeClass="badge-4";
-            }else if(
-              item.degre.includes("Vitesse")
-            ){
-              badgeClass="badge-vitesse";
-            }else if(
-              item.degre.includes("Alcool")
-            ){
-              badgeClass="badge-alcool";
-            }
-
-            return `
-              <div class="info-card">
-
-                <div class="info-header">
-
-                  <span class="badge ${badgeClass}">
-                    ${escapeHTML(item.degre)}
-                  </span>
-
-                  <b>
-                    ${escapeHTML(item.amende)}
-                  </b>
-
-                </div>
-
-                <b>
-                  ${escapeHTML(item.titre)}
-                </b>
-
-                <p>
-                  ${escapeHTML(item.desc)}
-                </p>
-
+          return `
+            <div class="info-card">
+              <div class="info-header">
+                <span class="badge ${badgeClass}">${escapeHTML(item.degre)}</span>
+                <b>${escapeHTML(item.amende)}</b>
               </div>
-            `;
-
-          })
-          .join("")
-
-      : `
-        <div class="empty">
-          Aucune infraction ne correspond.
-        </div>
-      `;
+              <b>${escapeHTML(item.titre)}</b>
+              <p>${escapeHTML(item.desc)}</p>
+            </div>
+          `;
+        })
+        .join("")
+    : `<div class="empty">Aucune infraction ne correspond.</div>`;
 }
-
-/* =========================================================
-   REGLES
-========================================================= */
 
 function renderRules(){
-
-  const query=
-    $("ruleSearch")
-      .value
-      .trim()
-      .toLowerCase();
-
-  const results=
-    RULES.filter(rule=>{
-
-      if(!query){
-        return true;
-      }
-
-      return [
-        rule.titre,
-        rule.desc
-      ]
-      .join(" ")
-      .toLowerCase()
-      .includes(query);
-
-    });
+  const query=$("ruleSearch").value.trim().toLowerCase();
+  const results=RULES.filter(rule=>{
+    if(!query) return true;
+    return [rule.titre,rule.desc].join(" ").toLowerCase().includes(query);
+  });
 
   const list=$("ruleList");
-
   list.classList.remove("fade-list");
   void list.offsetWidth;
   list.classList.add("fade-list");
 
-  list.innerHTML=
-    results.length
-
-      ? results
-          .map(
-            rule=>`
-              <div class="rule-card">
-
-                <b>
-                  ${escapeHTML(rule.titre)}
-                </b>
-
-                <p>
-                  ${rule.desc}
-                </p>
-
-              </div>
-            `
-          )
-          .join("")
-
-      : `
-        <div class="empty">
-          Aucune règle ne correspond.
-        </div>
-      `;
+  list.innerHTML=results.length
+    ? results
+        .map(
+          rule=>`
+            <div class="rule-card">
+              <b>${escapeHTML(rule.titre)}</b>
+              <p>${rule.desc}</p>
+            </div>
+          `
+        )
+        .join("")
+    : `<div class="empty">Aucune règle ne correspond.</div>`;
 }
 
-/* =========================================================
-   RACCOURCIS CLAVIER
-========================================================= */
+document.addEventListener("keydown",event=>{
+  if($("quizRunning").classList.contains("hidden")) return;
 
-document.addEventListener(
-  "keydown",
-  event=>{
-
-    if($("quizRunning").classList.contains("hidden")){
-      return;
-    }
-
-    if(
-      event.key>="1" &&
-      event.key<="4" &&
-      !state.answered
-    ){
-
-      answerQuestion(
-        Number(event.key)-1
-      );
-    }
-
-    if(
-      event.key==="Enter" &&
-      state.answered
-    ){
-
-      nextQuestion();
-    }
-
-    if(
-      event.key.toLowerCase()==="f"
-    ){
-
-      toggleFavorite();
-    }
-
-    if(
-      event.key==="Escape"
-    ){
-
-      goHome();
-    }
-
+  if(event.key>="1" && event.key<="4" && !state.answered){
+    answerQuestion(Number(event.key)-1);
   }
-);
 
-/* =========================================================
-   INITIALISATION
-========================================================= */
-
-$("questionCount").addEventListener(
-  "input",
-  event=>{
-
-    state.questionCount=
-      Number(event.target.value);
-
-    $("questionCountValue").textContent=
-      state.questionCount;
+  if(event.key==="Enter" && state.answered){
+    nextQuestion();
   }
-);
+
+  if(event.key.toLowerCase()==="f"){
+    toggleFavorite();
+  }
+
+  if(event.key==="Escape"){
+    goHome();
+  }
+});
+
+$("questionCount").addEventListener("input",event=>{
+  state.questionCount=Number(event.target.value);
+  $("questionCountValue").textContent=state.questionCount;
+});
 
 async function init(){
-
   await loadAppData();
-
   applyTheme();
   renderCategorySelector();
   updateHomeStats();
   goHome();
-
   document.body.classList.add("ready");
-
 }
 
 init();
