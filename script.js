@@ -138,7 +138,7 @@ const MATIERE_AUTO = [
     "id": "auto_6",
     "titre": "Masse Maximale Autorisée (MMA / PTAC)",
     "cat": "Légal & Charges",
-    "desc": "La <b>MMA</b> correspond au poids total maximal autorisé pour le véhicule en charge (véhicule vide + passagers + carburant + bagages). Cette valeur figure sur le certificat d'immatriculation (rubrique F.2). Il est strictly interdit de circuler en surcharge, ce qui altère la trajectoire, allonge les distances de freinage et fragilise les suspensions."
+    "desc": "La <b>MMA</b> correspond au poids total maximal autorisé pour le véhicule en charge (véhicule vide + passagers + carburant + bagages). Cette valeur figure sur le certificat d'immatriculation (rubrique F.2). Il est strictement interdit de circuler en surcharge, ce qui altère la trajectoire, allonge les distances de freinage et fragilise les suspensions."
   },
   {
     "id": "auto_7",
@@ -163,6 +163,45 @@ const MATIERE_AUTO = [
     "titre": "Feux de signalisation et éclairage",
     "cat": "Technique",
     "desc": "Le conducteur doit s'assurer du bon fonctionnement de l'ensemble des feux : feux de position, feux de croisement (codes), feux de route (phares), feux de brouillard (avant/arrière), feux de stop et clignotants. Les optiques doivent être propres et les ampoules grillées remplacées sans délai."
+  }
+];
+
+const PIEGES_ROUTES = [
+  {
+    "id": "piege_1",
+    "titre": "La priorité à droite absolue en l'absence de signal",
+    "cat": "Pièges & Priorités",
+    "desc": "<b>Le piège classique :</b> On a tendance à penser que la route la plus large ou celle tout droit est prioritaire. <b>La règle :</b> S'il n'y a aucun panneau de signalisation (pas de cédez le passage, pas de stop, pas de losange de priorité) et aucun feu tricolore, <b>la priorité à droite s'applique toujours</b>, même face à un petit chemin ou une sortie de parking non carrossable."
+  },
+  {
+    "id": "piege_2",
+    "titre": "Le panneau 'Cédez le passage' invisible ou effacé",
+    "cat": "Pièges & Priorités",
+    "desc": "<b>Le piège classique :</b> Penser que puisqu'on ne voit pas le panneau en face, il n'y en a pas. <b>La règle :</b> La ligne de chevrons ou le triangle inversé peint au sol (marquage blanc) a la même valeur juridique que le panneau vertical. Si tu t'engages en invoquant la priorité à droite alors que tu as ce marquage au sol, tu es en tort."
+  },
+  {
+    "id": "piege_3",
+    "titre": "Sortie d'un chemin de terre ou d'une piste cyclable",
+    "cat": "Pièges & Priorités",
+    "desc": "<b>Le piège classique :</b> Céder systématiquement le passage à quelqu'un qui débouche sur votre droite. <b>La règle :</b> Le conducteur qui débouche d'un chemin de terre, d'un sentier, d'une piste cyclable ou d'une propriété privée doit <b>toujours céder le passage</b> à tous les usagers circulant sur la voie publique qu'il aborde, même s'il vient de droite."
+  },
+  {
+    "id": "piege_4",
+    "titre": "Le trompe-l'œil du rond-point moderne",
+    "cat": "Pièges & Priorités",
+    "desc": "<b>Le piège classique :</b> S'engager dans un rond-point en croyant qu'on est prioritaire parce qu'on est déjà engagé. <b>La règle :</b> En Belgique, un rond-point n'est un <i>giratoire</i> (avec priorité aux usagers engagés) <b>que si le panneau bleu rond avec des flèches circulaires (D10) et le panneau 'Cédez le passage' (B1) sont présents</b>. Sans ces panneaux, c'est un carrefour à sens giratoire classique... où la priorité à droite s'applique pour ceux qui veulent *entrer* !"
+  },
+  {
+    "id": "piege_5",
+    "titre": "Le piéton engagé... ou qui s'apprête à traverser",
+    "cat": "Pièges & Priorités",
+    "desc": "<b>Le piège classique :</b> Accélérer légèrement pour passer avant un piéton qui attend au bord du passage clouté. <b>La règle :</b> Dès qu'un piéton manifeste clairement l'intention de traverser (ou est déjà engagé) sur un passage pour piétons, tu as l'obligation absolue de t'arrêter. Ne pas le faire est une infraction grave de 2ème ou 3ème degré."
+  },
+  {
+    "id": "piege_6",
+    "titre": "Le tram qui tourne et coupe votre trajectoire",
+    "cat": "Pièges & Priorités",
+    "desc": "<b>Client piège :</b> Penser que vous êtes prioritaire parce que vous allez tout droit. <b>La règle :</b> Même si vous roulez tout droit et que le tram tourne (ou inversement), le tram conserve sa priorité dès lors qu'il évolue sur rails, sauf si des feux tricolores spécialisés s'opposent à son passage. Ne cherchez jamais à 'passer en force' devant un tram."
   }
 ];
 
@@ -339,7 +378,7 @@ function applyTheme(){
 }
 
 function hideViews(){
-  ["home","quiz","repo","infractions","rules","matiereAuto"].forEach(id=>{
+  ["home","quiz","repo","infractions","rules","matiereAuto","piegesRoutes"].forEach(id=>{
     if($(id)) $(id).classList.add("hidden");
   });
 }
@@ -387,6 +426,14 @@ function showMatiereAuto(){
   if($("matiereAuto")) $("matiereAuto").classList.remove("hidden");
   if($("homeButton")) $("homeButton").style.display="block";
   renderMatiereAuto();
+}
+
+function showPiegesRoutes(){
+  clearInterval(state.timerId);
+  hideViews();
+  if($("piegesRoutes")) $("piegesRoutes").classList.remove("hidden");
+  if($("homeButton")) $("homeButton").style.display="block";
+  renderPiegesRoutes();
 }
 
 function renderCategorySelector(){
@@ -495,7 +542,7 @@ function reviewErrors(){
 }
 
 /* =========================================================
-   PANNEAUX SVG — Version corrigée et stable
+   PANNEAUX SVG
 ========================================================= */
 
 function dangerTriangle(inner){
@@ -1054,6 +1101,36 @@ function renderMatiereAuto(){
     : `<div class="empty">Aucune notion ne correspond à cette recherche.</div>`;
 }
 
+function renderPiegesRoutes(){
+  const query=$("piegeSearch") ? $("piegeSearch").value.trim().toLowerCase() : "";
+  const results=PIEGES_ROUTES.filter(item=>{
+    if(!query) return true;
+    return [item.titre,item.cat,item.desc].join(" ").toLowerCase().includes(query);
+  });
+
+  const list=$("piegeList");
+  if(!list) return;
+  list.classList.remove("fade-list");
+  void list.offsetWidth;
+  list.classList.add("fade-list");
+
+  list.innerHTML=results.length
+    ? results
+        .map(
+          item=>`
+            <div class="rule-card">
+              <div class="info-header">
+                <span class="badge" style="background:var(--red)">${escapeHTML(item.cat)}</span>
+              </div>
+              <b>${escapeHTML(item.titre)}</b>
+              <p>${item.desc}</p>
+            </div>
+          `
+        )
+        .join("")
+    : `<div class="empty">Aucun piège ne correspond à cette recherche.</div>`;
+}
+
 document.addEventListener("keydown",event=>{
   if($("quizRunning") && $("quizRunning").classList.contains("hidden")) return;
 
@@ -1092,7 +1169,9 @@ Object.assign(window, {
   showInfractions,
   showRules,
   showMatiereAuto,
+  showPiegesRoutes,
   renderMatiereAuto,
+  renderPiegesRoutes,
   toggleTheme,
   startReview,
   startQuiz,
