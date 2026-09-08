@@ -21,10 +21,9 @@ if (!window.storage) {
 }
 
 // =========================================================
-// DONNEES OFFICIELLES COMPLETES
+// DONNEES OFFICIELLES - PANNEAUX A
 // =========================================================
 
-// ---- PANNEAUX DE DANGER (A) ----
 var PANNEAUX_A = [
     {code:"A1a",nom:"Virage dangereux a gauche",cat:"A",desc:"Annonce un virage prononce vers la gauche."},
     {code:"A1b",nom:"Virage dangereux a droite",cat:"A",desc:"Annonce un virage prononce vers la droite."},
@@ -57,7 +56,7 @@ var PANNEAUX_A = [
     {code:"A51",nom:"Danger indetermine",cat:"A",desc:"Danger particulier precise par un panonceau additionnel."}
 ];
 
-// ---- PANNEAUX DE PRIORITE (B) ----
+// ---- PANNEAUX B ----
 var PANNEAUX_B = [
     {code:"B1",nom:"Cedez le passage",cat:"B",desc:"Triangle pointe vers le bas. Ceder le passage aux usagers de la voie prioritaire."},
     {code:"B5",nom:"Stop (Arret obligatoire)",cat:"B",desc:"Obligation de marquer l'arret complet avant la ligne d'effet."},
@@ -67,7 +66,7 @@ var PANNEAUX_B = [
     {code:"B17",nom:"Priorite a droite",cat:"B",desc:"Regle generale : ceder le passage venant de droite."}
 ];
 
-// ---- PANNEAUX D'INTERDICTION (C) ----
+// ---- PANNEAUX C ----
 var PANNEAUX_C = [
     {code:"C1",nom:"Acces interdit dans les deux sens",cat:"C",desc:"Interdiction a tout conducteur de s'engager."},
     {code:"C3",nom:"Sens interdit",cat:"C",desc:"Interdiction de s'engager dans cette voie."},
@@ -85,7 +84,7 @@ var PANNEAUX_C = [
     {code:"C45",nom:"Fin de toutes les interdictions locales",cat:"C",desc:"Fin des limitations de vitesse ou de depassement."}
 ];
 
-// ---- PANNEAUX D'OBLIGATION (D) ----
+// ---- PANNEAUX D ----
 var PANNEAUX_D = [
     {code:"D1a",nom:"Direction obligatoire a droite",cat:"D",desc:"Obligation de tourner a droite."},
     {code:"D1b",nom:"Direction obligatoire a gauche",cat:"D",desc:"Obligation de tourner a gauche."},
@@ -93,14 +92,14 @@ var PANNEAUX_D = [
     {code:"D10",nom:"Chemin pour pietons",cat:"D",desc:"Voie reservee exclusivement aux pietons."}
 ];
 
-// ---- PANNEAUX DE STATIONNEMENT (E) ----
+// ---- PANNEAUX E ----
 var PANNEAUX_E = [
     {code:"E1",nom:"Stationnement interdit",cat:"E",desc:"Interdiction de stationner du cote du panneau. L'arret reste autorise."},
     {code:"E3",nom:"Arret et stationnement interdits",cat:"E",desc:"Interdiction absolue de s'arreter et de stationner."},
     {code:"E9a",nom:"Stationnement autorise (Parking)",cat:"E",desc:"Indique un emplacement ou un parking autorise."}
 ];
 
-// ---- PANNEAUX D'INDICATION (F) ----
+// ---- PANNEAUX F ----
 var PANNEAUX_F = [
     {code:"F1",nom:"Commencement d'agglomeration",cat:"F",desc:"Vitesse limitee par defaut a 50 km/h (30 km/h a Bruxelles)."},
     {code:"F3",nom:"Fin d'agglomeration",cat:"F",desc:"Les regles d'agglomeration prennent fin."},
@@ -121,7 +120,7 @@ var PANNEAUX_F = [
     {code:"F28",nom:"Fin de zone pietonne",cat:"F",desc:"Sortie de la zone pietonne."}
 ];
 
-// ---- PANONCEAUX (X) ----
+// ---- PANNEAUX X ----
 var PANNEAUX_X = [
     {code:"X1",nom:"Distance avant le danger",cat:"X",desc:"Indique la distance a laquelle se situe le danger ou la regle."},
     {code:"X2",nom:"Etendue de la mesure",cat:"X",desc:"Indique la longueur sur laquelle s'applique la prescription."},
@@ -135,7 +134,7 @@ var PANNEAUX_X = [
     {code:"X10",nom:"Hauteur",cat:"X",desc:"Indication de hauteur maximale du vehicule."}
 ];
 
-// ---- PANNEAUX TEMPORAIRES (TRAVAUX) ----
+// ---- PANNEAUX T (Travaux) ----
 var PANNEAUX_T = [
     {code:"T1",nom:"Travaux (danger)",cat:"T",desc:"Annonce un danger lie a des travaux."},
     {code:"T2",nom:"Deviation (gauche)",cat:"T",desc:"Indique une deviation par la gauche."},
@@ -143,7 +142,7 @@ var PANNEAUX_T = [
     {code:"T4",nom:"Fin de travaux",cat:"T",desc:"Fin de la zone de travaux."}
 ];
 
-// ---- PANNEAUX DE SERVICE ----
+// ---- PANNEAUX S (Service) ----
 var PANNEAUX_S = [
     {code:"S1",nom:"Aire de repos",cat:"S",desc:"Aire de repos avec parking."},
     {code:"S2",nom:"Aire de service",cat:"S",desc:"Aire de service avec station-service."},
@@ -156,10 +155,10 @@ var PANNEAUX_S = [
     {code:"S9",nom:"Poste d'essence",cat:"S",desc:"Station-service."}
 ];
 
-// ---- FUSION DE TOUS LES PANNEAUX ----
+// ---- FUSION PANNEAUX ----
 var PANNEAUX = [].concat(PANNEAUX_A, PANNEAUX_B, PANNEAUX_C, PANNEAUX_D, PANNEAUX_E, PANNEAUX_F, PANNEAUX_X, PANNEAUX_T, PANNEAUX_S);
 
-// ---- MECANIQUE MOTEUR (60 elements) ----
+// ---- MECANIQUE MOTEUR ----
 var MECANIQUE_MOTEUR = [
     {id:"mec_001",titre:"Huile moteur",cat:"MECA",sousCat:"Moteur",desc:"Viscosite 5W30/10W40. Vidange tous les 15 000-30 000 km."},
     {id:"mec_002",titre:"Filtre a huile",cat:"MECA",sousCat:"Moteur",desc:"Remplacement a chaque vidange. Retient les impuretes."},
@@ -223,7 +222,7 @@ var MECANIQUE_MOTEUR = [
     {id:"mec_060",titre:"Feux de brouillard avant",cat:"MECA",sousCat:"Eclairage",desc:"Uniquement brouillard ou fortes pluies."}
 ];
 
-// ---- PNEUMATIQUES (40 elements) ----
+// ---- PNEUMATIQUES ----
 var PNEUMATIQUES = [
     {id:"pneu_001",titre:"Pneu ete",cat:"PNEU",sousCat:"Types",desc:"Gomme dure, adherence au-dessus de 7°C."},
     {id:"pneu_002",titre:"Pneu hiver",cat:"PNEU",sousCat:"Types",desc:"Gomme souple, lamelles. Adherence < 7°C."},
@@ -267,7 +266,7 @@ var PNEUMATIQUES = [
     {id:"pneu_040",titre:"Remplacement pneus",cat:"PNEU",sousCat:"Entretien",desc:"40 000-60 000 km."}
 ];
 
-// ---- SAISONS ET ENVIRONNEMENT (30 elements) ----
+// ---- SAISONS ET ENVIRONNEMENT ----
 var SAISONS_ENVIRONNEMENT = [
     {id:"sai_001",titre:"Conduite sur neige",cat:"SAI",sousCat:"Hiver",desc:"Vitesse reduite, distances doublees."},
     {id:"sai_002",titre:"Conduite sur verglas",cat:"SAI",sousCat:"Hiver",desc:"Freinage ABS, pas de volant brusque."},
@@ -301,7 +300,7 @@ var SAISONS_ENVIRONNEMENT = [
     {id:"sai_030",titre:"Diesel par temps froid",cat:"SAI",sousCat:"Extreme",desc:"Risque de gelification."}
 ];
 
-// ---- SECOURS ET URGENCE (25 elements) ----
+// ---- SECOURS ----
 var SECOURS_URGENCE = [
     {id:"sec_001",titre:"PLS",cat:"SEC",sousCat:"Gestes",desc:"Position Laterale de Securite."},
     {id:"sec_002",titre:"Massage cardiaque",cat:"SEC",sousCat:"Gestes",desc:"30 compressions, 2 insufflations."},
@@ -330,7 +329,7 @@ var SECOURS_URGENCE = [
     {id:"sec_025",titre:"Gants protection",cat:"SEC",sousCat:"Equipements",desc:"Recommandes."}
 ];
 
-// ---- LEGAL ET ADMINISTRATIF (30 elements) ----
+// ---- LEGAL ----
 var LEGAL_ADMIN = [
     {id:"leg_001",titre:"Permis B",cat:"LEG",sousCat:"Permis",desc:"18 ans (ou 17 ans accompagne)."},
     {id:"leg_002",titre:"Permis A1",cat:"LEG",sousCat:"Permis",desc:"125 cm3, 11 kW."},
@@ -364,7 +363,7 @@ var LEGAL_ADMIN = [
     {id:"leg_030",titre:"Recuperation points",cat:"LEG",sousCat:"Sanctions",desc:"Stage."}
 ];
 
-// ---- EQUIPEMENTS ET ACCESSOIRES (20 elements) ----
+// ---- EQUIPEMENTS ----
 var EQUIPEMENTS = [
     {id:"eq_001",titre:"Phare LED",cat:"EQ",sousCat:"Eclairage",desc:"Obligatoire recents."},
     {id:"eq_002",titre:"Feux de jour",cat:"EQ",sousCat:"Eclairage",desc:"Autoroute."},
@@ -388,7 +387,7 @@ var EQUIPEMENTS = [
     {id:"eq_020",titre:"Systeme antibrouillard",cat:"EQ",sousCat:"Eclairage",desc:"Verification."}
 ];
 
-// ---- MARQUAGES AU SOL (20 elements) ----
+// ---- MARQUAGES ----
 var MARQUAGES_SOL = [
     {id:"mar_001",titre:"Ligne continue simple",cat:"MAR",sousCat:"Lignes",desc:"Interdiction de franchir."},
     {id:"mar_002",titre:"Ligne continue double",cat:"MAR",sousCat:"Lignes",desc:"Interdiction totale."},
@@ -412,7 +411,7 @@ var MARQUAGES_SOL = [
     {id:"mar_020",titre:"Tunnel",cat:"MAR",sousCat:"Zones",desc:"Lignes de guidage."}
 ];
 
-// ---- CONDITIONS EXTREMES (45 elements) ----
+// ---- CONDITIONS EXTREMES ----
 var CONDITIONS_EXTREMES = [
     {id:"cnd_001",titre:"Conduite sur neige",cat:"CND",sousCat:"Hiver",desc:"Vitesse reduite, distances doublees."},
     {id:"cnd_002",titre:"Conduite sur verglas",cat:"CND",sousCat:"Hiver",desc:"ABS, pas de volant brusque."},
@@ -461,7 +460,7 @@ var CONDITIONS_EXTREMES = [
     {id:"cnd_045",titre:"Corniche",cat:"CND",sousCat:"Montagne",desc:"Ralentir."}
 ];
 
-// ---- VEHICULES SPECIFIQUES (25 elements) ----
+// ---- VEHICULES ----
 var VEHICULES_SPECIFIQUES = [
     {id:"veh_001",titre:"Moto A1",cat:"VEH",sousCat:"Moto",desc:"125 cm3, 11 kW."},
     {id:"veh_002",titre:"Moto A2",cat:"VEH",sousCat:"Moto",desc:"35 kW."},
@@ -490,7 +489,7 @@ var VEHICULES_SPECIFIQUES = [
     {id:"veh_025",titre:"Intervention",cat:"VEH",sousCat:"Prioritaires",desc:"Deneigement."}
 ];
 
-// ---- PSYCHOLOGIE ET STATISTIQUES (20 elements) ----
+// ---- PSYCHOLOGIE ----
 var PSYCHOLOGIE_STATS = [
     {id:"psy_001",titre:"Stress",cat:"PSY",sousCat:"Psychologie",desc:"Altere les capacites."},
     {id:"psy_002",titre:"Fatigue",cat:"PSY",sousCat:"Psychologie",desc:"Pause 15 min/2h."},
@@ -514,7 +513,7 @@ var PSYCHOLOGIE_STATS = [
     {id:"psy_020",titre:"Morts",cat:"PSY",sousCat:"Statistiques",desc:"500/an."}
 ];
 
-// ---- INFRACTIONS (27) ----
+// ---- INFRACTIONS ----
 var INFRACTIONS = [
     {titre:"Oubli du clignotant",degre:"1er Degre",amende:"58 €",desc:"Omettre d'indiquer un changement de direction."},
     {titre:"Stationnement genant",degre:"1er Degre",amende:"58 €",desc:"Stationner sur une zone non autorisee."},
@@ -545,7 +544,7 @@ var INFRACTIONS = [
     {titre:"Alcool > 0,8 g/L",degre:"Alcool / Tribunal",amende:"420 € a 1200 €",desc:"Retrait 15 jours et tribunal."}
 ];
 
-// ---- REGLES D'OR (12) ----
+// ---- REGLES ----
 var RULES = [
     {titre:"La Priorite a Droite",desc:"A toute intersection, ceder le passage a tout conducteur venant de droite."},
     {titre:"Ronds-Points et Giratoires",desc:"Sauf panneaux B1/B5, priorite a droite DANS le rond-point."},
@@ -561,7 +560,7 @@ var RULES = [
     {titre:"Tunnels",desc:"Feux de croisement obligatoires. Distance 50m. Interdiction de s'arreter."}
 ];
 
-// ---- PIEGES (10) ----
+// ---- PIEGES ----
 var PIEGES_ROUTES = [
     {id:"piege_1",titre:"Priorite a droite absolue",cat:"Pieges",desc:"Sans signalisation, priorite a droite s'applique toujours."},
     {id:"piege_2",titre:"Stationnement 5 metres",cat:"Pieges",desc:"Interdit de stationner a moins de 5m avant un passage pieton."},
@@ -575,7 +574,7 @@ var PIEGES_ROUTES = [
     {id:"piege_10",titre:"Depassement par la droite autoroute",cat:"Pieges",desc:"Interdit sauf files ininterrompues."}
 ];
 
-// ---- USAGERS ET MANOEUVRES (10) ----
+// ---- USAGERS ----
 var USAGERS_MANOEUVRES = [
     {id:"usager_1",titre:"Rues cyclables",cat:"Usagers",desc:"Interdit de depasser les cyclistes. Vitesse max 30 km/h."},
     {id:"usager_2",titre:"Sas a velos",cat:"Usagers",desc:"Espace reserve aux velos aux feux tricolores."},
@@ -589,7 +588,7 @@ var USAGERS_MANOEUVRES = [
     {id:"usager_10",titre:"Marche arriere",cat:"Manoeuvres",desc:"Interdite sauf pour manoeuvre. Ceder le passage a tous."}
 ];
 
-// ---- FUSION DE TOUTES LES DONNEES POUR LE QUIZ ----
+// ---- FUSION ALL_KNOWLEDGE ----
 var ALL_KNOWLEDGE = [].concat(
     PANNEAUX,
     MECANIQUE_MOTEUR,
@@ -608,145 +607,143 @@ var ALL_KNOWLEDGE = [].concat(
     USAGERS_MANOEUVRES
 );
 
-// ---- CATEGORIES COMPLETES ----
+// ---- CATEGORIES ----
 var CATEGORIES = {
-    A: { label: "Danger", color: "var(--red)" },
-    B: { label: "Priorite", color: "var(--amber)" },
-    C: { label: "Interdiction", color: "var(--red)" },
-    D: { label: "Obligation", color: "var(--blue)" },
-    E: { label: "Stationnement", color: "var(--blue)" },
-    F: { label: "Indication", color: "var(--teal)" },
-    X: { label: "Panonceaux", color: "var(--purple)" },
-    T: { label: "Travaux", color: "var(--orange)" },
-    S: { label: "Service", color: "var(--green)" },
-    MECA: { label: "Mecanique", color: "var(--dark)" },
-    PNEU: { label: "Pneumatiques", color: "var(--dark)" },
-    SAI: { label: "Saisons", color: "var(--dark)" },
-    SEC: { label: "Secours", color: "var(--dark)" },
-    LEG: { label: "Legal", color: "var(--dark)" },
-    EQ: { label: "Equipements", color: "var(--dark)" },
-    MAR: { label: "Marquages", color: "var(--dark)" },
-    CND: { label: "Conditions extremes", color: "var(--dark)" },
-    VEH: { label: "Vehicules", color: "var(--dark)" },
-    PSY: { label: "Psychologie", color: "var(--dark)" }
+    A:{label:"Danger",color:"var(--red)"},
+    B:{label:"Priorite",color:"var(--amber)"},
+    C:{label:"Interdiction",color:"var(--red)"},
+    D:{label:"Obligation",color:"var(--blue)"},
+    E:{label:"Stationnement",color:"var(--blue)"},
+    F:{label:"Indication",color:"var(--teal)"},
+    X:{label:"Panonceaux",color:"var(--purple)"},
+    T:{label:"Travaux",color:"var(--orange)"},
+    S:{label:"Service",color:"var(--green)"},
+    MECA:{label:"Mecanique",color:"var(--dark)"},
+    PNEU:{label:"Pneumatiques",color:"var(--dark)"},
+    SAI:{label:"Saisons",color:"var(--dark)"},
+    SEC:{label:"Secours",color:"var(--dark)"},
+    LEG:{label:"Legal",color:"var(--dark)"},
+    EQ:{label:"Equipements",color:"var(--dark)"},
+    MAR:{label:"Marquages",color:"var(--dark)"},
+    CND:{label:"Conditions extremes",color:"var(--dark)"},
+    VEH:{label:"Vehicules",color:"var(--dark)"},
+    PSY:{label:"Psychologie",color:"var(--dark)"}
 };
 
-// ---- STRUCTURE DU MENU 7 CATEGORIES ----
+// ---- MENU STRUCTURE ----
 var MENU_STRUCTURE = [
     {
-        id: "signalisation",
-        label: "Signalisation & Panneaux",
-        icon: "🚦",
-        color: "var(--blue)",
-        description: "Tous les panneaux du code belge : danger, priorite, interdiction, obligation, stationnement, indication, panonceaux, travaux et service.",
-        subCategories: [
-            { id: "A", label: "Danger", count: 29 },
-            { id: "B", label: "Priorite", count: 6 },
-            { id: "C", label: "Interdiction", count: 15 },
-            { id: "D", label: "Obligation", count: 4 },
-            { id: "E", label: "Stationnement", count: 3 },
-            { id: "F", label: "Indication", count: 18 },
-            { id: "X", label: "Panonceaux", count: 10 },
-            { id: "T", label: "Travaux", count: 4 },
-            { id: "S", label: "Service", count: 9 }
+        id:"signalisation",
+        label:"Signalisation & Panneaux",
+        icon:"🚦",
+        color:"var(--blue)",
+        description:"Tous les panneaux du code belge : danger, priorite, interdiction, obligation, stationnement, indication, panonceaux, travaux et service.",
+        subCategories:[
+            {id:"A",label:"Danger",count:29},
+            {id:"B",label:"Priorite",count:6},
+            {id:"C",label:"Interdiction",count:15},
+            {id:"D",label:"Obligation",count:4},
+            {id:"E",label:"Stationnement",count:3},
+            {id:"F",label:"Indication",count:18},
+            {id:"X",label:"Panonceaux",count:10},
+            {id:"T",label:"Travaux",count:4},
+            {id:"S",label:"Service",count:9}
         ],
-        totalCount: 98,
-        data: PANNEAUX
+        totalCount:98,
+        data:PANNEAUX
     },
     {
-        id: "mecanique",
-        label: "Mecanique & Technologie",
-        icon: "🔧",
-        color: "var(--dark)",
-        description: "Moteur, freins, direction, suspension, electrique, pneumatiques, equipements.",
-        subCategories: [
-            { id: "MECA", label: "Moteur & Systemes", count: 28 },
-            { id: "MECA_FREIN", label: "Systeme de freinage", count: 11 },
-            { id: "MECA_DIR", label: "Direction & Suspension", count: 9 },
-            { id: "MECA_ELEC", label: "Electrique & Eclairage", count: 12 },
-            { id: "PNEU", label: "Pneumatiques & Jantes", count: 40 },
-            { id: "EQ", label: "Equipements & Accessoires", count: 20 }
+        id:"mecanique",
+        label:"Mecanique & Technologie",
+        icon:"🔧",
+        color:"var(--dark)",
+        description:"Moteur, freins, direction, suspension, electrique, pneumatiques, equipements.",
+        subCategories:[
+            {id:"MECA",label:"Moteur & Systemes",count:28},
+            {id:"MECA_FREIN",label:"Systeme de freinage",count:11},
+            {id:"MECA_DIR",label:"Direction & Suspension",count:9},
+            {id:"MECA_ELEC",label:"Electrique & Eclairage",count:12},
+            {id:"PNEU",label:"Pneumatiques & Jantes",count:40},
+            {id:"EQ",label:"Equipements & Accessoires",count:20}
         ],
-        totalCount: 120,
-        data: [].concat(MECANIQUE_MOTEUR, PNEUMATIQUES, EQUIPEMENTS)
+        totalCount:120,
+        data:[].concat(MECANIQUE_MOTEUR, PNEUMATIQUES, EQUIPEMENTS)
     },
     {
-        id: "conduite",
-        label: "Conduite & Conditions",
-        icon: "🌡️",
-        color: "var(--teal)",
-        description: "Conduite hivernale, estivale, en montagne, conditions extremes et ecologie.",
-        subCategories: [
-            { id: "SAI_HIVER", label: "Conduite hivernale", count: 8 },
-            { id: "SAI_ETE", label: "Conduite estivale", count: 6 },
-            { id: "SAI_MONT", label: "Conduite en montagne", count: 5 },
-            { id: "CND_EXT", label: "Conditions extremes", count: 15 },
-            { id: "SAI_ECO", label: "Ecologie & Environnement", count: 11 }
+        id:"conduite",
+        label:"Conduite & Conditions",
+        icon:"🌡️",
+        color:"var(--teal)",
+        description:"Conduite hivernale, estivale, en montagne, conditions extremes et ecologie.",
+        subCategories:[
+            {id:"SAI_HIVER",label:"Conduite hivernale",count:8},
+            {id:"SAI_ETE",label:"Conduite estivale",count:6},
+            {id:"SAI_MONT",label:"Conduite en montagne",count:5},
+            {id:"CND_EXT",label:"Conditions extremes",count:15},
+            {id:"SAI_ECO",label:"Ecologie & Environnement",count:11}
         ],
-        totalCount: 45,
-        data: [].concat(SAISONS_ENVIRONNEMENT, CONDITIONS_EXTREMES)
+        totalCount:45,
+        data:[].concat(SAISONS_ENVIRONNEMENT, CONDITIONS_EXTREMES)
     },
     {
-        id: "securite",
-        label: "Securite & Secours",
-        icon: "🚑",
-        color: "var(--red)",
-        description: "Gestes de premiers secours, PLS, massage cardiaque, balisage, equipements obligatoires.",
-        subCategories: [
-            { id: "SEC_GESTES", label: "Gestes de premiers secours", count: 10 },
-            { id: "SEC_BALISAGE", label: "Balisage & Signalisation d'urgence", count: 6 },
-            { id: "SEC_EQUIP", label: "Equipements obligatoires", count: 9 }
+        id:"securite",
+        label:"Securite & Secours",
+        icon:"🚑",
+        color:"var(--red)",
+        description:"Gestes de premiers secours, PLS, massage cardiaque, balisage, equipements obligatoires.",
+        subCategories:[
+            {id:"SEC_GESTES",label:"Gestes de premiers secours",count:10},
+            {id:"SEC_BALISAGE",label:"Balisage & Signalisation d'urgence",count:6},
+            {id:"SEC_EQUIP",label:"Equipements obligatoires",count:9}
         ],
-        totalCount: 25,
-        data: SECOURS_URGENCE
+        totalCount:25,
+        data:SECOURS_URGENCE
     },
     {
-        id: "legal",
-        label: "Regles & Legal",
-        icon: "⚖️",
-        color: "var(--purple)",
-        description: "Regles d'or, pieges, usagers vulnerables, infractions, permis, assurance, controle technique.",
-        subCategories: [
-            { id: "LEG_REGLES", label: "Regles d'or & Priorites", count: 12 },
-            { id: "LEG_PIEGES", label: "Pieges & Zones grises", count: 10 },
-            { id: "LEG_USAGERS", label: "Usagers & Manoeuvres", count: 10 },
-            { id: "LEG_INFRACT", label: "Infractions & Amendes", count: 27 },
-            { id: "LEG_DOCS", label: "Documents & Permis", count: 12 },
-            { id: "LEG_ASSUR", label: "Assurance & Controle technique", count: 8 }
+        id:"legal",
+        label:"Regles & Legal",
+        icon:"⚖️",
+        color:"var(--purple)",
+        description:"Regles d'or, pieges, usagers vulnerables, infractions, permis, assurance, controle technique.",
+        subCategories:[
+            {id:"LEG_REGLES",label:"Regles d'or & Priorites",count:12},
+            {id:"LEG_PIEGES",label:"Pieges & Zones grises",count:10},
+            {id:"LEG_USAGERS",label:"Usagers & Manoeuvres",count:10},
+            {id:"LEG_INFRACT",label:"Infractions & Amendes",count:27},
+            {id:"LEG_DOCS",label:"Documents & Permis",count:12},
+            {id:"LEG_ASSUR",label:"Assurance & Controle technique",count:8}
         ],
-        totalCount: 79,
-        data: [].concat(RULES, PIEGES_ROUTES, USAGERS_MANOEUVRES, INFRACTIONS, LEGAL_ADMIN)
+        totalCount:79,
+        data:[].concat(RULES, PIEGES_ROUTES, USAGERS_MANOEUVRES, INFRACTIONS, LEGAL_ADMIN)
     },
     {
-        id: "vehicules",
-        label: "Vehicules Specifiques",
-        icon: "🚗",
-        color: "var(--amber)",
-        description: "Motos, cyclomoteurs, poids lourds, autocars, remorques et attelages.",
-        subCategories: [
-            { id: "VEH_MOTO", label: "Motos & Cyclomoteurs", count: 9 },
-            { id: "VEH_PL", label: "Poids lourds & Autocars", count: 8 },
-            { id: "VEH_REM", label: "Remorques & Attelages", count: 6 }
+        id:"vehicules",
+        label:"Vehicules Specifiques",
+        icon:"🚗",
+        color:"var(--amber)",
+        description:"Motos, cyclomoteurs, poids lourds, autocars, remorques et attelages.",
+        subCategories:[
+            {id:"VEH_MOTO",label:"Motos & Cyclomoteurs",count:9},
+            {id:"VEH_PL",label:"Poids lourds & Autocars",count:8},
+            {id:"VEH_REM",label:"Remorques & Attelages",count:6}
         ],
-        totalCount: 23,
-        data: VEHICULES_SPECIFIQUES
+        totalCount:23,
+        data:VEHICULES_SPECIFIQUES
     },
     {
-        id: "psychologie",
-        label: "Psychologie & Statistiques",
-        icon: "📊",
-        color: "var(--green)",
-        description: "Psychologie de la conduite, fatigue, stress, distraction, statistiques du permis belge.",
-        subCategories: [
-            { id: "PSY_CHOLOGIE", label: "Psychologie de la conduite", count: 10 },
-            { id: "PSY_STATS", label: "Statistiques & Chiffres cles", count: 10 }
+        id:"psychologie",
+        label:"Psychologie & Statistiques",
+        icon:"📊",
+        color:"var(--green)",
+        description:"Psychologie de la conduite, fatigue, stress, distraction, statistiques du permis belge.",
+        subCategories:[
+            {id:"PSY_CHOLOGIE",label:"Psychologie de la conduite",count:10},
+            {id:"PSY_STATS",label:"Statistiques & Chiffres cles",count:10}
         ],
-        totalCount: 20,
-        data: PSYCHOLOGIE_STATS
+        totalCount:20,
+        data:PSYCHOLOGIE_STATS
     }
-];
-
-// =========================================================
+];// =========================================================
 // STOCKAGE & ETAT
 // =========================================================
 
@@ -806,11 +803,16 @@ var state = {
     review: false,
     timerId: null,
     seconds: 15,
-    isOfficialExam: false
+    isOfficialExam: false,
+    questionStartTime: null
 };
 
 var currentMenuCategory = null;
 var currentSousCategorie = null;
+
+// =========================================================
+// UTILITAIRES
+// =========================================================
 
 function $(id) { return document.getElementById(id); }
 
@@ -847,15 +849,22 @@ function shuffle(array) {
     return copy;
 }
 
+function getAverageTime() {
+    var times = JSON.parse(localStorage.getItem("questionTimes") || "[]");
+    if (times.length === 0) return 0;
+    var sum = times.reduce(function(a, b) { return a + b; }, 0);
+    return Math.round(sum / times.length);
+}
+
 // =========================================================
-// FONCTIONS DE NAVIGATION
+// NAVIGATION
 // =========================================================
 
 function hideViews() {
     var ids = ["home", "menu", "categoriePage", "sousCategoriePage", "quiz", "repo", "rules",
         "mecanique", "pneumatiques", "saisons", "secours", "legal", "equipements",
         "marquages", "conditions", "vehicules", "psychologie", "infractions", "piegesRoutes",
-        "usagersManoeuvres"
+        "usagersManoeuvres", "statsPage", "dailyChallenge", "flashcards"
     ];
     for (var i = 0; i < ids.length; i++) {
         if ($(ids[i])) $(ids[i]).classList.add("hidden");
@@ -868,26 +877,33 @@ function goHome() {
     if ($("home")) $("home").classList.remove("hidden");
     if ($("homeButton")) $("homeButton").style.display = "none";
     updateHomeStats();
+    updateBadges();
 }
 
 function updateHomeStats() {
     var total = stats().total;
     var correct = stats().correct;
     var percentage = total > 0 ? Math.round(100 * correct / total) : 0;
+    var currentStreak = parseInt(localStorage.getItem("currentStreak") || "0");
+    var badges = getBadges();
+    var unlocked = badges.filter(function(b) { return b.unlocked; });
 
     var prevSessions = Number($("statSessions")?.textContent) || 0;
     var prevQuestions = Number($("statQuestions")?.textContent) || 0;
     var prevFavs = Number($("statFavs")?.textContent) || 0;
     var prevSuccess = Number(($("statSuccess")?.textContent || "0").replace("%", "")) || 0;
+    var prevStreak = Number($("statStreak")?.textContent) || 0;
+    var prevBadges = Number($("statBadges")?.textContent) || 0;
 
     if ($("statSessions")) animateCount($("statSessions"), prevSessions, stats().sessions, "");
     if ($("statSuccess")) animateCount($("statSuccess"), prevSuccess, percentage, "%");
     if ($("statFavs")) animateCount($("statFavs"), prevFavs, favorites().length, "");
     if ($("statQuestions")) animateCount($("statQuestions"), prevQuestions, total, "");
+    if ($("statStreak")) animateCount($("statStreak"), prevStreak, currentStreak, "");
+    if ($("statBadges")) animateCount($("statBadges"), prevBadges, unlocked.length, "");
 
     if ($("progressPercent")) $("progressPercent").textContent = percentage + "%";
     if ($("progressBar")) $("progressBar").style.width = percentage + "%";
-
     if ($("progressText")) {
         $("progressText").textContent = total > 0 ? correct + " bonne(s) reponse(s) sur " + total : "Aucune session";
     }
@@ -895,13 +911,19 @@ function updateHomeStats() {
         var set = new Set([...favorites(), ...Object.keys(mistakes())]);
         $("reviewCount").textContent = set.size;
     }
-    if ($("streak")) $("streak").textContent = appData.streak;
+    if ($("streak")) $("streak").textContent = currentStreak;
+    if ($("badgeCount")) $("badgeCount").textContent = unlocked.length;
 }
+
+// =========================================================
+// THEME
+// =========================================================
 
 async function toggleTheme() {
     document.body.classList.toggle("dark");
     appData.theme = document.body.classList.contains("dark") ? "dark" : "light";
-    if ($("themeButton")) $("themeButton").textContent = appData.theme === "dark" ? "🌙" : "☀";
+    if ($("themeButton")) $("themeButton").textContent = appData.theme === "dark" ? "🌙" : "☀️";
+    if ($("themeButtonHeader")) $("themeButtonHeader").textContent = appData.theme === "dark" ? "🌙" : "☀️";
     await saveAppData();
 }
 
@@ -909,11 +931,20 @@ function applyTheme() {
     if (appData.theme === "dark") {
         document.body.classList.add("dark");
         if ($("themeButton")) $("themeButton").textContent = "🌙";
+        if ($("themeButtonHeader")) $("themeButtonHeader").textContent = "🌙";
+    }
+}
+
+function detectDarkMode() {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add("dark");
+        if ($("themeButton")) $("themeButton").textContent = "🌙";
+        if ($("themeButtonHeader")) $("themeButtonHeader").textContent = "🌙";
     }
 }
 
 // =========================================================
-// FONCTIONS DU MENU 7 CATEGORIES
+// MENU 7 CATEGORIES
 // =========================================================
 
 function showMenu() {
@@ -1102,6 +1133,9 @@ function quizCategorie() {
     if ($("quizConfig")) $("quizConfig").classList.add("hidden");
     if ($("quizSummary")) $("quizSummary").classList.add("hidden");
     if ($("quizRunning")) $("quizRunning").classList.remove("hidden");
+    $("quizModeLabel").textContent = "📚 CATEGORIE";
+    $("quizModeLabel").style.background = "var(--blue)";
+    $("quizModeLabel").style.color = "white";
     beginSession(false);
 }
 
@@ -1121,97 +1155,132 @@ function examenCategorie() {
     if ($("quizConfig")) $("quizConfig").classList.add("hidden");
     if ($("quizSummary")) $("quizSummary").classList.add("hidden");
     if ($("quizRunning")) $("quizRunning").classList.remove("hidden");
+    $("quizModeLabel").textContent = "📚 EXAMEN CAT";
+    $("quizModeLabel").style.background = "var(--blue)";
+    $("quizModeLabel").style.color = "white";
     beginSession(false);
 }
 
 // =========================================================
-// FONCTIONS DES VUES SECONDAIRES
+// VUES SECONDAIRES
 // =========================================================
 
-function showQuiz() { clearInterval(state.timerId);
+function showQuiz() {
+    clearInterval(state.timerId);
     hideViews();
     state.isOfficialExam = false;
     if ($("quiz")) $("quiz").classList.remove("hidden");
     if ($("homeButton")) $("homeButton").style.display = "block";
-    configureQuiz(); }
+    configureQuiz();
+}
 
-function showRepo() { hideViews();
+function showRepo() {
+    hideViews();
     if ($("repo")) $("repo").classList.remove("hidden");
     if ($("homeButton")) $("homeButton").style.display = "block";
-    renderRepository(); }
+    renderRepository();
+}
 
-function showRules() { hideViews();
+function showRules() {
+    hideViews();
     if ($("rules")) $("rules").classList.remove("hidden");
     if ($("homeButton")) $("homeButton").style.display = "block";
-    renderRules(); }
+    renderRules();
+}
 
-function showMecanique() { hideViews();
+function showMecanique() {
+    hideViews();
     if ($("mecanique")) $("mecanique").classList.remove("hidden");
     if ($("homeButton")) $("homeButton").style.display = "block";
-    renderMecanique(); }
+    renderMecanique();
+}
 
-function showPneumatiques() { hideViews();
+function showPneumatiques() {
+    hideViews();
     if ($("pneumatiques")) $("pneumatiques").classList.remove("hidden");
     if ($("homeButton")) $("homeButton").style.display = "block";
-    renderPneumatiques(); }
+    renderPneumatiques();
+}
 
-function showSaisons() { hideViews();
+function showSaisons() {
+    hideViews();
     if ($("saisons")) $("saisons").classList.remove("hidden");
     if ($("homeButton")) $("homeButton").style.display = "block";
-    renderSaisons(); }
+    renderSaisons();
+}
 
-function showSecours() { hideViews();
+function showSecours() {
+    hideViews();
     if ($("secours")) $("secours").classList.remove("hidden");
     if ($("homeButton")) $("homeButton").style.display = "block";
-    renderSecours(); }
+    renderSecours();
+}
 
-function showLegal() { hideViews();
+function showLegal() {
+    hideViews();
     if ($("legal")) $("legal").classList.remove("hidden");
     if ($("homeButton")) $("homeButton").style.display = "block";
-    renderLegal(); }
+    renderLegal();
+}
 
-function showEquipements() { hideViews();
+function showEquipements() {
+    hideViews();
     if ($("equipements")) $("equipements").classList.remove("hidden");
     if ($("homeButton")) $("homeButton").style.display = "block";
-    renderEquipements(); }
+    renderEquipements();
+}
 
-function showMarquages() { hideViews();
+function showMarquages() {
+    hideViews();
     if ($("marquages")) $("marquages").classList.remove("hidden");
     if ($("homeButton")) $("homeButton").style.display = "block";
-    renderMarquages(); }
+    renderMarquages();
+}
 
-function showConditions() { hideViews();
+function showConditions() {
+    hideViews();
     if ($("conditions")) $("conditions").classList.remove("hidden");
     if ($("homeButton")) $("homeButton").style.display = "block";
-    renderConditions(); }
+    renderConditions();
+}
 
-function showVehicules() { hideViews();
+function showVehicules() {
+    hideViews();
     if ($("vehicules")) $("vehicules").classList.remove("hidden");
     if ($("homeButton")) $("homeButton").style.display = "block";
-    renderVehicules(); }
+    renderVehicules();
+}
 
-function showPsychologie() { hideViews();
+function showPsychologie() {
+    hideViews();
     if ($("psychologie")) $("psychologie").classList.remove("hidden");
     if ($("homeButton")) $("homeButton").style.display = "block";
-    renderPsychologie(); }
+    renderPsychologie();
+}
 
-function showInfractions() { hideViews();
+function showInfractions() {
+    hideViews();
     if ($("infractions")) $("infractions").classList.remove("hidden");
     if ($("homeButton")) $("homeButton").style.display = "block";
-    renderInfractions(); }
+    renderInfractions();
+}
 
-function showPiegesRoutes() { hideViews();
+function showPiegesRoutes() {
+    hideViews();
     if ($("piegesRoutes")) $("piegesRoutes").classList.remove("hidden");
     if ($("homeButton")) $("homeButton").style.display = "block";
-    renderPiegesRoutes(); }
+    renderPiegesRoutes();
+}
 
-function showUsagersManoeuvres() { hideViews();
+function showUsagersManoeuvres() {
+    hideViews();
     if ($("usagersManoeuvres")) $("usagersManoeuvres").classList.remove("hidden");
     if ($("homeButton")) $("homeButton").style.display = "block";
-    renderUsagersManoeuvres(); }
+    renderUsagersManoeuvres();
+}
 
 // =========================================================
-// FONCTIONS DE RENDU GENERIQUES
+// RENDU GENERIQUE
 // =========================================================
 
 function renderGeneric(list, searchId, listId, titleKey, descKey, catKey) {
@@ -1254,7 +1323,6 @@ function renderGeneric(list, searchId, listId, titleKey, descKey, catKey) {
     }
 }
 
-// ---- FONCTIONS DE RENDU SPECIFIQUES ----
 function renderRepository() { renderGeneric(PANNEAUX, "repoSearch", "repoList", "nom", "desc", "cat"); }
 function renderRules() { renderGeneric(RULES, "ruleSearch", "ruleList", "titre", "desc", "cat"); }
 function renderMecanique() { renderGeneric(MECANIQUE_MOTEUR, "mecaSearch", "mecaList", "titre", "desc", "cat"); }
@@ -1272,7 +1340,7 @@ function renderPiegesRoutes() { renderGeneric(PIEGES_ROUTES, "piegeSearch", "pie
 function renderUsagersManoeuvres() { renderGeneric(USAGERS_MANOEUVRES, "usagerSearch", "usagerList", "titre", "desc", "cat"); }
 
 // =========================================================
-// QUIZ FUNCTIONS
+// QUIZ
 // =========================================================
 
 function renderCategorySelector() {
@@ -1331,6 +1399,16 @@ function startQuiz() {
     var timerCheckbox = document.getElementById("timerEnabled");
     state.timer = timerCheckbox ? timerCheckbox.checked : false;
     state.questions = shuffle(pool).slice(0, state.questionCount);
+    state.isOfficialExam = false;
+    $("quizModeLabel").textContent = "⚡ QUIZ";
+    $("quizModeLabel").style.background = "var(--amber)";
+    $("quizModeLabel").style.color = "var(--ink)";
+    hideViews();
+    if ($("quiz")) $("quiz").classList.remove("hidden");
+    if ($("homeButton")) $("homeButton").style.display = "block";
+    if ($("quizConfig")) $("quizConfig").classList.add("hidden");
+    if ($("quizSummary")) $("quizSummary").classList.add("hidden");
+    if ($("quizRunning")) $("quizRunning").classList.remove("hidden");
     beginSession(false);
 }
 
@@ -1349,6 +1427,9 @@ function startOfficialExam() {
     if ($("quizConfig")) $("quizConfig").classList.add("hidden");
     if ($("quizSummary")) $("quizSummary").classList.add("hidden");
     if ($("quizRunning")) $("quizRunning").classList.remove("hidden");
+    $("quizModeLabel").textContent = "📚 EXAMEN";
+    $("quizModeLabel").style.background = "var(--blue)";
+    $("quizModeLabel").style.color = "white";
     beginSession(false);
 }
 
@@ -1382,6 +1463,16 @@ function startReview() {
     state.questions = list;
     state.timer = false;
     state.isOfficialExam = false;
+    state.review = true;
+    $("quizModeLabel").textContent = "⭐ REVISION";
+    $("quizModeLabel").style.background = "var(--amber)";
+    $("quizModeLabel").style.color = "var(--ink)";
+    hideViews();
+    if ($("quiz")) $("quiz").classList.remove("hidden");
+    if ($("homeButton")) $("homeButton").style.display = "block";
+    if ($("quizConfig")) $("quizConfig").classList.add("hidden");
+    if ($("quizSummary")) $("quizSummary").classList.add("hidden");
+    if ($("quizRunning")) $("quizRunning").classList.remove("hidden");
     beginSession(true);
 }
 
@@ -1389,10 +1480,25 @@ function reviewErrors() {
     state.questions = state.errors.map(function(error) { return error.panel; });
     state.timer = false;
     state.isOfficialExam = false;
+    state.review = true;
+    $("quizModeLabel").textContent = "🔄 ERREURS";
+    $("quizModeLabel").style.background = "var(--red)";
+    $("quizModeLabel").style.color = "white";
+    hideViews();
+    if ($("quiz")) $("quiz").classList.remove("hidden");
+    if ($("homeButton")) $("homeButton").style.display = "block";
+    if ($("quizConfig")) $("quizConfig").classList.add("hidden");
+    if ($("quizSummary")) $("quizSummary").classList.add("hidden");
+    if ($("quizRunning")) $("quizRunning").classList.remove("hidden");
     beginSession(true);
 }
 
-// ---- SVG GENERATION ----
+function replayQuiz() { beginSession(state.review); }
+
+// =========================================================
+// SVG PANNEAUX
+// =========================================================
+
 function makeSignSVG(panel, small) {
     small = small || false;
     var ink = "#171a1f";
@@ -1439,6 +1545,10 @@ function makeSignSVG(panel, small) {
     return '<svg class="sign-svg" viewBox="0 0 180 180" preserveAspectRatio="xMidYMid meet" role="img" aria-label="' + escapeHTML(panel.nom || panel.titre || "") + '" xmlns="http://www.w3.org/2000/svg">' + content + '</svg>';
 }
 
+// =========================================================
+// RENDU QUESTION
+// =========================================================
+
 function renderProgressDots() {
     if (!$("progressDots")) return;
     var html = "";
@@ -1453,11 +1563,13 @@ function renderQuestion() {
     if (state.index >= state.questions.length) { showSummary(); return; }
     renderProgressDots();
 
+    state.questionStartTime = Date.now();
+
     var panel = state.questions[state.index];
     var totalQ = state.questions.length;
 
     if ($("quizProgress")) {
-        $("quizProgress").textContent = (state.isOfficialExam ? "Examen Officiel" : (state.review ? "Revision" : "Question")) + " " + (state.index + 1) + " / " + totalQ;
+        $("quizProgress").textContent = (state.isOfficialExam ? "📚 Examen Officiel" : (state.review ? "⭐ Revision" : "⚡ Question")) + " " + (state.index + 1) + " / " + totalQ;
     }
     if ($("quizScore")) $("quizScore").textContent = "Score : " + state.score;
     if ($("favoriteButton")) {
@@ -1489,11 +1601,11 @@ function renderQuestion() {
         state.seconds = 15;
         $("timerDisplay").classList.remove("hidden");
         $("timerDisplay").classList.remove("low");
-        $("timerDisplay").textContent = "⏳ 15s";
+        $("timerDisplay").textContent = "⏱ 15s";
 
         state.timerId = setInterval(function() {
             state.seconds--;
-            $("timerDisplay").textContent = "⏳ " + state.seconds + "s";
+            $("timerDisplay").textContent = "⏱ " + state.seconds + "s";
             $("timerDisplay").classList.toggle("low", state.seconds <= 5);
             if (state.seconds <= 0) {
                 clearInterval(state.timerId);
@@ -1524,12 +1636,20 @@ async function completeAnswer(selectedIndex) {
     if (correct) {
         state.score++;
         categoryState.correct++;
+        var currentStreak = parseInt(localStorage.getItem("currentStreak") || "0") + 1;
+        localStorage.setItem("currentStreak", String(currentStreak));
+        var bestStreak = parseInt(localStorage.getItem("bestStreak") || "0");
+        if (currentStreak > bestStreak) {
+            localStorage.setItem("bestStreak", String(currentStreak));
+        }
     } else {
         state.errors.push({ panel: panel, answer: selected ? (selected.nom || selected.titre || "") : "Temps ecoule" });
         var code = panel.code || panel.id || panel.titre || "";
         appData.mistakes[code] = (appData.mistakes[code] || 0) + 1;
+        localStorage.setItem("currentStreak", "0");
         await saveAppData();
     }
+
     state.categoryStats[panel.cat] = categoryState;
 
     var options = document.querySelectorAll("#optionList .option");
@@ -1537,24 +1657,51 @@ async function completeAnswer(selectedIndex) {
         options[i].classList.add("locked");
         if ((state.options[i].code || state.options[i].id || state.options[i].titre) === (panel.code || panel.id || panel.titre)) {
             options[i].classList.add("correct");
-        } else if (i === selectedIndex) {
+        } else if (i === selectedIndex && !correct) {
             options[i].classList.add("wrong");
         }
     }
 
     if ($("feedbackZone")) {
         var label = panel.nom || panel.titre || "";
-        $("feedbackZone").innerHTML = '<div class="feedback ' + (correct ? "" : "bad") + '"><b>' + (correct ? "Bonne reponse" : selectedIndex < 0 ? "Temps ecoule - c'etait : " + escapeHTML(label) : "Erreur - c'etait : " + escapeHTML(label)) + '</b>' + escapeHTML(panel.desc || "") + '</div>';
+        $("feedbackZone").innerHTML = '<div class="feedback ' + (correct ? "" : "bad") + '"><b>' + (correct ? "✅ Bonne reponse !" : selectedIndex < 0 ? "⏱ Temps ecoule - c'etait : " + escapeHTML(label) : "❌ Erreur - c'etait : " + escapeHTML(label)) + '</b>' + escapeHTML(panel.desc || "") + '</div>';
     }
 
     if ($("nextButtonZone")) {
-        $("nextButtonZone").innerHTML = '<button class="primary" style="width:100%" onclick="nextQuestion()">' + (state.index + 1 >= state.questions.length ? "Voir le resume" : "Question suivante") + '</button>';
+        $("nextButtonZone").innerHTML = '<button class="primary" style="width:100%" onclick="nextQuestion()">' + (state.index + 1 >= state.questions.length ? "📊 Voir le resume" : "➡️ Question suivante") + '</button>';
     }
     if ($("quizScore")) $("quizScore").textContent = "Score : " + state.score;
+
+    // Enregistrer le temps
+    if (state.questionStartTime) {
+        var time = (Date.now() - state.questionStartTime) / 1000;
+        var times = JSON.parse(localStorage.getItem("questionTimes") || "[]");
+        times.push(time);
+        localStorage.setItem("questionTimes", JSON.stringify(times.slice(-100)));
+    }
+
+    // Mettre à jour les stats quotidiennes
+    var today = new Date().toDateString();
+    var lastDate = localStorage.getItem("lastDate") || "";
+    if (lastDate !== today) {
+        localStorage.setItem("dailyQuestions", "0");
+        localStorage.setItem("lastDate", today);
+    }
+    var dailyQ = parseInt(localStorage.getItem("dailyQuestions") || "0");
+    localStorage.setItem("dailyQuestions", String(dailyQ + 1));
+    updateDailyGoal();
+    updateBadges();
+    updateHomeStats();
 }
 
-function nextQuestion() { state.index++;
-    renderQuestion(); }
+function nextQuestion() {
+    state.index++;
+    renderQuestion();
+}
+
+// =========================================================
+// FAVORIS
+// =========================================================
 
 async function toggleFavorite() {
     var panel = state.questions[state.index];
@@ -1572,6 +1719,10 @@ async function toggleFavorite() {
     await saveAppData();
     updateHomeStats();
 }
+
+// =========================================================
+// RESUME
+// =========================================================
 
 async function showSummary() {
     clearInterval(state.timerId);
@@ -1594,7 +1745,7 @@ async function showSummary() {
         passed = score >= 41;
         $("summaryTitle").textContent = passed ? "🎉 EXAMEN REUSSI (Officiel)" : "❌ EXAMEN ECHOUE (Officiel)";
     } else {
-        $("summaryTitle").textContent = state.review ? "Revision terminee" : "Session terminee";
+        $("summaryTitle").textContent = state.review ? "⭐ Revision terminee" : "⚡ Session terminee";
     }
 
     if ($("summaryPercent")) {
@@ -1607,8 +1758,18 @@ async function showSummary() {
         if (state.isOfficialExam) {
             $("summaryMessage").textContent = passed ? "Felicitations ! Avec " + score + "/50, tu obtiens ton permis theorique." : "Tu as obtenu " + score + "/50. Seuil : 41/50.";
         } else {
-            $("summaryMessage").textContent = percentage >= 90 ? "Excellent !" : percentage >= 70 ? "Bon score." : "Entrainement requis.";
+            $("summaryMessage").textContent = percentage >= 90 ? "🌟 Excellent !" : percentage >= 70 ? "👍 Bon score." : "📚 Entrainement requis.";
         }
+    }
+
+    // Stats du résumé
+    var avgTime = getAverageTime();
+    var bestStreak = parseInt(localStorage.getItem("bestStreak") || "0");
+    if ($("summaryTime")) $("summaryTime").textContent = avgTime > 0 ? avgTime + "s" : "—";
+    if ($("summaryStreak")) $("summaryStreak").textContent = bestStreak;
+    if ($("summaryDifficulty")) {
+        var diffLabel = { facile: "⭐ Facile", moyen: "⭐⭐ Moyen", difficile: "⭐⭐⭐ Difficile" };
+        $("summaryDifficulty").textContent = currentDifficulty && diffLabel[currentDifficulty] ? diffLabel[currentDifficulty] : "Tous";
     }
 
     if ($("categoryResults")) {
@@ -1632,28 +1793,1013 @@ async function showSummary() {
 
     if (state.errors.length) {
         if ($("errorResults")) {
-            var errorHtml = '<details class="errors"><summary>Revoir les ' + state.errors.length + ' erreur(s)</summary>';
+            var errorHtml = '<details class="errors"><summary>📝 Revoir les ' + state.errors.length + ' erreur(s)</summary>';
             for (var i = 0; i < state.errors.length; i++) {
                 var error = state.errors[i];
                 var label = error.panel.nom || error.panel.titre || "";
-                errorHtml += '<div class="error"><b>[' + escapeHTML(error.panel.code || error.panel.id || "") + '] ' + escapeHTML(label) + '</b><div class="your-answer">Ta reponse : ' + escapeHTML(error.answer) + '</div><div>' + escapeHTML(error.panel.desc || "") + '</div></div>';
+                errorHtml += '<div class="error"><b>[' + escapeHTML(error.panel.code || error.panel.id || "") + '] ' + escapeHTML(label) + '</b><div class="your-answer">❌ Ta reponse : ' + escapeHTML(error.answer) + '</div><div>✅ ' + escapeHTML(error.panel.desc || "") + '</div></div>';
             }
             errorHtml += '</details>';
             $("errorResults").innerHTML = errorHtml;
         }
         if ($("reviewErrorsZone")) {
-            $("reviewErrorsZone").innerHTML = '<button class="danger" style="width:100%" onclick="reviewErrors()">Refaire mes erreurs (' + state.errors.length + ')</button>';
+            $("reviewErrorsZone").innerHTML = '<button class="danger" style="width:100%" onclick="reviewErrors()">🔄 Refaire mes erreurs (' + state.errors.length + ')</button>';
         }
     } else {
         if ($("errorResults")) $("errorResults").innerHTML = "";
         if ($("reviewErrorsZone")) $("reviewErrorsZone").innerHTML = "";
     }
+
+    updateBadges();
     updateHomeStats();
 }
 
-function replayQuiz() { beginSession(state.review); }
+// =========================================================
+// 19 FONCTIONNALITES
+// =========================================================
 
-// ---- KEYBOARD SHORTCUTS ----
+// ---- 1. GRAPHIQUE DE PROGRESSION ----
+function updateProgressChart() {
+    var chart = document.getElementById("progressChart");
+    if (!chart) return;
+
+    var history = JSON.parse(localStorage.getItem("statsHistory") || "[]");
+    if (history.length === 0) {
+        chart.innerHTML = '<div style="text-align: center; width: 100%; color: var(--muted);">📊 Commence à répondre à des questions pour voir ta progression !</div>';
+        return;
+    }
+
+    var recent = history.slice(-20);
+    var max = Math.max(...recent.map(function(s) { return s.score || 0; }), 1);
+
+    chart.innerHTML = '';
+    for (var i = 0; i < recent.length; i++) {
+        var bar = document.createElement('div');
+        bar.style.cssText = 'flex:1; display:flex; flex-direction:column; align-items:center; height:100%; justify-content:flex-end;';
+
+        var height = Math.max(5, (recent[i].score || 0) / max * 100);
+        var color = recent[i].score >= 80 ? 'var(--good)' : recent[i].score >= 50 ? 'var(--amber)' : 'var(--red)';
+
+        bar.innerHTML = `
+            <div class="chart-bar" style="height:${height}%; background:${color}; min-height:5px;"></div>
+            <div class="chart-bar-label">${recent[i].date || ''}</div>
+        `;
+        chart.appendChild(bar);
+    }
+}
+
+// ---- 2. TEMPS MOYEN - déjà fait avec getAverageTime()
+
+// ---- 3. CATEGORIES FAIBLES ----
+function getWeakCategories() {
+    var mistakes = appData.mistakes || {};
+    var totals = {};
+    var wrongs = {};
+
+    for (var key in mistakes) {
+        var item = ALL_KNOWLEDGE.find(function(p) { return (p.code || p.id || p.titre) === key; });
+        if (item) {
+            var cat = item.cat || "Inconnu";
+            if (!totals[cat]) { totals[cat] = 0;
+                wrongs[cat] = 0; }
+            totals[cat]++;
+            wrongs[cat]++;
+        }
+    }
+
+    var corrects = JSON.parse(localStorage.getItem("correctAnswers") || "{}");
+    for (var key2 in corrects) {
+        var item2 = ALL_KNOWLEDGE.find(function(p) { return (p.code || p.id || p.titre) === key2; });
+        if (item2) {
+            var cat2 = item2.cat || "Inconnu";
+            if (!totals[cat2]) { totals[cat2] = 0;
+                wrongs[cat2] = 0; }
+            totals[cat2] += corrects[key2] || 0;
+        }
+    }
+
+    var weak = [];
+    for (var cat in totals) {
+        if (totals[cat] > 0) {
+            var ratio = (wrongs[cat] || 0) / totals[cat];
+            weak.push({ category: cat, ratio: ratio, total: totals[cat], wrong: wrongs[cat] || 0 });
+        }
+    }
+
+    weak.sort(function(a, b) { return b.ratio - a.ratio; });
+    return weak.slice(0, 5);
+}
+
+// ---- 4. SERIE - déjà gérée dans completeAnswer
+
+// ---- 5. MEILLEUR SCORE - déjà dans localStorage
+
+// ---- 6. COURSE CONTRE LA MONTRE ----
+var timedModeState = { active: false, timer: null, timeLeft: 60, score: 0, questions: [], index: 0, options: [], answered: false };
+
+function startTimedMode() {
+    var pool = ALL_KNOWLEDGE.slice();
+    timedModeState.questions = shuffle(pool);
+    timedModeState.index = 0;
+    timedModeState.score = 0;
+    timedModeState.timeLeft = 60;
+    timedModeState.active = true;
+
+    hideViews();
+    if ($("quiz")) $("quiz").classList.remove("hidden");
+    if ($("quizConfig")) $("quizConfig").classList.add("hidden");
+    if ($("quizSummary")) $("quizSummary").classList.add("hidden");
+    if ($("quizRunning")) $("quizRunning").classList.remove("hidden");
+
+    $("quizProgress").textContent = "⏱️ Course contre la montre";
+    $("quizScore").textContent = "Score: 0";
+    $("quizModeLabel").textContent = "⏱️ TIMED";
+    $("quizModeLabel").style.background = "var(--red)";
+    $("quizModeLabel").style.color = "white";
+
+    var timerDisplay = $("timerDisplay");
+    if (timerDisplay) {
+        timerDisplay.classList.remove("hidden");
+        timerDisplay.textContent = "⏱️ 60s";
+        timerDisplay.style.background = "var(--red)";
+        timerDisplay.style.color = "white";
+        timerDisplay.classList.remove("low");
+    }
+
+    renderTimedQuestion();
+
+    if (timedModeState.timer) clearInterval(timedModeState.timer);
+    timedModeState.timer = setInterval(function() {
+        timedModeState.timeLeft--;
+        if (timerDisplay) {
+            timerDisplay.textContent = "⏱️ " + timedModeState.timeLeft + "s";
+            if (timedModeState.timeLeft <= 10) {
+                timerDisplay.classList.add("low");
+            }
+        }
+        if (timedModeState.timeLeft <= 0) {
+            clearInterval(timedModeState.timer);
+            timedModeState.active = false;
+            endTimedMode();
+        }
+    }, 1000);
+}
+
+function renderTimedQuestion() {
+    if (timedModeState.index >= timedModeState.questions.length || !timedModeState.active) {
+        endTimedMode();
+        return;
+    }
+
+    var panel = timedModeState.questions[timedModeState.index];
+    $("signStage").innerHTML = makeSignSVG(panel, false);
+    $("signCaption").textContent = (panel.code || "") + " — " + (CATEGORIES[panel.cat]?.label || "");
+    $("question").textContent = "Quelle est la designation exacte ?";
+    $("quizScore").textContent = "Score: " + timedModeState.score;
+
+    var distractors = shuffle(ALL_KNOWLEDGE.filter(function(p) { return (p.code || p.id || p.titre) !== (panel.code || panel.id || panel.titre); })).slice(0, 3);
+    timedModeState.options = shuffle([panel].concat(distractors));
+    timedModeState.answered = false;
+
+    var optionsHtml = "";
+    for (var i = 0; i < timedModeState.options.length; i++) {
+        var label = timedModeState.options[i].nom || timedModeState.options[i].titre || "";
+        optionsHtml += '<button class="option" onclick="answerTimedQuestion(' + i + ')">' + escapeHTML(label) + '</button>';
+    }
+    $("optionList").innerHTML = optionsHtml;
+    $("feedbackZone").innerHTML = "";
+    $("nextButtonZone").innerHTML = "";
+}
+
+function answerTimedQuestion(index) {
+    if (timedModeState.answered || !timedModeState.active) return;
+    timedModeState.answered = true;
+
+    var panel = timedModeState.questions[timedModeState.index];
+    var selected = timedModeState.options[index];
+    var correct = selected && (selected.code || selected.id || selected.titre) === (panel.code || panel.id || panel.titre);
+
+    if (correct) {
+        timedModeState.score++;
+    }
+
+    $("quizScore").textContent = "Score: " + timedModeState.score;
+
+    var options = document.querySelectorAll("#optionList .option");
+    for (var i = 0; i < options.length; i++) {
+        options[i].classList.add("locked");
+        if ((timedModeState.options[i].code || timedModeState.options[i].id || timedModeState.options[i].titre) === (panel.code || panel.id || panel.titre)) {
+            options[i].classList.add("correct");
+        } else if (i === index && !correct) {
+            options[i].classList.add("wrong");
+        }
+    }
+
+    var label = panel.nom || panel.titre || "";
+    $("feedbackZone").innerHTML = '<div class="feedback ' + (correct ? "" : "bad") + '"><b>' + (correct ? "✅ Bonne reponse !" : "❌ Erreur - c'etait : " + escapeHTML(label)) + '</b>' + escapeHTML(panel.desc || "") + '</div>';
+    $("nextButtonZone").innerHTML = '<button class="primary" style="width:100%" onclick="nextTimedQuestion()">➡️ Question suivante</button>';
+}
+
+function nextTimedQuestion() {
+    timedModeState.index++;
+    renderTimedQuestion();
+}
+
+function endTimedMode() {
+    timedModeState.active = false;
+    if (timedModeState.timer) {
+        clearInterval(timedModeState.timer);
+        timedModeState.timer = null;
+    }
+
+    var history = JSON.parse(localStorage.getItem("statsHistory") || "[]");
+    history.push({
+        date: new Date().toLocaleDateString(),
+        score: Math.round(timedModeState.score / 60 * 100),
+        mode: "timed",
+        count: timedModeState.index
+    });
+    localStorage.setItem("statsHistory", JSON.stringify(history.slice(-50)));
+
+    $("quizRunning").classList.add("hidden");
+    $("quizSummary").classList.remove("hidden");
+    $("summaryTitle").textContent = "⏱️ Course terminee !";
+    $("summaryPercent").textContent = timedModeState.score + " bonnes reponses";
+    $("summaryFraction").textContent = "en 60 secondes";
+    $("summaryMessage").textContent = timedModeState.score >= 30 ? "🚀 Excellent rythme !" : timedModeState.score >= 15 ? "👍 Bon entrainement !" : "📚 Continue à t'entrainer !";
+
+    $("categoryResults").innerHTML = "";
+    $("errorResults").innerHTML = "";
+    $("reviewErrorsZone").innerHTML = '<button class="primary" style="width:100%" onclick="startTimedMode()">⏱️ Rejouer</button>';
+
+    updateHomeStats();
+}
+
+// ---- 7. DEFI DU JOUR ----
+function showDailyChallenge() {
+    hideViews();
+    if ($("dailyChallenge")) $("dailyChallenge").classList.remove("hidden");
+    if ($("homeButton")) $("homeButton").style.display = "block";
+
+    var today = new Date().toDateString();
+    var challenge = localStorage.getItem("dailyChallenge");
+    var data = challenge ? JSON.parse(challenge) : null;
+
+    if (!data || data.date !== today) {
+        var random = ALL_KNOWLEDGE[Math.floor(Math.random() * ALL_KNOWLEDGE.length)];
+        data = { date: today, question: random, done: false };
+        localStorage.setItem("dailyChallenge", JSON.stringify(data));
+    }
+
+    $("dailyChallengeDate").textContent = "📅 " + new Date().toLocaleDateString();
+
+    var content = $("dailyChallengeContent");
+    var panel = data.question;
+    var isDone = data.done;
+
+    content.innerHTML = `
+        <div style="margin-bottom: 20px;">${makeSignSVG(panel, false)}</div>
+        <div style="font-size: 18px; font-weight: 900; margin-bottom: 10px;">${escapeHTML(panel.nom || panel.titre || "")}</div>
+        <p style="color: var(--muted);">${escapeHTML(panel.desc || "")}</p>
+        <div style="margin-top: 20px;">
+            ${isDone ? 
+                '<span style="background: var(--good); color: white; padding: 10px 20px; border-radius: 10px;">✅ Defi realise aujourd\'hui !</span>' :
+                '<button class="primary" onclick="answerDailyChallenge()">🎯 Relever le defi</button>'
+            }
+        </div>
+    `;
+}
+
+function answerDailyChallenge() {
+    var challenge = JSON.parse(localStorage.getItem("dailyChallenge"));
+    var panel = challenge.question;
+
+    var distractors = shuffle(ALL_KNOWLEDGE.filter(function(p) { return (p.code || p.id || p.titre) !== (panel.code || panel.id || panel.titre); })).slice(0, 3);
+    var options = shuffle([panel].concat(distractors));
+
+    var content = $("dailyChallengeContent");
+    var html = `
+        <div style="margin-bottom: 20px;">${makeSignSVG(panel, false)}</div>
+        <div style="font-size: 18px; font-weight: 900; margin-bottom: 10px;">Quelle est la designation exacte ?</div>
+        <div style="display: flex; flex-direction: column; gap: 10px; max-width: 400px; margin: auto;">
+    `;
+
+    for (var i = 0; i < options.length; i++) {
+        var label = options[i].nom || options[i].titre || "";
+        var isCorrect = (options[i].code || options[i].id || options[i].titre) === (panel.code || panel.id || panel.titre);
+        html += `<button class="option" onclick="checkDailyChallenge(${i}, ${isCorrect ? 'true' : 'false'}, '${escapeHTML(label)}', '${escapeHTML(panel.desc || "")}')">${escapeHTML(label)}</button>`;
+    }
+
+    html += `</div>`;
+    content.innerHTML = html;
+}
+
+function checkDailyChallenge(index, isCorrect, selectedLabel, correctDesc) {
+    var options = document.querySelectorAll("#dailyChallengeContent .option");
+    var challenge = JSON.parse(localStorage.getItem("dailyChallenge"));
+    var panel = challenge.question;
+
+    for (var i = 0; i < options.length; i++) {
+        options[i].classList.add("locked");
+        var label = options[i].textContent;
+        if (label === (panel.nom || panel.titre || "")) {
+            options[i].classList.add("correct");
+        }
+        if (i === index && !isCorrect) {
+            options[i].classList.add("wrong");
+        }
+    }
+
+    var content = $("dailyChallengeContent");
+    if (isCorrect) {
+        challenge.done = true;
+        localStorage.setItem("dailyChallenge", JSON.stringify(challenge));
+        var history = JSON.parse(localStorage.getItem("statsHistory") || "[]");
+        history.push({ date: new Date().toLocaleDateString(), score: 100, mode: "daily", count: 1 });
+        localStorage.setItem("statsHistory", JSON.stringify(history.slice(-50)));
+        updateBadges();
+        updateHomeStats();
+
+        content.innerHTML += `
+            <div style="margin-top: 20px; background: var(--good); color: white; padding: 15px; border-radius: 12px;">
+                🎉 Félicitations ! Tu as réussi le défi du jour !
+                <div style="font-size: 12px; margin-top: 5px;">${escapeHTML(correctDesc)}</div>
+            </div>
+        `;
+    } else {
+        content.innerHTML += `
+            <div style="margin-top: 20px; background: var(--red); color: white; padding: 15px; border-radius: 12px;">
+                ❌ Ce n'était pas la bonne réponse. La bonne réponse était : <b>${escapeHTML(panel.nom || panel.titre || "")}</b>
+                <div style="font-size: 12px; margin-top: 5px;">${escapeHTML(panel.desc || "")}</div>
+                <button class="primary" style="margin-top: 10px;" onclick="showDailyChallenge()">🔄 Réessayer</button>
+            </div>
+        `;
+    }
+}
+
+// ---- 8. MODE SANS ERREUR ----
+var noErrorState = { active: false, score: 0, questions: [], index: 0, options: [], answered: false };
+
+function startNoErrorMode() {
+    noErrorState.questions = shuffle(ALL_KNOWLEDGE.slice());
+    noErrorState.index = 0;
+    noErrorState.score = 0;
+    noErrorState.active = true;
+
+    hideViews();
+    if ($("quiz")) $("quiz").classList.remove("hidden");
+    if ($("quizConfig")) $("quizConfig").classList.add("hidden");
+    if ($("quizSummary")) $("quizSummary").classList.add("hidden");
+    if ($("quizRunning")) $("quizRunning").classList.remove("hidden");
+
+    $("quizProgress").textContent = "💎 Mode sans erreur";
+    $("quizScore").textContent = "Série: 0";
+    $("quizModeLabel").textContent = "💎 NO ERROR";
+    $("quizModeLabel").style.background = "var(--amber)";
+    $("quizModeLabel").style.color = "var(--ink)";
+    $("timerDisplay").classList.add("hidden");
+
+    renderNoErrorQuestion();
+}
+
+function renderNoErrorQuestion() {
+    if (noErrorState.index >= noErrorState.questions.length) {
+        endNoErrorMode();
+        return;
+    }
+
+    var panel = noErrorState.questions[noErrorState.index];
+    $("signStage").innerHTML = makeSignSVG(panel, false);
+    $("signCaption").textContent = (panel.code || "") + " — " + (CATEGORIES[panel.cat]?.label || "");
+    $("question").textContent = "Quelle est la designation exacte ?";
+    $("quizScore").textContent = "Série: " + noErrorState.score;
+
+    var distractors = shuffle(ALL_KNOWLEDGE.filter(function(p) { return (p.code || p.id || p.titre) !== (panel.code || panel.id || panel.titre); })).slice(0, 3);
+    noErrorState.options = shuffle([panel].concat(distractors));
+    noErrorState.answered = false;
+
+    var optionsHtml = "";
+    for (var i = 0; i < noErrorState.options.length; i++) {
+        var label = noErrorState.options[i].nom || noErrorState.options[i].titre || "";
+        optionsHtml += '<button class="option" onclick="answerNoErrorQuestion(' + i + ')">' + escapeHTML(label) + '</button>';
+    }
+    $("optionList").innerHTML = optionsHtml;
+    $("feedbackZone").innerHTML = "";
+    $("nextButtonZone").innerHTML = "";
+}
+
+function answerNoErrorQuestion(index) {
+    if (noErrorState.answered || !noErrorState.active) return;
+    noErrorState.answered = true;
+
+    var panel = noErrorState.questions[noErrorState.index];
+    var selected = noErrorState.options[index];
+    var correct = selected && (selected.code || selected.id || selected.titre) === (panel.code || panel.id || panel.titre);
+
+    if (correct) {
+        noErrorState.score++;
+    } else {
+        noErrorState.active = false;
+        showNoErrorResult();
+        return;
+    }
+
+    $("quizScore").textContent = "Série: " + noErrorState.score;
+
+    var options = document.querySelectorAll("#optionList .option");
+    for (var i = 0; i < options.length; i++) {
+        options[i].classList.add("locked");
+        if ((noErrorState.options[i].code || noErrorState.options[i].id || noErrorState.options[i].titre) === (panel.code || panel.id || panel.titre)) {
+            options[i].classList.add("correct");
+        }
+    }
+
+    var label = panel.nom || panel.titre || "";
+    $("feedbackZone").innerHTML = '<div class="feedback"><b>✅ Bonne reponse !</b>' + escapeHTML(panel.desc || "") + '</div>';
+    $("nextButtonZone").innerHTML = '<button class="primary" style="width:100%" onclick="nextNoErrorQuestion()">➡️ Question suivante</button>';
+}
+
+function nextNoErrorQuestion() {
+    noErrorState.index++;
+    renderNoErrorQuestion();
+}
+
+function showNoErrorResult() {
+    $("quizRunning").classList.add("hidden");
+    $("quizSummary").classList.remove("hidden");
+    $("summaryTitle").textContent = "💎 Mode sans erreur";
+    $("summaryPercent").textContent = noErrorState.score + " questions";
+    $("summaryFraction").textContent = "sans erreur !";
+    $("summaryMessage").textContent = noErrorState.score >= 20 ? "🌟 Impressionnant !" : noErrorState.score >= 10 ? "👍 Bon entrainement !" : "📚 Continue à t'entrainer !";
+
+    var history = JSON.parse(localStorage.getItem("statsHistory") || "[]");
+    history.push({ date: new Date().toLocaleDateString(), score: noErrorState.score, mode: "noerror", count: noErrorState.score });
+    localStorage.setItem("statsHistory", JSON.stringify(history.slice(-50)));
+
+    $("categoryResults").innerHTML = "";
+    $("errorResults").innerHTML = "";
+    $("reviewErrorsZone").innerHTML = '<button class="primary" style="width:100%" onclick="startNoErrorMode()">💎 Rejouer</button>';
+    updateBadges();
+    updateHomeStats();
+}
+
+// ---- 9. MODE QUESTIONS PIEGES ----
+function startTrapMode() {
+    var mistakes = appData.mistakes || {};
+    var trapQuestions = [];
+
+    for (var key in mistakes) {
+        if (mistakes[key] >= 2) {
+            var item = ALL_KNOWLEDGE.find(function(p) { return (p.code || p.id || p.titre) === key; });
+            if (item) trapQuestions.push(item);
+        }
+    }
+
+    if (trapQuestions.length < 10) {
+        var all = shuffle(ALL_KNOWLEDGE.slice());
+        trapQuestions = all.slice(0, 10);
+    }
+
+    state.questions = shuffle(trapQuestions).slice(0, Math.min(15, trapQuestions.length));
+    state.timer = false;
+    state.isOfficialExam = false;
+    state.review = false;
+
+    hideViews();
+    if ($("quiz")) $("quiz").classList.remove("hidden");
+    if ($("homeButton")) $("homeButton").style.display = "block";
+    if ($("quizConfig")) $("quizConfig").classList.add("hidden");
+    if ($("quizSummary")) $("quizSummary").classList.add("hidden");
+    if ($("quizRunning")) $("quizRunning").classList.remove("hidden");
+
+    $("quizModeLabel").textContent = "⚠️ TRAP";
+    $("quizModeLabel").style.background = "var(--purple)";
+    $("quizModeLabel").style.color = "white";
+    beginSession(false);
+}
+
+// ---- 10. MODE EXAMEN CHRONOMETRE ----
+function startExamMode() {
+    var allPool = ALL_KNOWLEDGE.slice();
+    while (allPool.length < 50) {
+        allPool = allPool.concat(ALL_KNOWLEDGE);
+    }
+    state.questions = shuffle(allPool).slice(0, 50);
+    state.timer = true;
+    state.isOfficialExam = true;
+    state.review = false;
+
+    hideViews();
+    if ($("quiz")) $("quiz").classList.remove("hidden");
+    if ($("homeButton")) $("homeButton").style.display = "block";
+    if ($("quizConfig")) $("quizConfig").classList.add("hidden");
+    if ($("quizSummary")) $("quizSummary").classList.add("hidden");
+    if ($("quizRunning")) $("quizRunning").classList.remove("hidden");
+
+    $("quizModeLabel").textContent = "📚 EXAMEN";
+    $("quizModeLabel").style.background = "var(--blue)";
+    $("quizModeLabel").style.color = "white";
+
+    var totalSeconds = 45 * 60;
+    var timerDisplay = $("timerDisplay");
+    if (timerDisplay) {
+        timerDisplay.classList.remove("hidden");
+        timerDisplay.textContent = "⏱️ 45:00";
+        timerDisplay.style.background = "var(--blue)";
+        timerDisplay.style.color = "white";
+        timerDisplay.classList.remove("low");
+    }
+
+    state.timerId = setInterval(function() {
+        totalSeconds--;
+        var mins = Math.floor(totalSeconds / 60);
+        var secs = totalSeconds % 60;
+        if (timerDisplay) {
+            timerDisplay.textContent = "⏱️ " + String(mins).padStart(2, '0') + ":" + String(secs).padStart(2, '0');
+            if (totalSeconds < 300) {
+                timerDisplay.classList.add("low");
+            }
+        }
+        if (totalSeconds <= 0) {
+            clearInterval(state.timerId);
+            showSummary();
+        }
+    }, 1000);
+
+    beginSession(false);
+}
+
+// ---- 11. BADGES ----
+function getBadges() {
+    var badges = [];
+    var total = appData.stats.total || 0;
+    var correct = appData.stats.correct || 0;
+    var percentage = total > 0 ? Math.round(100 * correct / total) : 0;
+    var currentStreak = parseInt(localStorage.getItem("currentStreak") || "0");
+    var bestStreak = parseInt(localStorage.getItem("bestStreak") || "0");
+    var dailyChallenge = JSON.parse(localStorage.getItem("dailyChallenge") || "{}");
+
+    badges.push({ id: "apprenti", name: "Apprenti", icon: "🥉", unlocked: total >= 10 });
+    badges.push({ id: "conducteur", name: "Conducteur", icon: "🥈", unlocked: total >= 50 });
+    badges.push({ id: "expert", name: "Expert", icon: "🥇", unlocked: total >= 100 && percentage >= 80 });
+    badges.push({ id: "streak", name: "Série", icon: "🔥", unlocked: bestStreak >= 10 });
+    badges.push({ id: "master", name: "Master", icon: "🏆", unlocked: total >= 200 && percentage >= 85 });
+    badges.push({ id: "daily", name: "Défi du jour", icon: "🌟", unlocked: dailyChallenge.done });
+
+    return badges;
+}
+
+function updateBadges() {
+    var badges = getBadges();
+    var unlocked = badges.filter(function(b) { return b.unlocked; });
+
+    var badgeList = document.getElementById("badgeList");
+    if (badgeList) {
+        if (unlocked.length === 0) {
+            badgeList.innerHTML = '<span style="color: var(--muted); font-size: 12px;">Aucun badge débloqué. Continue à t\'entraîner !</span>';
+        } else {
+            badgeList.innerHTML = unlocked.map(function(b) {
+                return '<span class="badge-item" style="display: inline-flex; align-items: center; gap: 4px; background: var(--soft); padding: 4px 10px; border-radius: 20px; font-size: 13px;"><span>' + b.icon + '</span> ' + b.name + '</span>';
+            }).join('');
+        }
+    }
+
+    if ($("badgeCount")) $("badgeCount").textContent = unlocked.length;
+    if ($("statBadges")) $("statBadges").textContent = unlocked.length;
+    if ($("statsBadgesCount")) $("statsBadgesCount").textContent = unlocked.length;
+}
+
+// ---- 12. PERFORMANCE PAR CATEGORIE ----
+function updateCategoryPerformance() {
+    var container = document.getElementById("categoryPerformance");
+    if (!container) return;
+
+    var categoryStats = {};
+    for (var key in appData.mistakes) {
+        var item = ALL_KNOWLEDGE.find(function(p) { return (p.code || p.id || p.titre) === key; });
+        if (item) {
+            var cat = item.cat || "Inconnu";
+            if (!categoryStats[cat]) categoryStats[cat] = { total: 0, correct: 0 };
+            categoryStats[cat].total += appData.mistakes[key] || 0;
+        }
+    }
+
+    var corrects = JSON.parse(localStorage.getItem("correctAnswers") || "{}");
+    for (var key2 in corrects) {
+        var item2 = ALL_KNOWLEDGE.find(function(p) { return (p.code || p.id || p.titre) === key2; });
+        if (item2) {
+            var cat2 = item2.cat || "Inconnu";
+            if (!categoryStats[cat2]) categoryStats[cat2] = { total: 0, correct: 0 };
+            categoryStats[cat2].correct += corrects[key2] || 0;
+        }
+    }
+
+    container.innerHTML = "";
+    var keys = Object.keys(categoryStats);
+    if (keys.length === 0) {
+        container.innerHTML = '<div class="empty">Commence à répondre à des questions pour voir tes performances par catégorie.</div>';
+        return;
+    }
+
+    for (var i = 0; i < keys.length; i++) {
+        var cat = keys[i];
+        var stats = categoryStats[cat];
+        var total = stats.total + stats.correct;
+        var percent = total > 0 ? Math.round(100 * stats.correct / total) : 0;
+        var color = percent >= 80 ? 'var(--good)' : percent >= 50 ? 'var(--amber)' : 'var(--red)';
+        var label = CATEGORIES[cat]?.label || cat;
+
+        var div = document.createElement('div');
+        div.className = 'stat';
+        div.style.padding = '10px';
+        div.style.textAlign = 'center';
+        div.innerHTML = `
+            <div style="font-size: 24px; font-weight: 900; color: ${color};">${percent}%</div>
+            <div style="font-size: 12px; color: var(--muted);">${label}</div>
+            <div style="font-size: 10px; color: var(--muted);">${stats.correct}/${total}</div>
+        `;
+        container.appendChild(div);
+    }
+}
+
+// ---- 13. OBJECTIFS QUOTIDIENS ----
+function updateDailyGoal() {
+    var today = new Date().toDateString();
+    var dailyQ = parseInt(localStorage.getItem("dailyQuestions") || "0");
+    var lastDate = localStorage.getItem("lastDate") || "";
+
+    if (lastDate !== today) {
+        localStorage.setItem("dailyQuestions", "0");
+        localStorage.setItem("lastDate", today);
+        dailyQ = 0;
+    }
+
+    var goal = parseInt(localStorage.getItem("dailyGoal") || "20");
+    var percent = Math.min(100, Math.round(100 * dailyQ / goal));
+
+    var text = document.getElementById("dailyGoalText");
+    if (text) text.textContent = dailyQ + " / " + goal + " questions aujourd'hui";
+
+    var percentEl = document.getElementById("dailyGoalPercent");
+    if (percentEl) percentEl.textContent = percent + "%";
+
+    var bar = document.getElementById("dailyGoalBar");
+    if (bar) bar.style.width = percent + "%";
+}
+
+function setDailyGoal() {
+    var input = document.getElementById("dailyGoalInput");
+    if (input) {
+        var goal = parseInt(input.value) || 20;
+        localStorage.setItem("dailyGoal", String(Math.max(1, goal)));
+        updateDailyGoal();
+    }
+}
+
+// ---- 14. FICHES DE REVISION ----
+function generateRevisionSheet() {
+    var weak = getWeakCategories();
+    var questions = [];
+
+    for (var i = 0; i < weak.length; i++) {
+        var cat = weak[i].category;
+        var items = ALL_KNOWLEDGE.filter(function(p) { return p.cat === cat; });
+        questions = questions.concat(shuffle(items).slice(0, 5));
+    }
+
+    if (questions.length === 0) {
+        questions = shuffle(ALL_KNOWLEDGE.slice()).slice(0, 20);
+    }
+
+    var win = window.open('', '_blank');
+    if (!win) {
+        alert("Veuillez autoriser les pop-ups pour generer la fiche de revision.");
+        return;
+    }
+
+    var html = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Fiche de revision - Code de la route Belgique</title>
+            <style>
+                body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: auto; }
+                h1 { text-align: center; color: #171a1f; border-bottom: 3px solid #c81e2c; padding-bottom: 10px; }
+                .card { border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 8px; page-break-inside: avoid; }
+                .card h3 { margin: 0 0 5px 0; color: #1c5fa8; }
+                .card .code { font-size: 12px; color: #68707a; }
+                .card .desc { margin: 5px 0 0 0; color: #333; }
+                .badge { display: inline-block; background: #c81e2c; color: white; padding: 2px 8px; border-radius: 4px; font-size: 10px; }
+                .footer { text-align: center; margin-top: 30px; font-size: 12px; color: #68707a; border-top: 1px solid #ddd; padding-top: 15px; }
+                @media print { .card { break-inside: avoid; } body { padding: 10px; } }
+            </style>
+        </head>
+        <body>
+            <h1>📄 Fiche de revision - Code de la route</h1>
+            <p style="text-align: center; color: #68707a;">Genere le ${new Date().toLocaleDateString()} • ${questions.length} questions</p>
+    `;
+
+    for (var i = 0; i < questions.length; i++) {
+        var q = questions[i];
+        var title = q.nom || q.titre || "";
+        var desc = q.desc || "";
+        var code = q.code || q.id || "";
+        var cat = CATEGORIES[q.cat]?.label || q.cat || "";
+        var color = CATEGORIES[q.cat]?.color || "var(--blue)";
+
+        html += `
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h3>${escapeHTML(title)}</h3>
+                    <span class="badge" style="background:${color};">${escapeHTML(cat)}</span>
+                </div>
+                <div class="code">${escapeHTML(code)}</div>
+                <p class="desc">${escapeHTML(desc)}</p>
+            </div>
+        `;
+    }
+
+    html += `
+            <div class="footer">
+                🇧🇪 Code de la route Belgique • ${questions.length} questions • ${new Date().toLocaleDateString()}
+            </div>
+        </body>
+        </html>
+    `;
+
+    win.document.write(html);
+    win.document.close();
+    win.focus();
+    setTimeout(function() { win.print(); }, 500);
+}
+
+// ---- 15. FLASHCARDS ----
+var flashcardState = { questions: [], index: 0, flipped: false };
+
+function showFlashcards() {
+    hideViews();
+    if ($("flashcards")) $("flashcards").classList.remove("hidden");
+    if ($("homeButton")) $("homeButton").style.display = "block";
+
+    if (flashcardState.questions.length === 0) {
+        var pool = shuffle(ALL_KNOWLEDGE.slice());
+        flashcardState.questions = pool.slice(0, 20);
+        flashcardState.index = 0;
+        flashcardState.flipped = false;
+    }
+    renderFlashcard();
+}
+
+function renderFlashcard() {
+    if (flashcardState.questions.length === 0) {
+        $("flashcard").textContent = "Aucune carte disponible.";
+        $("flashcardCounter").textContent = "0 / 0";
+        return;
+    }
+
+    var q = flashcardState.questions[flashcardState.index];
+    var title = q.nom || q.titre || "";
+    var desc = q.desc || "";
+    var code = q.code || q.id || "";
+    var cat = CATEGORIES[q.cat]?.label || q.cat || "";
+
+    var flashcard = $("flashcard");
+    flashcard.className = flashcardState.flipped ? "flipped" : "";
+    flashcard.innerHTML = `
+        <div class="front">
+            <div>
+                <div style="font-size: 14px; color: var(--muted);">${escapeHTML(code)} • ${escapeHTML(cat)}</div>
+                <div style="font-size: 20px; font-weight: 900; margin-top: 10px;">${escapeHTML(title)}</div>
+                <div style="font-size: 12px; color: var(--muted); margin-top: 15px;">👆 Cliquez pour voir la reponse</div>
+            </div>
+        </div>
+        <div class="back">
+            <div>
+                <div style="font-size: 14px; color: var(--muted);">📖 Reponse</div>
+                <div style="font-size: 16px; margin-top: 10px;">${escapeHTML(desc)}</div>
+            </div>
+        </div>
+    `;
+
+    flashcard.onclick = function() {
+        flashcardState.flipped = !flashcardState.flipped;
+        renderFlashcard();
+    };
+
+    $("flashcardCounter").textContent = (flashcardState.index + 1) + " / " + flashcardState.questions.length;
+}
+
+function nextFlashcard() {
+    if (flashcardState.index < flashcardState.questions.length - 1) {
+        flashcardState.index++;
+        flashcardState.flipped = false;
+        renderFlashcard();
+    }
+}
+
+function prevFlashcard() {
+    if (flashcardState.index > 0) {
+        flashcardState.index--;
+        flashcardState.flipped = false;
+        renderFlashcard();
+    }
+}
+
+function shuffleFlashcards() {
+    flashcardState.questions = shuffle(flashcardState.questions);
+    flashcardState.index = 0;
+    flashcardState.flipped = false;
+    renderFlashcard();
+}
+
+function resetFlashcards() {
+    var pool = shuffle(ALL_KNOWLEDGE.slice());
+    flashcardState.questions = pool.slice(0, 20);
+    flashcardState.index = 0;
+    flashcardState.flipped = false;
+    renderFlashcard();
+}
+
+// ---- 16. QUESTION ALEATOIRE ----
+function showRandomQuestion() {
+    hideViews();
+    if ($("randomQuestionPage")) $("randomQuestionPage").classList.remove("hidden");
+    if ($("homeButton")) $("homeButton").style.display = "block";
+    renderRandomQuestion();
+}
+
+function renderRandomQuestion() {
+    var panel = ALL_KNOWLEDGE[Math.floor(Math.random() * ALL_KNOWLEDGE.length)];
+    var container = $("randomQuestionDisplay");
+    if (!container) return;
+
+    container.innerHTML = `
+        <div style="display: flex; flex-direction: column; align-items: center;">
+            ${makeSignSVG(panel, false)}
+            <div style="font-size: 14px; color: var(--muted); margin-top: 10px;">${escapeHTML(panel.code || panel.id || "")}</div>
+            <div style="font-size: 20px; font-weight: 900; margin-top: 5px;">${escapeHTML(panel.nom || panel.titre || "")}</div>
+            <div style="font-size: 14px; color: var(--muted); margin-top: 10px; max-width: 500px;">${escapeHTML(panel.desc || "")}</div>
+            <div style="font-size: 12px; color: var(--muted); margin-top: 5px;">Categorie: ${CATEGORIES[panel.cat]?.label || panel.cat || "Inconnue"}</div>
+            <button class="primary" style="margin-top: 15px;" onclick="showRandomQuestion()">🎲 Nouvelle question</button>
+        </div>
+    `;
+}
+
+// ---- 17. NIVEAU DE DIFFICULTE ----
+var currentDifficulty = "tous";
+
+function setDifficulty(level) {
+    currentDifficulty = level;
+    var label = document.getElementById("difficultyLabel");
+    if (label) {
+        var names = { facile: "⭐ Facile", moyen: "⭐⭐ Moyen", difficile: "⭐⭐⭐ Difficile", tous: "Tous niveaux" };
+        label.textContent = "Niveau actuel : " + (names[level] || "Tous niveaux");
+    }
+
+    var buttons = ["diffFacile", "diffMoyen", "diffDifficile"];
+    for (var i = 0; i < buttons.length; i++) {
+        var btn = document.getElementById(buttons[i]);
+        if (btn) {
+            var isActive = buttons[i] === "diff" + level.charAt(0).toUpperCase() + level.slice(1);
+            btn.style.opacity = isActive ? "1" : "0.5";
+            btn.style.transform = isActive ? "scale(1.05)" : "scale(1)";
+        }
+    }
+}
+
+function getQuestionsByDifficulty(level) {
+    var pool = ALL_KNOWLEDGE.slice();
+    if (level === "facile") {
+        var mistakes = appData.mistakes || {};
+        return pool.filter(function(item) {
+            var code = item.code || item.id || item.titre || "";
+            return !mistakes[code] || mistakes[code] < 2;
+        });
+    } else if (level === "difficile") {
+        var mistakes2 = appData.mistakes || {};
+        return pool.filter(function(item) {
+            var code2 = item.code || item.id || item.titre || "";
+            return mistakes2[code2] && mistakes2[code2] >= 2;
+        });
+    }
+    return pool;
+}
+
+function startDifficultyQuiz(level) {
+    var pool = getQuestionsByDifficulty(level);
+    if (pool.length < 2) {
+        alert("Pas assez de questions pour ce niveau.");
+        return;
+    }
+    state.questions = shuffle(pool).slice(0, Math.min(15, pool.length));
+    state.timer = false;
+    state.isOfficialExam = false;
+    state.review = false;
+
+    hideViews();
+    if ($("quiz")) $("quiz").classList.remove("hidden");
+    if ($("homeButton")) $("homeButton").style.display = "block";
+    if ($("quizConfig")) $("quizConfig").classList.add("hidden");
+    if ($("quizSummary")) $("quizSummary").classList.add("hidden");
+    if ($("quizRunning")) $("quizRunning").classList.remove("hidden");
+
+    var levelNames = { facile: "⭐ Facile", moyen: "⭐⭐ Moyen", difficile: "⭐⭐⭐ Difficile" };
+    $("quizModeLabel").textContent = levelNames[level] || "Quiz";
+    $("quizModeLabel").style.background = level === "facile" ? "var(--good)" : level === "moyen" ? "var(--amber)" : "var(--red)";
+    $("quizModeLabel").style.color = level === "moyen" ? "var(--ink)" : "white";
+
+    beginSession(false);
+}
+
+// ---- 18. REVISION DES ERREURS ----
+function startErrorOnlyMode() {
+    var mistakes = appData.mistakes || {};
+    var errorQuestions = [];
+
+    for (var key in mistakes) {
+        if (mistakes[key] > 0) {
+            var item = ALL_KNOWLEDGE.find(function(p) { return (p.code || p.id || p.titre) === key; });
+            if (item) errorQuestions.push(item);
+        }
+    }
+
+    if (errorQuestions.length === 0) {
+        alert("Tu n'as fait aucune erreur ! Félicitations ! 🎉");
+        goHome();
+        return;
+    }
+
+    state.questions = shuffle(errorQuestions).slice(0, Math.min(15, errorQuestions.length));
+    state.timer = false;
+    state.isOfficialExam = false;
+    state.review = true;
+
+    hideViews();
+    if ($("quiz")) $("quiz").classList.remove("hidden");
+    if ($("homeButton")) $("homeButton").style.display = "block";
+    if ($("quizConfig")) $("quizConfig").classList.add("hidden");
+    if ($("quizSummary")) $("quizSummary").classList.add("hidden");
+    if ($("quizRunning")) $("quizRunning").classList.remove("hidden");
+
+    $("quizModeLabel").textContent = "🔄 ERREURS";
+    $("quizModeLabel").style.background = "var(--red)";
+    $("quizModeLabel").style.color = "white";
+    beginSession(true);
+}
+
+// ---- 19. MODE SOMBRE AUTOMATIQUE ----
+// Déjà géré par detectDarkMode() et le CSS
+
+// ---- STATISTIQUES PAGE ----
+function showStatsPage() {
+    hideViews();
+    if ($("statsPage")) $("statsPage").classList.remove("hidden");
+    if ($("homeButton")) $("homeButton").style.display = "block";
+
+    var total = appData.stats.total || 0;
+    var correct = appData.stats.correct || 0;
+    var wrong = total - correct;
+    var percent = total > 0 ? Math.round(100 * correct / total) : 0;
+    var avgTime = getAverageTime();
+    var bestStreak = parseInt(localStorage.getItem("bestStreak") || "0");
+    var badges = getBadges();
+    var unlocked = badges.filter(function(b) { return b.unlocked; });
+    var weak = getWeakCategories();
+
+    if ($("statsTotal")) $("statsTotal").textContent = total;
+    if ($("statsCorrect")) $("statsCorrect").textContent = correct;
+    if ($("statsWrong")) $("statsWrong").textContent = wrong;
+    if ($("statsAvgTime")) $("statsAvgTime").textContent = avgTime > 0 ? avgTime + "s" : "—";
+    if ($("statsBestStreak")) $("statsBestStreak").textContent = bestStreak;
+    if ($("statsBadgesCount")) $("statsBadgesCount").textContent = unlocked.length;
+
+    updateProgressChart();
+    updateCategoryPerformance();
+
+    var weakContainer = document.getElementById("weakCategories");
+    if (weakContainer) {
+        if (weak.length === 0) {
+            weakContainer.innerHTML = '<div class="empty">Aucune categorie faible detectee. Continue comme ça ! 🎉</div>';
+        } else {
+            weakContainer.innerHTML = weak.map(function(w) {
+                var label = CATEGORIES[w.category]?.label || w.category;
+                var color = w.ratio > 0.5 ? 'var(--red)' : w.ratio > 0.3 ? 'var(--amber)' : 'var(--good)';
+                return `<div style="display: flex; justify-content: space-between; padding: 8px 12px; border-bottom: 1px solid var(--line);">
+                    <span>${label}</span>
+                    <span style="color: ${color}; font-weight: 900;">${Math.round(w.ratio * 100)}% d'erreurs (${w.wrong}/${w.total})</span>
+                </div>`;
+            }).join('');
+        }
+    }
+
+    updateDailyGoal();
+    updateBadges();
+}
+
+// =========================================================
+// RACCOURCIS CLAVIER
+// =========================================================
+
 document.addEventListener("keydown", function(event) {
     if ($("quizRunning") && $("quizRunning").classList.contains("hidden")) return;
     if (event.key >= "1" && event.key <= "4" && !state.answered) { answerQuestion(Number(event.key) - 1); }
@@ -1669,7 +2815,10 @@ if ($("questionCount")) {
     });
 }
 
-// ---- EXPORT DES FONCTIONS ----
+// =========================================================
+// EXPORT DES FONCTIONS
+// =========================================================
+
 window.goHome = goHome;
 window.showMenu = showMenu;
 window.showCategorie = showCategorie;
@@ -1718,15 +2867,55 @@ window.reviewErrors = reviewErrors;
 window.toggleFavorite = toggleFavorite;
 window.answerQuestion = answerQuestion;
 window.nextQuestion = nextQuestion;
+window.startTimedMode = startTimedMode;
+window.startNoErrorMode = startNoErrorMode;
+window.startTrapMode = startTrapMode;
+window.startExamMode = startExamMode;
+window.startErrorOnlyMode = startErrorOnlyMode;
+window.startDifficultyQuiz = startDifficultyQuiz;
+window.showDailyChallenge = showDailyChallenge;
+window.answerDailyChallenge = answerDailyChallenge;
+window.checkDailyChallenge = checkDailyChallenge;
+window.showFlashcards = showFlashcards;
+window.nextFlashcard = nextFlashcard;
+window.prevFlashcard = prevFlashcard;
+window.shuffleFlashcards = shuffleFlashcards;
+window.resetFlashcards = resetFlashcards;
+window.showRandomQuestion = showRandomQuestion;
+window.renderRandomQuestion = renderRandomQuestion;
+window.generateRevisionSheet = generateRevisionSheet;
+window.setDailyGoal = setDailyGoal;
+window.setDifficulty = setDifficulty;
+window.showStatsPage = showStatsPage;
+window.updateBadges = updateBadges;
+window.updateDailyGoal = updateDailyGoal;
 
-// ---- INITIALISATION ----
+// =========================================================
+// INITIALISATION
+// =========================================================
+
 async function init() {
     await loadAppData();
     applyTheme();
+    detectDarkMode();
     renderCategorySelector();
     updateHomeStats();
+    updateBadges();
+    updateDailyGoal();
+    updateCategoryPerformance();
+    setDifficulty("tous");
     goHome();
     document.body.classList.add("ready");
+
+    if (window.matchMedia) {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+            if (appData.theme === "auto") {
+                document.body.classList.toggle("dark", e.matches);
+                if ($("themeButton")) $("themeButton").textContent = e.matches ? "🌙" : "☀️";
+                if ($("themeButtonHeader")) $("themeButtonHeader").textContent = e.matches ? "🌙" : "☀️";
+            }
+        });
+    }
 }
 
 document.addEventListener('DOMContentLoaded', init);
