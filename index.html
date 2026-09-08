@@ -120,6 +120,15 @@
           <span class="arrow">→</span>
         </button>
 
+        <button class="practice" onclick="showMatiereAuto()">
+          <span class="practice-icon">🔧</span>
+          <span class="practice-copy">
+            <b>Technique & Voiture</b>
+            <small>Niveaux, masses et sécurité</small>
+          </span>
+          <span class="arrow">→</span>
+        </button>
+
       </div>
 
       <div class="panel progress">
@@ -173,6 +182,11 @@
 
         <button onclick="showRules()">
           💡 Règles d'or
+          <span>›</span>
+        </button>
+
+        <button onclick="showMatiereAuto()">
+          🔧 Technique voiture
           <span>›</span>
         </button>
 
@@ -425,6 +439,33 @@
     >
 
     <div id="ruleList"></div>
+
+  </div>
+
+</section>
+
+<!-- ================= TECHNIQUE & VOITURE ================= -->
+
+<section id="matiereAuto" class="view hidden">
+
+  <div class="content">
+
+    <h2 class="section-title">
+      Technique & Connaissances de la voiture
+    </h2>
+
+    <p class="muted">
+      Niveaux, masses maximales et règles de sécurité à bord.
+    </p>
+
+    <input
+      id="autoSearch"
+      class="search"
+      placeholder="Huile, poids, pneus, documents..."
+      oninput="renderMatiereAuto()"
+    >
+
+    <div id="autoList"></div>
 
   </div>
 
