@@ -1,147 +1,169 @@
-/* =========================================================
-   DONNEES OFFICIELLES & EXPERTES INTEGRALES (BELGIQUE)
-========================================================= */
+// =========================================================
+// POLYFILL STORAGE - CORRIGÉ
+// =========================================================
+
+if (!window.storage) {
+    window.storage = {
+        get: async (key) => {
+            try {
+                const value = localStorage.getItem(key);
+                return value ? { value: value } : null;
+            } catch (e) {
+                return null;
+            }
+        },
+        set: async (key, value) => {
+            try {
+                localStorage.setItem(key, value);
+            } catch (e) {}
+        }
+    };
+}
+
+// =========================================================
+// DONNEES OFFICIELLES - CORRIGEES (UTF-8)
+// =========================================================
 
 const PANNEAUX = [
-  {"code":"A1a","nom":"Virage dangereux Ã  gauche","cat":"A","desc":"Annonce un virage prononcÃ© vers la gauche."},
-  {"code":"A1b","nom":"Virage dangereux Ã  droite","cat":"A","desc":"Annonce un virage prononcÃ© vers la droite."},
-  {"code":"A1c","nom":"Succession de virages","cat":"A","desc":"Annonce plusieurs virages successifs, le premier Ã  gauche."},
-  {"code":"A3","nom":"Descente dangereuse","cat":"A","desc":"Pente raide indiquÃ©e par un pourcentage. Utilisez le frein moteur."},
-  {"code":"A5","nom":"MontÃ©e Ã  forte inclinaison","cat":"A","desc":"Indique une forte cÃ´te."},
-  {"code":"A7a","nom":"ChaussÃ©e rÃ©trÃ©cie","cat":"A","desc":"RÃ©trÃ©cissement de la route des deux cÃ´tÃ©s."},
+  {"code":"A1a","nom":"Virage dangereux à gauche","cat":"A","desc":"Annonce un virage prononcé vers la gauche."},
+  {"code":"A1b","nom":"Virage dangereux à droite","cat":"A","desc":"Annonce un virage prononcé vers la droite."},
+  {"code":"A1c","nom":"Succession de virages","cat":"A","desc":"Annonce plusieurs virages successifs, le premier à gauche."},
+  {"code":"A3","nom":"Descente dangereuse","cat":"A","desc":"Pente raide indiquée par un pourcentage. Utilisez le frein moteur."},
+  {"code":"A5","nom":"Montée à forte inclinaison","cat":"A","desc":"Indique une forte côte."},
+  {"code":"A7a","nom":"Chaussée rétrécie","cat":"A","desc":"Rétrécissement de la route des deux côtés."},
   {"code":"A9","nom":"Pont mobile","cat":"A","desc":"Approche d'un pont levant ou tournant."},
-  {"code":"A13","nom":"Cassis ou dos d'Ã¢ne","cat":"A","desc":"Ralentisseur ou bosse sur la chaussÃ©e."},
-  {"code":"A15","nom":"ChaussÃ©e glissante","cat":"A","desc":"Risque accru de glissade (pluie, verglas, gravillons)."},
-  {"code":"A21","nom":"Passage pour piÃ©tons","cat":"A","desc":"Annonce un passage cloutÃ© Ã  proximitÃ©."},
-  {"code":"A23","nom":"Endroit frÃ©quentÃ© par des enfants","cat":"A","desc":"PrÃ©sence d'Ã©coles ou aires de jeux."},
-  {"code":"A25","nom":"Passage de cyclistes","cat":"A","desc":"DÃ©bouchÃ© de cyclistes ou piste cyclable."},
-  {"code":"A31","nom":"Travaux","cat":"A","desc":"PrÃ©sence d'un chantier sur ou le long de la voie publique."},
+  {"code":"A13","nom":"Cassis ou dos d'âne","cat":"A","desc":"Ralentisseur ou bosse sur la chaussée."},
+  {"code":"A15","nom":"Chaussée glissante","cat":"A","desc":"Risque accru de glissade (pluie, verglas, gravillons)."},
+  {"code":"A21","nom":"Passage pour piétons","cat":"A","desc":"Annonce un passage clouté à proximité."},
+  {"code":"A23","nom":"Endroit fréquenté par des enfants","cat":"A","desc":"Présence d'écoles ou aires de jeux."},
+  {"code":"A25","nom":"Passage de cyclistes","cat":"A","desc":"Débouché de cyclistes ou piste cyclable."},
+  {"code":"A31","nom":"Travaux","cat":"A","desc":"Présence d'un chantier sur ou le long de la voie publique."},
   {"code":"A33","nom":"Feux de circulation","cat":"A","desc":"Annonce des feux tricolores en amont."},
-  {"code":"A51","nom":"Danger indÃ©terminÃ©","cat":"A","desc":"Danger particulier prÃ©cisÃ© par un panonceau additionnel."},
+  {"code":"A51","nom":"Danger indéterminé","cat":"A","desc":"Danger particulier précisé par un panonceau additionnel."},
 
-  {"code":"B1","nom":"CÃ©dez le passage","cat":"B","desc":"Triangle pointÃ© vers le bas. CÃ©der le passage aux usagers de la voie prioritaire."},
-  {"code":"B5","nom":"Stop (ArrÃªt obligatoire)","cat":"B","desc":"Obligation de marquer l'arrÃªt complet avant la ligne d'effet."},
-  {"code":"B9","nom":"Voie prioritaire","cat":"B","desc":"Losange jaune : vous Ãªtes prioritaire aux intersections."},
-  {"code":"B11","nom":"Fin de voie prioritaire","cat":"B","desc":"Losange barrÃ© : fin du statut de route prioritaire."},
-  {"code":"B15","nom":"PrioritÃ© Ã  l'intersection","cat":"B","desc":"Vous avez la prioritÃ© uniquement Ã  la prochaine intersection."},
-  {"code":"B17","nom":"PrioritÃ© Ã  droite","cat":"B","desc":"RÃ¨gle gÃ©nÃ©rale : cÃ©der le passage venant de droite."},
+  {"code":"B1","nom":"Cédez le passage","cat":"B","desc":"Triangle pointé vers le bas. Céder le passage aux usagers de la voie prioritaire."},
+  {"code":"B5","nom":"Stop (Arrêt obligatoire)","cat":"B","desc":"Obligation de marquer l'arrêt complet avant la ligne d'effet."},
+  {"code":"B9","nom":"Voie prioritaire","cat":"B","desc":"Losange jaune : vous êtes prioritaire aux intersections."},
+  {"code":"B11","nom":"Fin de voie prioritaire","cat":"B","desc":"Losange barré : fin du statut de route prioritaire."},
+  {"code":"B15","nom":"Priorité à l'intersection","cat":"B","desc":"Vous avez la priorité uniquement à la prochaine intersection."},
+  {"code":"B17","nom":"Priorité à droite","cat":"B","desc":"Règle générale : céder le passage venant de droite."},
 
-  {"code":"C1","nom":"AccÃ¨s interdit dans les deux sens","cat":"C","desc":"Interdiction Ã  tout conducteur de s'engager."},
+  {"code":"C1","nom":"Accès interdit dans les deux sens","cat":"C","desc":"Interdiction à tout conducteur de s'engager."},
   {"code":"C3","nom":"Sens interdit","cat":"C","desc":"Interdiction de s'engager dans cette voie."},
-  {"code":"C5","nom":"AccÃ¨s interdit aux automobiles","cat":"C","desc":"Interdit aux voitures et camions."},
-  {"code":"C7","nom":"AccÃ¨s interdit aux motocycles","cat":"C","desc":"Interdit aux motos."},
-  {"code":"C11","nom":"AccÃ¨s interdit aux cyclistes","cat":"C","desc":"Interdit aux vÃ©los."},
-  {"code":"C19","nom":"AccÃ¨s interdit aux piÃ©tons","cat":"C","desc":"Interdit aux piÃ©tons."},
-  {"code":"C23","nom":"AccÃ¨s interdit aux camions","cat":"C","desc":"Interdit aux vÃ©hicules lourds de marchandises."},
-  {"code":"C35","nom":"Interdiction de dÃ©passer","cat":"C","desc":"Interdiction de dÃ©passer les vÃ©hicules Ã  moteur."},
-  {"code":"C43 30","nom":"Vitesse limitÃ©e Ã  30 km/h","cat":"C","desc":"Vitesse maximale autorisÃ©e de 30 km/h.","num":"30"},
-  {"code":"C43 50","nom":"Vitesse limitÃ©e Ã  50 km/h","cat":"C","desc":"Vitesse maximale autorisÃ©e de 50 km/h.","num":"50"},
-  {"code":"C43 70","nom":"Vitesse limitÃ©e Ã  70 km/h","cat":"C","desc":"Vitesse maximale autorisÃ©e de 70 km/h.","num":"70"},
-  {"code":"C43 90","nom":"Vitesse limitÃ©e Ã  90 km/h","cat":"C","desc":"Vitesse maximale autorisÃ©e de 90 km/h.","num":"90"},
-  {"code":"C45","nom":"Fin de toutes les interdictions locales","cat":"C","desc":"Fin des limitations de vitesse ou de dÃ©passement."},
+  {"code":"C5","nom":"Accès interdit aux automobiles","cat":"C","desc":"Interdit aux voitures et camions."},
+  {"code":"C7","nom":"Accès interdit aux motocycles","cat":"C","desc":"Interdit aux motos."},
+  {"code":"C11","nom":"Accès interdit aux cyclistes","cat":"C","desc":"Interdit aux vélos."},
+  {"code":"C19","nom":"Accès interdit aux piétons","cat":"C","desc":"Interdit aux piétons."},
+  {"code":"C23","nom":"Accès interdit aux camions","cat":"C","desc":"Interdit aux véhicules lourds de marchandises."},
+  {"code":"C35","nom":"Interdiction de dépasser","cat":"C","desc":"Interdiction de dépasser les véhicules à moteur."},
+  {"code":"C43 30","nom":"Vitesse limitée à 30 km/h","cat":"C","desc":"Vitesse maximale autorisée de 30 km/h.","num":"30"},
+  {"code":"C43 50","nom":"Vitesse limitée à 50 km/h","cat":"C","desc":"Vitesse maximale autorisée de 50 km/h.","num":"50"},
+  {"code":"C43 70","nom":"Vitesse limitée à 70 km/h","cat":"C","desc":"Vitesse maximale autorisée de 70 km/h.","num":"70"},
+  {"code":"C43 90","nom":"Vitesse limitée à 90 km/h","cat":"C","desc":"Vitesse maximale autorisée de 90 km/h.","num":"90"},
+  {"code":"C45","nom":"Fin de toutes les interdictions locales","cat":"C","desc":"Fin des limitations de vitesse ou de dépassement."},
 
-  {"code":"D1a","nom":"Direction obligatoire Ã  droite","cat":"D","desc":"Obligation de tourner Ã  droite."},
-  {"code":"D1b","nom":"Direction obligatoire Ã  gauche","cat":"D","desc":"Obligation de tourner Ã  gauche."},
-  {"code":"D9","nom":"Piste cyclable obligatoire","cat":"D","desc":"Voie exclusive rÃ©servÃ©e aux cyclistes."},
-  {"code":"D10","nom":"Chemin pour piÃ©tons","cat":"D","desc":"Voie rÃ©servÃ©e exclusivement aux piÃ©tons."},
+  {"code":"D1a","nom":"Direction obligatoire à droite","cat":"D","desc":"Obligation de tourner à droite."},
+  {"code":"D1b","nom":"Direction obligatoire à gauche","cat":"D","desc":"Obligation de tourner à gauche."},
+  {"code":"D9","nom":"Piste cyclable obligatoire","cat":"D","desc":"Voie exclusive réservée aux cyclistes."},
+  {"code":"D10","nom":"Chemin pour piétons","cat":"D","desc":"Voie réservée exclusivement aux piétons."},
 
-  {"code":"E1","nom":"Stationnement interdit","cat":"E","desc":"Interdiction de stationner du cÃ´tÃ© du panneau. L'arrÃªt reste autorisÃ©."},
-  {"code":"E3","nom":"ArrÃªt et stationnement interdits","cat":"E","desc":"Interdiction absolue de s'arrÃªter et de stationner."},
-  {"code":"E9a","nom":"Stationnement autorisÃ© (Parking)","cat":"E","desc":"Indique un emplacement ou un parking autorisÃ©."},
+  {"code":"E1","nom":"Stationnement interdit","cat":"E","desc":"Interdiction de stationner du côté du panneau. L'arrêt reste autorisé."},
+  {"code":"E3","nom":"Arrêt et stationnement interdits","cat":"E","desc":"Interdiction absolue de s'arrêter et de stationner."},
+  {"code":"E9a","nom":"Stationnement autorisé (Parking)","cat":"E","desc":"Indique un emplacement ou un parking autorisé."},
 
-  {"code":"F1","nom":"Commencement d'agglomÃ©ration","cat":"F","desc":"Vitesse limitÃ©e par dÃ©faut Ã  50 km/h (30 km/h Ã  Bruxelles)."},
-  {"code":"F3","nom":"Fin d'agglomÃ©ration","cat":"F","desc":"Les rÃ¨gles d'agglomÃ©ration prennent fin."},
-  {"code":"F5","nom":"Autoroute","cat":"F","desc":"DÃ©but d'autoroute (vitesse min. 70, max. 120 km/h)."},
-  {"code":"F9","nom":"Route pour automobiles","cat":"F","desc":"Voie rÃ©servÃ©e aux vÃ©hicules automobiles."},
-  {"code":"F12a","nom":"Zone rÃ©sidentielle / Zone de rencontre","cat":"F","desc":"PiÃ©tons prioritaires sur toute la largeur. Vitesse max 20 km/h."},
-  {"code":"F19","nom":"Sens unique","cat":"F","desc":"Indique une rue Ã  sens unique."},
-  {"code":"F4a","nom":"DÃ©but de zone 30","cat":"F","desc":"EntrÃ©e d'une zone oÃ¹ la vitesse est limitÃ©e Ã  30 km/h."},
+  {"code":"F1","nom":"Commencement d'agglomération","cat":"F","desc":"Vitesse limitée par défaut à 50 km/h (30 km/h à Bruxelles)."},
+  {"code":"F3","nom":"Fin d'agglomération","cat":"F","desc":"Les règles d'agglomération prennent fin."},
+  {"code":"F5","nom":"Autoroute","cat":"F","desc":"Début d'autoroute (vitesse min. 70, max. 120 km/h)."},
+  {"code":"F9","nom":"Route pour automobiles","cat":"F","desc":"Voie réservée aux véhicules automobiles."},
+  {"code":"F12a","nom":"Zone résidentielle / Zone de rencontre","cat":"F","desc":"Piétons prioritaires sur toute la largeur. Vitesse max 20 km/h."},
+  {"code":"F19","nom":"Sens unique","cat":"F","desc":"Indique une rue à sens unique."},
+  {"code":"F4a","nom":"Début de zone 30","cat":"F","desc":"Entrée d'une zone où la vitesse est limitée à 30 km/h."},
   {"code":"F4b","nom":"Fin de zone 30","cat":"F","desc":"Sortie de la zone 30."},
 
-  {"code":"Panonceau 1","nom":"Distance avant le danger","cat":"X","desc":"Indique la distance Ã  laquelle se situe le danger ou la rÃ¨gle."},
+  {"code":"Panonceau 1","nom":"Distance avant le danger","cat":"X","desc":"Indique la distance à laquelle se situe le danger ou la règle."},
   {"code":"Panonceau 2","nom":"Etendue de la mesure","cat":"X","desc":"Indique la longueur sur laquelle s'applique la prescription."},
-  {"code":"Panonceau 3","nom":"RÃ©pÃ©tition / Rappel","cat":"X","desc":"Confirme qu'une interdiction ou obligation est toujours d'application."}
+  {"code":"Panonceau 3","nom":"Répétition / Rappel","cat":"X","desc":"Confirme qu'une interdiction ou obligation est toujours d'application."}
 ];
 
 const INFRACTIONS = [
-  {"titre":"Oubli du clignotant","degre":"1er DegrÃ©","amende":"58 â‚¬","desc":"Omettre d'indiquer un changement de direction, un dÃ©passement ou la sortie d'un rond-point."},
-  {"titre":"Stationnement gÃªnant simple","degre":"1er DegrÃ©","amende":"58 â‚¬","desc":"Stationner sur une zone non autorisÃ©e sans gÃªner gravement la circulation."},
-  {"titre":"Circuler sur une bande de bus","degre":"1er DegrÃ©","amende":"58 â‚¬","desc":"Emprunter une bande rÃ©servÃ©e aux transports en commun sans autorisation."},
-  {"titre":"DÃ©faut de documents Ã  bord","degre":"1er DegrÃ©","amende":"58 â‚¬","desc":"Ne pas prÃ©senter immÃ©diatement son permis, son certificat d'immatriculation ou son assurance."},
-  {"titre":"Utilisation abusive des feux de brouillard","degre":"1er DegrÃ©","amende":"58 â‚¬","desc":"Allumer les feux antibrouillard par temps clair ou pluie lÃ©gÃ¨re (Ã©blouissement)."},
-  {"titre":"Non-port de la ceinture de sÃ©curitÃ©","degre":"2Ã¨me DegrÃ©","amende":"116 â‚¬","desc":"Obligatoire pour tous les occupants du vÃ©hicule (conducteur et passagers)."},
-  {"titre":"Franchissement d'un feu orange","degre":"2Ã¨me DegrÃ©","amende":"116 â‚¬","desc":"S'engager au feu orange alors qu'il Ã©tait possible de s'arrÃªter en sÃ©curitÃ©."},
-  {"titre":"Stationnement sur passage pour piÃ©tons","degre":"2Ã¨me DegrÃ©","amende":"116 â‚¬","desc":"Se garer sur un passage cloutÃ©, un trottoir protÃ©geant les piÃ©tons ou une piste cyclable."},
-  {"titre":"Conduite sans feux la nuit","degre":"2Ã¨me DegrÃ©","amende":"116 â‚¬","desc":"Oublier d'allumer ses feux de croisement entre la tombÃ©e et le lever du jour."},
-  {"titre":"DÃ©passement par la droite","degre":"2Ã¨me DegrÃ©","amende":"116 â‚¬","desc":"Interdit sauf en cas de files ininterrompues de vÃ©hicules sur les autres bandes."},
-  {"titre":"Non-respect de la distance de sÃ©curitÃ©","degre":"2Ã¨me DegrÃ©","amende":"116 â‚¬","desc":"Ne pas laisser une distance suffisante par rapport au vÃ©hicule qui prÃ©cÃ¨de."},
-  {"titre":"Ne pas cÃ©der le passage Ã  un piÃ©ton engagÃ©","degre":"2Ã¨me DegrÃ©","amende":"116 â‚¬","desc":"Refuser la prioritÃ© Ã  un piÃ©ton s'engageant sur un passage cloutÃ©."},
-  {"titre":"Usage du GSM au volant","degre":"3Ã¨me DegrÃ©","amende":"174 â‚¬","desc":"Tenir un tÃ©lÃ©phone ou un Ã©cran en main en conduisant. EntraÃ®ne un retrait immÃ©diat de permis (15 jours)."},
-  {"titre":"Franchir un feu rouge","degre":"3Ã¨me DegrÃ©","amende":"174 â‚¬","desc":"S'engager Ã  un carrefour alors que le feu est rouge fixe ou clignotant."},
-  {"titre":"Non-respect d'un panneau STOP (B5)","degre":"3Ã¨me DegrÃ©","amende":"174 â‚¬","desc":"Oublier de marquer un temps d'arrÃªt complet Ã  la ligne d'effet."},
-  {"titre":"Franchir une ligne blanche continue","degre":"3Ã¨me DegrÃ©","amende":"174 â‚¬","desc":"Rouler sur ou franchir une ligne continue dÃ©limitant les bandes."},
-  {"titre":"Prendre un sens interdit (C3)","degre":"3Ã¨me DegrÃ©","amende":"174 â‚¬","desc":"S'engager dans une rue en sens interdit."},
-  {"titre":"Franchir un passage Ã  niveau fermÃ©","degre":"3Ã¨me DegrÃ©","amende":"174 â‚¬","desc":"Passer outre des barriÃ¨res en mouvement ou des feux rouges clignotants."},
-  {"titre":"Faire demi-tour sur autoroute","degre":"4Ã¨me DegrÃ©","amende":"Tribunal","desc":"Comprend la marche arriÃ¨re et le contresens sur autoroute. DÃ©chÃ©ance du permis obligatoire."},
-  {"titre":"Refus d'obtempÃ©rer","degre":"4Ã¨me DegrÃ©","amende":"Tribunal","desc":"Ignorer les ordres d'un agent de police qualifiÃ©."},
-  {"titre":"Courses de vitesse illÃ©gales (Street racing)","degre":"4Ã¨me DegrÃ©","amende":"Tribunal","desc":"Organiser ou participer Ã  des concours de vitesse sur la voie publique."},
-  {"titre":"DÃ©lit de fuite","degre":"DÃ©lit pÃ©nal","amende":"Tribunal","desc":"Quitter les lieux d'accident pour Ã©chapper Ã  ses responsabilitÃ©s."},
-  {"titre":"ExcÃ¨s de vitesse (AgglomÃ©ration / Zone 30)","degre":"Vitesse","amende":"DÃ¨s 53 â‚¬ + 11 â‚¬/km/h","desc":"Tarif de base de 53 â‚¬, puis 11 â‚¬ par km/h excÃ©dentaire en zone sensible."},
-  {"titre":"ExcÃ¨s de vitesse (Hors agglomÃ©ration / Autoroute)","degre":"Vitesse","amende":"DÃ¨s 53 â‚¬ + 6 â‚¬/km/h","desc":"Tarif de base de 53 â‚¬, puis 6 â‚¬ par km/h excÃ©dentaire."},
-  {"titre":"AlcoolÃ©mie (0,2 g/L - Permis Provisoire)","degre":"Alcool (Novice)","amende":"Retrait immÃ©diat","desc":"TolÃ©rance quasi-nulle pour les jeunes conducteurs ou titulaires d'un permis provisoire."},
-  {"titre":"AlcoolÃ©mie (0,5 g/L Ã  0,8 g/L)","degre":"Alcool","amende":"179 â‚¬ + Retrait 3h","desc":"Taux prohibÃ© lÃ©ger. Retrait immÃ©diat du permis pour 3 heures minimum."},
-  {"titre":"AlcoolÃ©mie (SupÃ©rieure Ã  0,8 g/L)","degre":"Alcool / Tribunal","amende":"De 420 â‚¬ Ã  1200 â‚¬","desc":"Retrait immÃ©diat de permis (15 jours) et convocation obligatoire au tribunal de police."}
+  {"titre":"Oubli du clignotant","degre":"1er Degré","amende":"58 €","desc":"Omettre d'indiquer un changement de direction, un dépassement ou la sortie d'un rond-point."},
+  {"titre":"Stationnement gênant simple","degre":"1er Degré","amende":"58 €","desc":"Stationner sur une zone non autorisée sans gêner gravement la circulation."},
+  {"titre":"Circuler sur une bande de bus","degre":"1er Degré","amende":"58 €","desc":"Emprunter une bande réservée aux transports en commun sans autorisation."},
+  {"titre":"Défaut de documents à bord","degre":"1er Degré","amende":"58 €","desc":"Ne pas présenter immédiatement son permis, son certificat d'immatriculation ou son assurance."},
+  {"titre":"Utilisation abusive des feux de brouillard","degre":"1er Degré","amende":"58 €","desc":"Allumer les feux antibrouillard par temps clair ou pluie légère (éblouissement)."},
+  {"titre":"Non-port de la ceinture de sécurité","degre":"2ème Degré","amende":"116 €","desc":"Obligatoire pour tous les occupants du véhicule (conducteur et passagers)."},
+  {"titre":"Franchissement d'un feu orange","degre":"2ème Degré","amende":"116 €","desc":"S'engager au feu orange alors qu'il était possible de s'arrêter en sécurité."},
+  {"titre":"Stationnement sur passage pour piétons","degre":"2ème Degré","amende":"116 €","desc":"Se garer sur un passage clouté, un trottoir protégeant les piétons ou une piste cyclable."},
+  {"titre":"Conduite sans feux la nuit","degre":"2ème Degré","amende":"116 €","desc":"Oublier d'allumer ses feux de croisement entre la tombée et le lever du jour."},
+  {"titre":"Dépassement par la droite","degre":"2ème Degré","amende":"116 €","desc":"Interdit sauf en cas de files ininterrompues de véhicules sur les autres bandes."},
+  {"titre":"Non-respect de la distance de sécurité","degre":"2ème Degré","amende":"116 €","desc":"Ne pas laisser une distance suffisante par rapport au véhicule qui précède."},
+  {"titre":"Ne pas céder le passage à un piéton engagé","degre":"2ème Degré","amende":"116 €","desc":"Refuser la priorité à un piéton s'engageant sur un passage clouté."},
+  {"titre":"Usage du GSM au volant","degre":"3ème Degré","amende":"174 €","desc":"Tenir un téléphone ou un écran en main en conduisant. Entraîne un retrait immédiat de permis (15 jours)."},
+  {"titre":"Franchir un feu rouge","degre":"3ème Degré","amende":"174 €","desc":"S'engager à un carrefour alors que le feu est rouge fixe ou clignotant."},
+  {"titre":"Non-respect d'un panneau STOP (B5)","degre":"3ème Degré","amende":"174 €","desc":"Oublier de marquer un temps d'arrêt complet à la ligne d'effet."},
+  {"titre":"Franchir une ligne blanche continue","degre":"3ème Degré","amende":"174 €","desc":"Rouler sur ou franchir une ligne continue délimitant les bandes."},
+  {"titre":"Prendre un sens interdit (C3)","degre":"3ème Degré","amende":"174 €","desc":"S'engager dans une rue en sens interdit."},
+  {"titre":"Franchir un passage à niveau fermé","degre":"3ème Degré","amende":"174 €","desc":"Passer outre des barrières en mouvement ou des feux rouges clignotants."},
+  {"titre":"Faire demi-tour sur autoroute","degre":"4ème Degré","amende":"Tribunal","desc":"Comprend la marche arrière et le contresens sur autoroute. Déchéance du permis obligatoire."},
+  {"titre":"Refus d'obtempérer","degre":"4ème Degré","amende":"Tribunal","desc":"Ignorer les ordres d'un agent de police qualifié."},
+  {"titre":"Courses de vitesse illégales (Street racing)","degre":"4ème Degré","amende":"Tribunal","desc":"Organiser ou participer à des concours de vitesse sur la voie publique."},
+  {"titre":"Délit de fuite","degre":"Délit pénal","amende":"Tribunal","desc":"Quitter les lieux d'accident pour échapper à ses responsabilités."},
+  {"titre":"Excès de vitesse (Agglomération / Zone 30)","degre":"Vitesse","amende":"Dès 53 € + 11 €/km/h","desc":"Tarif de base de 53 €, puis 11 € par km/h excédentaire en zone sensible."},
+  {"titre":"Excès de vitesse (Hors agglomération / Autoroute)","degre":"Vitesse","amende":"Dès 53 € + 6 €/km/h","desc":"Tarif de base de 53 €, puis 6 € par km/h excédentaire."},
+  {"titre":"Alcoolémie (0,2 g/L - Permis Provisoire)","degre":"Alcool (Novice)","amende":"Retrait immédiat","desc":"Tolérance quasi-nulle pour les jeunes conducteurs ou titulaires d'un permis provisoire."},
+  {"titre":"Alcoolémie (0,5 g/L à 0,8 g/L)","degre":"Alcool","amende":"179 € + Retrait 3h","desc":"Taux prohibé léger. Retrait immédiat du permis pour 3 heures minimum."},
+  {"titre":"Alcoolémie (Supérieure à 0,8 g/L)","degre":"Alcool / Tribunal","amende":"De 420 € à 1200 €","desc":"Retrait immédiat de permis (15 jours) et convocation obligatoire au tribunal de police."}
 ];
 
 const RULES = [
-  {"titre":"La PrioritÃ© Ã  Droite (RÃ¨gle gÃ©nÃ©rale)","desc":"Ã€ toute intersection, vous devez cÃ©der le passage Ã  tout conducteur venant de droite, sauf si un signal (panneau, feu, agent) ou une rÃ¨gle spÃ©cifique (carrossable vs chemin de terre) en dispose autrement."},
-  {"titre":"Les Ronds-Points et Giratoires","desc":"Sauf signalisation contraire (panneau B1 'CÃ©dez le passage' ou B5 'Stop' Ã  l'entrÃ©e), la rÃ¨gle de la prioritÃ© Ã  droite s'applique DANS le rond-point. Cependant, dans 99% des giratoires modernes en Belgique, le panneau 'CÃ©dez le passage' est placÃ© pour ceux qui s'engagent."},
-  {"titre":"La PrioritÃ© des Trams","desc":"Le tram a TOUJOURS la prioritÃ©, mÃªme venant de gauche, sauf s'il sort d'un dÃ©pÃ´t ou si des feux tricolores rÃ©glant la circulation s'opposent Ã  son passage. Ne coupez jamais la trajectoire d'un tram."},
-  {"titre":"Vitesses Maximales en Belgique (RÃ©gionalisÃ©es)","desc":"â€¢ AgglomÃ©ration : 50 km/h (sauf Bruxelles oÃ¹ la rÃ¨gle gÃ©nÃ©rale est 30 km/h).<br>â€¢ Hors agglomÃ©ration : 90 km/h en Wallonie, 70 km/h en Flandre.<br>â€¢ Autoroutes : 120 km/h (min. 70 km/h)."},
-  {"titre":"ArrÃªt vs Stationnement","desc":"â€¢ **L'arrÃªt** : Immobilisation de courte durÃ©e pour embarquer/dÃ©barquer des personnes ou charger/dÃ©charger des marchandises (le conducteur reste Ã  bord ou Ã  proximitÃ©).<br>â€¢ **Le stationnement** : Immobilisation qui dÃ©passe le temps nÃ©cessaire Ã  l'arrÃªt."},
-  {"titre":"Le couloir de secours (Corridor d'urgence)","desc":"En cas d'embouteillage sur autoroute ou route Ã  2 bandes ou plus, les vÃ©hicules doivent obligatoirement se serrer : ceux de gauche vers la gauche, ceux de droite vers la droite, pour laisser un passage central libre aux services de secours."}
+  {"titre":"La Priorité à Droite (Règle générale)","desc":"À toute intersection, vous devez céder le passage à tout conducteur venant de droite, sauf si un signal (panneau, feu, agent) ou une règle spécifique (carrossable vs chemin de terre) en dispose autrement."},
+  {"titre":"Les Ronds-Points et Giratoires","desc":"Sauf signalisation contraire (panneau B1 'Cédez le passage' ou B5 'Stop' à l'entrée), la règle de la priorité à droite s'applique DANS le rond-point. Cependant, dans 99% des giratoires modernes en Belgique, le panneau 'Cédez le passage' est placé pour ceux qui s'engagent."},
+  {"titre":"La Priorité des Trams","desc":"Le tram a TOUJOURS la priorité, même venant de gauche, sauf s'il sort d'un dépôt ou si des feux tricolores réglant la circulation s'opposent à son passage. Ne coupez jamais la trajectoire d'un tram."},
+  {"titre":"Vitesses Maximales en Belgique (Régionalisées)","desc":"• Agglomération : 50 km/h (sauf Bruxelles où la règle générale est 30 km/h).<br>• Hors agglomération : 90 km/h en Wallonie, 70 km/h en Flandre.<br>• Autoroutes : 120 km/h (min. 70 km/h)."},
+  {"titre":"Arrêt vs Stationnement","desc":"• **L'arrêt** : Immobilisation de courte durée pour embarquer/débarquer des personnes ou charger/décharger des marchandises (le conducteur reste à bord ou à proximité).<br>• **Le stationnement** : Immobilisation qui dépasse le temps nécessaire à l'arrêt."},
+  {"titre":"Le couloir de secours (Corridor d'urgence)","desc":"En cas d'embouteillage sur autoroute ou route à 2 bandes ou plus, les véhicules doivent obligatoirement se serrer : ceux de gauche vers la gauche, ceux de droite vers la droite, pour laisser un passage central libre aux services de secours."}
 ];
 
 const MATIERE_AUTO = [
-  {"id":"auto_1","titre":"Niveau d'huile moteur","cat":"Technique","desc":"Le contrÃ´le s'effectue <b>moteur froid et sur un plan horizontal</b>. Le niveau doit se situer entre MIN et MAX. Un manque provoque un serrage moteur."},
-  {"id":"auto_2","titre":"Liquide de refroidissement","cat":"Technique","desc":"VÃ©rification via le vase d'expansion. <b>Avertissement :</b> ne jamais ouvrir le bouchon Ã  chaud sous peine de brÃ»lures graves."},
-  {"id":"auto_3","titre":"Liquide de frein","cat":"Technique","desc":"Une baisse anormale indique soit l'usure prononcÃ©e des plaquettes/disques, soit une fuite dans le circuit hydraulique."},
-  {"id":"auto_4","titre":"Liquide de lave-glace et balais","cat":"Technique","desc":"Le rÃ©servoir doit Ãªtre plein. Les fissures majeures dans le champ de vision du pare-brise constituent une infraction."},
-  {"id":"auto_5","titre":"Pression et profondeur des pneus","cat":"Technique","desc":"VÃ©rification Ã  froid. La profondeur minimale lÃ©gale des rainures principales est de <b>1,6 mm</b> en Europe."},
-  {"id":"auto_6","titre":"Masse Maximale AutorisÃ©e (MMA / PTAC)","cat":"LÃ©gal & Charges","desc":"Poids total maximal autorisÃ© (vÃ©hicule vide + passagers + bagages). IndiquÃ© sur la carte grise (rubrique F.2). Interdiction de surcharge."},
-  {"id":"auto_7","titre":"Masse remorquable (Permis B)","cat":"LÃ©gal & Charges","desc":"Remorque max 750 kg sans condition, ou plus lourde si la somme des MMA (voiture + remorque) ne dÃ©passe pas 3 500 kg."},
-  {"id":"auto_8","titre":"Documents obligatoires Ã  bord","cat":"Administratif","desc":"1. Permis de conduire valide.<br>2. Certificat d'immatriculation (carte grise).<br>3. Attestation d'assurance.<br>4. Certificat de contrÃ´le technique."},
-  {"id":"auto_9","titre":"Ã‰quipements de sÃ©curitÃ© obligatoires","cat":"SÃ©curitÃ©","desc":"Triangle de signalisation, gilet haute visibilitÃ© par occupant, trousse de premiers secours et extincteur portatif homologuÃ©."},
-  {"id":"auto_10","titre":"RÃ¨glementation stricte dans les Tunnels","cat":"SÃ©curitÃ© & Tunnels","desc":"1. Allumage obligatoire des <b>feux de croisement</b> mÃªme si le tunnel est Ã©clairÃ©.<br>2. Interdiction absolue de faire demi-tour ou de reculer.<br>3. En cas d'embouteillage : couper le moteur, garder ses distances et allumer les feux de dÃ©tresse.<br>4. Distance de sÃ©curitÃ© minimale de <b>50 mÃ¨tres</b> avec le vÃ©hicule prÃ©cÃ©dent."},
-  {"id":"auto_11","titre":"Ã‰co-conduite (Notions d'examen)","cat":"Ã‰co-conduite","desc":"Passer les rapports de vitesse rapidement (entre 2000 et 2500 tr/min), couper le moteur lors d'un arrÃªt prolongÃ© (> 1 minute), maintenir des pneumatiques correctement gonflÃ©s pour rÃ©duire la consommation de carburant."},
-  {"id":"auto_12","titre":"Premiers Secours en cas d'accident","cat":"Secours","desc":"SÃ©quence d'urgence absolue : <b>1. ProtÃ©ger</b> (baliser et enfiler son gilet avant de sortir) ; <b>2. Alerter</b> (appeler le 112 en prÃ©cisant le lieu exact et l'Ã©tat des victimes) ; <b>3. Secourir</b> (ne jamais retirer le casque d'un motard conscient sauf risque d'asphyxie)."}
+  {"id":"auto_1","titre":"Niveau d'huile moteur","cat":"Technique","desc":"Le contrôle s'effectue <b>moteur froid et sur un plan horizontal</b>. Le niveau doit se situer entre MIN et MAX. Un manque provoque un serrage moteur."},
+  {"id":"auto_2","titre":"Liquide de refroidissement","cat":"Technique","desc":"Vérification via le vase d'expansion. <b>Avertissement :</b> ne jamais ouvrir le bouchon à chaud sous peine de brûlures graves."},
+  {"id":"auto_3","titre":"Liquide de frein","cat":"Technique","desc":"Une baisse anormale indique soit l'usure prononcée des plaquettes/disques, soit une fuite dans le circuit hydraulique."},
+  {"id":"auto_4","titre":"Liquide de lave-glace et balais","cat":"Technique","desc":"Le réservoir doit être plein. Les fissures majeures dans le champ de vision du pare-brise constituent une infraction."},
+  {"id":"auto_5","titre":"Pression et profondeur des pneus","cat":"Technique","desc":"Vérification à froid. La profondeur minimale légale des rainures principales est de <b>1,6 mm</b> en Europe."},
+  {"id":"auto_6","titre":"Masse Maximale Autorisée (MMA / PTAC)","cat":"Légal & Charges","desc":"Poids total maximal autorisé (véhicule vide + passagers + bagages). Indiqué sur la carte grise (rubrique F.2). Interdiction de surcharge."},
+  {"id":"auto_7","titre":"Masse remorquable (Permis B)","cat":"Légal & Charges","desc":"Remorque max 750 kg sans condition, ou plus lourde si la somme des MMA (voiture + remorque) ne dépasse pas 3 500 kg."},
+  {"id":"auto_8","titre":"Documents obligatoires à bord","cat":"Administratif","desc":"1. Permis de conduire valide.<br>2. Certificat d'immatriculation (carte grise).<br>3. Attestation d'assurance.<br>4. Certificat de contrôle technique."},
+  {"id":"auto_9","titre":"Équipements de sécurité obligatoires","cat":"Sécurité","desc":"Triangle de signalisation, gilet haute visibilité par occupant, trousse de premiers secours et extincteur portatif homologué."},
+  {"id":"auto_10","titre":"Règlementation stricte dans les Tunnels","cat":"Sécurité & Tunnels","desc":"1. Allumage obligatoire des <b>feux de croisement</b> même si le tunnel est éclairé.<br>2. Interdiction absolue de faire demi-tour ou de reculer.<br>3. En cas d'embouteillage : couper le moteur, garder ses distances et allumer les feux de détresse.<br>4. Distance de sécurité minimale de <b>50 mètres</b> avec le véhicule précédent."},
+  {"id":"auto_11","titre":"Éco-conduite (Notions d'examen)","cat":"Éco-conduite","desc":"Passer les rapports de vitesse rapidement (entre 2000 et 2500 tr/min), couper le moteur lors d'un arrêt prolongé (> 1 minute), maintenir des pneumatiques correctement gonflés pour réduire la consommation de carburant."},
+  {"id":"auto_12","titre":"Premiers Secours en cas d'accident","cat":"Secours","desc":"Séquence d'urgence absolue : <b>1. Protéger</b> (baliser et enfiler son gilet avant de sortir) ; <b>2. Alerter</b> (appeler le 112 en précisant le lieu exact et l'état des victimes) ; <b>3. Secourir</b> (ne jamais retirer le casque d'un motard conscient sauf risque d'asphyxie)."}
 ];
 
 const PIEGES_ROUTES = [
-  {"id":"piege_1","titre":"La prioritÃ© Ã  droite absolue par dÃ©faut","cat":"PiÃ¨ges & PrioritÃ©s","desc":"<b>Le piÃ¨ge :</b> Penser que la route la plus large est prioritaire. <b>La rÃ¨gle :</b> Sans signalisation (panneau ou feu), la prioritÃ© Ã  droite s'applique toujours aveuglÃ©ment."},
-  {"id":"piege_2","titre":"Le stationnement interdit implicite (Les 5 mÃ¨tres)","cat":"PiÃ¨ges & PrioritÃ©s","desc":"<b>Le piÃ¨ge :</b> Se garer juste avant un passage piÃ©ton en pensant qu'il n'y a pas de panneau E1/E3. <b>La rÃ¨gle :</b> Il est strictement interdit de stationner Ã  moins de <b>5 mÃ¨tres en amont</b> d'un passage pour piÃ©tons ou pour cyclistes."},
-  {"id":"piege_3","titre":"Sortie d'un chemin de terre","cat":"PiÃ¨ges & PrioritÃ©s","desc":"<b>Le piÃ¨ge :</b> CÃ©der le passage Ã  quelqu'un qui sort d'un chemin de terre sous prÃ©texte qu'il est Ã  droite. <b>La rÃ¨gle :</b> Quiconque sort d'un chemin de terre, d'un sentier ou d'une propriÃ©tÃ© privÃ©e doit <b>toujours cÃ©der le passage</b> sur la voie publique."},
-  {"id":"piege_4","titre":"Le dÃ©passement des cyclistes (Distances)","cat":"PiÃ¨ges & PrioritÃ©s","desc":"<b>Le piÃ¨ge :</b> FrÃ´ler un cycliste en ville. <b>La rÃ¨gle :</b> Marge latÃ©rale obligatoire de <b>1,0 m en agglomÃ©ration</b> et de <b>1,5 m hors agglomÃ©ration</b> franchissement de ligne continue autorisÃ© si la visibilitÃ© le permet."},
-  {"id":"piege_5","titre":"Le piÃ¨ge du rond-point classique vs giratoire","cat":"PiÃ¨ges & PrioritÃ©s","desc":"<b>Le piÃ¨ge :</b> Croire que l'on est prioritaire dans tous les ronds-points. <b>La rÃ¨gle :</b> Un rond-point n'est un giratoire prioritaire que si les panneaux 'CÃ©dez le passage' (B1) et 'Sens giratoire' (D10) sont placÃ©s. Sinon, c'est la prioritÃ© Ã  droite classique pour entrer !"},
-  {"id":"piege_6","titre":"L'illusion du feu orange fixe","cat":"PiÃ¨ges & PrioritÃ©s","desc":"<b>Le piÃ¨ge :</b> AccÃ©lÃ©rer au feu orange. <b>La rÃ¨gle :</b> Le feu orange oblige Ã  l'arrÃªt, SAUF si vous Ãªtes si prÃ¨s du carrefour que vous ne pouvez plus vous arrÃªter en sÃ©curitÃ© sans provoquer de collision."},
-  {"id":"piege_7","titre":"Le feu vert n'annule pas la prioritÃ© des piÃ©tons","cat":"PiÃ¨ges & PrioritÃ©s (Rare)","desc":"<b>Le piÃ¨ge vicieux :</b> Tourner Ã  droite ou Ã  gauche Ã  un feu vert en pensant avoir le champ libre. <b>La rÃ¨gle :</b> Si vous coupez un passage pour piÃ©tons ou une piste cyclable, <b>vous devez cÃ©der le passage aux usagers qui traversent</b>, mÃªme si votre feu tricolore est au vert."},
-  {"id":"piege_8","titre":"La bande d'arrÃªt d'urgence sur autoroute","cat":"PiÃ¨ges & PrioritÃ©s (Rare)","desc":"<b>Le piÃ¨ge :</b> S'y arrÃªter pour passer un appel d'urgence ou rÃ©gler son GPS. <b>La rÃ¨gle :</b> C'est strictement interdit, sauf cas de force majeure absolue (panne mÃ©canique ou malaise). S'y garer par confort est une infraction grave."},
-  {"id":"piege_9","titre":"Le sens de stationnement et le disque bleu","cat":"PiÃ¨ges & PrioritÃ©s (Rare)","desc":"<b>Le piÃ¨ge :</b> Se garer Ã  contresens ou rÃ©gler mal son disque. <b>La rÃ¨gle :</b> Vous devez obligatoirement vous garer dans le sens de la marche du cÃ´tÃ© droit. Sur disque de stationnement, celui-ci doit Ãªtre rÃ©glÃ© sur <b>l'heure de l'arrivÃ©e (l'heure entamÃ©e ou la demi-heure suivante)</b>."},
-  {"id":"piege_10","titre":"Le dÃ©passement par la droite sur autoroute","cat":"PiÃ¨ges & PrioritÃ©s (Rare)","desc":"<b>Le piÃ¨ge :</b> Penser que doubler par la droite est toujours interdit. <b>La rÃ¨gle :</b> C'est interdit, <i>sauf</i> en cas de <b>files ininterrompues</b> de vÃ©hicules sur les autres bandes lorsque la circulation est dense et roule au pas."}
+  {"id":"piege_1","titre":"La priorité à droite absolue par défaut","cat":"Pièges & Priorités","desc":"<b>Le piège :</b> Penser que la route la plus large est prioritaire. <b>La règle :</b> Sans signalisation (panneau ou feu), la priorité à droite s'applique toujours aveuglément."},
+  {"id":"piege_2","titre":"Le stationnement interdit implicite (Les 5 mètres)","cat":"Pièges & Priorités","desc":"<b>Le piège :</b> Se garer juste avant un passage piéton en pensant qu'il n'y a pas de panneau E1/E3. <b>La règle :</b> Il est strictement interdit de stationner à moins de <b>5 mètres en amont</b> d'un passage pour piétons ou pour cyclistes."},
+  {"id":"piege_3","titre":"Sortie d'un chemin de terre","cat":"Pièges & Priorités","desc":"<b>Le piège :</b> Céder le passage à quelqu'un qui sort d'un chemin de terre sous prétexte qu'il est à droite. <b>La règle :</b> Quiconque sort d'un chemin de terre, d'un sentier ou d'une propriété privée doit <b>toujours céder le passage</b> sur la voie publique."},
+  {"id":"piege_4","titre":"Le dépassement des cyclistes (Distances)","cat":"Pièges & Priorités","desc":"<b>Le piège :</b> Frôler un cycliste en ville. <b>La règle :</b> Marge latérale obligatoire de <b>1,0 m en agglomération</b> et de <b>1,5 m hors agglomération</b> franchissement de ligne continue autorisé si la visibilité le permet."},
+  {"id":"piege_5","titre":"Le piège du rond-point classique vs giratoire","cat":"Pièges & Priorités","desc":"<b>Le piège :</b> Croire que l'on est prioritaire dans tous les ronds-points. <b>La règle :</b> Un rond-point n'est un giratoire prioritaire que si les panneaux 'Cédez le passage' (B1) et 'Sens giratoire' (D10) sont placés. Sinon, c'est la priorité à droite classique pour entrer !"},
+  {"id":"piege_6","titre":"L'illusion du feu orange fixe","cat":"Pièges & Priorités","desc":"<b>Le piège :</b> Accélérer au feu orange. <b>La règle :</b> Le feu orange oblige à l'arrêt, SAUF si vous êtes si près du carrefour que vous ne pouvez plus vous arrêter en sécurité sans provoquer de collision."},
+  {"id":"piege_7","titre":"Le feu vert n'annule pas la priorité des piétons","cat":"Pièges & Priorités (Rare)","desc":"<b>Le piège vicieux :</b> Tourner à droite ou à gauche à un feu vert en pensant avoir le champ libre. <b>La règle :</b> Si vous coupez un passage pour piétons ou une piste cyclable, <b>vous devez céder le passage aux usagers qui traversent</b>, même si votre feu tricolore est au vert."},
+  {"id":"piege_8","titre":"La bande d'arrêt d'urgence sur autoroute","cat":"Pièges & Priorités (Rare)","desc":"<b>Le piège :</b> S'y arrêter pour passer un appel d'urgence ou régler son GPS. <b>La règle :</b> C'est strictement interdit, sauf cas de force majeure absolue (panne mécanique ou malaise). S'y garer par confort est une infraction grave."},
+  {"id":"piege_9","titre":"Le sens de stationnement et le disque bleu","cat":"Pièges & Priorités (Rare)","desc":"<b>Le piège :</b> Se garer à contresens ou régler mal son disque. <b>La règle :</b> Vous devez obligatoirement vous garer dans le sens de la marche du côté droit. Sur disque de stationnement, celui-ci doit être réglé sur <b>l'heure de l'arrivée (l'heure entamée ou la demi-heure suivante)</b>."},
+  {"id":"piege_10","titre":"Le dépassement par la droite sur autoroute","cat":"Pièges & Priorités (Rare)","desc":"<b>Le piège :</b> Penser que doubler par la droite est toujours interdit. <b>La règle :</b> C'est interdit, <i>sauf</i> en cas de <b>files ininterrompues</b> de véhicules sur les autres bandes lorsque la circulation est dense et roule au pas."}
 ];
 
 const USAGERS_MANOEUVRES = [
-  {"id":"usager_1","titre":"Les rues cyclables (Fietsstraten)","cat":"Usagers VulnÃ©rables","desc":"Dans une rue cyclable, les cyclistes occupent toute la largeur de leur bande (ou la moitiÃ© de la voirie). <b>Il est strictement interdit aux automobilistes de dÃ©passer les cyclistes</b> dans ces rues, et la vitesse maximale y est limitÃ©e Ã  30 km/h."},
-  {"id":"usager_2","titre":"Les sas Ã  vÃ©los aux feux","cat":"Usagers VulnÃ©rables","desc":"Espace peint en avant de la ligne d'arrÃªt des voitures aux feux tricolores. Il est rÃ©servÃ© exclusivement aux vÃ©los et cyclomoteurs pour leur permettre de se placer en sÃ©curitÃ© devant les vÃ©hicules lors du passage au vert."},
-  {"id":"usager_3","titre":"Qu'est-ce qu'une manÅ“uvre en droit belge ?","cat":"ManÅ“uvres","desc":"Constituent des manÅ“uvres : quitter un stationnement, faire demi-tour, reculer, sortir d'un garage ou s'insÃ©rer dans la circulation. <b>La rÃ¨gle absolue :</b> Celui qui effectue une manÅ“uvre doit cÃ©der le passage Ã  <b>tous</b> les autres usagers."},
-  {"id":"usager_4","titre":"Croisement sur routes de montagne / fortes pentes","cat":"Intersections","desc":"Sur les pentes raides (panneaux A3/A5), le vÃ©hicule qui <b>descend</b> doit s'arrÃªter ou reculer pour laisser passer celui qui monte, <i>sauf</i> si le vÃ©hicule qui monte trouve un refuge (une halte) plus prÃ¨s de lui."},
-  {"id":"usager_5","titre":"Restrictions du Permis Provisoire 36 mois","cat":"Permis & LÃ©gal","desc":"Si tu conduis avec un permis provisoire accompagnÃ© d'un guide, il est strictement interdit de circuler les <b>vendredis, samedis, dimanches et veilles de jours fÃ©riÃ©s entre 22h et 6h du matin</b>."},
-  {"id":"usager_6","titre":"Le chargement et les dÃ©passements Ã  l'arriÃ¨re","cat":"Chargement","desc":"Un chargement ne peut jamais masquer les plaques ou les feux. S'il dÃ©passe de plus d'<b>un mÃ¨tre</b> Ã  l'arriÃ¨re du vÃ©hicule, il doit obligatoirement Ãªtre signalÃ© par un panneau carrÃ© Ã  rayures rouges et blanches."}
+  {"id":"usager_1","titre":"Les rues cyclables (Fietsstraten)","cat":"Usagers Vulnérables","desc":"Dans une rue cyclable, les cyclistes occupent toute la largeur de leur bande (ou la moitié de la voirie). <b>Il est strictement interdit aux automobilistes de dépasser les cyclistes</b> dans ces rues, et la vitesse maximale y est limitée à 30 km/h."},
+  {"id":"usager_2","titre":"Les sas à vélos aux feux","cat":"Usagers Vulnérables","desc":"Espace peint en avant de la ligne d'arrêt des voitures aux feux tricolores. Il est réservé exclusivement aux vélos et cyclomoteurs pour leur permettre de se placer en sécurité devant les véhicules lors du passage au vert."},
+  {"id":"usager_3","titre":"Qu'est-ce qu'une manœuvre en droit belge ?","cat":"Manœuvres","desc":"Constituent des manœuvres : quitter un stationnement, faire demi-tour, reculer, sortir d'un garage ou s'insérer dans la circulation. <b>La règle absolue :</b> Celui qui effectue une manœuvre doit céder le passage à <b>tous</b> les autres usagers."},
+  {"id":"usager_4","titre":"Croisement sur routes de montagne / fortes pentes","cat":"Intersections","desc":"Sur les pentes raides (panneaux A3/A5), le véhicule qui <b>descend</b> doit s'arrêter ou reculer pour laisser passer celui qui monte, <i>sauf</i> si le véhicule qui monte trouve un refuge (une halte) plus près de lui."},
+  {"id":"usager_5","titre":"Restrictions du Permis Provisoire 36 mois","cat":"Permis & Légal","desc":"Si tu conduis avec un permis provisoire accompagné d'un guide, il est strictement interdit de circuler les <b>vendredis, samedis, dimanches et veilles de jours fériés entre 22h et 6h du matin</b>."},
+  {"id":"usager_6","titre":"Le chargement et les dépassements à l'arrière","cat":"Chargement","desc":"Un chargement ne peut jamais masquer les plaques ou les feux. S'il dépasse de plus d'<b>un mètre</b> à l'arrière du véhicule, il doit obligatoirement être signalé par un panneau carré à rayures rouges et blanches."}
 ];
 
 const CATEGORIES = {
   A:{label:"Danger",color:"var(--red)"},
-  B:{label:"PrioritÃ©",color:"var(--amber)"},
+  B:{label:"Priorité",color:"var(--amber)"},
   C:{label:"Interdiction",color:"var(--red)"},
   D:{label:"Obligation",color:"var(--blue)"},
   E:{label:"Stationnement",color:"var(--blue)"},
@@ -149,9 +171,9 @@ const CATEGORIES = {
   X:{label:"Panonceaux",color:"var(--purple)"}
 };
 
-/* =========================================================
-   STOCKAGE & ETAT DE L'APPLICATION
-========================================================= */
+// =========================================================
+// STOCKAGE & ETAT DE L'APPLICATION
+// =========================================================
 
 const DEFAULT_APP_DATA = {
   favorites:[],
@@ -176,7 +198,9 @@ async function loadAppData(){
         };
       }
     }
-  }catch(e){}
+  }catch(e){
+    console.warn("Impossible de charger les données:", e);
+  }
 }
 
 async function saveAppData(){
@@ -185,7 +209,7 @@ async function saveAppData(){
       await window.storage.set("app-state", JSON.stringify(appData), false);
     }
   }catch(e){
-    console.error("Ã‰chec de la sauvegarde :", e);
+    console.warn("Échec de la sauvegarde :", e);
   }
 }
 
@@ -261,7 +285,7 @@ function updateHomeStats(){
   if($("progressBar")) $("progressBar").style.width=percentage+"%";
 
   if($("progressText")){
-    $("progressText").textContent = total>0 ? `${correct} bonne${correct>1?"s":""} rÃ©ponse${correct>1?"s":""} sur ${total}` : "Aucune session pour le moment";
+    $("progressText").textContent = total>0 ? `${correct} bonne${correct>1?"s":""} réponse${correct>1?"s":""} sur ${total}` : "Aucune session pour le moment";
   }
   if($("reviewCount")){
     $("reviewCount").textContent = new Set([...favorites(), ...Object.keys(mistakes())]).size;
@@ -272,14 +296,14 @@ function updateHomeStats(){
 async function toggleTheme(){
   document.body.classList.toggle("dark");
   appData.theme=document.body.classList.contains("dark")?"dark":"light";
-  if($("themeButton")) $("themeButton").textContent=appData.theme==="dark"?"ðŸŒ™":"â˜€ï¸";
+  if($("themeButton")) $("themeButton").textContent=appData.theme==="dark"?"🌙":"☀️";
   await saveAppData();
 }
 
 function applyTheme(){
   if(appData.theme==="dark"){
     document.body.classList.add("dark");
-    if($("themeButton")) $("themeButton").textContent="ðŸŒ™";
+    if($("themeButton")) $("themeButton").textContent="🌙";
   }
 }
 
@@ -306,10 +330,6 @@ function showQuiz(){
   configureQuiz();
 }
 
-/* =========================================================
-   MODE EXAMEN BLANC OFFICIEL (50 QUESTIONS)
-========================================================= */
-
 function startOfficialExam(){
   clearInterval(state.timerId);
   hideViews();
@@ -325,9 +345,9 @@ function startOfficialExam(){
   if($("quiz")) $("quiz").classList.remove("hidden");
   if($("homeButton")) $("homeButton").style.display="block";
   
-  $("quizConfig").classList.add("hidden");
-  $("quizSummary").classList.add("hidden");
-  $("quizRunning").classList.remove("hidden");
+  if($("quizConfig")) $("quizConfig").classList.add("hidden");
+  if($("quizSummary")) $("quizSummary").classList.add("hidden");
+  if($("quizRunning")) $("quizRunning").classList.remove("hidden");
   
   beginSession(false);
 }
@@ -433,7 +453,8 @@ function configureQuiz(){
 function startQuiz(){
   const pool=PANNEAUX.filter(p=>state.categories.includes(p.cat));
   if(pool.length<2) return;
-  state.timer=$("timerEnabled") ? $("timerEnabled").checked : false;
+  const timerCheckbox = document.getElementById("timerEnabled");
+  state.timer = timerCheckbox ? timerCheckbox.checked : false;
   state.questions=shuffle(pool).slice(0,state.questionCount);
   beginSession(false);
 }
@@ -477,9 +498,9 @@ function reviewErrors(){
   beginSession(true);
 }
 
-/* =========================================================
-   PANNEAUX SVG ENGINE
-========================================================= */
+// =========================================================
+// PANNEAUX SVG ENGINE
+// =========================================================
 
 function dangerTriangle(inner){
   return `<polygon points="90,12 168,154 12,154" fill="#fff" stroke="#c81e2c" stroke-width="12" stroke-linejoin="round"/>${inner}`;
@@ -575,15 +596,15 @@ function renderQuestion(){
   const totalQ = state.questions.length;
 
   if($("quizProgress")){
-    $("quizProgress").textContent = `${state.isOfficialExam ? "Examen Officiel" : (state.review?"RÃ©vision":"Question")} ${state.index+1} / ${totalQ}`;
+    $("quizProgress").textContent = `${state.isOfficialExam ? "Examen Officiel" : (state.review?"Révision":"Question")} ${state.index+1} / ${totalQ}`;
   }
   if($("quizScore")) $("quizScore").textContent="Score : "+state.score;
   if($("favoriteButton")){
-    $("favoriteButton").textContent = favorites().includes(panel.code) ? "â­" : "â˜†";
+    $("favoriteButton").textContent = favorites().includes(panel.code) ? "⭐" : "☆";
   }
   if($("signStage")) $("signStage").innerHTML=makeSignSVG(panel,false);
   if($("signCaption")){
-    $("signCaption").textContent = `${panel.code} â€” ${CATEGORIES[panel.cat]?.label||"Panonceau"}`;
+    $("signCaption").textContent = `${panel.code} — ${CATEGORIES[panel.cat]?.label||"Panonceau"}`;
   }
 
   const distractors=shuffle(PANNEAUX.filter(p=>p.code!==panel.code)).slice(0,3);
@@ -603,11 +624,11 @@ function renderQuestion(){
     state.seconds=15;
     $("timerDisplay").classList.remove("hidden");
     $("timerDisplay").classList.remove("low");
-    $("timerDisplay").textContent="â³ 15s";
+    $("timerDisplay").textContent="⏳ 15s";
 
     state.timerId=setInterval(()=>{
       state.seconds--;
-      $("timerDisplay").textContent="â³ "+state.seconds+"s";
+      $("timerDisplay").textContent="⏳ "+state.seconds+"s";
       $("timerDisplay").classList.toggle("low",state.seconds<=5);
       if(state.seconds<=0){
         clearInterval(state.timerId);
@@ -643,7 +664,7 @@ async function completeAnswer(selectedIndex){
     state.score++;
     categoryState.correct++;
   }else{
-    state.errors.push({ panel, answer:selected?selected.nom:"Temps Ã©coulÃ©" });
+    state.errors.push({ panel, answer:selected?selected.nom:"Temps écoulé" });
     appData.mistakes[panel.code]=(appData.mistakes[panel.code]||0)+1;
     await saveAppData();
   }
@@ -661,7 +682,7 @@ async function completeAnswer(selectedIndex){
   if($("feedbackZone")){
     $("feedbackZone").innerHTML=`
       <div class="feedback ${correct?"":"bad"}">
-        <b>${correct ? "Bonne rÃ©ponse" : selectedIndex<0 ? "Temps Ã©coulÃ© â€” câ€™Ã©tait : "+escapeHTML(panel.nom) : "Erreur â€” câ€™Ã©tait : "+escapeHTML(panel.nom)}</b>
+        <b>${correct ? "Bonne réponse" : selectedIndex<0 ? "Temps écoulé — c'était : "+escapeHTML(panel.nom) : "Erreur — c'était : "+escapeHTML(panel.nom)}</b>
         ${escapeHTML(panel.desc)}
       </div>
     `;
@@ -670,7 +691,7 @@ async function completeAnswer(selectedIndex){
   if($("nextButtonZone")){
     $("nextButtonZone").innerHTML=`
       <button class="primary" style="width:100%" onclick="nextQuestion()">
-        ${state.index+1>=state.questions.length?"Voir le rÃ©sumÃ© officiel":"Question suivante"}
+        ${state.index+1>=state.questions.length?"Voir le résumé officiel":"Question suivante"}
       </button>
     `;
   }
@@ -690,7 +711,7 @@ async function toggleFavorite(){
 
   const button=$("favoriteButton");
   if(button){
-    button.textContent=favorites().includes(panel.code)?"â­":"â˜†";
+    button.textContent=favorites().includes(panel.code)?"⭐":"☆";
     button.classList.remove("pop");
     void button.offsetWidth;
     button.classList.add("pop");
@@ -718,9 +739,9 @@ async function showSummary(){
   let passed = true;
   if(state.isOfficialExam){
     passed = score >= 41;
-    $("summaryTitle").textContent = passed ? "ðŸŽ‰ EXAMEN RÃ‰USSI (Officiel)" : "âŒ EXAMEN Ã‰CHOUÃ‰ (Officiel)";
+    $("summaryTitle").textContent = passed ? "🎉 EXAMEN RÉUSSI (Officiel)" : "❌ EXAMEN ÉCHOUÉ (Officiel)";
   } else {
-    $("summaryTitle").textContent = state.review ? "RÃ©vision terminÃ©e" : "Session terminÃ©e";
+    $("summaryTitle").textContent = state.review ? "Révision terminée" : "Session terminée";
   }
 
   if($("summaryPercent")){
@@ -732,10 +753,10 @@ async function showSummary(){
   if($("summaryMessage")){
     if(state.isOfficialExam){
       $("summaryMessage").textContent = passed 
-        ? `FÃ©licitations ! Avec ${score}/50, tu obtiens ton permis thÃ©orique (Seuil requis : 41/50).`
-        : `Tu as obtenu ${score}/50. Le seuil de rÃ©ussite est fixÃ© Ã  41/50. Il te manque quelques points, continue Ã  bosser !`;
+        ? `Félicitations ! Avec ${score}/50, tu obtiens ton permis théorique (Seuil requis : 41/50).`
+        : `Tu as obtenu ${score}/50. Le seuil de réussite est fixé à 41/50. Il te manque quelques points, continue à bosser !`;
     } else {
-      $("summaryMessage").textContent = percentage>=90 ? "Excellent niveau, continue ainsi." : percentage>=70 ? "Bon score, rÃ©vise les points manquÃ©s." : "EntraÃ®nement requis.";
+      $("summaryMessage").textContent = percentage>=90 ? "Excellent niveau, continue ainsi." : percentage>=70 ? "Bon score, révise les points manqués." : "Entraînement requis.";
     }
   }
 
@@ -770,7 +791,7 @@ async function showSummary(){
           ${state.errors.map(error=>`
             <div class="error">
               <b>[${escapeHTML(error.panel.code)}] ${escapeHTML(error.panel.nom)}</b>
-              <div class="your-answer">Ta rÃ©ponse : ${escapeHTML(error.answer)}</div>
+              <div class="your-answer">Ta réponse : ${escapeHTML(error.answer)}</div>
               <div>${escapeHTML(error.panel.desc)}</div>
             </div>
           `).join("")}
@@ -795,7 +816,7 @@ function renderRepository(){
     if(!query) return true;
     return [panel.code,panel.nom,panel.desc,CATEGORIES[panel.cat]?.label].join(" ").toLowerCase().includes(query);
   });
-  if($("repoCount")) $("repoCount").textContent=`${results.length} panneau(x) â€” base de ${PANNEAUX.length}`;
+  if($("repoCount")) $("repoCount").textContent=`${results.length} panneau(x) — base de ${PANNEAUX.length}`;
 
   const list=$("repoList");
   if(!list) return;
@@ -821,7 +842,7 @@ function renderRepository(){
       `);
     });
   });
-  if(!results.length){ list.innerHTML=`<div class="empty">Aucun panneau ne correspond Ã  cette recherche.</div>`; }
+  if(!results.length){ list.innerHTML=`<div class="empty">Aucun panneau ne correspond à cette recherche.</div>`; }
 }
 
 function renderInfractions(){
@@ -838,9 +859,9 @@ function renderInfractions(){
 
   list.innerHTML=results.length ? results.map(item=>{
     let badgeClass="";
-    if(item.degre.includes("2Ã¨me")){ badgeClass="badge-2"; }
-    else if(item.degre.includes("3Ã¨me")){ badgeClass="badge-3"; }
-    else if(item.degre.includes("4Ã¨me")||item.degre.includes("Tribunal")||item.degre.includes("DÃ©lit")){ badgeClass="badge-4"; }
+    if(item.degre.includes("2ème")){ badgeClass="badge-2"; }
+    else if(item.degre.includes("3ème")){ badgeClass="badge-3"; }
+    else if(item.degre.includes("4ème")||item.degre.includes("Tribunal")||item.degre.includes("Délit")){ badgeClass="badge-4"; }
     else if(item.degre.includes("Vitesse")){ badgeClass="badge-vitesse"; }
     else if(item.degre.includes("Alcool")){ badgeClass="badge-alcool"; }
 
@@ -874,7 +895,7 @@ function renderRules(){
       <b>${escapeHTML(rule.titre)}</b>
       <p>${rule.desc}</p>
     </div>
-  `).join("") : `<div class="empty">Aucune rÃ¨gle ne correspond.</div>`;
+  `).join("") : `<div class="empty">Aucune règle ne correspond.</div>`;
 }
 
 function renderMatiereAuto(){
@@ -895,7 +916,7 @@ function renderMatiereAuto(){
       <b>${escapeHTML(item.titre)}</b>
       <p>${item.desc}</p>
     </div>
-  `).join("") : `<div class="empty">Aucune notion ne correspond Ã  cette recherche.</div>`;
+  `).join("") : `<div class="empty">Aucune notion ne correspond à cette recherche.</div>`;
 }
 
 function renderPiegesRoutes(){
@@ -916,7 +937,7 @@ function renderPiegesRoutes(){
       <b>${escapeHTML(item.titre)}</b>
       <p>${item.desc}</p>
     </div>
-  `).join("") : `<div class="empty">Aucun piÃ¨ge ne correspond Ã  cette recherche.</div>`;
+  `).join("") : `<div class="empty">Aucun piège ne correspond à cette recherche.</div>`;
 }
 
 function renderUsagersManoeuvres(){
@@ -937,7 +958,7 @@ function renderUsagersManoeuvres(){
       <b>${escapeHTML(item.titre)}</b>
       <p>${item.desc}</p>
     </div>
-  `).join("") : `<div class="empty">Aucun Ã©lÃ©ment ne correspond Ã  cette recherche.</div>`;
+  `).join("") : `<div class="empty">Aucun élément ne correspond à cette recherche.</div>`;
 }
 
 document.addEventListener("keydown",event=>{
@@ -955,6 +976,7 @@ if($("questionCount")){
   });
 }
 
+// Export des fonctions globales
 Object.assign(window, {
   goHome,
   showQuiz,
@@ -982,6 +1004,10 @@ Object.assign(window, {
   renderRules
 });
 
+// =========================================================
+// INITIALISATION
+// =========================================================
+
 async function init(){
   await loadAppData();
   applyTheme();
@@ -991,4 +1017,5 @@ async function init(){
   document.body.classList.add("ready");
 }
 
-init();
+// Lancer l'initialisation quand le DOM est chargé
+document.addEventListener('DOMContentLoaded', init);
