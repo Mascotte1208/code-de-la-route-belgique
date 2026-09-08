@@ -103,6 +103,69 @@ const RULES = [
   {"titre":"Le couloir de secours (Corridor d'urgence)","desc":"En cas d'embouteillage sur autoroute ou route à 2 bandes ou plus, les véhicules doivent obligatoirement se serrer : ceux de gauche vers la gauche, ceux de droite vers la droite, pour laisser un passage central libre aux services de secours."}
 ];
 
+const MATIERE_AUTO = [
+  {
+    "id": "auto_1",
+    "titre": "Niveau d'huile moteur",
+    "cat": "Technique",
+    "desc": "Le contrôle s'effectue <b>moteur froid et sur un plan horizontal</b>, le véhicule étant à l'arrêt. Le niveau d'huile indiqué par la jauge doit se situer entre le repère MIN et le repère MAX. Un niveau insuffisant provoque une usure anormale, voire un serrage du moteur par défaut de lubrification ; un excès peut détériorer les joints et le pot catalytique."
+  },
+  {
+    "id": "auto_2",
+    "titre": "Liquide de refroidissement",
+    "cat": "Technique",
+    "desc": "Le niveau se vérifie visuellement via le vase d'expansion transparent, sans dépasser le repère MAX. <b>Avertissement de sécurité :</b> ne jamais ouvrir le bouchon du réservoir de refroidissement lorsque le moteur est chaud ou sous pression, sous peine de brûlures graves."
+  },
+  {
+    "id": "auto_3",
+    "titre": "Liquide de frein",
+    "cat": "Technique",
+    "desc": "Le niveau du réservoir de liquide de frein doit être inspecté régulièrement. S'il descend anormalement sous le niveau minimum, cela indique soit l'usure prononcée des plaquettes et disques de frein, soit une fuite dans le circuit hydraulique. Une baisse de ce niveau compromet directement l'efficacité du freinage."
+  },
+  {
+    "id": "auto_4",
+    "titre": "Liquide de lave-glace et visibilité",
+    "cat": "Technique",
+    "desc": "Le réservoir de lave-glace doit être maintenu plein, particulièrement en hiver ou par temps de pluie. Le bon état des balais d'essuie-glace ainsi que l'absence de fissures ou d'impacts majeurs (dans le champ de vision) sur le pare-brise sont obligatoires sous peine d'infraction."
+  },
+  {
+    "id": "auto_5",
+    "titre": "Pression et état des pneumatiques",
+    "cat": "Technique",
+    "desc": "La pression des pneus se vérifie <b>à froid</b> (ou en ajoutant 0,3 bar si les pneus sont chauds). Une pression inadaptée augmente la consommation de carburant, détériore la tenue de route et use prématurément la bande de roulement. La profondeur minimale légale des rainures principales est de <b>1,6 mm</b> pour les voitures particulières en Europe."
+  },
+  {
+    "id": "auto_6",
+    "titre": "Masse Maximale Autorisée (MMA / PTAC)",
+    "cat": "Légal & Charges",
+    "desc": "La <b>MMA</b> correspond au poids total maximal autorisé pour le véhicule en charge (véhicule vide + passagers + carburant + bagages). Cette valeur figure sur le certificat d'immatriculation (rubrique F.2). Il est strictement interdit de circuler en surcharge, ce qui altère la trajectoire, allonge les distances de freinage et fragilise les suspensions."
+  },
+  {
+    "id": "auto_7",
+    "titre": "Masse remorquable et permis de conduire",
+    "cat": "Légal & Charges",
+    "desc": "La capacité de traction d'un véhicule dépend de sa masse et de sa motorisation (valeur F.3 sur la carte grise). Avec un permis B standard, vous pouvez tracter une remorque dont la MMA n'excède pas 750 kg, ou une remorque plus lourde à condition que la somme des MMA (véhicule + remorque) ne dépasse pas 3 500 kg."
+  },
+  {
+    "id": "auto_8",
+    "titre": "Documents administratifs obligatoires",
+    "cat": "Administratif",
+    "desc": "Le conducteur doit en permanence détenir et présenter à toute réquisition des autorités :<br>1. Le permis de conduire valide et correspondant à la catégorie du véhicule.<br>2. Le certificat d'immatriculation (carte grise).<br>3. Le certificat d'assurance automobile (carte verte ou attestation valable).<br>4. Le certificat de visite du contrôle technique (si le véhicule est soumis à l'obligation)."
+  },
+  {
+    "id": "auto_9",
+    "titre": "Équipements de sécurité obligatoires à bord",
+    "cat": "Sécurité",
+    "desc": "Tout véhicule immatriculé doit obligatoirement disposer de :<br>• Un triangle de signalisation d'urgence.<br>• Un gilet de haute visibilité (fluo) par occupant présent à bord.<br>• Une trousse de premiers secours conforme aux normes en vigueur.<br>• Un extincteur portatif homologué et contrôlé périodiquement."
+  },
+  {
+    "id": "auto_10",
+    "titre": "Feux de signalisation et éclairage",
+    "cat": "Technique",
+    "desc": "Le conducteur doit s'assurer du bon fonctionnement de l'ensemble des feux : feux de position, feux de croisement (codes), feux de route (phares), feux de brouillard (avant/arrière), feux de stop et clignotants. Les optiques doivent être propres et les ampoules grillées remplacées sans délai."
+  }
+];
+
 const CATEGORIES = {
   A:{label:"Danger",color:"var(--red)"},
   B:{label:"Priorité",color:"var(--amber)"},
@@ -265,8 +328,8 @@ function applyTheme(){
 }
 
 function hideViews(){
-  ["home","quiz","repo","infractions","rules"].forEach(id=>{
-    $(id).classList.add("hidden");
+  ["home","quiz","repo","infractions","rules","matiereAuto"].forEach(id=>{
+    if($(id)) $(id).classList.add("hidden");
   });
 }
 
@@ -305,6 +368,13 @@ function showRules(){
   $("rules").classList.remove("hidden");
   $("homeButton").style.display="block";
   renderRules();
+}
+
+function showMatiereAuto(){
+  hideViews();
+  $("matiereAuto").classList.remove("hidden");
+  $("homeButton").style.display="block";
+  renderMatiereAuto();
 }
 
 function renderCategorySelector(){
@@ -411,111 +481,98 @@ function reviewErrors(){
 }
 
 /* =========================================================
-   PANNEAUX SVG — Vrais symboles graphiques officiels
+   PANNEAUX SVG — Version corrigée et stable
 ========================================================= */
 
-function makeSignSVG(panel, small = false) {
-  const code = panel.code;
-  const num = panel.num || "";
-  const cat = panel.cat;
-  let svgContent = "";
+function dangerTriangle(inner){
+  return `
+    <polygon points="90,12 168,154 12,154" fill="#fff" stroke="#c81e2c" stroke-width="12" stroke-linejoin="round"/>
+    ${inner}
+  `;
+}
 
-  // Base Triangle (Danger A)
-  const baseTriangle = `<polygon points="90,12 170,152 10,152" fill="#ffffff" stroke="#c81e2c" stroke-width="12" stroke-linejoin="round"/>`;
-  // Base Cercle Interdiction (C)
-  const baseCircleRed = `<circle cx="90" cy="90" r="76" fill="#ffffff" stroke="#c81e2c" stroke-width="14"/>`;
-  // Base Cercle Obligation (D)
-  const baseCircleBlue = `<circle cx="90" cy="90" r="76" fill="#1c5fa8"/>`;
+function prohibCircle(inner){
+  return `
+    <circle cx="90" cy="90" r="76" fill="#fff" stroke="#c81e2c" stroke-width="14"/>
+    ${inner}
+  `;
+}
 
-  if (cat === "A") {
-    let symbol = "";
-    if (code === "A1a") {
-      symbol = `<path d="M110 120 C90 120 75 100 75 70 L75 55" fill="none" stroke="#171a1f" stroke-width="10" stroke-linecap="round"/><path d="M90 65 L75 50 L60 65" fill="none" stroke="#171a1f" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>`;
-    } else if (code === "A1b") {
-      symbol = `<path d="M70 120 C90 120 105 100 105 70 L105 55" fill="none" stroke="#171a1f" stroke-width="10" stroke-linecap="round"/><path d="M90 65 L105 50 L120 65" fill="none" stroke="#171a1f" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>`;
-    } else if (code === "A3" || code === "A5") {
-      symbol = `<text x="90" y="112" text-anchor="middle" font-size="${small ? 22 : 32}" font-weight="900" fill="#171a1f" font-family="Arial">10%</text>`;
-    } else if (code === "A21") {
-      symbol = `<circle cx="90" cy="55" r="9" fill="#171a1f"/><path d="M75 110 L82 75 L95 85 L105 110" fill="none" stroke="#171a1f" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><line x1="55" y1="125" x2="125" y2="125" stroke="#171a1f" stroke-width="6"/>`;
-    } else if (code === "A31") {
-      symbol = `<path d="M60 115 L90 60 L120 115 Z" fill="#e8a400" stroke="#171a1f" stroke-width="4"/><rect x="83" y="85" width="14" height="20" fill="#171a1f"/>`;
-    } else if (code === "A33") {
-      symbol = `<rect x="75" y="55" width="30" height="70" rx="6" fill="#171a1f"/><circle cx="90" cy="70" r="6" fill="#c81e2c"/><circle cx="90" cy="90" r="6" fill="#e8a400"/><circle cx="90" cy="110" r="6" fill="#1e7a3c"/>`;
+function obligCircle(inner){
+  return `
+    <circle cx="90" cy="90" r="76" fill="#1c5fa8"/>
+    ${inner}
+  `;
+}
+
+function makeSignSVG(panel, small=false){
+  const code = escapeHTML(panel.code);
+  const num = escapeHTML(panel.num || "");
+  const ink = "#171a1f";
+  let content = "";
+
+  if(panel.cat === "A"){
+    if(panel.code === "A1a"){
+      content = dangerTriangle(`<path d="M110 65 C85 75 70 100 75 130" fill="none" stroke="${ink}" stroke-width="9" stroke-linecap="round"/><path d="M95 55 L110 65 L95 78" fill="none" stroke="${ink}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>`);
+    } else if(panel.code === "A1b"){
+      content = dangerTriangle(`<path d="M70 65 C95 75 110 100 105 130" fill="none" stroke="${ink}" stroke-width="9" stroke-linecap="round"/><path d="M85 55 L70 65 L85 78" fill="none" stroke="${ink}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>`);
+    } else if(panel.code === "A3" || panel.code === "A5"){
+      content = dangerTriangle(`<text x="90" y="115" text-anchor="middle" font-size="${small?18:28}" font-weight="900" fill="${ink}" font-family="Arial">10%</text>`);
+    } else if(panel.code === "A33"){
+      content = dangerTriangle(`<rect x="74" y="65" width="32" height="60" rx="4" fill="${ink}"/><circle cx="90" cy="80" r="6" fill="#c81e2c"/><circle cx="90" cy="95" r="6" fill="#e8a400"/><circle cx="90" cy="110" r="6" fill="#1e7a3c"/>`);
     } else {
-      symbol = `<rect x="84" y="65" width="12" height="40" rx="4" fill="#171a1f"/><circle cx="90" cy="120" r="6" fill="#171a1f"/>`;
+      content = dangerTriangle(`<rect x="85" y="70" width="10" height="40" rx="3" fill="${ink}"/><circle cx="90" cy="122" r="5" fill="${ink}"/>`);
     }
-    svgContent = baseTriangle + symbol;
-
-  } else if (cat === "B") {
-    if (code === "B1") {
-      svgContent = `<polygon points="10,25 170,25 90,155" fill="#ffffff" stroke="#c81e2c" stroke-width="12" stroke-linejoin="round"/>`;
-    } else if (code === "B5") {
-      svgContent = `<polygon points="60,10 120,10 170,60 170,120 120,170 60,170 10,120 10,60" fill="#c81e2c" stroke="#7a0f18" stroke-width="3" stroke-linejoin="round"/><text x="90" y="102" text-anchor="middle" font-size="${small ? 18 : 32}" font-weight="900" fill="#ffffff" font-family="Arial">STOP</text>`;
+  } else if(panel.cat === "B"){
+    if(panel.code === "B1"){
+      content = `<polygon points="12,30 168,30 90,160" fill="#fff" stroke="#c81e2c" stroke-width="12" stroke-linejoin="round"/>`;
+    } else if(panel.code === "B5"){
+      content = `<polygon points="60,10 120,10 170,60 170,120 120,170 60,170 10,120 10,60" fill="#c81e2c" stroke="#7a0f18" stroke-width="3" stroke-linejoin="round"/><text x="90" y="102" text-anchor="middle" font-size="${small?16:30}" font-weight="900" fill="#fff" font-family="Arial">STOP</text>`;
+    } else if(panel.code === "B9" || panel.code === "B11"){
+      content = `<polygon points="90,12 168,90 90,168 12,90" fill="#e8a400" stroke="${ink}" stroke-width="2.5"/>` + (panel.code === "B11" ? `<line x1="30" y1="150" x2="150" y2="30" stroke="#4a4d52" stroke-width="10"/>` : ``);
     } else {
-      const isYellow = code !== "B15" && code !== "B17";
-      svgContent = `<polygon points="90,12 168,90 90,168 12,90" fill="${isYellow ? '#e8a400' : '#ffffff'}" stroke="#171a1f" stroke-width="3"/>` +
-        (code === "B11" ? `<line x1="35" y1="145" x2="145" y2="35" stroke="#171a1f" stroke-width="12"/>` : `<path d="M70 90 L110 70 L110 110 Z" fill="#171a1f"/>`);
+      content = `<polygon points="90,12 168,90 90,168 12,90" fill="#fff" stroke="${ink}" stroke-width="3"/><line x1="90" y1="25" x2="90" y2="155" stroke="${ink}" stroke-width="6"/><line x1="25" y1="90" x2="155" y2="90" stroke="${ink}" stroke-width="6"/><path d="M90 90 L130 72 L130 90 L145 90 L130 108 L130 90 Z" fill="#c81e2c"/>`;
     }
-
-  } else if (cat === "C") {
-    let symbol = "";
-    if (code === "C1") {
-      symbol = `<circle cx="90" cy="90" r="55" fill="#c81e2c"/>`;
-    } else if (code === "C3") {
-      symbol = `<rect x="35" y="78" width="110" height="24" rx="4" fill="#c81e2c"/>`;
-    } else if (num) {
-      symbol = `<text x="90" y="108" text-anchor="middle" font-size="${small ? 24 : 52}" font-weight="900" fill="#171a1f" font-family="Arial">${num}</text>`;
+  } else if(panel.cat === "C"){
+    if(panel.code === "C1"){
+      content = prohibCircle("");
+    } else if(panel.code === "C3"){
+      content = `<circle cx="90" cy="90" r="76" fill="#c81e2c"/><rect x="30" y="76" width="120" height="28" rx="4" fill="#fff"/>`;
+    } else if(panel.num){
+      content = prohibCircle(`<text x="90" y="108" text-anchor="middle" font-size="${small?22:52}" font-weight="900" fill="${ink}" font-family="Arial">${num}</text>`);
     } else {
-      symbol = `<path d="M50 50 L130 130" stroke="#c81e2c" stroke-width="12"/>`;
+      content = `<circle cx="90" cy="90" r="76" fill="#fff" stroke="#9aa1aa" stroke-width="3"/><line x1="35" y1="125" x2="125" y2="35" stroke="#4a4d52" stroke-width="8"/><line x1="55" y1="145" x2="145" y2="55" stroke="#4a4d52" stroke-width="8"/>`;
     }
-    svgContent = baseCircleRed + symbol;
-
-  } else if (cat === "D") {
-    let symbol = "";
-    if (code === "D1a") {
-      symbol = `<path d="M100 120 V60 H70 M85 45 L115 60 L85 75" fill="none" stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>`;
-    } else if (code === "D1b") {
-      symbol = `<path d="M80 120 V60 H110 M95 45 L65 60 L95 75" fill="none" stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>`;
+  } else if(panel.cat === "D"){
+    if(panel.code === "D1a"){
+      content = obligCircle(`<path d="M90 130 V50 M65 75 L90 50 L115 75" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>`);
+    } else if(panel.code === "D1b"){
+      content = obligCircle(`<path d="M130 90 H50 M75 65 L50 90 L75 115" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>`);
     } else {
-      symbol = `<circle cx="90" cy="70" r="12" fill="#ffffff"/><path d="M90 85 V135 M70 150 L90 125 L110 150 M90 105 L115 95" fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>`;
+      content = obligCircle(`<circle cx="90" cy="65" r="10" fill="#fff"/><path d="M90 78 V110 L70 135 M90 95 L115 88" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>`);
     }
-    svgContent = baseCircleBlue + symbol;
-
-  } else if (cat === "E") {
-    if (code === "E9a") {
-      svgContent = `<rect x="12" y="12" width="156" height="156" rx="14" fill="#1c5fa8"/><text x="90" y="122" text-anchor="middle" font-size="${small ? 42 : 90}" font-weight="900" fill="#ffffff" font-family="Arial">P</text>`;
+  } else if(panel.cat === "E"){
+    if(panel.code === "E1" || panel.code === "E3"){
+      content = `<circle cx="90" cy="90" r="76" fill="#1c5fa8" stroke="#c81e2c" stroke-width="12"/><line x1="35" y1="145" x2="145" y2="35" stroke="#c81e2c" stroke-width="12"/>` + (panel.code === "E3" ? `<line x1="35" y1="35" x2="145" y2="145" stroke="#c81e2c" stroke-width="12"/>` : ``);
     } else {
-      svgContent = `<circle cx="90" cy="90" r="76" fill="#1c5fa8" stroke="#c81e2c" stroke-width="12"/><line x1="35" y1="145" x2="145" y2="35" stroke="#c81e2c" stroke-width="12"/>` +
-        (code === "E3" ? `<line x1="35" y1="35" x2="145" y2="145" stroke="#c81e2c" stroke-width="12"/>` : ``);
+      content = `<rect x="12" y="12" width="156" height="156" rx="14" fill="#1c5fa8"/><text x="90" y="122" text-anchor="middle" font-size="${small?42:90}" font-weight="900" fill="#fff" font-family="Arial">P</text>`;
     }
-
-  } else if (cat === "F") {
-    if (code === "F1" || code === "F3") {
-      const isFin = code === "F3";
-      svgContent = `<rect x="12" y="45" width="156" height="90" rx="6" fill="#ffffff" stroke="${isFin ? '#4a4d52' : '#c81e2c'}" stroke-width="8"/><path d="M30 135 V100 H55 V135 M65 135 V85 H95 V135 M35 80 L62 55 L90 80 Z" fill="${isFin ? '#68707a' : '#171a1f'}"/><line x1="20" y1="135" x2="160" y2="135" stroke="${isFin ? '#68707a' : '#171a1f'}" stroke-width="6"/>` +
-        (isFin ? `<line x1="20" y1="145" x2="160" y2="35" stroke="#4a4d52" stroke-width="10"/>` : ``);
-    } else if (code === "F5" || code === "F9") {
-      svgContent = `<rect x="12" y="30" width="156" height="120" rx="8" fill="#1c5fa8"/><path d="M35 120 H145 M50 120 V80 H130 V120 M70 80 L90 55 L110 80" fill="none" stroke="#ffffff" stroke-width="8" stroke-linejoin="round"/>`;
+  } else if(panel.cat === "F"){
+    if(panel.code === "F1" || panel.code === "F3"){
+      const isFin = panel.code === "F3";
+      content = `<rect x="12" y="45" width="156" height="90" rx="4" fill="#fff" stroke="${isFin?'#4a4d52':'#c81e2c'}" stroke-width="7"/><path d="M28 135 V105 L45 92 V135 M52 135 V82 L72 68 L92 82 V135" fill="none" stroke="${isFin?'#9aa1aa':'#171a1f'}" stroke-width="5" stroke-linejoin="round"/><line x1="20" y1="135" x2="160" y2="135" stroke="${isFin?'#9aa1aa':'#171a1f'}" stroke-width="5"/>` + (isFin ? `<line x1="20" y1="145" x2="160" y2="35" stroke="#4a4d52" stroke-width="8"/>` : ``);
+    } else if(panel.code === "F5" || panel.code === "F9"){
+      content = `<rect x="12" y="25" width="156" height="130" rx="8" fill="#1c5fa8"/><path d="M30 115 H150 M50 115 V80 H130 V115" fill="none" stroke="#fff" stroke-width="8" stroke-linejoin="round"/>`;
+    } else if(panel.code === "F19"){
+      content = `<rect x="12" y="55" width="156" height="70" rx="6" fill="#1c5fa8"/><path d="M30 90 H140 M110 65 L145 90 L110 115" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>`;
     } else {
-      svgContent = `<rect x="12" y="12" width="156" height="156" rx="12" fill="#ffffff" stroke="#171a1f" stroke-width="4"/><text x="90" y="45" text-anchor="middle" font-size="${small ? 12 : 16}" font-weight="900" fill="#171a1f" letter-spacing="2">ZONE</text><circle cx="90" cy="105" r="44" fill="#ffffff" stroke="#c81e2c" stroke-width="10"/><text x="90" y="118" text-anchor="middle" font-size="${small ? 20 : 36}" font-weight="900" fill="#171a1f" font-family="Arial">30</text>`;
+      content = `<rect x="12" y="12" width="156" height="156" rx="10" fill="#fff" stroke="${ink}" stroke-width="3"/><text x="90" y="45" text-anchor="middle" font-size="${small?12:18}" font-weight="900" fill="${ink}" letter-spacing="2">ZONE</text><circle cx="90" cy="105" r="42" fill="#fff" stroke="#c81e2c" stroke-width="9"/><text x="90" y="118" text-anchor="middle" font-size="${small?18:34}" font-weight="900" fill="${ink}" font-family="Arial">30</text>`;
     }
-
   } else {
-    svgContent = `<rect x="12" y="55" width="156" height="70" rx="6" fill="#ffffff" stroke="#171a1f" stroke-width="4"/><text x="90" y="98" text-anchor="middle" font-size="${small ? 16 : 24}" font-weight="900" fill="#171a1f" font-family="Arial">50 m</text>`;
+    content = `<rect x="12" y="55" width="156" height="70" rx="6" fill="#fff" stroke="${ink}" stroke-width="4"/><text x="90" y="98" text-anchor="middle" font-size="${small?16:24}" font-weight="900" fill="${ink}" font-family="Arial">50 m</text>`;
   }
 
-  return `
-    <svg
-      class="sign-svg"
-      viewBox="0 0 180 180"
-      preserveAspectRatio="xMidYMid meet"
-      role="img"
-      aria-label="${escapeHTML(panel.nom)}"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      ${svgContent}
-    </svg>
-  `;
+  return `<svg class="sign-svg" viewBox="0 0 180 180" preserveAspectRatio="xMidYMid meet" role="img" aria-label="${escapeHTML(panel.nom)}" xmlns="http://www.w3.org/2000/svg">${content}</svg>`;
 }
 
 function renderProgressDots(){
@@ -924,6 +981,35 @@ function renderRules(){
         )
         .join("")
     : `<div class="empty">Aucune règle ne correspond.</div>`;
+}
+
+function renderMatiereAuto(){
+  const query=$("autoSearch").value.trim().toLowerCase();
+  const results=MATIERE_AUTO.filter(item=>{
+    if(!query) return true;
+    return [item.titre,item.cat,item.desc].join(" ").toLowerCase().includes(query);
+  });
+
+  const list=$("autoList");
+  list.classList.remove("fade-list");
+  void list.offsetWidth;
+  list.classList.add("fade-list");
+
+  list.innerHTML=results.length
+    ? results
+        .map(
+          item=>`
+            <div class="rule-card">
+              <div class="info-header">
+                <span class="badge" style="background:var(--blue)">${escapeHTML(item.cat)}</span>
+              </div>
+              <b>${escapeHTML(item.titre)}</b>
+              <p>${item.desc}</p>
+            </div>
+          `
+        )
+        .join("")
+    : `<div class="empty">Aucune notion ne correspond à cette recherche.</div>`;
 }
 
 document.addEventListener("keydown",event=>{
