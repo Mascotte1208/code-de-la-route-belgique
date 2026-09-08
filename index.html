@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#171a1f">
-<title>Code de la route — Belgique (Expert)</title>
+<title>Code de la route — Belgique (Expert Intégral)</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -16,7 +16,7 @@
 </header>
 
 <div class="lane"></div>
-<div class="offline">● Mode Expert Actif</div>
+<div class="offline">● Mode Expert & Pièges Rares Actif</div>
 
 <main class="app">
 
@@ -27,9 +27,9 @@
   <div class="hero">
     <div>
       <div class="eyebrow">PERMIS THÉORIQUE · BELGIQUE (GOCA)</div>
-      <h1>Maîtrise les pièges de l'examen</h1>
+      <h1>Maîtrise absolue du Code de la route</h1>
       <p>
-        Entraînement avancé, fiches expertes sur les zones grises et examen blanc officiel en 50 questions.
+        Examen blanc officiel 50 questions, fiches sur les usagers vulnérables, manœuvres, éco-conduite et pièges rares.
       </p>
     </div>
 
@@ -126,8 +126,8 @@
         <button class="practice" onclick="showMatiereAuto()">
           <span class="practice-icon">🔧</span>
           <span class="practice-copy">
-            <b>Technique & Voiture</b>
-            <small>Niveaux, masses, tunnels et sécurité</small>
+            <b>Technique, Tunnels & Voiture</b>
+            <small>Niveaux, masses, sécurité et premier secours</small>
           </span>
           <span class="arrow">→</span>
         </button>
@@ -136,7 +136,16 @@
           <span class="practice-icon">⚠️</span>
           <span class="practice-copy">
             <b>Pièges & Zones grises</b>
-            <small>Stationnement implicite, distances et subtilités</small>
+            <small>Stationnement 5m/15m, feux verts/piétons et autoroute</small>
+          </span>
+          <span class="arrow">→</span>
+        </button>
+
+        <button class="practice" onclick="showUsagersManoeuvres()">
+          <span class="practice-icon">🚲</span>
+          <span class="practice-copy">
+            <b>Usagers, Manœuvres & Permis</b>
+            <small>Cyclistes, règles strictes de manœuvre et nuit</small>
           </span>
           <span class="arrow">→</span>
         </button>
@@ -169,8 +178,8 @@
           🚨 Lancer l'examen blanc (50Q)
           <span>›</span>
         </button>
-        <button onclick="showRepo()">
-          📚 Voir les panneaux
+        <button onclick="showUsagersManoeuvres()">
+          🚲 Usagers vulnérables & Manœuvres
           <span>›</span>
         </button>
         <button onclick="showInfractions()">
@@ -178,7 +187,7 @@
           <span>›</span>
         </button>
         <button onclick="showPiegesRoutes()">
-          ⚠️ Pièges & priorités
+          ⚠️ Pièges & zones grises
           <span>›</span>
         </button>
         <button onclick="showMatiereAuto()">
@@ -190,7 +199,7 @@
       <div class="panel tip">
         <h3>💡 Le savais-tu ? (Examen GOCA)</h3>
         <p id="tipText">
-          À l'examen officiel, une infraction grave (feu rouge, sens interdit, stop) retire directement 5 points. Le seuil de réussite est fixé à 41/50.
+          À l'examen officiel, le feu vert ne vous donne pas le droit de renverser un piéton : cédez toujours le passage si vous coupez sa trajectoire !
         </p>
       </div>
     </aside>
@@ -307,8 +316,8 @@
 <section id="matiereAuto" class="view hidden">
   <div class="content">
     <h2 class="section-title">Technique, Tunnels & Sécurité de la voiture</h2>
-    <p class="muted">Niveaux, contrôles, équipements obligatoires et réglementation dans les tunnels.</p>
-    <input id="autoSearch" class="search" placeholder="Huile, tunnel, pneus, extincteur..." oninput="renderMatiereAuto()">
+    <p class="muted">Niveaux, contrôles, équipements obligatoires, éco-conduite et premiers secours.</p>
+    <input id="autoSearch" class="search" placeholder="Huile, tunnel, éco-conduite, secours..." oninput="renderMatiereAuto()">
     <div id="autoList"></div>
   </div>
 </section>
@@ -318,9 +327,20 @@
 <section id="piegesRoutes" class="view hidden">
   <div class="content">
     <h2 class="section-title">Pièges subtils & Zones grises du Code</h2>
-    <p class="muted">Stationnement implicite, distances de dépassement cycliste et subtilités d'examen.</p>
-    <input id="piegeSearch" class="search" placeholder="Stationnement, cycliste, priorité, 5 mètres..." oninput="renderPiegesRoutes()">
+    <p class="muted">Stationnement 5m/15m, feux verts vs piétons, autoroute et disque bleu.</p>
+    <input id="piegeSearch" class="search" placeholder="5 mètres, feux verts, autoroute, disque..." oninput="renderPiegesRoutes()">
     <div id="piegeList"></div>
+  </div>
+</section>
+
+<!-- ================= USAGERS & MANŒUVRES ================= -->
+
+<section id="usagersManoeuvres" class="view hidden">
+  <div class="content">
+    <h2 class="section-title">Usagers vulnérables, Manœuvres & Permis</h2>
+    <p class="muted">Cyclistes, règles juridiques des manœuvres, pentes et restrictions de nuit.</p>
+    <input id="usagerSearch" class="search" placeholder="Cycliste, manœuvre, pente, nuit..." oninput="renderUsagersManoeuvres()">
+    <div id="usagerList"></div>
   </div>
 </section>
 
