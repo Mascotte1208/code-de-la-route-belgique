@@ -12,7 +12,7 @@
 
 <header class="top">
   <div class="brand" onclick="goHome()">🚗 Code de la route - Expert</div>
-  <div style="display: flex; gap: 8px;">
+  <div style="display: flex; gap: 8px; flex-wrap: wrap;">
     <button class="home-btn" onclick="showMenu()">📋 Menu</button>
     <button class="home-btn" onclick="goHome()">🏠 Accueil</button>
   </div>
@@ -171,6 +171,10 @@
 
 <section id="quiz" class="view hidden">
   <div id="quizConfig" class="content">
+    <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
+      <button class="ghost" onclick="showMenu()">📋 Menu</button>
+      <button class="ghost" onclick="goHome()">🏠 Accueil</button>
+    </div>
     <h2 class="section-title">Configure ta session</h2>
     <p class="muted">Selectionne les categories et le nombre de questions.</p>
     <div id="categoryGrid" class="cat-grid"></div>
@@ -188,6 +192,10 @@
   </div>
 
   <div id="quizRunning" class="content hidden">
+    <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
+      <button class="ghost" onclick="showMenu()">📋 Menu</button>
+      <button class="ghost" onclick="goHome()">🏠 Accueil</button>
+    </div>
     <div id="progressDots" class="progress-dots"></div>
     <div class="quiz-top">
       <span id="quizProgress">Question 1 / 15</span>
@@ -204,6 +212,10 @@
   </div>
 
   <div id="quizSummary" class="content hidden">
+    <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
+      <button class="ghost" onclick="showMenu()">📋 Menu</button>
+      <button class="ghost" onclick="goHome()">🏠 Accueil</button>
+    </div>
     <h2 id="summaryTitle" class="section-title">Session terminee</h2>
     <div class="score">
       <div class="score-ring"><strong id="summaryPercent">0%</strong><span id="summaryFraction">0/0</span></div>
@@ -214,8 +226,6 @@
     <div class="action-row">
       <button class="ghost" onclick="configureQuiz()">Nouvelle config</button>
       <button class="ghost" onclick="replayQuiz()">Refaire</button>
-      <button class="ghost" onclick="showMenu()">📋 Menu</button>
-      <button class="ghost" onclick="goHome()">🏠 Accueil</button>
     </div>
     <div id="reviewErrorsZone" style="margin-top:9px"></div>
   </div>
@@ -408,6 +418,8 @@
     <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
       <button class="ghost" onclick="showMenu()">📋 Menu</button>
       <button class="ghost" onclick="goHome()">🏠 Accueil</button>
+      <button class="ghost" onclick="showPiegesRoutes()">⚠ Pieges</button>
+      <button class="ghost" onclick="showUsagersManoeuvres()">🚲 Usagers</button>
     </div>
     <h2 class="section-title">Infractions & Amendes</h2>
     <p class="muted">27 infractions - Degres, sanctions, tribunal.</p>
@@ -423,6 +435,8 @@
     <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
       <button class="ghost" onclick="showMenu()">📋 Menu</button>
       <button class="ghost" onclick="goHome()">🏠 Accueil</button>
+      <button class="ghost" onclick="showInfractions()">⚖ Infractions</button>
+      <button class="ghost" onclick="showUsagersManoeuvres()">🚲 Usagers</button>
     </div>
     <h2 class="section-title">Pieges & Zones grises</h2>
     <p class="muted">10 pieges - Stationnement, feux, autoroute, disque.</p>
@@ -438,6 +452,8 @@
     <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
       <button class="ghost" onclick="showMenu()">📋 Menu</button>
       <button class="ghost" onclick="goHome()">🏠 Accueil</button>
+      <button class="ghost" onclick="showInfractions()">⚖ Infractions</button>
+      <button class="ghost" onclick="showPiegesRoutes()">⚠ Pieges</button>
     </div>
     <h2 class="section-title">Usagers & Manoeuvres</h2>
     <p class="muted">10 elements - Cyclistes, PMR, cavaliers, manoeuvres.</p>
