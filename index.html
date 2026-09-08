@@ -4,22 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#171a1f">
-<title>Code de la route Belgique - Expert Complet</title>
+<title>Code de la route Belgique - Expert Pro</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header class="top">
-  <div class="brand" onclick="goHome()">🚗 Code de la route - Expert</div>
+  <div class="brand" onclick="goHome()">🚗 Code de la route - Expert Pro</div>
   <div style="display: flex; gap: 8px; flex-wrap: wrap;">
     <button class="home-btn" onclick="showMenu()">📋 Menu</button>
     <button class="home-btn" onclick="goHome()">🏠 Accueil</button>
+    <button class="home-btn" onclick="toggleTheme()" id="themeButtonHeader">🌙</button>
   </div>
 </header>
 
 <div class="lane"></div>
-<div class="offline">Mode Expert - 470+ elements</div>
+<div class="offline">🚀 Mode Expert Pro - 19 fonctionnalités</div>
 
 <main class="app">
 
@@ -29,92 +30,141 @@
 
   <div class="hero">
     <div>
-      <div class="eyebrow">PERMIS THEORIQUE - BELGIQUE (GOCA) - VERSION COMPLETE</div>
-      <h1>Maitrise totale du Code de la route</h1>
+      <div class="eyebrow">🚗 PERMIS THEORIQUE - BELGIQUE (GOCA) - VERSION PRO</div>
+      <h1>Maîtrise totale du Code de la route</h1>
       <p>
-        Examen blanc officiel 50 questions, 7 categories principales, 470+ elements
-        couvrant 100% du programme officiel belge.
+        Examen blanc officiel, 7 catégories, 470+ éléments, statistiques, badges,
+        défis quotidiens, flashcards et bien plus encore !
       </p>
     </div>
     <div class="actions">
       <button class="primary" onclick="showMenu()">📋 Voir le menu</button>
       <button class="primary" onclick="startOfficialExam()">📚 Examen blanc</button>
-      <button class="theme" onclick="toggleTheme()" id="themeButton">☀</button>
+      <button class="theme" onclick="toggleTheme()" id="themeButton">☀️</button>
     </div>
   </div>
 
+  <!-- STATS RAPIDES -->
   <div class="stats">
     <div class="stat"><i>📁</i><div><b id="statSessions">0</b><span>Sessions</span></div></div>
-    <div class="stat"><i>📊</i><div><b id="statSuccess">0%</b><span>Reussite</span></div></div>
+    <div class="stat"><i>📊</i><div><b id="statSuccess">0%</b><span>Réussite</span></div></div>
     <div class="stat"><i>⭐</i><div><b id="statFavs">0</b><span>Favoris</span></div></div>
     <div class="stat"><i>🧠</i><div><b id="statQuestions">0</b><span>Questions</span></div></div>
+    <div class="stat"><i>🔥</i><div><b id="statStreak">0</b><span>Série</span></div></div>
+    <div class="stat"><i>🏆</i><div><b id="statBadges">0</b><span>Badges</span></div></div>
+  </div>
+
+  <!-- BADGES -->
+  <div id="badgeDisplay" style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; padding: 12px; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--line);">
+    <div style="font-size: 13px; font-weight: 900; color: var(--muted); width: 100%;">🏆 Mes badges :</div>
+    <div id="badgeList" style="display: flex; gap: 8px; flex-wrap: wrap;"></div>
   </div>
 
   <div class="grid">
     <div>
-      <h2 class="section-title">Modules d'entrainement</h2>
-      <p class="muted">Choisis ton format de revision.</p>
+      <h2 class="section-title">Modules d'entraînement</h2>
+      <p class="muted">Choisis ton format de révision.</p>
 
       <div class="practice-grid">
         <button class="practice" onclick="startOfficialExam()">
           <span class="practice-icon">📚</span>
-          <span class="practice-copy"><b>Examen Blanc Officiel</b><small>50 questions, conditions reelles</small></span>
+          <span class="practice-copy"><b>Examen Blanc Officiel</b><small>50 questions, conditions réelles</small></span>
+          <span class="arrow">→</span>
+        </button>
+
+        <button class="practice" onclick="startTimedMode()">
+          <span class="practice-icon">⏱️</span>
+          <span class="practice-copy"><b>Course contre la montre</b><small>60 secondes, max de questions</small></span>
+          <span class="arrow">→</span>
+        </button>
+
+        <button class="practice" onclick="startNoErrorMode()">
+          <span class="practice-icon">💎</span>
+          <span class="practice-copy"><b>Mode sans erreur</b><small>Une erreur = fin du quiz</small></span>
+          <span class="arrow">→</span>
+        </button>
+
+        <button class="practice" onclick="startTrapMode()">
+          <span class="practice-icon">⚠️</span>
+          <span class="practice-copy"><b>Questions pièges</b><small>Les plus difficiles</small></span>
+          <span class="arrow">→</span>
+        </button>
+
+        <button class="practice" onclick="showDailyChallenge()">
+          <span class="practice-icon">🌟</span>
+          <span class="practice-copy"><b>Défi du jour</b><small>Une question spéciale chaque jour</small></span>
+          <span class="arrow">→</span>
+        </button>
+
+        <button class="practice" onclick="showFlashcards()">
+          <span class="practice-icon">🃏</span>
+          <span class="practice-copy"><b>Flashcards</b><small>Révise en mode cartes</small></span>
           <span class="arrow">→</span>
         </button>
 
         <button class="practice" onclick="showQuiz()">
           <span class="practice-icon">⚡</span>
-          <span class="practice-copy"><b>Quiz thematique</b><small>Personnalisable par categorie</small></span>
+          <span class="practice-copy"><b>Quiz thématique</b><small>Personnalisable par catégorie</small></span>
           <span class="arrow">→</span>
         </button>
 
         <button class="practice" onclick="startReview()">
           <span class="practice-icon">⭐</span>
-          <span class="practice-copy"><b>Revision ciblee</b><small>Favoris et erreurs</small></span>
+          <span class="practice-copy"><b>Révision ciblée</b><small>Favoris et erreurs</small></span>
+          <span class="arrow">→</span>
+        </button>
+
+        <button class="practice" onclick="startErrorOnlyMode()">
+          <span class="practice-icon">🔄</span>
+          <span class="practice-copy"><b>Erreurs uniquement</b><small>Révise tes erreurs</small></span>
           <span class="arrow">→</span>
         </button>
 
         <button class="practice" onclick="showMenu()">
           <span class="practice-icon">📋</span>
-          <span class="practice-copy"><b>Menu complet</b><small>7 categories principales</small></span>
+          <span class="practice-copy"><b>Menu complet</b><small>7 catégories principales</small></span>
           <span class="arrow">→</span>
         </button>
 
-        <button class="practice" onclick="showInfractions()">
-          <span class="practice-icon">⚖</span>
-          <span class="practice-copy"><b>Infractions & Amendes</b><small>27 infractions, degres, sanctions</small></span>
+        <button class="practice" onclick="showStatsPage()">
+          <span class="practice-icon">📊</span>
+          <span class="practice-copy"><b>Statistiques détaillées</b><small>Graphiques et progression</small></span>
           <span class="arrow">→</span>
         </button>
 
-        <button class="practice" onclick="showPiegesRoutes()">
-          <span class="practice-icon">⚠</span>
-          <span class="practice-copy"><b>Pieges & Zones grises</b><small>10 pieges classiques</small></span>
+        <button class="practice" onclick="generateRevisionSheet()">
+          <span class="practice-icon">🖨️</span>
+          <span class="practice-copy"><b>Fiche de révision</b><small>Imprimable</small></span>
           <span class="arrow">→</span>
         </button>
       </div>
 
       <div class="panel progress">
         <div class="progress-top">
-          <div><b>Ta progression globale</b><div class="muted">Entraine-toi regulierement.</div></div>
+          <div><b>Ta progression globale</b><div class="muted">Entraîne-toi régulièrement.</div></div>
           <strong id="progressPercent">0%</strong>
         </div>
         <div class="bar"><span id="progressBar"></span></div>
-        <div class="meta"><span id="progressText">Aucune session</span><span>🔥 <b id="streak">0</b></span></div>
+        <div class="meta">
+          <span id="progressText">Aucune session</span>
+          <span>🔥 <b id="streak">0</b> série</span>
+          <span>🏆 <b id="badgeCount">0</b></span>
+        </div>
       </div>
     </div>
 
     <aside>
       <div class="panel quick">
-        <h3>Actions rapides</h3>
-        <button onclick="showMenu()">📋 Menu complet <span>›</span></button>
+        <h3>⚡ Actions rapides</h3>
         <button onclick="startOfficialExam()">📚 Examen blanc (50Q) <span>›</span></button>
-        <button onclick="showInfractions()">⚖ Infractions <span>›</span></button>
-        <button onclick="showPiegesRoutes()">⚠ Pieges <span>›</span></button>
-        <button onclick="showSecours()">🚑 Secours <span>›</span></button>
+        <button onclick="startTimedMode()">⏱️ Course contre la montre <span>›</span></button>
+        <button onclick="showDailyChallenge()">🌟 Défi du jour <span>›</span></button>
+        <button onclick="showFlashcards()">🃏 Flashcards <span>›</span></button>
+        <button onclick="showStatsPage()">📊 Statistiques <span>›</span></button>
       </div>
       <div class="panel tip">
         <h3>📙 Le savais-tu ?</h3>
-        <p>Le feu vert ne donne pas le droit de renverser un pieton. Ceder toujours le passage si vous coupez sa trajectoire.</p>
+        <p>Le feu vert ne donne pas le droit de renverser un piéton. Cède toujours le passage si tu coupes sa trajectoire.</p>
       </div>
     </aside>
   </div>
@@ -128,7 +178,7 @@
       <button class="ghost" onclick="goHome()">🏠 Accueil</button>
     </div>
     <h2 class="section-title">📋 Guide complet du Code de la route</h2>
-    <p class="muted">7 categories principales couvrant 100% du programme officiel belge (470+ elements).</p>
+    <p class="muted">7 catégories principales couvrant 100% du programme officiel belge (470+ éléments).</p>
     <div id="menuGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin-top: 16px;"></div>
   </div>
 </section>
@@ -145,7 +195,7 @@
     <p id="categorieDesc" class="muted"></p>
     <div id="sousCategorieGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin-top: 16px;"></div>
     <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
-      <button class="primary" onclick="quizCategorie()">📝 Quiz sur cette categorie</button>
+      <button class="primary" onclick="quizCategorie()">📝 Quiz sur cette catégorie</button>
       <button class="ghost" onclick="examenCategorie()">📚 Examen blanc (50Q)</button>
     </div>
   </div>
@@ -167,6 +217,88 @@
   </div>
 </section>
 
+<!-- ================= STATISTIQUES ================= -->
+
+<section id="statsPage" class="view hidden">
+  <div class="content">
+    <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
+      <button class="ghost" onclick="goHome()">🏠 Accueil</button>
+      <button class="ghost" onclick="showMenu()">📋 Menu</button>
+    </div>
+    <h2 class="section-title">📊 Statistiques détaillées</h2>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; margin: 16px 0;">
+      <div class="stat"><i>📊</i><div><b id="statsTotal">0</b><span>Total questions</span></div></div>
+      <div class="stat"><i>✅</i><div><b id="statsCorrect">0</b><span>Bonnes réponses</span></div></div>
+      <div class="stat"><i>❌</i><div><b id="statsWrong">0</b><span>Mauvaises réponses</span></div></div>
+      <div class="stat"><i>⏱️</i><div><b id="statsAvgTime">0s</b><span>Temps moyen</span></div></div>
+      <div class="stat"><i>🔥</i><div><b id="statsBestStreak">0</b><span>Meilleure série</span></div></div>
+      <div class="stat"><i>🏆</i><div><b id="statsBadgesCount">0</b><span>Badges</span></div></div>
+    </div>
+
+    <h3>📈 Progression dans le temps</h3>
+    <div id="progressChart" style="height: 150px; background: var(--soft); border-radius: 12px; padding: 10px; display: flex; align-items: flex-end; gap: 4px; margin-bottom: 16px; overflow-x: auto;"></div>
+
+    <h3>📊 Performance par catégorie</h3>
+    <div id="categoryPerformance" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px;"></div>
+
+    <h3>🔴 Catégories les plus faibles</h3>
+    <div id="weakCategories" style="margin: 10px 0;"></div>
+
+    <h3>🎯 Objectif quotidien</h3>
+    <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+      <span>Objectif :</span>
+      <input id="dailyGoalInput" type="number" value="20" min="1" max="100" style="width: 60px; padding: 6px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink);">
+      <span>questions / jour</span>
+      <button class="primary" onclick="setDailyGoal()">Définir</button>
+    </div>
+    <div id="dailyGoalProgress" style="margin-top: 10px;">
+      <div style="display: flex; justify-content: space-between;">
+        <span id="dailyGoalText">0 / 20 questions aujourd'hui</span>
+        <span id="dailyGoalPercent">0%</span>
+      </div>
+      <div class="bar"><span id="dailyGoalBar" style="width: 0%;"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DÉFI DU JOUR ================= -->
+
+<section id="dailyChallenge" class="view hidden">
+  <div class="content">
+    <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
+      <button class="ghost" onclick="goHome()">🏠 Accueil</button>
+      <button class="ghost" onclick="showMenu()">📋 Menu</button>
+    </div>
+    <h2 class="section-title">🌟 Défi du jour</h2>
+    <p id="dailyChallengeDate" class="muted"></p>
+    <div id="dailyChallengeContent" style="padding: 20px; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--line); text-align: center;"></div>
+  </div>
+</section>
+
+<!-- ================= FLASHCARDS ================= -->
+
+<section id="flashcards" class="view hidden">
+  <div class="content">
+    <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
+      <button class="ghost" onclick="goHome()">🏠 Accueil</button>
+      <button class="ghost" onclick="showMenu()">📋 Menu</button>
+    </div>
+    <h2 class="section-title">🃏 Flashcards</h2>
+    <p class="muted">Clique sur la carte pour la retourner.</p>
+    <div id="flashcardContainer" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+      <div id="flashcard" style="width: 100%; max-width: 500px; height: 250px; background: var(--surface); border: 2px solid var(--line); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 20px; text-align: center; transition: transform 0.3s; font-size: 18px; box-shadow: var(--shadow);"></div>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <button class="ghost" onclick="prevFlashcard()">◀ Précédent</button>
+        <span id="flashcardCounter" style="display: flex; align-items: center; padding: 0 10px;">1 / 20</span>
+        <button class="ghost" onclick="nextFlashcard()">Suivant ▶</button>
+        <button class="primary" onclick="shuffleFlashcards()">🔀 Mélanger</button>
+        <button class="danger" onclick="resetFlashcards()">🔄 Recommencer</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= QUIZ ================= -->
 
 <section id="quiz" class="view hidden">
@@ -176,19 +308,31 @@
       <button class="ghost" onclick="goHome()">🏠 Accueil</button>
     </div>
     <h2 class="section-title">Configure ta session</h2>
-    <p class="muted">Selectionne les categories et le nombre de questions.</p>
+    <p class="muted">Sélectionne les catégories et le nombre de questions.</p>
+    
+    <div style="margin-bottom: 15px;">
+      <label style="font-weight: 800; display: block; margin-bottom: 8px;">⭐ Niveau de difficulté</label>
+      <div style="display: flex; gap: 10px;">
+        <button class="ghost" onclick="setDifficulty('facile')" id="diffFacile" style="flex:1; background: var(--good); color: white;">⭐ Facile</button>
+        <button class="ghost" onclick="setDifficulty('moyen')" id="diffMoyen" style="flex:1; background: var(--amber);">⭐⭐ Moyen</button>
+        <button class="ghost" onclick="setDifficulty('difficile')" id="diffDifficile" style="flex:1; background: var(--red); color: white;">⭐⭐⭐ Difficile</button>
+      </div>
+      <p id="difficultyLabel" style="font-size: 12px; color: var(--muted); margin-top: 5px;">Niveau actuel : Tous niveaux</p>
+    </div>
+    
     <div id="categoryGrid" class="cat-grid"></div>
     <div class="config">
-      <div><b>⏱ Chronometre</b><div class="muted">15 secondes par question</div></div>
+      <div><b>⏱ Chronomètre</b><div class="muted">15 secondes par question</div></div>
       <input id="timerEnabled" type="checkbox" style="width:20px;height:20px;accent-color:var(--red)">
     </div>
     <div class="field-row">
       <label>Nombre de questions <span id="questionCountValue" style="color:var(--red2)">15</span></label>
       <input id="questionCount" class="range" type="range" min="1" max="25" value="15">
     </div>
-    <div id="quizWarning" class="empty hidden">Pas assez d'elements.</div>
-    <button class="primary" style="width:100%" onclick="startQuiz()">Demarrer le quiz</button>
+    <div id="quizWarning" class="empty hidden">Pas assez d'éléments.</div>
+    <button class="primary" style="width:100%" onclick="startQuiz()">Démarrer le quiz</button>
     <button class="danger" style="width:100%;margin-top:9px" onclick="startReview()">⭐ Revoir favoris & erreurs (<span id="reviewCount">0</span>)</button>
+    <button class="ghost" style="width:100%;margin-top:9px" onclick="startErrorOnlyMode()">🔄 Révise uniquement tes erreurs</button>
   </div>
 
   <div id="quizRunning" class="content hidden">
@@ -200,12 +344,13 @@
     <div class="quiz-top">
       <span id="quizProgress">Question 1 / 15</span>
       <span id="timerDisplay" class="timer hidden">⏱ 15s</span>
+      <span id="quizModeLabel" style="font-size: 10px; background: var(--soft); padding: 2px 8px; border-radius: 10px;">Mode normal</span>
       <button id="favoriteButton" class="fav-btn" onclick="toggleFavorite()">☆</button>
       <span id="quizScore">Score : 0</span>
     </div>
     <div id="signStage" class="sign-stage"></div>
     <div id="signCaption" class="sign-caption"></div>
-    <div class="question">Quelle est la designation exacte ?</div>
+    <div class="question">Quelle est la désignation exacte ?</div>
     <div id="optionList" class="options"></div>
     <div id="feedbackZone"></div>
     <div id="nextButtonZone" class="next"></div>
@@ -216,11 +361,16 @@
       <button class="ghost" onclick="showMenu()">📋 Menu</button>
       <button class="ghost" onclick="goHome()">🏠 Accueil</button>
     </div>
-    <h2 id="summaryTitle" class="section-title">Session terminee</h2>
+    <h2 id="summaryTitle" class="section-title">Session terminée</h2>
     <div class="score">
       <div class="score-ring"><strong id="summaryPercent">0%</strong><span id="summaryFraction">0/0</span></div>
     </div>
     <p id="summaryMessage" class="muted" style="text-align:center"></p>
+    <div id="summaryStats" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 10px 0;">
+      <div class="stat"><i>⏱️</i><div><b id="summaryTime">0s</b><span>Temps moyen</span></div></div>
+      <div class="stat"><i>🔥</i><div><b id="summaryStreak">0</b><span>Série max</span></div></div>
+      <div class="stat"><i>⭐</i><div><b id="summaryDifficulty">-</b><span>Difficulté</span></div></div>
+    </div>
     <div id="categoryResults"></div>
     <div id="errorResults"></div>
     <div class="action-row">
@@ -241,7 +391,7 @@
     </div>
     <h2 class="section-title">Panneaux & Signalisation</h2>
     <p id="repoCount" class="muted"></p>
-    <input id="repoSearch" class="search" placeholder="Code, nom, categorie..." oninput="renderRepository()">
+    <input id="repoSearch" class="search" placeholder="Code, nom, catégorie..." oninput="renderRepository()">
     <div id="repoList"></div>
   </div>
 </section>
@@ -254,9 +404,9 @@
       <button class="ghost" onclick="showMenu()">📋 Menu</button>
       <button class="ghost" onclick="goHome()">🏠 Accueil</button>
     </div>
-    <h2 class="section-title">Regles d'or & Priorites</h2>
-    <p class="muted">Regles de priorite, feux, agents, signaleurs.</p>
-    <input id="ruleSearch" class="search" placeholder="priorite, tram, rond-point..." oninput="renderRules()">
+    <h2 class="section-title">Règles d'or & Priorités</h2>
+    <p class="muted">Règles de priorité, feux, agents, signaleurs.</p>
+    <input id="ruleSearch" class="search" placeholder="priorité, tram, rond-point..." oninput="renderRules()">
     <div id="ruleList"></div>
   </div>
 </section>
@@ -269,8 +419,8 @@
       <button class="ghost" onclick="showMenu()">📋 Menu</button>
       <button class="ghost" onclick="goHome()">🏠 Accueil</button>
     </div>
-    <h2 class="section-title">Mecanique & Moteur</h2>
-    <p class="muted">60 elements - Moteur, freins, direction, suspension, electricite.</p>
+    <h2 class="section-title">Mécanique & Moteur</h2>
+    <p class="muted">60 éléments - Moteur, freins, direction, suspension, électricité.</p>
     <input id="mecaSearch" class="search" placeholder="Huile, frein, courroie, injection..." oninput="renderMecanique()">
     <div id="mecaList"></div>
   </div>
@@ -285,8 +435,8 @@
       <button class="ghost" onclick="goHome()">🏠 Accueil</button>
     </div>
     <h2 class="section-title">Pneumatiques & Jantes</h2>
-    <p class="muted">40 elements - Types, dimensions, entretien, saisons, equipements hiver.</p>
-    <input id="pneuSearch" class="search" placeholder="Pneu, indice, pression, chaine..." oninput="renderPneumatiques()">
+    <p class="muted">40 éléments - Types, dimensions, entretien, saisons, équipements hiver.</p>
+    <input id="pneuSearch" class="search" placeholder="Pneu, indice, pression, chaîne..." oninput="renderPneumatiques()">
     <div id="pneuList"></div>
   </div>
 </section>
@@ -300,8 +450,8 @@
       <button class="ghost" onclick="goHome()">🏠 Accueil</button>
     </div>
     <h2 class="section-title">Saisons & Environnement</h2>
-    <p class="muted">30 elements - Hiver, ete, montagne, ecologie.</p>
-    <input id="saisonSearch" class="search" placeholder="Neige, canicule, verglas, ete..." oninput="renderSaisons()">
+    <p class="muted">30 éléments - Hiver, été, montagne, écologie.</p>
+    <input id="saisonSearch" class="search" placeholder="Neige, canicule, verglas, été..." oninput="renderSaisons()">
     <div id="saisonList"></div>
   </div>
 </section>
@@ -315,7 +465,7 @@
       <button class="ghost" onclick="goHome()">🏠 Accueil</button>
     </div>
     <h2 class="section-title">Secours & Urgence</h2>
-    <p class="muted">25 elements - PLS, massage cardiaque, balisage, equipements.</p>
+    <p class="muted">25 éléments - PLS, massage cardiaque, balisage, équipements.</p>
     <input id="secoursSearch" class="search" placeholder="PLS, massage, triangle, gilet..." oninput="renderSecours()">
     <div id="secoursList"></div>
   </div>
@@ -329,8 +479,8 @@
       <button class="ghost" onclick="showMenu()">📋 Menu</button>
       <button class="ghost" onclick="goHome()">🏠 Accueil</button>
     </div>
-    <h2 class="section-title">Legal & Administratif</h2>
-    <p class="muted">30 elements - Permis, assurance, controle technique, amendes.</p>
+    <h2 class="section-title">Légal & Administratif</h2>
+    <p class="muted">30 éléments - Permis, assurance, contrôle technique, amendes.</p>
     <input id="legalSearch" class="search" placeholder="Permis, assurance, CT, alcool..." oninput="renderLegal()">
     <div id="legalList"></div>
   </div>
@@ -344,9 +494,9 @@
       <button class="ghost" onclick="showMenu()">📋 Menu</button>
       <button class="ghost" onclick="goHome()">🏠 Accueil</button>
     </div>
-    <h2 class="section-title">Equipements & Accessoires</h2>
-    <p class="muted">20 elements - Eclairage, securite, aides a la conduite.</p>
-    <input id="equipSearch" class="search" placeholder="Feux, radar, camera, GPS..." oninput="renderEquipements()">
+    <h2 class="section-title">Équipements & Accessoires</h2>
+    <p class="muted">20 éléments - Éclairage, sécurité, aides à la conduite.</p>
+    <input id="equipSearch" class="search" placeholder="Feux, radar, caméra, GPS..." oninput="renderEquipements()">
     <div id="equipList"></div>
   </div>
 </section>
@@ -360,7 +510,7 @@
       <button class="ghost" onclick="goHome()">🏠 Accueil</button>
     </div>
     <h2 class="section-title">Marquages au sol</h2>
-    <p class="muted">20 elements - Lignes, passages pietons, sas velo, fleches.</p>
+    <p class="muted">20 éléments - Lignes, passages piétons, sas vélo, flèches.</p>
     <input id="marquageSearch" class="search" placeholder="Ligne continue, passage, sas..." oninput="renderMarquages()">
     <div id="marquageList"></div>
   </div>
@@ -374,8 +524,8 @@
       <button class="ghost" onclick="showMenu()">📋 Menu</button>
       <button class="ghost" onclick="goHome()">🏠 Accueil</button>
     </div>
-    <h2 class="section-title">Conditions extremes</h2>
-    <p class="muted">45 elements - Montagne, chaud, froid, pluie, neige, vent.</p>
+    <h2 class="section-title">Conditions extrêmes</h2>
+    <p class="muted">45 éléments - Montagne, chaud, froid, pluie, neige, vent.</p>
     <input id="conditionSearch" class="search" placeholder="Montagne, canicule, verglas..." oninput="renderConditions()">
     <div id="conditionList"></div>
   </div>
@@ -389,8 +539,8 @@
       <button class="ghost" onclick="showMenu()">📋 Menu</button>
       <button class="ghost" onclick="goHome()">🏠 Accueil</button>
     </div>
-    <h2 class="section-title">Vehicules specifiques</h2>
-    <p class="muted">25 elements - Moto, poids lourds, remorque, autocars.</p>
+    <h2 class="section-title">Véhicules spécifiques</h2>
+    <p class="muted">25 éléments - Moto, poids lourds, remorque, autocars.</p>
     <input id="vehiculeSearch" class="search" placeholder="Moto, camion, remorque, permis..." oninput="renderVehicules()">
     <div id="vehiculeList"></div>
   </div>
@@ -405,7 +555,7 @@
       <button class="ghost" onclick="goHome()">🏠 Accueil</button>
     </div>
     <h2 class="section-title">Psychologie & Statistiques</h2>
-    <p class="muted">20 elements - Fatigue, stress, distraction, chiffres cles.</p>
+    <p class="muted">20 éléments - Fatigue, stress, distraction, chiffres clés.</p>
     <input id="psychoSearch" class="search" placeholder="Stress, fatigue, alcool, stats..." oninput="renderPsychologie()">
     <div id="psychoList"></div>
   </div>
@@ -418,12 +568,10 @@
     <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
       <button class="ghost" onclick="showMenu()">📋 Menu</button>
       <button class="ghost" onclick="goHome()">🏠 Accueil</button>
-      <button class="ghost" onclick="showPiegesRoutes()">⚠ Pieges</button>
-      <button class="ghost" onclick="showUsagersManoeuvres()">🚲 Usagers</button>
     </div>
     <h2 class="section-title">Infractions & Amendes</h2>
-    <p class="muted">27 infractions - Degres, sanctions, tribunal.</p>
-    <input id="infractionSearch" class="search" placeholder="GSM, degre, alcool, vitesse..." oninput="renderInfractions()">
+    <p class="muted">27 infractions - Degrés, sanctions, tribunal.</p>
+    <input id="infractionSearch" class="search" placeholder="GSM, degré, alcool, vitesse..." oninput="renderInfractions()">
     <div id="infractionList"></div>
   </div>
 </section>
@@ -435,12 +583,10 @@
     <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
       <button class="ghost" onclick="showMenu()">📋 Menu</button>
       <button class="ghost" onclick="goHome()">🏠 Accueil</button>
-      <button class="ghost" onclick="showInfractions()">⚖ Infractions</button>
-      <button class="ghost" onclick="showUsagersManoeuvres()">🚲 Usagers</button>
     </div>
-    <h2 class="section-title">Pieges & Zones grises</h2>
-    <p class="muted">10 pieges - Stationnement, feux, autoroute, disque.</p>
-    <input id="piegeSearch" class="search" placeholder="5 metres, feux, autoroute..." oninput="renderPiegesRoutes()">
+    <h2 class="section-title">Pièges & Zones grises</h2>
+    <p class="muted">10 pièges - Stationnement, feux, autoroute, disque.</p>
+    <input id="piegeSearch" class="search" placeholder="5 mètres, feux, autoroute..." oninput="renderPiegesRoutes()">
     <div id="piegeList"></div>
   </div>
 </section>
@@ -452,12 +598,10 @@
     <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
       <button class="ghost" onclick="showMenu()">📋 Menu</button>
       <button class="ghost" onclick="goHome()">🏠 Accueil</button>
-      <button class="ghost" onclick="showInfractions()">⚖ Infractions</button>
-      <button class="ghost" onclick="showPiegesRoutes()">⚠ Pieges</button>
     </div>
-    <h2 class="section-title">Usagers & Manoeuvres</h2>
-    <p class="muted">10 elements - Cyclistes, PMR, cavaliers, manoeuvres.</p>
-    <input id="usagerSearch" class="search" placeholder="Cycliste, PMR, manoeuvre, pente..." oninput="renderUsagersManoeuvres()">
+    <h2 class="section-title">Usagers & Manœuvres</h2>
+    <p class="muted">10 éléments - Cyclistes, PMR, cavaliers, manœuvres.</p>
+    <input id="usagerSearch" class="search" placeholder="Cycliste, PMR, manœuvre, pente..." oninput="renderUsagersManoeuvres()">
     <div id="usagerList"></div>
   </div>
 </section>
