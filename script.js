@@ -138,7 +138,7 @@ const MATIERE_AUTO = [
     "id": "auto_6",
     "titre": "Masse Maximale Autorisée (MMA / PTAC)",
     "cat": "Légal & Charges",
-    "desc": "La <b>MMA</b> correspond au poids total maximal autorisé pour le véhicule en charge (véhicule vide + passagers + carburant + bagages). Cette valeur figure sur le certificat d'immatriculation (rubrique F.2). Il est strictement interdit de circuler en surcharge, ce qui altère la trajectoire, allonge les distances de freinage et fragilise les suspensions."
+    "desc": "La <b>MMA</b> correspond au poids total maximal autorisé pour le véhicule en charge (véhicule vide + passagers + carburant + bagages). Cette valeur figure sur le certificat d'immatriculation (rubrique F.2). Il est strictly interdit de circuler en surcharge, ce qui altère la trajectoire, allonge les distances de freinage et fragilise les suspensions."
   },
   {
     "id": "auto_7",
@@ -192,21 +192,25 @@ let appData = JSON.parse(JSON.stringify(DEFAULT_APP_DATA));
 
 async function loadAppData(){
   try{
-    const result = await window.storage.get("app-state", false);
-    if(result && typeof result.value==="string"){
-      const parsed = JSON.parse(result.value);
-      appData = {
-        ...DEFAULT_APP_DATA,
-        ...parsed,
-        stats:{...DEFAULT_APP_DATA.stats, ...(parsed.stats||{})}
-      };
+    if(window.storage && typeof window.storage.get === "function"){
+      const result = await window.storage.get("app-state", false);
+      if(result && typeof result.value==="string"){
+        const parsed = JSON.parse(result.value);
+        appData = {
+          ...DEFAULT_APP_DATA,
+          ...parsed,
+          stats:{...DEFAULT_APP_DATA.stats, ...(parsed.stats||{})}
+        };
+      }
     }
   }catch(e){}
 }
 
 async function saveAppData(){
   try{
-    await window.storage.set("app-state", JSON.stringify(appData), false);
+    if(window.storage && typeof window.storage.set === "function"){
+      await window.storage.set("app-state", JSON.stringify(appData), false);
+    }
   }catch(e){
     console.error("Échec de la sauvegarde :", e);
   }
@@ -250,6 +254,7 @@ function escapeHTML(value){
 }
 
 function animateCount(element,from,to,suffix,duration=550){
+  if(!element) return;
   if(from===to){
     element.textContent=to+suffix;
     return;
@@ -281,49 +286,55 @@ function updateHomeStats(){
   const correct=stats().correct;
   const percentage=total>0?Math.round(100*correct/total):0;
 
-  const prevSessions=Number($("statSessions").textContent)||0;
-  const prevQuestions=Number($("statQuestions").textContent)||0;
-  const prevFavs=Number($("statFavs").textContent)||0;
-  const prevSuccess=Number(($("statSuccess").textContent||"0").replace("%",""))||0;
+  const prevSessions=Number($("statSessions")?.textContent)||0;
+  const prevQuestions=Number($("statQuestions")?.textContent)||0;
+  const prevFavs=Number($("statFavs")?.textContent)||0;
+  const prevSuccess=Number(($("statSuccess")?.textContent||"0").replace("%",""))||0;
 
-  animateCount($("statSessions"),prevSessions,stats().sessions,"");
-  animateCount($("statSuccess"),prevSuccess,percentage,"%");
-  animateCount($("statFavs"),prevFavs,favorites().length,"");
-  animateCount($("statQuestions"),prevQuestions,total,"");
+  if($("statSessions")) animateCount($("statSessions"),prevSessions,stats().sessions,"");
+  if($("statSuccess")) animateCount($("statSuccess"),prevSuccess,percentage,"%");
+  if($("statFavs")) animateCount($("statFavs"),prevFavs,favorites().length,"");
+  if($("statQuestions")) animateCount($("statQuestions"),prevQuestions,total,"");
 
-  $("progressPercent").textContent=percentage+"%";
-  $("progressBar").style.width=percentage+"%";
+  if($("progressPercent")) $("progressPercent").textContent=percentage+"%";
+  if($("progressBar")) $("progressBar").style.width=percentage+"%";
 
-  $("progressText").textContent=
-    total>0
-      ? `${correct} bonne${correct>1?"s":""} réponse${correct>1?"s":""} sur ${total}`
-      : "Aucune session pour le moment";
+  if($("progressText")){
+    $("progressText").textContent=
+      total>0
+        ? `${correct} bonne${correct>1?"s":""} réponse${correct>1?"s":""} sur ${total}`
+        : "Aucune session pour le moment";
+  }
 
-  $("reviewCount").textContent=
-    new Set([
-      ...favorites(),
-      ...Object.keys(mistakes())
-    ]).size;
+  if($("reviewCount")){
+    $("reviewCount").textContent=
+      new Set([
+        ...favorites(),
+        ...Object.keys(mistakes())
+      ]).size;
+  }
 
-  $("streak").textContent=appData.streak;
+  if($("streak")) $("streak").textContent=appData.streak;
 
-  $("reviewButton").style.display=
-    favorites().length || Object.keys(mistakes()).length
-      ? "block"
-      : "none";
+  if($("reviewButton")){
+    $("reviewButton").style.display=
+      favorites().length || Object.keys(mistakes()).length
+        ? "block"
+        : "none";
+  }
 }
 
 async function toggleTheme(){
   document.body.classList.toggle("dark");
   appData.theme=document.body.classList.contains("dark")?"dark":"light";
-  $("themeButton").textContent=appData.theme==="dark"?"🌙":"☀️";
+  if($("themeButton")) $("themeButton").textContent=appData.theme==="dark"?"🌙":"☀️";
   await saveAppData();
 }
 
 function applyTheme(){
   if(appData.theme==="dark"){
     document.body.classList.add("dark");
-    $("themeButton").textContent="🌙";
+    if($("themeButton")) $("themeButton").textContent="🌙";
   }
 }
 
@@ -336,49 +347,51 @@ function hideViews(){
 function goHome(){
   clearInterval(state.timerId);
   hideViews();
-  $("home").classList.remove("hidden");
-  $("homeButton").style.display="none";
+  if($("home")) $("home").classList.remove("hidden");
+  if($("homeButton")) $("homeButton").style.display="none";
   updateHomeStats();
 }
 
 function showQuiz(){
   clearInterval(state.timerId);
   hideViews();
-  $("quiz").classList.remove("hidden");
-  $("homeButton").style.display="block";
+  if($("quiz")) $("quiz").classList.remove("hidden");
+  if($("homeButton")) $("homeButton").style.display="block";
   configureQuiz();
 }
 
 function showRepo(){
   hideViews();
-  $("repo").classList.remove("hidden");
-  $("homeButton").style.display="block";
+  if($("repo")) $("repo").classList.remove("hidden");
+  if($("homeButton")) $("homeButton").style.display="block";
   renderRepository();
 }
 
 function showInfractions(){
   hideViews();
-  $("infractions").classList.remove("hidden");
-  $("homeButton").style.display="block";
+  if($("infractions")) $("infractions").classList.remove("hidden");
+  if($("homeButton")) $("homeButton").style.display="block";
   renderInfractions();
 }
 
 function showRules(){
   hideViews();
-  $("rules").classList.remove("hidden");
-  $("homeButton").style.display="block";
+  if($("rules")) $("rules").classList.remove("hidden");
+  if($("homeButton")) $("homeButton").style.display="block";
   renderRules();
 }
 
 function showMatiereAuto(){
+  clearInterval(state.timerId);
   hideViews();
-  $("matiereAuto").classList.remove("hidden");
-  $("homeButton").style.display="block";
+  if($("matiereAuto")) $("matiereAuto").classList.remove("hidden");
+  if($("homeButton")) $("homeButton").style.display="block";
   renderMatiereAuto();
 }
 
 function renderCategorySelector(){
   const grid=$("categoryGrid");
+  if(!grid) return;
   grid.innerHTML="";
 
   Object.keys(CATEGORIES)
@@ -414,20 +427,21 @@ function renderCategorySelector(){
 function updateQuestionBounds(){
   const available=PANNEAUX.filter(p=>state.categories.includes(p.cat)).length;
   const slider=$("questionCount");
+  if(!slider) return;
   slider.max=Math.max(1,available);
   if(Number(slider.value)>available){
     slider.value=available;
   }
   state.questionCount=Math.max(1,Number(slider.value));
-  $("questionCountValue").textContent=state.questionCount;
-  $("quizWarning").classList.toggle("hidden",available>=2);
+  if($("questionCountValue")) $("questionCountValue").textContent=state.questionCount;
+  if($("quizWarning")) $("quizWarning").classList.toggle("hidden",available>=2);
 }
 
 function configureQuiz(){
   clearInterval(state.timerId);
-  $("quizRunning").classList.add("hidden");
-  $("quizSummary").classList.add("hidden");
-  $("quizConfig").classList.remove("hidden");
+  if($("quizRunning")) $("quizRunning").classList.add("hidden");
+  if($("quizSummary")) $("quizSummary").classList.add("hidden");
+  if($("quizConfig")) $("quizConfig").classList.remove("hidden");
   renderCategorySelector();
   updateHomeStats();
 }
@@ -435,7 +449,7 @@ function configureQuiz(){
 function startQuiz(){
   const pool=PANNEAUX.filter(p=>state.categories.includes(p.cat));
   if(pool.length<2) return;
-  state.timer=$("timerEnabled").checked;
+  state.timer=$("timerEnabled") ? $("timerEnabled").checked : false;
   state.questions=shuffle(pool).slice(0,state.questionCount);
   beginSession(false);
 }
@@ -448,9 +462,9 @@ function beginSession(review){
   state.categoryStats={};
   state.review=review;
   state.answered=false;
-  $("quizConfig").classList.add("hidden");
-  $("quizSummary").classList.add("hidden");
-  $("quizRunning").classList.remove("hidden");
+  if($("quizConfig")) $("quizConfig").classList.add("hidden");
+  if($("quizSummary")) $("quizSummary").classList.add("hidden");
+  if($("quizRunning")) $("quizRunning").classList.remove("hidden");
   renderQuestion();
 }
 
@@ -501,7 +515,6 @@ function prohibCircle(inner){
 function obligCircle(inner){
   return `
     <circle cx="90" cy="90" r="76" fill="#1c5fa8"/>
-    ${inner}
   `;
 }
 
@@ -576,6 +589,7 @@ function makeSignSVG(panel, small=false){
 }
 
 function renderProgressDots(){
+  if(!$("progressDots")) return;
   $("progressDots").innerHTML=
     state.questions
       .map(
@@ -600,18 +614,24 @@ function renderQuestion(){
 
   const panel=state.questions[state.index];
 
-  $("quizProgress").textContent=
-    `${state.review?"Révision":"Question"} ${state.index+1} / ${state.questions.length}`;
+  if($("quizProgress")){
+    $("quizProgress").textContent=
+      `${state.review?"Révision":"Question"} ${state.index+1} / ${state.questions.length}`;
+  }
 
-  $("quizScore").textContent="Score : "+state.score;
+  if($("quizScore")) $("quizScore").textContent="Score : "+state.score;
 
-  $("favoriteButton").textContent=
-    favorites().includes(panel.code) ? "⭐" : "☆";
+  if($("favoriteButton")){
+    $("favoriteButton").textContent=
+      favorites().includes(panel.code) ? "⭐" : "☆";
+  }
 
-  $("signStage").innerHTML=makeSignSVG(panel,false);
+  if($("signStage")) $("signStage").innerHTML=makeSignSVG(panel,false);
 
-  $("signCaption").textContent=
-    `${panel.code} — ${CATEGORIES[panel.cat]?.label||"Panonceau"}`;
+  if($("signCaption")){
+    $("signCaption").textContent=
+      `${panel.code} — ${CATEGORIES[panel.cat]?.label||"Panonceau"}`;
+  }
 
   const distractors=
     shuffle(
@@ -623,24 +643,26 @@ function renderQuestion(){
   state.options=shuffle([panel,...distractors]);
   state.answered=false;
 
-  $("optionList").innerHTML=
-    state.options
-      .map(
-        (option,index)=>`
-          <button
-            class="option"
-            onclick="answerQuestion(${index})"
-          >
-            ${escapeHTML(option.nom)}
-          </button>
-        `
-      )
-      .join("");
+  if($("optionList")){
+    $("optionList").innerHTML=
+      state.options
+        .map(
+          (option,index)=>`
+            <button
+              class="option"
+              onclick="answerQuestion(${index})"
+            >
+              ${escapeHTML(option.nom)}
+            </button>
+          `
+        )
+        .join("");
+  }
 
-  $("feedbackZone").innerHTML="";
-  $("nextButtonZone").innerHTML="";
+  if($("feedbackZone")) $("feedbackZone").innerHTML="";
+  if($("nextButtonZone")) $("nextButtonZone").innerHTML="";
 
-  if(state.timer){
+  if(state.timer && $("timerDisplay")){
     state.seconds=15;
     $("timerDisplay").classList.remove("hidden");
     $("timerDisplay").classList.remove("low");
@@ -656,7 +678,7 @@ function renderQuestion(){
         timeoutQuestion();
       }
     },1000);
-  }else{
+  }else if($("timerDisplay")){
     $("timerDisplay").classList.add("hidden");
   }
 }
@@ -707,32 +729,36 @@ async function completeAnswer(selectedIndex){
       }
     });
 
-  $("feedbackZone").innerHTML=`
-    <div class="feedback ${correct?"":"bad"}">
-      <b>
-        ${
-          correct
-            ? "Bonne réponse"
-            : selectedIndex<0
-              ? "Temps écoulé — c’était : "+escapeHTML(panel.nom)
-              : "Ce n’était pas ça — c’était : "+escapeHTML(panel.nom)
-        }
-      </b>
-      ${escapeHTML(panel.desc)}
-    </div>
-  `;
+  if($("feedbackZone")){
+    $("feedbackZone").innerHTML=`
+      <div class="feedback ${correct?"":"bad"}">
+        <b>
+          ${
+            correct
+              ? "Bonne réponse"
+              : selectedIndex<0
+                ? "Temps écoulé — c’était : "+escapeHTML(panel.nom)
+                : "Ce n’était pas ça — c’était : "+escapeHTML(panel.nom)
+          }
+        </b>
+        ${escapeHTML(panel.desc)}
+      </div>
+    `;
+  }
 
-  $("nextButtonZone").innerHTML=`
-    <button
-      class="primary"
-      style="width:100%"
-      onclick="nextQuestion()"
-    >
-      ${state.index+1>=state.questions.length?"Voir le résumé":"Question suivante"}
-    </button>
-  `;
+  if($("nextButtonZone")){
+    $("nextButtonZone").innerHTML=`
+      <button
+        class="primary"
+        style="width:100%"
+        onclick="nextQuestion()"
+      >
+        ${state.index+1>=state.questions.length?"Voir le résumé":"Question suivante"}
+      </button>
+    `;
+  }
 
-  $("quizScore").textContent="Score : "+state.score;
+  if($("quizScore")) $("quizScore").textContent="Score : "+state.score;
 }
 
 function nextQuestion(){
@@ -751,10 +777,12 @@ async function toggleFavorite(){
   }
 
   const button=$("favoriteButton");
-  button.textContent=favorites().includes(panel.code)?"⭐":"☆";
-  button.classList.remove("pop");
-  void button.offsetWidth;
-  button.classList.add("pop");
+  if(button){
+    button.textContent=favorites().includes(panel.code)?"⭐":"☆";
+    button.classList.remove("pop");
+    void button.offsetWidth;
+    button.classList.add("pop");
+  }
 
   await saveAppData();
   updateHomeStats();
@@ -773,39 +801,45 @@ async function showSummary(){
     await saveAppData();
   }
 
-  $("quizRunning").classList.add("hidden");
-  $("quizSummary").classList.remove("hidden");
+  if($("quizRunning")) $("quizRunning").classList.add("hidden");
+  if($("quizSummary")) $("quizSummary").classList.remove("hidden");
 
-  $("summaryTitle").textContent=state.review?"Révision terminée":"Session terminée";
-  $("summaryPercent").textContent="0%";
-  animateCount($("summaryPercent"),0,percentage,"%",700);
+  if($("summaryTitle")) $("summaryTitle").textContent=state.review?"Révision terminée":"Session terminée";
+  if($("summaryPercent")){
+    $("summaryPercent").textContent="0%";
+    animateCount($("summaryPercent"),0,percentage,"%",700);
+  }
 
-  $("summaryFraction").textContent=`${state.score} / ${total}`;
+  if($("summaryFraction")) $("summaryFraction").textContent=`${state.score} / ${total}`;
 
-  $("summaryMessage").textContent=
-    percentage>=90
-      ? "Excellent — très bon niveau."
-      : percentage>=70
-        ? "Bon score, continue à travailler tes points faibles."
-        : "Encore un peu d’entraînement requis.";
+  if($("summaryMessage")){
+    $("summaryMessage").textContent=
+      percentage>=90
+        ? "Excellent — très bon niveau."
+        : percentage>=70
+          ? "Bon score, continue à travailler tes points faibles."
+          : "Encore un peu d’entraînement requis.";
+  }
 
-  $("categoryResults").innerHTML=
-    Object.entries(state.categoryStats)
-      .map(([category,result])=>{
-        const percent=Math.round(100*result.correct/result.total);
-        return `
-          <div class="category-result">
-            <div class="category-result-top">
-              <span>${CATEGORIES[category].label}</span>
-              <span>${result.correct}/${result.total}</span>
+  if($("categoryResults")){
+    $("categoryResults").innerHTML=
+      Object.entries(state.categoryStats)
+        .map(([category,result])=>{
+          const percent=Math.round(100*result.correct/result.total);
+          return `
+            <div class="category-result">
+              <div class="category-result-top">
+                <span>${CATEGORIES[category].label}</span>
+                <span>${result.correct}/${result.total}</span>
+              </div>
+              <div class="category-track">
+                <span data-target="${percent}" style="background:${CATEGORIES[category].color};"></span>
+              </div>
             </div>
-            <div class="category-track">
-              <span data-target="${percent}" style="background:${CATEGORIES[category].color};"></span>
-            </div>
-          </div>
-        `;
-      })
-      .join("");
+          `;
+        })
+        .join("");
+  }
 
   requestAnimationFrame(()=>{
     document
@@ -816,32 +850,36 @@ async function showSummary(){
   });
 
   if(state.errors.length){
-    $("errorResults").innerHTML=`
-      <details class="errors">
-        <summary>Revoir les ${state.errors.length} erreur(s)</summary>
-        ${
-          state.errors
-            .map(
-              error=>`
-                <div class="error">
-                  <b>[${escapeHTML(error.panel.code)}] ${escapeHTML(error.panel.nom)}</b>
-                  <div class="your-answer">Ta réponse : ${escapeHTML(error.answer)}</div>
-                  <div>${escapeHTML(error.panel.desc)}</div>
-                </div>
-              `
-            )
-            .join("")
-        }
-      </details>
-    `;
-    $("reviewErrorsZone").innerHTML=`
-      <button class="danger" style="width:100%" onclick="reviewErrors()">
-        Refaire mes erreurs (${state.errors.length})
-      </button>
-    `;
+    if($("errorResults")){
+      $("errorResults").innerHTML=`
+        <details class="errors">
+          <summary>Revoir les ${state.errors.length} erreur(s)</summary>
+          ${
+            state.errors
+              .map(
+                error=>`
+                  <div class="error">
+                    <b>[${escapeHTML(error.panel.code)}] ${escapeHTML(error.panel.nom)}</b>
+                    <div class="your-answer">Ta réponse : ${escapeHTML(error.answer)}</div>
+                    <div>${escapeHTML(error.panel.desc)}</div>
+                  </div>
+                `
+              )
+              .join("")
+          }
+        </details>
+      `;
+    }
+    if($("reviewErrorsZone")){
+      $("reviewErrorsZone").innerHTML=`
+        <button class="danger" style="width:100%" onclick="reviewErrors()">
+          Refaire mes erreurs (${state.errors.length})
+        </button>
+      `;
+    }
   }else{
-    $("errorResults").innerHTML="";
-    $("reviewErrorsZone").innerHTML="";
+    if($("errorResults")) $("errorResults").innerHTML="";
+    if($("reviewErrorsZone")) $("reviewErrorsZone").innerHTML="";
   }
 
   updateHomeStats();
@@ -852,7 +890,7 @@ function replayQuiz(){
 }
 
 function renderRepository(){
-  const query=$("repoSearch").value.trim().toLowerCase();
+  const query=$("repoSearch") ? $("repoSearch").value.trim().toLowerCase() : "";
   const results=PANNEAUX.filter(panel=>{
     if(!query) return true;
     return [panel.code,panel.nom,panel.desc,CATEGORIES[panel.cat]?.label]
@@ -861,9 +899,10 @@ function renderRepository(){
       .includes(query);
   });
 
-  $("repoCount").textContent=`${results.length} panneau(x) — base de ${PANNEAUX.length}`;
+  if($("repoCount")) $("repoCount").textContent=`${results.length} panneau(x) — base de ${PANNEAUX.length}`;
 
   const list=$("repoList");
+  if(!list) return;
   list.innerHTML="";
   list.classList.remove("fade-list");
   void list.offsetWidth;
@@ -908,7 +947,7 @@ function renderRepository(){
 }
 
 function renderInfractions(){
-  const query=$("infractionSearch").value.trim().toLowerCase();
+  const query=$("infractionSearch") ? $("infractionSearch").value.trim().toLowerCase() : "";
   const results=INFRACTIONS.filter(item=>{
     if(!query) return true;
     return [item.titre,item.degre,item.amende,item.desc]
@@ -918,6 +957,7 @@ function renderInfractions(){
   });
 
   const list=$("infractionList");
+  if(!list) return;
   list.classList.remove("fade-list");
   void list.offsetWidth;
   list.classList.add("fade-list");
@@ -958,13 +998,14 @@ function renderInfractions(){
 }
 
 function renderRules(){
-  const query=$("ruleSearch").value.trim().toLowerCase();
+  const query=$("ruleSearch") ? $("ruleSearch").value.trim().toLowerCase() : "";
   const results=RULES.filter(rule=>{
     if(!query) return true;
     return [rule.titre,rule.desc].join(" ").toLowerCase().includes(query);
   });
 
   const list=$("ruleList");
+  if(!list) return;
   list.classList.remove("fade-list");
   void list.offsetWidth;
   list.classList.add("fade-list");
@@ -984,13 +1025,14 @@ function renderRules(){
 }
 
 function renderMatiereAuto(){
-  const query=$("autoSearch").value.trim().toLowerCase();
+  const query=$("autoSearch") ? $("autoSearch").value.trim().toLowerCase() : "";
   const results=MATIERE_AUTO.filter(item=>{
     if(!query) return true;
     return [item.titre,item.cat,item.desc].join(" ").toLowerCase().includes(query);
   });
 
   const list=$("autoList");
+  if(!list) return;
   list.classList.remove("fade-list");
   void list.offsetWidth;
   list.classList.add("fade-list");
@@ -1013,7 +1055,7 @@ function renderMatiereAuto(){
 }
 
 document.addEventListener("keydown",event=>{
-  if($("quizRunning").classList.contains("hidden")) return;
+  if($("quizRunning") && $("quizRunning").classList.contains("hidden")) return;
 
   if(event.key>="1" && event.key<="4" && !state.answered){
     answerQuestion(Number(event.key)-1);
@@ -1032,9 +1074,37 @@ document.addEventListener("keydown",event=>{
   }
 });
 
-$("questionCount").addEventListener("input",event=>{
-  state.questionCount=Number(event.target.value);
-  $("questionCountValue").textContent=state.questionCount;
+if($("questionCount")){
+  $("questionCount").addEventListener("input",event=>{
+    state.questionCount=Number(event.target.value);
+    if($("questionCountValue")) $("questionCountValue").textContent=state.questionCount;
+  });
+}
+
+/* =========================================================
+   LIAISON GLOBALE (WINDOW) POUR TOUS LES EVENEMENTS HTML
+========================================================= */
+
+Object.assign(window, {
+  goHome,
+  showQuiz,
+  showRepo,
+  showInfractions,
+  showRules,
+  showMatiereAuto,
+  renderMatiereAuto,
+  toggleTheme,
+  startReview,
+  startQuiz,
+  configureQuiz,
+  replayQuiz,
+  reviewErrors,
+  toggleFavorite,
+  answerQuestion,
+  nextQuestion,
+  renderRepository,
+  renderInfractions,
+  renderRules
 });
 
 async function init(){
