@@ -1673,6 +1673,7 @@ if ($("questionCount")) {
 window.goHome = goHome;
 window.showMenu = showMenu;
 window.showCategorie = showCategorie;
+window.showCategorieBack = showCategorieBack;
 window.showSousCategorie = showSousCategorie;
 window.quizCategorie = quizCategorie;
 window.examenCategorie = examenCategorie;
@@ -1717,7 +1718,6 @@ window.reviewErrors = reviewErrors;
 window.toggleFavorite = toggleFavorite;
 window.answerQuestion = answerQuestion;
 window.nextQuestion = nextQuestion;
-window.showCategorieBack = showCategorieBack;
 
 // ---- INITIALISATION ----
 async function init() {
