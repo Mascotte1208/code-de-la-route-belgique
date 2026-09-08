@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#171a1f">
-<title>Code de la route Belgique - Expert (Version Complète)</title>
+<title>Code de la route Belgique - Expert Complet</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -16,7 +16,7 @@
 </header>
 
 <div class="lane"></div>
-<div class="offline">Mode Expert - Version Complète</div>
+<div class="offline">Mode Expert - 435+ elements</div>
 
 <main class="app">
 
@@ -26,11 +26,11 @@
 
   <div class="hero">
     <div>
-      <div class="eyebrow">PERMIS THEORIQUE - BELGIQUE (GOCA)</div>
+      <div class="eyebrow">PERMIS THEORIQUE - BELGIQUE (GOCA) - VERSION COMPLETE</div>
       <h1>Maitrise totale du Code de la route</h1>
       <p>
-        Examen blanc officiel 50 questions, panneaux complets, marquages au sol, 
-        conditions de conduite, usagers vulnerables, pieges rares et secours.
+        Examen blanc officiel 50 questions, panneaux complets, marquages, mecanique,
+        pneumatiques, saisons, secours, legal, conditions extremes.
       </p>
     </div>
     <div class="actions">
@@ -66,55 +66,97 @@
 
         <button class="practice" onclick="startReview()">
           <span class="practice-icon">⭐</span>
-          <span class="practice-copy"><b>Revision ciblee</b><small>Favoris et erreurs enregistrees</small></span>
+          <span class="practice-copy"><b>Revision ciblee</b><small>Favoris et erreurs</small></span>
           <span class="arrow">→</span>
         </button>
 
         <button class="practice" onclick="showRepo()">
           <span class="practice-icon">📕</span>
-          <span class="practice-copy"><b>Repertoire panneaux</b><small>Signalisation complete</small></span>
+          <span class="practice-copy"><b>Panneaux & Signalisation</b><small>97+ panneaux complets</small></span>
           <span class="arrow">→</span>
         </button>
 
         <button class="practice" onclick="showRules()">
           <span class="practice-icon">📙</span>
-          <span class="practice-copy"><b>Regles d'or</b><small>Priorites et situations cles</small></span>
+          <span class="practice-copy"><b>Regles & Priorites</b><small>Regles d'or, feux, agents</small></span>
           <span class="arrow">→</span>
         </button>
 
-        <button class="practice" onclick="showMatiereAuto()">
+        <button class="practice" onclick="showMecanique()">
           <span class="practice-icon">🔧</span>
-          <span class="practice-copy"><b>Technique, Tunnels & Secours</b><small>Niveaux, masses, securite, PLS</small></span>
+          <span class="practice-copy"><b>Mecanique & Moteur</b><small>60 elements - moteur, freins, direction</small></span>
           <span class="arrow">→</span>
         </button>
 
-        <button class="practice" onclick="showPiegesRoutes()">
-          <span class="practice-icon">⚠</span>
-          <span class="practice-copy"><b>Pieges & Zones grises</b><small>Stationnement, feux, autoroute</small></span>
+        <button class="practice" onclick="showPneumatiques()">
+          <span class="practice-icon">🛞</span>
+          <span class="practice-copy"><b>Pneumatiques & Jantes</b><small>40 elements - pneus, saisons, entretien</small></span>
           <span class="arrow">→</span>
         </button>
 
-        <button class="practice" onclick="showUsagersManoeuvres()">
-          <span class="practice-icon">🚲</span>
-          <span class="practice-copy"><b>Usagers & Manoeuvres</b><small>Cyclistes, PMR, cavaliers, nuit</small></span>
+        <button class="practice" onclick="showSaisons()">
+          <span class="practice-icon">❄️</span>
+          <span class="practice-copy"><b>Saisons & Environnement</b><small>30 elements - hiver, ete, montagne</small></span>
+          <span class="arrow">→</span>
+        </button>
+
+        <button class="practice" onclick="showSecours()">
+          <span class="practice-icon">🚑</span>
+          <span class="practice-copy"><b>Secours & Urgence</b><small>25 elements - PLS, massage, balisage</small></span>
+          <span class="arrow">→</span>
+        </button>
+
+        <button class="practice" onclick="showLegal()">
+          <span class="practice-icon">⚖️</span>
+          <span class="practice-copy"><b>Legal & Administratif</b><small>30 elements - permis, assurance, amendes</small></span>
+          <span class="arrow">→</span>
+        </button>
+
+        <button class="practice" onclick="showEquipements()">
+          <span class="practice-icon">💡</span>
+          <span class="practice-copy"><b>Equipements & Accessoires</b><small>20 elements - eclairage, securite</small></span>
           <span class="arrow">→</span>
         </button>
 
         <button class="practice" onclick="showMarquages()">
           <span class="practice-icon">🛣</span>
-          <span class="practice-copy"><b>Marquages au sol</b><small>Lignes, passages, sas velo</small></span>
+          <span class="practice-copy"><b>Marquages au sol</b><small>20 elements - lignes, passages, sas</small></span>
           <span class="arrow">→</span>
         </button>
 
         <button class="practice" onclick="showConditions()">
           <span class="practice-icon">🌧</span>
-          <span class="practice-copy"><b>Conditions de conduite</b><small>Pluie, neige, brouillard, tunnels</small></span>
+          <span class="practice-copy"><b>Conditions extremes</b><small>45 elements - montagne, chaud, froid</small></span>
+          <span class="arrow">→</span>
+        </button>
+
+        <button class="practice" onclick="showVehicules()">
+          <span class="practice-icon">🚗</span>
+          <span class="practice-copy"><b>Vehicules specifiques</b><small>25 elements - moto, poids lourds, remorque</small></span>
+          <span class="arrow">→</span>
+        </button>
+
+        <button class="practice" onclick="showPsychologie()">
+          <span class="practice-icon">🧠</span>
+          <span class="practice-copy"><b>Psychologie & Stats</b><small>20 elements - fatigue, stress, chiffres</small></span>
           <span class="arrow">→</span>
         </button>
 
         <button class="practice" onclick="showInfractions()">
           <span class="practice-icon">⚖</span>
-          <span class="practice-copy"><b>Infractions & Amendes</b><small>Degres, sanctions, tribunal</small></span>
+          <span class="practice-copy"><b>Infractions & Amendes</b><small>27 infractions</small></span>
+          <span class="arrow">→</span>
+        </button>
+
+        <button class="practice" onclick="showPiegesRoutes()">
+          <span class="practice-icon">⚠</span>
+          <span class="practice-copy"><b>Pieges & Zones grises</b><small>10 pieges</small></span>
+          <span class="arrow">→</span>
+        </button>
+
+        <button class="practice" onclick="showUsagersManoeuvres()">
+          <span class="practice-icon">🚲</span>
+          <span class="practice-copy"><b>Usagers & Manoeuvres</b><small>10 elements</small></span>
           <span class="arrow">→</span>
         </button>
       </div>
@@ -133,12 +175,12 @@
       <div class="panel quick">
         <h3>Actions rapides</h3>
         <button onclick="startOfficialExam()">📚 Examen blanc (50Q) <span>›</span></button>
-        <button onclick="showUsagersManoeuvres()">🚲 Usagers vulnerables <span>›</span></button>
+        <button onclick="showMecanique()">🔧 Mecanique <span>›</span></button>
+        <button onclick="showPneumatiques()">🛞 Pneumatiques <span>›</span></button>
+        <button onclick="showSecours()">🚑 Secours <span>›</span></button>
+        <button onclick="showLegal()">⚖️ Legal <span>›</span></button>
+        <button onclick="showConditions()">🌧 Conditions extremes <span>›</span></button>
         <button onclick="showInfractions()">⚖ Infractions <span>›</span></button>
-        <button onclick="showPiegesRoutes()">⚠ Pieges <span>›</span></button>
-        <button onclick="showMatiereAuto()">🔧 Technique & Secours <span>›</span></button>
-        <button onclick="showMarquages()">🛣 Marquages <span>›</span></button>
-        <button onclick="showConditions()">🌧 Conditions <span>›</span></button>
       </div>
       <div class="panel tip">
         <h3>📙 Le savais-tu ?</h3>
@@ -163,7 +205,7 @@
       <label>Nombre de questions <span id="questionCountValue" style="color:var(--red2)">15</span></label>
       <input id="questionCount" class="range" type="range" min="1" max="25" value="15">
     </div>
-    <div id="quizWarning" class="empty hidden">Pas assez de panneaux.</div>
+    <div id="quizWarning" class="empty hidden">Pas assez d'elements.</div>
     <button class="primary" style="width:100%" onclick="startQuiz()">Demarrer le quiz</button>
     <button class="danger" style="width:100%;margin-top:9px" onclick="startReview()">⭐ Revoir favoris & erreurs (<span id="reviewCount">0</span>)</button>
   </div>
@@ -178,7 +220,7 @@
     </div>
     <div id="signStage" class="sign-stage"></div>
     <div id="signCaption" class="sign-caption"></div>
-    <div class="question">Quelle est la designation exacte de ce panneau ?</div>
+    <div class="question">Quelle est la designation exacte ?</div>
     <div id="optionList" class="options"></div>
     <div id="feedbackZone"></div>
     <div id="nextButtonZone" class="next"></div>
@@ -200,14 +242,135 @@
   </div>
 </section>
 
-<!-- ================= REPERTOIRE PANNEAUX ================= -->
+<!-- ================= PANNEAUX ================= -->
 
 <section id="repo" class="view hidden">
   <div class="content">
-    <h2 class="section-title">Repertoire des panneaux</h2>
+    <h2 class="section-title">Panneaux & Signalisation</h2>
     <p id="repoCount" class="muted"></p>
     <input id="repoSearch" class="search" placeholder="Code, nom, categorie..." oninput="renderRepository()">
     <div id="repoList"></div>
+  </div>
+</section>
+
+<!-- ================= REGLES ================= -->
+
+<section id="rules" class="view hidden">
+  <div class="content">
+    <h2 class="section-title">Regles d'or & Priorites</h2>
+    <p class="muted">Regles de priorite, feux, agents, signaleurs.</p>
+    <input id="ruleSearch" class="search" placeholder="priorite, tram, rond-point..." oninput="renderRules()">
+    <div id="ruleList"></div>
+  </div>
+</section>
+
+<!-- ================= MECANIQUE ================= -->
+
+<section id="mecanique" class="view hidden">
+  <div class="content">
+    <h2 class="section-title">Mecanique & Moteur</h2>
+    <p class="muted">60 elements - Moteur, freins, direction, suspension, electricite.</p>
+    <input id="mecaSearch" class="search" placeholder="Huile, frein, courroie, injection..." oninput="renderMecanique()">
+    <div id="mecaList"></div>
+  </div>
+</section>
+
+<!-- ================= PNEUMATIQUES ================= -->
+
+<section id="pneumatiques" class="view hidden">
+  <div class="content">
+    <h2 class="section-title">Pneumatiques & Jantes</h2>
+    <p class="muted">40 elements - Types, dimensions, entretien, saisons, equipements hiver.</p>
+    <input id="pneuSearch" class="search" placeholder="Pneu, indice, pression, chaine..." oninput="renderPneumatiques()">
+    <div id="pneuList"></div>
+  </div>
+</section>
+
+<!-- ================= SAISONS ================= -->
+
+<section id="saisons" class="view hidden">
+  <div class="content">
+    <h2 class="section-title">Saisons & Environnement</h2>
+    <p class="muted">30 elements - Hiver, ete, montagne, ecologie.</p>
+    <input id="saisonSearch" class="search" placeholder="Neige, canicule, verglas, ete..." oninput="renderSaisons()">
+    <div id="saisonList"></div>
+  </div>
+</section>
+
+<!-- ================= SECOURS ================= -->
+
+<section id="secours" class="view hidden">
+  <div class="content">
+    <h2 class="section-title">Secours & Urgence</h2>
+    <p class="muted">25 elements - PLS, massage cardiaque, balisage, equipements.</p>
+    <input id="secoursSearch" class="search" placeholder="PLS, massage, triangle, gilet..." oninput="renderSecours()">
+    <div id="secoursList"></div>
+  </div>
+</section>
+
+<!-- ================= LEGAL ================= -->
+
+<section id="legal" class="view hidden">
+  <div class="content">
+    <h2 class="section-title">Legal & Administratif</h2>
+    <p class="muted">30 elements - Permis, assurance, controle technique, amendes.</p>
+    <input id="legalSearch" class="search" placeholder="Permis, assurance, CT, alcool..." oninput="renderLegal()">
+    <div id="legalList"></div>
+  </div>
+</section>
+
+<!-- ================= EQUIPEMENTS ================= -->
+
+<section id="equipements" class="view hidden">
+  <div class="content">
+    <h2 class="section-title">Equipements & Accessoires</h2>
+    <p class="muted">20 elements - Eclairage, securite, aides a la conduite.</p>
+    <input id="equipSearch" class="search" placeholder="Feux, radar, camera, GPS..." oninput="renderEquipements()">
+    <div id="equipList"></div>
+  </div>
+</section>
+
+<!-- ================= MARQUAGES ================= -->
+
+<section id="marquages" class="view hidden">
+  <div class="content">
+    <h2 class="section-title">Marquages au sol</h2>
+    <p class="muted">20 elements - Lignes, passages pietons, sas velo, fleches.</p>
+    <input id="marquageSearch" class="search" placeholder="Ligne continue, passage, sas..." oninput="renderMarquages()">
+    <div id="marquageList"></div>
+  </div>
+</section>
+
+<!-- ================= CONDITIONS EXTREMES ================= -->
+
+<section id="conditions" class="view hidden">
+  <div class="content">
+    <h2 class="section-title">Conditions extremes</h2>
+    <p class="muted">45 elements - Montagne, chaud, froid, pluie, neige, vent.</p>
+    <input id="conditionSearch" class="search" placeholder="Montagne, canicule, verglas..." oninput="renderConditions()">
+    <div id="conditionList"></div>
+  </div>
+</section>
+
+<!-- ================= VEHICULES SPECIFIQUES ================= -->
+
+<section id="vehicules" class="view hidden">
+  <div class="content">
+    <h2 class="section-title">Vehicules specifiques</h2>
+    <p class="muted">25 elements - Moto, poids lourds, remorque, autocars.</p>
+    <input id="vehiculeSearch" class="search" placeholder="Moto, camion, remorque, permis..." oninput="renderVehicules()">
+    <div id="vehiculeList"></div>
+  </div>
+</section>
+
+<!-- ================= PSYCHOLOGIE & STATS ================= -->
+
+<section id="psychologie" class="view hidden">
+  <div class="content">
+    <h2 class="section-title">Psychologie & Statistiques</h2>
+    <p class="muted">20 elements - Fatigue, stress, distraction, chiffres cles.</p>
+    <input id="psychoSearch" class="search" placeholder="Stress, fatigue, alcool, stats..." oninput="renderPsychologie()">
+    <div id="psychoList"></div>
   </div>
 </section>
 
@@ -215,32 +378,10 @@
 
 <section id="infractions" class="view hidden">
   <div class="content">
-    <h2 class="section-title">Infractions, degres & amendes</h2>
-    <p class="muted">Bareme officiel des infractions en Belgique.</p>
+    <h2 class="section-title">Infractions & Amendes</h2>
+    <p class="muted">27 infractions - Degres, sanctions, tribunal.</p>
     <input id="infractionSearch" class="search" placeholder="GSM, degre, alcool, vitesse..." oninput="renderInfractions()">
     <div id="infractionList"></div>
-  </div>
-</section>
-
-<!-- ================= REGLES D'OR ================= -->
-
-<section id="rules" class="view hidden">
-  <div class="content">
-    <h2 class="section-title">Regles d'or & priorites</h2>
-    <p class="muted">Les fondamentaux de la circulation routiere.</p>
-    <input id="ruleSearch" class="search" placeholder="priorite, tram, rond-point..." oninput="renderRules()">
-    <div id="ruleList"></div>
-  </div>
-</section>
-
-<!-- ================= TECHNIQUE & VOITURE ================= -->
-
-<section id="matiereAuto" class="view hidden">
-  <div class="content">
-    <h2 class="section-title">Technique, Tunnels & Securite</h2>
-    <p class="muted">Controles, equipements, eco-conduite, PLS, massage cardiaque.</p>
-    <input id="autoSearch" class="search" placeholder="Huile, tunnel, secours, PLS..." oninput="renderMatiereAuto()">
-    <div id="autoList"></div>
   </div>
 </section>
 
@@ -248,43 +389,21 @@
 
 <section id="piegesRoutes" class="view hidden">
   <div class="content">
-    <h2 class="section-title">Pieges subtils & Zones grises</h2>
-    <p class="muted">Stationnement 5m, feux verts, autoroute, disque bleu.</p>
-    <input id="piegeSearch" class="search" placeholder="5 metres, feux, autoroute, disque..." oninput="renderPiegesRoutes()">
+    <h2 class="section-title">Pieges & Zones grises</h2>
+    <p class="muted">10 pieges - Stationnement, feux, autoroute, disque.</p>
+    <input id="piegeSearch" class="search" placeholder="5 metres, feux, autoroute..." oninput="renderPiegesRoutes()">
     <div id="piegeList"></div>
   </div>
 </section>
 
-<!-- ================= USAGERS & MANOEUVRES ================= -->
+<!-- ================= USAGERS ================= -->
 
 <section id="usagersManoeuvres" class="view hidden">
   <div class="content">
-    <h2 class="section-title">Usagers vulnerables, Manoeuvres & Permis</h2>
-    <p class="muted">Cyclistes, PMR, cavaliers, regles de manoeuvre, pentes, restrictions nuit.</p>
-    <input id="usagerSearch" class="search" placeholder="Cycliste, PMR, manoeuvre, pente, nuit..." oninput="renderUsagersManoeuvres()">
+    <h2 class="section-title">Usagers & Manoeuvres</h2>
+    <p class="muted">10 elements - Cyclistes, PMR, cavaliers, manoeuvres.</p>
+    <input id="usagerSearch" class="search" placeholder="Cycliste, PMR, manoeuvre, pente..." oninput="renderUsagersManoeuvres()">
     <div id="usagerList"></div>
-  </div>
-</section>
-
-<!-- ================= MARQUAGES AU SOL ================= -->
-
-<section id="marquages" class="view hidden">
-  <div class="content">
-    <h2 class="section-title">Marquages au sol</h2>
-    <p class="muted">Lignes continues, discontinues, mixtes, passages pietons, sas velo, fleches de rabattement.</p>
-    <input id="marquageSearch" class="search" placeholder="Ligne continue, passage pieton, sas velo..." oninput="renderMarquages()">
-    <div id="marquageList"></div>
-  </div>
-</section>
-
-<!-- ================= CONDITIONS DE CONDUITE ================= -->
-
-<section id="conditions" class="view hidden">
-  <div class="content">
-    <h2 class="section-title">Conditions de conduite</h2>
-    <p class="muted">Pluie, neige, verglas, brouillard, nuit, tunnels, montagne, vent fort.</p>
-    <input id="conditionSearch" class="search" placeholder="Pluie, neige, brouillard, tunnel, nuit..." oninput="renderConditions()">
-    <div id="conditionList"></div>
   </div>
 </section>
 
