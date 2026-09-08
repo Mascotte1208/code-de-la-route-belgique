@@ -1,5 +1,5 @@
 /* =========================================================
-   DONNEES OFFICIELLES & EXPERTES (BELGIQUE)
+   DONNEES OFFICIELLES & EXPERTES INTEGRALES (BELGIQUE)
 ========================================================= */
 
 const PANNEAUX = [
@@ -85,7 +85,7 @@ const INFRACTIONS = [
   {"titre":"Faire demi-tour sur autoroute","degre":"4ème Degré","amende":"Tribunal","desc":"Comprend la marche arrière et le contresens sur autoroute. Déchéance du permis obligatoire."},
   {"titre":"Refus d'obtempérer","degre":"4ème Degré","amende":"Tribunal","desc":"Ignorer les ordres d'un agent de police qualifié."},
   {"titre":"Courses de vitesse illégales (Street racing)","degre":"4ème Degré","amende":"Tribunal","desc":"Organiser ou participer à des concours de vitesse sur la voie publique."},
-  {"titre":"Délit de fuite","degre":"Délit pénal","amende":"Tribunal","desc":"Quitter les lieux d'un accident pour échapper à ses responsabilités."},
+  {"titre":"Délit de fuite","degre":"Délit pénal","amende":"Tribunal","desc":"Quitter les lieux d'accident pour échapper à ses responsabilités."},
   {"titre":"Excès de vitesse (Agglomération / Zone 30)","degre":"Vitesse","amende":"Dès 53 € + 11 €/km/h","desc":"Tarif de base de 53 €, puis 11 € par km/h excédentaire en zone sensible."},
   {"titre":"Excès de vitesse (Hors agglomération / Autoroute)","degre":"Vitesse","amende":"Dès 53 € + 6 €/km/h","desc":"Tarif de base de 53 €, puis 6 € par km/h excédentaire."},
   {"titre":"Alcoolémie (0,2 g/L - Permis Provisoire)","degre":"Alcool (Novice)","amende":"Retrait immédiat","desc":"Tolérance quasi-nulle pour les jeunes conducteurs ou titulaires d'un permis provisoire."},
@@ -112,7 +112,9 @@ const MATIERE_AUTO = [
   {"id":"auto_7","titre":"Masse remorquable (Permis B)","cat":"Légal & Charges","desc":"Remorque max 750 kg sans condition, ou plus lourde si la somme des MMA (voiture + remorque) ne dépasse pas 3 500 kg."},
   {"id":"auto_8","titre":"Documents obligatoires à bord","cat":"Administratif","desc":"1. Permis de conduire valide.<br>2. Certificat d'immatriculation (carte grise).<br>3. Attestation d'assurance.<br>4. Certificat de contrôle technique."},
   {"id":"auto_9","titre":"Équipements de sécurité obligatoires","cat":"Sécurité","desc":"Triangle de signalisation, gilet haute visibilité par occupant, trousse de premiers secours et extincteur portatif homologué."},
-  {"id":"auto_10","titre":"Règlementation stricte dans les Tunnels","cat":"Sécurité & Tunnels","desc":"1. Allumage obligatoire des <b>feux de croisement</b> même si le tunnel est éclairé.<br>2. Interdiction absolue de faire demi-tour ou de reculer.<br>3. En cas d'embouteillage : couper le moteur, garder ses distances et allumer les feux de détresse.<br>4. Distance de sécurité minimale de <b>50 mètres</b> avec le véhicule précédent."}
+  {"id":"auto_10","titre":"Règlementation stricte dans les Tunnels","cat":"Sécurité & Tunnels","desc":"1. Allumage obligatoire des <b>feux de croisement</b> même si le tunnel est éclairé.<br>2. Interdiction absolue de faire demi-tour ou de reculer.<br>3. En cas d'embouteillage : couper le moteur, garder ses distances et allumer les feux de détresse.<br>4. Distance de sécurité minimale de <b>50 mètres</b> avec le véhicule précédent."},
+  {"id":"auto_11","titre":"Éco-conduite (Notions d'examen)","cat":"Éco-conduite","desc":"Passer les rapports de vitesse rapidement (entre 2000 et 2500 tr/min), couper le moteur lors d'un arrêt prolongé (> 1 minute), maintenir des pneumatiques correctement gonflés pour réduire la consommation de carburant."},
+  {"id":"auto_12","titre":"Premiers Secours en cas d'accident","cat":"Secours","desc":"Séquence d'urgence absolue : <b>1. Protéger</b> (baliser et enfiler son gilet avant de sortir) ; <b>2. Alerter</b> (appeler le 112 en précisant le lieu exact et l'état des victimes) ; <b>3. Secourir</b> (ne jamais retirer le casque d'un motard conscient sauf risque d'asphyxie)."}
 ];
 
 const PIEGES_ROUTES = [
@@ -121,7 +123,20 @@ const PIEGES_ROUTES = [
   {"id":"piege_3","titre":"Sortie d'un chemin de terre","cat":"Pièges & Priorités","desc":"<b>Le piège :</b> Céder le passage à quelqu'un qui sort d'un chemin de terre sous prétexte qu'il est à droite. <b>La règle :</b> Quiconque sort d'un chemin de terre, d'un sentier ou d'une propriété privée doit <b>toujours céder le passage</b> sur la voie publique."},
   {"id":"piege_4","titre":"Le dépassement des cyclistes (Distances)","cat":"Pièges & Priorités","desc":"<b>Le piège :</b> Frôler un cycliste en ville. <b>La règle :</b> Marge latérale obligatoire de <b>1,0 m en agglomération</b> et de <b>1,5 m hors agglomération</b> franchissement de ligne continue autorisé si la visibilité le permet."},
   {"id":"piege_5","titre":"Le piège du rond-point classique vs giratoire","cat":"Pièges & Priorités","desc":"<b>Le piège :</b> Croire que l'on est prioritaire dans tous les ronds-points. <b>La règle :</b> Un rond-point n'est un giratoire prioritaire que si les panneaux 'Cédez le passage' (B1) et 'Sens giratoire' (D10) sont placés. Sinon, c'est la priorité à droite classique pour entrer !"},
-  {"id":"piege_6","titre":"L'illusion du feu orange fixe","cat":"Pièges & Priorités","desc":"<b>Le piège :</b> Accélérer au feu orange. <b>La règle :</b> Le feu orange oblige à l'arrêt, SAUF si vous êtes si près du carrefour que vous ne pouvez plus vous arrêter en sécurité sans provoquer de collision."}
+  {"id":"piege_6","titre":"L'illusion du feu orange fixe","cat":"Pièges & Priorités","desc":"<b>Le piège :</b> Accélérer au feu orange. <b>La règle :</b> Le feu orange oblige à l'arrêt, SAUF si vous êtes si près du carrefour que vous ne pouvez plus vous arrêter en sécurité sans provoquer de collision."},
+  {"id":"piege_7","titre":"Le feu vert n'annule pas la priorité des piétons","cat":"Pièges & Priorités (Rare)","desc":"<b>Le piège vicieux :</b> Tourner à droite ou à gauche à un feu vert en pensant avoir le champ libre. <b>La règle :</b> Si vous coupez un passage pour piétons ou une piste cyclable, <b>vous devez céder le passage aux usagers qui traversent</b>, même si votre feu tricolore est au vert."},
+  {"id":"piege_8","titre":"La bande d'arrêt d'urgence sur autoroute","cat":"Pièges & Priorités (Rare)","desc":"<b>Le piège :</b> S'y arrêter pour passer un appel d'urgence ou régler son GPS. <b>La règle :</b> C'est strictement interdit, sauf cas de force majeure absolue (panne mécanique ou malaise). S'y garer par confort est une infraction grave."},
+  {"id":"piege_9","titre":"Le sens de stationnement et le disque bleu","cat":"Pièges & Priorités (Rare)","desc":"<b>Le piège :</b> Se garer à contresens ou régler mal son disque. <b>La règle :</b> Vous devez obligatoirement vous garer dans le sens de la marche du côté droit. Sur disque de stationnement, celui-ci doit être réglé sur <b>l'heure de l'arrivée (l'heure entamée ou la demi-heure suivante)</b>."},
+  {"id":"piege_10","titre":"Le dépassement par la droite sur autoroute","cat":"Pièges & Priorités (Rare)","desc":"<b>Le piège :</b> Penser que doubler par la droite est toujours interdit. <b>La règle :</b> C'est interdit, <i>sauf</i> en cas de <b>files ininterrompues</b> de véhicules sur les autres bandes lorsque la circulation est dense et roule au pas."}
+];
+
+const USAGERS_MANOEUVRES = [
+  {"id":"usager_1","titre":"Les rues cyclables (Fietsstraten)","cat":"Usagers Vulnérables","desc":"Dans une rue cyclable, les cyclistes occupent toute la largeur de leur bande (ou la moitié de la voirie). <b>Il est strictement interdit aux automobilistes de dépasser les cyclistes</b> dans ces rues, et la vitesse maximale y est limitée à 30 km/h."},
+  {"id":"usager_2","titre":"Les sas à vélos aux feux","cat":"Usagers Vulnérables","desc":"Espace peint en avant de la ligne d'arrêt des voitures aux feux tricolores. Il est réservé exclusivement aux vélos et cyclomoteurs pour leur permettre de se placer en sécurité devant les véhicules lors du passage au vert."},
+  {"id":"usager_3","titre":"Qu'est-ce qu'une manœuvre en droit belge ?","cat":"Manœuvres","desc":"Constituent des manœuvres : quitter un stationnement, faire demi-tour, reculer, sortir d'un garage ou s'insérer dans la circulation. <b>La règle absolue :</b> Celui qui effectue une manœuvre doit céder le passage à <b>tous</b> les autres usagers."},
+  {"id":"usager_4","titre":"Croisement sur routes de montagne / fortes pentes","cat":"Intersections","desc":"Sur les pentes raides (panneaux A3/A5), le véhicule qui <b>descend</b> doit s'arrêter ou reculer pour laisser passer celui qui monte, <i>sauf</i> si le véhicule qui monte trouve un refuge (une halte) plus près de lui."},
+  {"id":"usager_5","titre":"Restrictions du Permis Provisoire 36 mois","cat":"Permis & Légal","desc":"Si tu conduis avec un permis provisoire accompagné d'un guide, il est strictement interdit de circuler les <b>vendredis, samedis, dimanches et veilles de jours fériés entre 22h et 6h du matin</b>."},
+  {"id":"usager_6","titre":"Le chargement et les dépassements à l'arrière","cat":"Chargement","desc":"Un chargement ne peut jamais masquer les plaques ou les feux. S'il dépasse de plus d'<b>un mètre</b> à l'arrière du véhicule, il doit obligatoirement être signalé par un panneau carré à rayures rouges et blanches."}
 ];
 
 const CATEGORIES = {
@@ -269,7 +284,7 @@ function applyTheme(){
 }
 
 function hideViews(){
-  ["home","quiz","repo","infractions","rules","matiereAuto","piegesRoutes"].forEach(id=>{
+  ["home","quiz","repo","infractions","rules","matiereAuto","piegesRoutes","usagersManoeuvres"].forEach(id=>{
     if($(id)) $(id).classList.add("hidden");
   });
 }
@@ -299,11 +314,9 @@ function startOfficialExam(){
   clearInterval(state.timerId);
   hideViews();
   state.isOfficialExam = true;
-  state.timer = true; // Chrono actif comme à l'examen officiel
+  state.timer = true; 
   
-  // Générer un examen complet de 50 questions mélangées à partir de toutes les sources
   let allPool = [...PANNEAUX];
-  // Dupliquer/étendre pour atteindre 50 questions si nécessaire avec des variantes
   while(allPool.length < 50) {
     allPool = allPool.concat(PANNEAUX);
   }
@@ -354,6 +367,14 @@ function showPiegesRoutes(){
   if($("piegesRoutes")) $("piegesRoutes").classList.remove("hidden");
   if($("homeButton")) $("homeButton").style.display="block";
   renderPiegesRoutes();
+}
+
+function showUsagersManoeuvres(){
+  clearInterval(state.timerId);
+  hideViews();
+  if($("usagersManoeuvres")) $("usagersManoeuvres").classList.remove("hidden");
+  if($("homeButton")) $("homeButton").style.display="block";
+  renderUsagersManoeuvres();
 }
 
 function renderCategorySelector(){
@@ -696,7 +717,6 @@ async function showSummary(){
 
   let passed = true;
   if(state.isOfficialExam){
-    // Examen officiel belge : 50 questions, minimum 41/50 requis (max 9 fautes)
     passed = score >= 41;
     $("summaryTitle").textContent = passed ? "🎉 EXAMEN RÉUSSI (Officiel)" : "❌ EXAMEN ÉCHOUÉ (Officiel)";
   } else {
@@ -711,7 +731,7 @@ async function showSummary(){
 
   if($("summaryMessage")){
     if(state.isOfficialExam){
-      $("summaryMessage.textContent") = passed 
+      $("summaryMessage").textContent = passed 
         ? `Félicitations ! Avec ${score}/50, tu obtiens ton permis théorique (Seuil requis : 41/50).`
         : `Tu as obtenu ${score}/50. Le seuil de réussite est fixé à 41/50. Il te manque quelques points, continue à bosser !`;
     } else {
@@ -899,6 +919,27 @@ function renderPiegesRoutes(){
   `).join("") : `<div class="empty">Aucun piège ne correspond à cette recherche.</div>`;
 }
 
+function renderUsagersManoeuvres(){
+  const query=$("usagerSearch") ? $("usagerSearch").value.trim().toLowerCase() : "";
+  const results=USAGERS_MANOEUVRES.filter(item=>{
+    if(!query) return true;
+    return [item.titre,item.cat,item.desc].join(" ").toLowerCase().includes(query);
+  });
+  const list=$("usagerList");
+  if(!list) return;
+  list.classList.remove("fade-list");
+  void list.offsetWidth;
+  list.classList.add("fade-list");
+
+  list.innerHTML=results.length ? results.map(item=>`
+    <div class="rule-card">
+      <div class="info-header"><span class="badge" style="background:var(--teal)">${escapeHTML(item.cat)}</span></div>
+      <b>${escapeHTML(item.titre)}</b>
+      <p>${item.desc}</p>
+    </div>
+  `).join("") : `<div class="empty">Aucun élément ne correspond à cette recherche.</div>`;
+}
+
 document.addEventListener("keydown",event=>{
   if($("quizRunning") && $("quizRunning").classList.contains("hidden")) return;
   if(event.key>="1" && event.key<="4" && !state.answered){ answerQuestion(Number(event.key)-1); }
@@ -923,8 +964,10 @@ Object.assign(window, {
   showRules,
   showMatiereAuto,
   showPiegesRoutes,
+  showUsagersManoeuvres,
   renderMatiereAuto,
   renderPiegesRoutes,
+  renderUsagersManoeuvres,
   toggleTheme,
   startReview,
   startQuiz,
