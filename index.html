@@ -124,6 +124,9 @@
 
 <section id="menu" class="view hidden">
   <div class="content" style="padding: 0;">
+    <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
+      <button class="ghost" onclick="goHome()">🏠 Accueil</button>
+    </div>
     <h2 class="section-title">📋 Guide complet du Code de la route</h2>
     <p class="muted">7 categories principales couvrant 100% du programme officiel belge (470+ elements).</p>
     <div id="menuGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin-top: 16px;"></div>
@@ -134,7 +137,10 @@
 
 <section id="categoriePage" class="view hidden">
   <div class="content" style="padding: 0;">
-    <button class="ghost" onclick="showMenu()" style="margin-bottom: 14px;">← Retour au menu</button>
+    <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
+      <button class="ghost" onclick="showMenu()">← Retour au menu</button>
+      <button class="ghost" onclick="goHome()">🏠 Accueil</button>
+    </div>
     <h2 id="categorieTitle" class="section-title"></h2>
     <p id="categorieDesc" class="muted"></p>
     <div id="sousCategorieGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin-top: 16px;"></div>
@@ -149,7 +155,11 @@
 
 <section id="sousCategoriePage" class="view hidden">
   <div class="content" style="padding: 0;">
-    <button class="ghost" onclick="showCategorieBack()" style="margin-bottom: 14px;">← Retour</button>
+    <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
+      <button class="ghost" onclick="showCategorieBack()">← Retour</button>
+      <button class="ghost" onclick="showMenu()">📋 Menu</button>
+      <button class="ghost" onclick="goHome()">🏠 Accueil</button>
+    </div>
     <h2 id="sousCategorieTitle" class="section-title"></h2>
     <p id="sousCategorieDesc" class="muted"></p>
     <input id="sousCategorieSearch" class="search" placeholder="Rechercher..." oninput="renderSousCategorie()">
@@ -204,6 +214,8 @@
     <div class="action-row">
       <button class="ghost" onclick="configureQuiz()">Nouvelle config</button>
       <button class="ghost" onclick="replayQuiz()">Refaire</button>
+      <button class="ghost" onclick="showMenu()">📋 Menu</button>
+      <button class="ghost" onclick="goHome()">🏠 Accueil</button>
     </div>
     <div id="reviewErrorsZone" style="margin-top:9px"></div>
   </div>
@@ -213,6 +225,10 @@
 
 <section id="repo" class="view hidden">
   <div class="content">
+    <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
+      <button class="ghost" onclick="showMenu()">📋 Menu</button>
+      <button class="ghost" onclick="goHome()">🏠 Accueil</button>
+    </div>
     <h2 class="section-title">Panneaux & Signalisation</h2>
     <p id="repoCount" class="muted"></p>
     <input id="repoSearch" class="search" placeholder="Code, nom, categorie..." oninput="renderRepository()">
@@ -224,6 +240,10 @@
 
 <section id="rules" class="view hidden">
   <div class="content">
+    <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
+      <button class="ghost" onclick="showMenu()">📋 Menu</button>
+      <button class="ghost" onclick="goHome()">🏠 Accueil</button>
+    </div>
     <h2 class="section-title">Regles d'or & Priorites</h2>
     <p class="muted">Regles de priorite, feux, agents, signaleurs.</p>
     <input id="ruleSearch" class="search" placeholder="priorite, tram, rond-point..." oninput="renderRules()">
@@ -235,6 +255,10 @@
 
 <section id="mecanique" class="view hidden">
   <div class="content">
+    <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
+      <button class="ghost" onclick="showMenu()">📋 Menu</button>
+      <button class="ghost" onclick="goHome()">🏠 Accueil</button>
+    </div>
     <h2 class="section-title">Mecanique & Moteur</h2>
     <p class="muted">60 elements - Moteur, freins, direction, suspension, electricite.</p>
     <input id="mecaSearch" class="search" placeholder="Huile, frein, courroie, injection..." oninput="renderMecanique()">
@@ -246,6 +270,10 @@
 
 <section id="pneumatiques" class="view hidden">
   <div class="content">
+    <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
+      <button class="ghost" onclick="showMenu()">📋 Menu</button>
+      <button class="ghost" onclick="goHome()">🏠 Accueil</button>
+    </div>
     <h2 class="section-title">Pneumatiques & Jantes</h2>
     <p class="muted">40 elements - Types, dimensions, entretien, saisons, equipements hiver.</p>
     <input id="pneuSearch" class="search" placeholder="Pneu, indice, pression, chaine..." oninput="renderPneumatiques()">
@@ -257,6 +285,10 @@
 
 <section id="saisons" class="view hidden">
   <div class="content">
+    <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
+      <button class="ghost" onclick="showMenu()">📋 Menu</button>
+      <button class="ghost" onclick="goHome()">🏠 Accueil</button>
+    </div>
     <h2 class="section-title">Saisons & Environnement</h2>
     <p class="muted">30 elements - Hiver, ete, montagne, ecologie.</p>
     <input id="saisonSearch" class="search" placeholder="Neige, canicule, verglas, ete..." oninput="renderSaisons()">
@@ -268,6 +300,10 @@
 
 <section id="secours" class="view hidden">
   <div class="content">
+    <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
+      <button class="ghost" onclick="showMenu()">📋 Menu</button>
+      <button class="ghost" onclick="goHome()">🏠 Accueil</button>
+    </div>
     <h2 class="section-title">Secours & Urgence</h2>
     <p class="muted">25 elements - PLS, massage cardiaque, balisage, equipements.</p>
     <input id="secoursSearch" class="search" placeholder="PLS, massage, triangle, gilet..." oninput="renderSecours()">
@@ -279,6 +315,10 @@
 
 <section id="legal" class="view hidden">
   <div class="content">
+    <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
+      <button class="ghost" onclick="showMenu()">📋 Menu</button>
+      <button class="ghost" onclick="goHome()">🏠 Accueil</button>
+    </div>
     <h2 class="section-title">Legal & Administratif</h2>
     <p class="muted">30 elements - Permis, assurance, controle technique, amendes.</p>
     <input id="legalSearch" class="search" placeholder="Permis, assurance, CT, alcool..." oninput="renderLegal()">
@@ -290,6 +330,10 @@
 
 <section id="equipements" class="view hidden">
   <div class="content">
+    <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
+      <button class="ghost" onclick="showMenu()">📋 Menu</button>
+      <button class="ghost" onclick="goHome()">🏠 Accueil</button>
+    </div>
     <h2 class="section-title">Equipements & Accessoires</h2>
     <p class="muted">20 elements - Eclairage, securite, aides a la conduite.</p>
     <input id="equipSearch" class="search" placeholder="Feux, radar, camera, GPS..." oninput="renderEquipements()">
@@ -301,6 +345,10 @@
 
 <section id="marquages" class="view hidden">
   <div class="content">
+    <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
+      <button class="ghost" onclick="showMenu()">📋 Menu</button>
+      <button class="ghost" onclick="goHome()">🏠 Accueil</button>
+    </div>
     <h2 class="section-title">Marquages au sol</h2>
     <p class="muted">20 elements - Lignes, passages pietons, sas velo, fleches.</p>
     <input id="marquageSearch" class="search" placeholder="Ligne continue, passage, sas..." oninput="renderMarquages()">
@@ -312,6 +360,10 @@
 
 <section id="conditions" class="view hidden">
   <div class="content">
+    <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
+      <button class="ghost" onclick="showMenu()">📋 Menu</button>
+      <button class="ghost" onclick="goHome()">🏠 Accueil</button>
+    </div>
     <h2 class="section-title">Conditions extremes</h2>
     <p class="muted">45 elements - Montagne, chaud, froid, pluie, neige, vent.</p>
     <input id="conditionSearch" class="search" placeholder="Montagne, canicule, verglas..." oninput="renderConditions()">
@@ -323,6 +375,10 @@
 
 <section id="vehicules" class="view hidden">
   <div class="content">
+    <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
+      <button class="ghost" onclick="showMenu()">📋 Menu</button>
+      <button class="ghost" onclick="goHome()">🏠 Accueil</button>
+    </div>
     <h2 class="section-title">Vehicules specifiques</h2>
     <p class="muted">25 elements - Moto, poids lourds, remorque, autocars.</p>
     <input id="vehiculeSearch" class="search" placeholder="Moto, camion, remorque, permis..." oninput="renderVehicules()">
@@ -334,6 +390,10 @@
 
 <section id="psychologie" class="view hidden">
   <div class="content">
+    <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
+      <button class="ghost" onclick="showMenu()">📋 Menu</button>
+      <button class="ghost" onclick="goHome()">🏠 Accueil</button>
+    </div>
     <h2 class="section-title">Psychologie & Statistiques</h2>
     <p class="muted">20 elements - Fatigue, stress, distraction, chiffres cles.</p>
     <input id="psychoSearch" class="search" placeholder="Stress, fatigue, alcool, stats..." oninput="renderPsychologie()">
@@ -345,6 +405,10 @@
 
 <section id="infractions" class="view hidden">
   <div class="content">
+    <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
+      <button class="ghost" onclick="showMenu()">📋 Menu</button>
+      <button class="ghost" onclick="goHome()">🏠 Accueil</button>
+    </div>
     <h2 class="section-title">Infractions & Amendes</h2>
     <p class="muted">27 infractions - Degres, sanctions, tribunal.</p>
     <input id="infractionSearch" class="search" placeholder="GSM, degre, alcool, vitesse..." oninput="renderInfractions()">
@@ -356,6 +420,10 @@
 
 <section id="piegesRoutes" class="view hidden">
   <div class="content">
+    <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
+      <button class="ghost" onclick="showMenu()">📋 Menu</button>
+      <button class="ghost" onclick="goHome()">🏠 Accueil</button>
+    </div>
     <h2 class="section-title">Pieges & Zones grises</h2>
     <p class="muted">10 pieges - Stationnement, feux, autoroute, disque.</p>
     <input id="piegeSearch" class="search" placeholder="5 metres, feux, autoroute..." oninput="renderPiegesRoutes()">
@@ -367,6 +435,10 @@
 
 <section id="usagersManoeuvres" class="view hidden">
   <div class="content">
+    <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
+      <button class="ghost" onclick="showMenu()">📋 Menu</button>
+      <button class="ghost" onclick="goHome()">🏠 Accueil</button>
+    </div>
     <h2 class="section-title">Usagers & Manoeuvres</h2>
     <p class="muted">10 elements - Cyclistes, PMR, cavaliers, manoeuvres.</p>
     <input id="usagerSearch" class="search" placeholder="Cycliste, PMR, manoeuvre, pente..." oninput="renderUsagersManoeuvres()">
