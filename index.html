@@ -4,19 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#171a1f">
-<title>Code de la route — Belgique</title>
+<title>Code de la route — Belgique (Expert)</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header class="top">
-  <div class="brand" onclick="goHome()">Code de la route</div>
+  <div class="brand" onclick="goHome()">Code de la route — Expert</div>
   <button id="homeButton" class="home-btn" onclick="goHome()">← Accueil</button>
 </header>
 
 <div class="lane"></div>
-<div class="offline">● Hors ligne</div>
+<div class="offline">● Mode Expert Actif</div>
 
 <main class="app">
 
@@ -26,21 +26,20 @@
 
   <div class="hero">
     <div>
-      <div class="eyebrow">PERMIS THÉORIQUE · BELGIQUE</div>
-      <h1>Prêt à prendre la route ?</h1>
+      <div class="eyebrow">PERMIS THÉORIQUE · BELGIQUE (GOCA)</div>
+      <h1>Maîtrise les pièges de l'examen</h1>
       <p>
-        Entraîne-toi, corrige tes erreurs et suis ta progression au même endroit.
+        Entraînement avancé, fiches expertes sur les zones grises et examen blanc officiel en 50 questions.
       </p>
     </div>
 
     <div class="actions">
-      <button class="primary" onclick="showQuiz()">🎯 Commencer un quiz</button>
+      <button class="primary" onclick="showQuiz()">🎯 Quiz rapide</button>
       <button class="theme" onclick="toggleTheme()" aria-label="Changer le thème" id="themeButton">☀️</button>
     </div>
   </div>
 
   <div class="stats">
-
     <div class="stat">
       <i>🏁</i>
       <div>
@@ -48,15 +47,13 @@
         <span>Sessions</span>
       </div>
     </div>
-
     <div class="stat">
       <i>📈</i>
       <div>
         <b id="statSuccess">0%</b>
-        <span>Réussite globale</span>
+        <span>Réussite</span>
       </div>
     </div>
-
     <div class="stat">
       <i>⭐</i>
       <div>
@@ -64,7 +61,6 @@
         <span>Favoris</span>
       </div>
     </div>
-
     <div class="stat">
       <i>🧠</i>
       <div>
@@ -72,23 +68,30 @@
         <span>Questions</span>
       </div>
     </div>
-
   </div>
 
   <div class="grid">
 
     <div>
-
-      <h2 class="section-title">S'entraîner</h2>
-      <p class="muted">Choisis la méthode qui te convient aujourd'hui.</p>
+      <h2 class="section-title">Modules d'entraînement</h2>
+      <p class="muted">Choisis ton format de révision.</p>
 
       <div class="practice-grid">
+
+        <button class="practice" onclick="startOfficialExam()">
+          <span class="practice-icon">🚨</span>
+          <span class="practice-copy">
+            <b>Examen Blanc Officiel</b>
+            <small>50 questions, conditions réelles (max 9 fautes)</small>
+          </span>
+          <span class="arrow">→</span>
+        </button>
 
         <button class="practice" onclick="showQuiz()">
           <span class="practice-icon">🎯</span>
           <span class="practice-copy">
-            <b>Quiz interactif</b>
-            <small>Catégories, chrono et score détaillé</small>
+            <b>Quiz thématique</b>
+            <small>Personnalisable par catégorie</small>
           </span>
           <span class="arrow">→</span>
         </button>
@@ -97,7 +100,7 @@
           <span class="practice-icon">⭐</span>
           <span class="practice-copy">
             <b>Révision ciblée</b>
-            <small>Favoris et questions ratées</small>
+            <small>Favoris et erreurs enregistrées</small>
           </span>
           <span class="arrow">→</span>
         </button>
@@ -105,8 +108,8 @@
         <button class="practice" onclick="showRepo()">
           <span class="practice-icon">🚦</span>
           <span class="practice-copy">
-            <b>Panneaux</b>
-            <small>Recherche dans le répertoire</small>
+            <b>Répertoire panneaux</b>
+            <small>Recherche et signalisation complète</small>
           </span>
           <span class="arrow">→</span>
         </button>
@@ -114,7 +117,7 @@
         <button class="practice" onclick="showRules()">
           <span class="practice-icon">💡</span>
           <span class="practice-copy">
-            <b>Règles essentielles</b>
+            <b>Règles d'or</b>
             <small>Priorités et situations clés</small>
           </span>
           <span class="arrow">→</span>
@@ -124,7 +127,7 @@
           <span class="practice-icon">🔧</span>
           <span class="practice-copy">
             <b>Technique & Voiture</b>
-            <small>Niveaux, masses et sécurité</small>
+            <small>Niveaux, masses, tunnels et sécurité</small>
           </span>
           <span class="arrow">→</span>
         </button>
@@ -132,8 +135,8 @@
         <button class="practice" onclick="showPiegesRoutes()">
           <span class="practice-icon">⚠️</span>
           <span class="practice-copy">
-            <b>Pièges & Priorités</b>
-            <small>Erreurs classiques et priorités subtiles</small>
+            <b>Pièges & Zones grises</b>
+            <small>Stationnement implicite, distances et subtilités</small>
           </span>
           <span class="arrow">→</span>
         </button>
@@ -141,81 +144,55 @@
       </div>
 
       <div class="panel progress">
-
         <div class="progress-top">
-
           <div>
-            <b>Ta progression</b>
-            <div class="muted">
-              Continue régulièrement pour consolider tes acquis.
-            </div>
+            <b>Ta progression globale</b>
+            <div class="muted">Entraîne-toi régulièrement pour valider ton examen.</div>
           </div>
-
           <strong id="progressPercent">0%</strong>
-
         </div>
-
         <div class="bar">
           <span id="progressBar"></span>
         </div>
-
         <div class="meta">
           <span id="progressText">Aucune session pour le moment</span>
           <span>🔥 <b id="streak">0</b></span>
         </div>
-
       </div>
 
     </div>
 
     <aside>
-
       <div class="panel quick">
-
         <h3>⚡ Actions rapides</h3>
-
-        <button onclick="showQuiz()">
-          🎯 Nouveau quiz
+        <button onclick="startOfficialExam()">
+          🚨 Lancer l'examen blanc (50Q)
           <span>›</span>
         </button>
-
         <button onclick="showRepo()">
           📚 Voir les panneaux
           <span>›</span>
         </button>
-
         <button onclick="showInfractions()">
-          ⚖️ Infractions
+          ⚖️ Infractions & amendes
           <span>›</span>
         </button>
-
-        <button onclick="showRules()">
-          💡 Règles d'or
+        <button onclick="showPiegesRoutes()">
+          ⚠️ Pièges & priorités
           <span>›</span>
         </button>
-
         <button onclick="showMatiereAuto()">
           🔧 Technique voiture
           <span>›</span>
         </button>
-
-        <button onclick="showPiegesRoutes()">
-          ⚠️ Pièges prioritaires
-          <span>›</span>
-        </button>
-
       </div>
 
       <div class="panel tip">
-
-        <h3>💡 Conseil du jour</h3>
-
+        <h3>💡 Le savais-tu ? (Examen GOCA)</h3>
         <p id="tipText">
-          Travaille d'abord les thèmes où ton taux de réussite est le plus faible.
+          À l'examen officiel, une infraction grave (feu rouge, sens interdit, stop) retire directement 5 points. Le seuil de réussite est fixé à 41/50.
         </p>
-
       </div>
-
     </aside>
 
   </div>
@@ -227,154 +204,67 @@
 <section id="quiz" class="view hidden">
 
   <div id="quizConfig" class="content">
-
-    <h2 class="section-title">Configure ta session</h2>
-
-    <p class="muted">
-      Sélectionne les catégories et le nombre de questions.
-    </p>
+    <h2 class="section-title">Configure ta session d'entraînement</h2>
+    <p class="muted">Sélectionne les catégories et le nombre de questions.</p>
 
     <div id="categoryGrid" class="cat-grid"></div>
 
     <div class="config">
-
       <div>
-        <b>⏱️ Chronomètre</b>
-        <div class="muted">
-          15 secondes par question
-        </div>
+        <b>⏱️ Chronomètre par question</b>
+        <div class="muted">15 secondes par question (conditions examen)</div>
       </div>
-
-      <input
-        id="timerEnabled"
-        type="checkbox"
-        style="width:20px;height:20px;accent-color:var(--red)"
-      >
-
+      <input id="timerEnabled" type="checkbox" style="width:20px;height:20px;accent-color:var(--red)">
     </div>
 
     <div class="field-row">
-
       <label>
         Nombre de questions
         <span id="questionCountValue" style="color:var(--red2)">15</span>
       </label>
-
-      <input
-        id="questionCount"
-        class="range"
-        type="range"
-        min="1"
-        max="25"
-        value="15"
-      >
-
+      <input id="questionCount" class="range" type="range" min="1" max="25" value="15">
     </div>
 
-    <div id="quizWarning" class="empty hidden">
-      Pas assez de panneaux dans cette sélection.
-    </div>
+    <div id="quizWarning" class="empty hidden">Pas assez de panneaux dans cette sélection.</div>
 
-    <button
-      class="primary"
-      style="width:100%"
-      onclick="startQuiz()"
-    >
-      Démarrer le quiz
+    <button class="primary" style="width:100%" onclick="startQuiz()">Démarrer le quiz thématique</button>
+    <button id="reviewButton" class="danger" style="width:100%;margin-top:9px" onclick="startReview()">
+      ⭐ Revoir mes favoris & erreurs (<span id="reviewCount">0</span>)
     </button>
-
-    <button
-      id="reviewButton"
-      class="danger"
-      style="width:100%;margin-top:9px"
-      onclick="startReview()"
-    >
-      ⭐ Revoir mes favoris & erreurs
-      (<span id="reviewCount">0</span>)
-    </button>
-
   </div>
 
   <div id="quizRunning" class="content hidden">
-
     <div id="progressDots" class="progress-dots"></div>
-
     <div class="quiz-top">
-
       <span id="quizProgress">Question 1 / 15</span>
-
-      <span id="timerDisplay" class="timer hidden">
-        ⏳ 15s
-      </span>
-
-      <button
-        id="favoriteButton"
-        class="fav-btn"
-        onclick="toggleFavorite()"
-        aria-label="Ajouter aux favoris"
-      >
-        ☆
-      </button>
-
+      <span id="timerDisplay" class="timer hidden">⏳ 15s</span>
+      <button id="favoriteButton" class="fav-btn" onclick="toggleFavorite()" aria-label="Ajouter aux favoris">☆</button>
       <span id="quizScore">Score : 0</span>
-
     </div>
-
     <div id="signStage" class="sign-stage"></div>
-
     <div id="signCaption" class="sign-caption"></div>
-
-    <div class="question">
-      Quelle est la désignation exacte de ce panneau ?
-    </div>
-
+    <div class="question">Quelle est la désignation exacte de ce panneau ou la règle applicable ?</div>
     <div id="optionList" class="options"></div>
-
     <div id="feedbackZone"></div>
-
     <div id="nextButtonZone" class="next"></div>
-
   </div>
 
   <div id="quizSummary" class="content hidden">
-
-    <h2 id="summaryTitle" class="section-title">
-      Session terminée
-    </h2>
-
+    <h2 id="summaryTitle" class="section-title">Session terminée</h2>
     <div class="score">
-
       <div class="score-ring">
         <strong id="summaryPercent">0%</strong>
         <span id="summaryFraction">0 / 0</span>
       </div>
-
     </div>
-
-    <p
-      id="summaryMessage"
-      class="muted"
-      style="text-align:center"
-    ></p>
-
+    <p id="summaryMessage" class="muted" style="text-align:center"></p>
     <div id="categoryResults"></div>
-
     <div id="errorResults"></div>
-
     <div class="action-row">
-
-      <button class="ghost" onclick="configureQuiz()">
-        Nouvelle config
-      </button>
-
-      <button class="ghost" onclick="replayQuiz()">
-        Refaire
-      </button>
-
+      <button class="ghost" onclick="configureQuiz()">Nouvelle config</button>
+      <button class="ghost" onclick="replayQuiz()">Refaire la session</button>
     </div>
-
     <div id="reviewErrorsZone" style="margin-top:9px"></div>
-
   </div>
 
 </section>
@@ -382,134 +272,56 @@
 <!-- ================= REPERTOIRE ================= -->
 
 <section id="repo" class="view hidden">
-
   <div class="content">
-
-    <h2 class="section-title">
-      Répertoire des panneaux
-    </h2>
-
+    <h2 class="section-title">Répertoire des panneaux</h2>
     <p id="repoCount" class="muted"></p>
-
-    <input
-      id="repoSearch"
-      class="search"
-      placeholder="Code, nom, catégorie..."
-      oninput="renderRepository()"
-    >
-
+    <input id="repoSearch" class="search" placeholder="Code, nom, catégorie..." oninput="renderRepository()">
     <div id="repoList"></div>
-
   </div>
-
 </section>
 
 <!-- ================= INFRACTIONS ================= -->
 
 <section id="infractions" class="view hidden">
-
   <div class="content">
-
-    <h2 class="section-title">
-      Infractions & amendes
-    </h2>
-
-    <p class="muted">
-      Données conservées depuis ta base d'origine.
-    </p>
-
-    <input
-      id="infractionSearch"
-      class="search"
-      placeholder="GSM, degré, alcool..."
-      oninput="renderInfractions()"
-    >
-
+    <h2 class="section-title">Infractions, degrés & amendes</h2>
+    <p class="muted">Barème officiel des infractions et retraits de permis en Belgique.</p>
+    <input id="infractionSearch" class="search" placeholder="GSM, degré, alcool, vitesse..." oninput="renderInfractions()">
     <div id="infractionList"></div>
-
   </div>
-
 </section>
 
 <!-- ================= REGLES ================= -->
 
 <section id="rules" class="view hidden">
-
   <div class="content">
-
-    <h2 class="section-title">
-      Règles d'or & priorités
-    </h2>
-
-    <p class="muted">
-      Données conservées depuis ta base d'origine.
-    </p>
-
-    <input
-      id="ruleSearch"
-      class="search"
-      placeholder="priorité, tram, rond-point..."
-      oninput="renderRules()"
-    >
-
+    <h2 class="section-title">Règles d'or & priorités</h2>
+    <p class="muted">Les fondamentaux indispensables de la circulation routière.</p>
+    <input id="ruleSearch" class="search" placeholder="priorité, tram, rond-point..." oninput="renderRules()">
     <div id="ruleList"></div>
-
   </div>
-
 </section>
 
 <!-- ================= TECHNIQUE & VOITURE ================= -->
 
 <section id="matiereAuto" class="view hidden">
-
   <div class="content">
-
-    <h2 class="section-title">
-      Technique & Connaissances de la voiture
-    </h2>
-
-    <p class="muted">
-      Niveaux, masses maximales et règles de sécurité à bord.
-    </p>
-
-    <input
-      id="autoSearch"
-      class="search"
-      placeholder="Huile, poids, pneus, documents..."
-      oninput="renderMatiereAuto()"
-    >
-
+    <h2 class="section-title">Technique, Tunnels & Sécurité de la voiture</h2>
+    <p class="muted">Niveaux, contrôles, équipements obligatoires et réglementation dans les tunnels.</p>
+    <input id="autoSearch" class="search" placeholder="Huile, tunnel, pneus, extincteur..." oninput="renderMatiereAuto()">
     <div id="autoList"></div>
-
   </div>
-
 </section>
 
-<!-- ================= PIÈGES & PRIORITÉS ================= -->
+<!-- ================= PIÈGES & ZONES GRISES ================= -->
 
 <section id="piegesRoutes" class="view hidden">
-
   <div class="content">
-
-    <h2 class="section-title">
-      Pièges & Priorités à éviter
-    </h2>
-
-    <p class="muted">
-      Les situations ambiguës et les erreurs classiques qui coûtent cher à l'examen.
-    </p>
-
-    <input
-      id="piegeSearch"
-      class="search"
-      placeholder="Droite, rond-point, piéton, tram..."
-      oninput="renderPiegesRoutes()"
-    >
-
+    <h2 class="section-title">Pièges subtils & Zones grises du Code</h2>
+    <p class="muted">Stationnement implicite, distances de dépassement cycliste et subtilités d'examen.</p>
+    <input id="piegeSearch" class="search" placeholder="Stationnement, cycliste, priorité, 5 mètres..." oninput="renderPiegesRoutes()">
     <div id="piegeList"></div>
-
   </div>
-
 </section>
 
 </main>
