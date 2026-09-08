@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#171a1f">
-<title>Code de la route Belgique - Expert</title>
+<title>Code de la route Belgique - Expert (Version Complète)</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -16,18 +16,22 @@
 </header>
 
 <div class="lane"></div>
-<div class="offline">Mode Expert Actif</div>
+<div class="offline">Mode Expert - Version Complète</div>
 
 <main class="app">
 
-<!-- ACCUEIL -->
+<!-- ================= ACCUEIL ================= -->
+
 <section id="home" class="view">
 
   <div class="hero">
     <div>
-      <div class="eyebrow">PERMIS THEORIQUE - BELGIQUE</div>
-      <h1>Maitrise du Code de la route</h1>
-      <p>Examen blanc officiel 50 questions, fiches sur les usagers vulnerables, manoeuvres, eco-conduite et pieges rares.</p>
+      <div class="eyebrow">PERMIS THEORIQUE - BELGIQUE (GOCA)</div>
+      <h1>Maitrise totale du Code de la route</h1>
+      <p>
+        Examen blanc officiel 50 questions, panneaux complets, marquages au sol, 
+        conditions de conduite, usagers vulnerables, pieges rares et secours.
+      </p>
     </div>
     <div class="actions">
       <button class="primary" onclick="showQuiz()">Quiz rapide</button>
@@ -68,7 +72,7 @@
 
         <button class="practice" onclick="showRepo()">
           <span class="practice-icon">📕</span>
-          <span class="practice-copy"><b>Repertoire panneaux</b><small>Recherche et signalisation complete</small></span>
+          <span class="practice-copy"><b>Repertoire panneaux</b><small>Signalisation complete</small></span>
           <span class="arrow">→</span>
         </button>
 
@@ -80,19 +84,37 @@
 
         <button class="practice" onclick="showMatiereAuto()">
           <span class="practice-icon">🔧</span>
-          <span class="practice-copy"><b>Technique, Tunnels & Voiture</b><small>Niveaux, masses, securite et secours</small></span>
+          <span class="practice-copy"><b>Technique, Tunnels & Secours</b><small>Niveaux, masses, securite, PLS</small></span>
           <span class="arrow">→</span>
         </button>
 
         <button class="practice" onclick="showPiegesRoutes()">
           <span class="practice-icon">⚠</span>
-          <span class="practice-copy"><b>Pieges & Zones grises</b><small>Stationnement, feux verts, autoroute</small></span>
+          <span class="practice-copy"><b>Pieges & Zones grises</b><small>Stationnement, feux, autoroute</small></span>
           <span class="arrow">→</span>
         </button>
 
         <button class="practice" onclick="showUsagersManoeuvres()">
           <span class="practice-icon">🚲</span>
-          <span class="practice-copy"><b>Usagers, Manoeuvres & Permis</b><small>Cyclistes, regles de manoeuvre et nuit</small></span>
+          <span class="practice-copy"><b>Usagers & Manoeuvres</b><small>Cyclistes, PMR, cavaliers, nuit</small></span>
+          <span class="arrow">→</span>
+        </button>
+
+        <button class="practice" onclick="showMarquages()">
+          <span class="practice-icon">🛣</span>
+          <span class="practice-copy"><b>Marquages au sol</b><small>Lignes, passages, sas velo</small></span>
+          <span class="arrow">→</span>
+        </button>
+
+        <button class="practice" onclick="showConditions()">
+          <span class="practice-icon">🌧</span>
+          <span class="practice-copy"><b>Conditions de conduite</b><small>Pluie, neige, brouillard, tunnels</small></span>
+          <span class="arrow">→</span>
+        </button>
+
+        <button class="practice" onclick="showInfractions()">
+          <span class="practice-icon">⚖</span>
+          <span class="practice-copy"><b>Infractions & Amendes</b><small>Degres, sanctions, tribunal</small></span>
           <span class="arrow">→</span>
         </button>
       </div>
@@ -114,17 +136,20 @@
         <button onclick="showUsagersManoeuvres()">🚲 Usagers vulnerables <span>›</span></button>
         <button onclick="showInfractions()">⚖ Infractions <span>›</span></button>
         <button onclick="showPiegesRoutes()">⚠ Pieges <span>›</span></button>
-        <button onclick="showMatiereAuto()">🔧 Technique <span>›</span></button>
+        <button onclick="showMatiereAuto()">🔧 Technique & Secours <span>›</span></button>
+        <button onclick="showMarquages()">🛣 Marquages <span>›</span></button>
+        <button onclick="showConditions()">🌧 Conditions <span>›</span></button>
       </div>
       <div class="panel tip">
         <h3>📙 Le savais-tu ?</h3>
-        <p>Le feu vert ne donne pas le droit de renverser un pieton.</p>
+        <p>Le feu vert ne donne pas le droit de renverser un pieton. Ceder toujours le passage si vous coupez sa trajectoire.</p>
       </div>
     </aside>
   </div>
 </section>
 
-<!-- QUIZ -->
+<!-- ================= QUIZ ================= -->
+
 <section id="quiz" class="view hidden">
   <div id="quizConfig" class="content">
     <h2 class="section-title">Configure ta session</h2>
@@ -175,7 +200,8 @@
   </div>
 </section>
 
-<!-- REPERTOIRE -->
+<!-- ================= REPERTOIRE PANNEAUX ================= -->
+
 <section id="repo" class="view hidden">
   <div class="content">
     <h2 class="section-title">Repertoire des panneaux</h2>
@@ -185,7 +211,8 @@
   </div>
 </section>
 
-<!-- INFRACTIONS -->
+<!-- ================= INFRACTIONS ================= -->
+
 <section id="infractions" class="view hidden">
   <div class="content">
     <h2 class="section-title">Infractions, degres & amendes</h2>
@@ -195,7 +222,8 @@
   </div>
 </section>
 
-<!-- REGLES -->
+<!-- ================= REGLES D'OR ================= -->
+
 <section id="rules" class="view hidden">
   <div class="content">
     <h2 class="section-title">Regles d'or & priorites</h2>
@@ -205,33 +233,58 @@
   </div>
 </section>
 
-<!-- TECHNIQUE -->
+<!-- ================= TECHNIQUE & VOITURE ================= -->
+
 <section id="matiereAuto" class="view hidden">
   <div class="content">
     <h2 class="section-title">Technique, Tunnels & Securite</h2>
-    <p class="muted">Controles, equipements, eco-conduite et secours.</p>
-    <input id="autoSearch" class="search" placeholder="Huile, tunnel, secours..." oninput="renderMatiereAuto()">
+    <p class="muted">Controles, equipements, eco-conduite, PLS, massage cardiaque.</p>
+    <input id="autoSearch" class="search" placeholder="Huile, tunnel, secours, PLS..." oninput="renderMatiereAuto()">
     <div id="autoList"></div>
   </div>
 </section>
 
-<!-- PIEGES -->
+<!-- ================= PIEGES ================= -->
+
 <section id="piegesRoutes" class="view hidden">
   <div class="content">
     <h2 class="section-title">Pieges subtils & Zones grises</h2>
-    <p class="muted">Stationnement, feux verts, autoroute, disque bleu.</p>
-    <input id="piegeSearch" class="search" placeholder="5 metres, feux, autoroute..." oninput="renderPiegesRoutes()">
+    <p class="muted">Stationnement 5m, feux verts, autoroute, disque bleu.</p>
+    <input id="piegeSearch" class="search" placeholder="5 metres, feux, autoroute, disque..." oninput="renderPiegesRoutes()">
     <div id="piegeList"></div>
   </div>
 </section>
 
-<!-- USAGERS -->
+<!-- ================= USAGERS & MANOEUVRES ================= -->
+
 <section id="usagersManoeuvres" class="view hidden">
   <div class="content">
     <h2 class="section-title">Usagers vulnerables, Manoeuvres & Permis</h2>
-    <p class="muted">Cyclistes, regles des manoeuvres, pentes, nuit.</p>
-    <input id="usagerSearch" class="search" placeholder="Cycliste, manoeuvre, pente..." oninput="renderUsagersManoeuvres()">
+    <p class="muted">Cyclistes, PMR, cavaliers, regles de manoeuvre, pentes, restrictions nuit.</p>
+    <input id="usagerSearch" class="search" placeholder="Cycliste, PMR, manoeuvre, pente, nuit..." oninput="renderUsagersManoeuvres()">
     <div id="usagerList"></div>
+  </div>
+</section>
+
+<!-- ================= MARQUAGES AU SOL ================= -->
+
+<section id="marquages" class="view hidden">
+  <div class="content">
+    <h2 class="section-title">Marquages au sol</h2>
+    <p class="muted">Lignes continues, discontinues, mixtes, passages pietons, sas velo, fleches de rabattement.</p>
+    <input id="marquageSearch" class="search" placeholder="Ligne continue, passage pieton, sas velo..." oninput="renderMarquages()">
+    <div id="marquageList"></div>
+  </div>
+</section>
+
+<!-- ================= CONDITIONS DE CONDUITE ================= -->
+
+<section id="conditions" class="view hidden">
+  <div class="content">
+    <h2 class="section-title">Conditions de conduite</h2>
+    <p class="muted">Pluie, neige, verglas, brouillard, nuit, tunnels, montagne, vent fort.</p>
+    <input id="conditionSearch" class="search" placeholder="Pluie, neige, brouillard, tunnel, nuit..." oninput="renderConditions()">
+    <div id="conditionList"></div>
   </div>
 </section>
 
