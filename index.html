@@ -129,6 +129,15 @@
           <span class="arrow">→</span>
         </button>
 
+        <button class="practice" onclick="showPiegesRoutes()">
+          <span class="practice-icon">⚠️</span>
+          <span class="practice-copy">
+            <b>Pièges & Priorités</b>
+            <small>Erreurs classiques et priorités subtiles</small>
+          </span>
+          <span class="arrow">→</span>
+        </button>
+
       </div>
 
       <div class="panel progress">
@@ -187,6 +196,11 @@
 
         <button onclick="showMatiereAuto()">
           🔧 Technique voiture
+          <span>›</span>
+        </button>
+
+        <button onclick="showPiegesRoutes()">
+          ⚠️ Pièges prioritaires
           <span>›</span>
         </button>
 
@@ -466,6 +480,33 @@
     >
 
     <div id="autoList"></div>
+
+  </div>
+
+</section>
+
+<!-- ================= PIÈGES & PRIORITÉS ================= -->
+
+<section id="piegesRoutes" class="view hidden">
+
+  <div class="content">
+
+    <h2 class="section-title">
+      Pièges & Priorités à éviter
+    </h2>
+
+    <p class="muted">
+      Les situations ambiguës et les erreurs classiques qui coûtent cher à l'examen.
+    </p>
+
+    <input
+      id="piegeSearch"
+      class="search"
+      placeholder="Droite, rond-point, piéton, tram..."
+      oninput="renderPiegesRoutes()"
+    >
+
+    <div id="piegeList"></div>
 
   </div>
 
