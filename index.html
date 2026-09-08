@@ -4,242 +4,143 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#171a1f">
-<title>Code de la route — Belgique (Expert Intégral)</title>
+<title>Code de la route Belgique - Expert</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header class="top">
-  <div class="brand" onclick="goHome()">Code de la route — Expert</div>
-  <button id="homeButton" class="home-btn" onclick="goHome()">🏠 Accueil</button>
+  <div class="brand" onclick="goHome()">Code de la route - Expert</div>
+  <button id="homeButton" class="home-btn" onclick="goHome()">Accueil</button>
 </header>
 
 <div class="lane"></div>
-<div class="offline">📡 Mode Expert & Pièges Rares Actif</div>
+<div class="offline">Mode Expert Actif</div>
 
 <main class="app">
 
-<!-- ================= ACCUEIL ================= -->
-
+<!-- ACCUEIL -->
 <section id="home" class="view">
 
   <div class="hero">
     <div>
-      <div class="eyebrow">PERMIS THÉORIQUE • BELGIQUE (GOCA)</div>
-      <h1>Maîtrise absolue du Code de la route</h1>
-      <p>
-        Examen blanc officiel 50 questions, fiches sur les usagers vulnérables, manœuvres, éco-conduite et pièges rares.
-      </p>
+      <div class="eyebrow">PERMIS THEORIQUE - BELGIQUE</div>
+      <h1>Maitrise du Code de la route</h1>
+      <p>Examen blanc officiel 50 questions, fiches sur les usagers vulnerables, manoeuvres, eco-conduite et pieges rares.</p>
     </div>
-
     <div class="actions">
-      <button class="primary" onclick="showQuiz()">⚡ Quiz rapide</button>
-      <button class="theme" onclick="toggleTheme()" aria-label="Changer le thème" id="themeButton">☀️</button>
+      <button class="primary" onclick="showQuiz()">Quiz rapide</button>
+      <button class="theme" onclick="toggleTheme()" id="themeButton">☀</button>
     </div>
   </div>
 
   <div class="stats">
-    <div class="stat">
-      <i>📁</i>
-      <div>
-        <b id="statSessions">0</b>
-        <span>Sessions</span>
-      </div>
-    </div>
-    <div class="stat">
-      <i>📊</i>
-      <div>
-        <b id="statSuccess">0%</b>
-        <span>Réussite</span>
-      </div>
-    </div>
-    <div class="stat">
-      <i>⭐</i>
-      <div>
-        <b id="statFavs">0</b>
-        <span>Favoris</span>
-      </div>
-    </div>
-    <div class="stat">
-      <i>🧠</i>
-      <div>
-        <b id="statQuestions">0</b>
-        <span>Questions</span>
-      </div>
-    </div>
+    <div class="stat"><i>📁</i><div><b id="statSessions">0</b><span>Sessions</span></div></div>
+    <div class="stat"><i>📊</i><div><b id="statSuccess">0%</b><span>Reussite</span></div></div>
+    <div class="stat"><i>⭐</i><div><b id="statFavs">0</b><span>Favoris</span></div></div>
+    <div class="stat"><i>🧠</i><div><b id="statQuestions">0</b><span>Questions</span></div></div>
   </div>
 
   <div class="grid">
-
     <div>
-      <h2 class="section-title">Modules d'entraînement</h2>
-      <p class="muted">Choisis ton format de révision.</p>
+      <h2 class="section-title">Modules d'entrainement</h2>
+      <p class="muted">Choisis ton format de revision.</p>
 
       <div class="practice-grid">
-
         <button class="practice" onclick="startOfficialExam()">
           <span class="practice-icon">📚</span>
-          <span class="practice-copy">
-            <b>Examen Blanc Officiel</b>
-            <small>50 questions, conditions réelles (max 9 fautes)</small>
-          </span>
+          <span class="practice-copy"><b>Examen Blanc Officiel</b><small>50 questions, conditions reelles</small></span>
           <span class="arrow">→</span>
         </button>
 
         <button class="practice" onclick="showQuiz()">
           <span class="practice-icon">⚡</span>
-          <span class="practice-copy">
-            <b>Quiz thématique</b>
-            <small>Personnalisable par catégorie</small>
-          </span>
+          <span class="practice-copy"><b>Quiz thematique</b><small>Personnalisable par categorie</small></span>
           <span class="arrow">→</span>
         </button>
 
         <button class="practice" onclick="startReview()">
           <span class="practice-icon">⭐</span>
-          <span class="practice-copy">
-            <b>Révision ciblée</b>
-            <small>Favoris et erreurs enregistrées</small>
-          </span>
+          <span class="practice-copy"><b>Revision ciblee</b><small>Favoris et erreurs enregistrees</small></span>
           <span class="arrow">→</span>
         </button>
 
         <button class="practice" onclick="showRepo()">
           <span class="practice-icon">📕</span>
-          <span class="practice-copy">
-            <b>Répertoire panneaux</b>
-            <small>Recherche et signalisation complète</small>
-          </span>
+          <span class="practice-copy"><b>Repertoire panneaux</b><small>Recherche et signalisation complete</small></span>
           <span class="arrow">→</span>
         </button>
 
         <button class="practice" onclick="showRules()">
           <span class="practice-icon">📙</span>
-          <span class="practice-copy">
-            <b>Règles d'or</b>
-            <small>Priorités et situations clés</small>
-          </span>
+          <span class="practice-copy"><b>Regles d'or</b><small>Priorites et situations cles</small></span>
           <span class="arrow">→</span>
         </button>
 
         <button class="practice" onclick="showMatiereAuto()">
           <span class="practice-icon">🔧</span>
-          <span class="practice-copy">
-            <b>Technique, Tunnels & Voiture</b>
-            <small>Niveaux, masses, sécurité et premier secours</small>
-          </span>
+          <span class="practice-copy"><b>Technique, Tunnels & Voiture</b><small>Niveaux, masses, securite et secours</small></span>
           <span class="arrow">→</span>
         </button>
 
         <button class="practice" onclick="showPiegesRoutes()">
-          <span class="practice-icon">⚠️</span>
-          <span class="practice-copy">
-            <b>Pièges & Zones grises</b>
-            <small>Stationnement 5m/15m, feux verts/piétons et autoroute</small>
-          </span>
+          <span class="practice-icon">⚠</span>
+          <span class="practice-copy"><b>Pieges & Zones grises</b><small>Stationnement, feux verts, autoroute</small></span>
           <span class="arrow">→</span>
         </button>
 
         <button class="practice" onclick="showUsagersManoeuvres()">
           <span class="practice-icon">🚲</span>
-          <span class="practice-copy">
-            <b>Usagers, Manœuvres & Permis</b>
-            <small>Cyclistes, règles strictes de manœuvre et nuit</small>
-          </span>
+          <span class="practice-copy"><b>Usagers, Manoeuvres & Permis</b><small>Cyclistes, regles de manoeuvre et nuit</small></span>
           <span class="arrow">→</span>
         </button>
-
       </div>
 
       <div class="panel progress">
         <div class="progress-top">
-          <div>
-            <b>Ta progression globale</b>
-            <div class="muted">Entraîne-toi régulièrement pour valider ton examen.</div>
-          </div>
+          <div><b>Ta progression globale</b><div class="muted">Entraine-toi regulierement.</div></div>
           <strong id="progressPercent">0%</strong>
         </div>
-        <div class="bar">
-          <span id="progressBar"></span>
-        </div>
-        <div class="meta">
-          <span id="progressText">Aucune session pour le moment</span>
-          <span>🔥 <b id="streak">0</b></span>
-        </div>
+        <div class="bar"><span id="progressBar"></span></div>
+        <div class="meta"><span id="progressText">Aucune session</span><span>🔥 <b id="streak">0</b></span></div>
       </div>
-
     </div>
 
     <aside>
       <div class="panel quick">
-        <h3>⚡ Actions rapides</h3>
-        <button onclick="startOfficialExam()">
-          📚 Lancer l'examen blanc (50Q)
-          <span>›</span>
-        </button>
-        <button onclick="showUsagersManoeuvres()">
-          🚲 Usagers vulnérables & Manœuvres
-          <span>›</span>
-        </button>
-        <button onclick="showInfractions()">
-          ⚖️ Infractions & amendes
-          <span>›</span>
-        </button>
-        <button onclick="showPiegesRoutes()">
-          ⚠️ Pièges & zones grises
-          <span>›</span>
-        </button>
-        <button onclick="showMatiereAuto()">
-          🔧 Technique voiture
-          <span>›</span>
-        </button>
+        <h3>Actions rapides</h3>
+        <button onclick="startOfficialExam()">📚 Examen blanc (50Q) <span>›</span></button>
+        <button onclick="showUsagersManoeuvres()">🚲 Usagers vulnerables <span>›</span></button>
+        <button onclick="showInfractions()">⚖ Infractions <span>›</span></button>
+        <button onclick="showPiegesRoutes()">⚠ Pieges <span>›</span></button>
+        <button onclick="showMatiereAuto()">🔧 Technique <span>›</span></button>
       </div>
-
       <div class="panel tip">
-        <h3>📙 Le savais-tu ? (Examen GOCA)</h3>
-        <p id="tipText">
-          À l'examen officiel, le feu vert ne vous donne pas le droit de renverser un piéton : cédez toujours le passage si vous coupez sa trajectoire !
-        </p>
+        <h3>📙 Le savais-tu ?</h3>
+        <p>Le feu vert ne donne pas le droit de renverser un pieton.</p>
       </div>
     </aside>
-
   </div>
-
 </section>
 
-<!-- ================= QUIZ ================= -->
-
+<!-- QUIZ -->
 <section id="quiz" class="view hidden">
-
   <div id="quizConfig" class="content">
-    <h2 class="section-title">Configure ta session d'entraînement</h2>
-    <p class="muted">Sélectionne les catégories et le nombre de questions.</p>
-
+    <h2 class="section-title">Configure ta session</h2>
+    <p class="muted">Selectionne les categories et le nombre de questions.</p>
     <div id="categoryGrid" class="cat-grid"></div>
-
     <div class="config">
-      <div>
-        <b>⏱️ Chronomètre par question</b>
-        <div class="muted">15 secondes par question (conditions examen)</div>
-      </div>
+      <div><b>⏱ Chronometre</b><div class="muted">15 secondes par question</div></div>
       <input id="timerEnabled" type="checkbox" style="width:20px;height:20px;accent-color:var(--red)">
     </div>
-
     <div class="field-row">
-      <label>
-        Nombre de questions
-        <span id="questionCountValue" style="color:var(--red2)">15</span>
-      </label>
+      <label>Nombre de questions <span id="questionCountValue" style="color:var(--red2)">15</span></label>
       <input id="questionCount" class="range" type="range" min="1" max="25" value="15">
     </div>
-
-    <div id="quizWarning" class="empty hidden">Pas assez de panneaux dans cette sélection.</div>
-
-    <button class="primary" style="width:100%" onclick="startQuiz()">Démarrer le quiz thématique</button>
-    <button id="reviewButton" class="danger" style="width:100%;margin-top:9px" onclick="startReview()">
-      ⭐ Revoir mes favoris & erreurs (<span id="reviewCount">0</span>)
-    </button>
+    <div id="quizWarning" class="empty hidden">Pas assez de panneaux.</div>
+    <button class="primary" style="width:100%" onclick="startQuiz()">Demarrer le quiz</button>
+    <button class="danger" style="width:100%;margin-top:9px" onclick="startReview()">⭐ Revoir favoris & erreurs (<span id="reviewCount">0</span>)</button>
   </div>
 
   <div id="quizRunning" class="content hidden">
@@ -247,99 +148,89 @@
     <div class="quiz-top">
       <span id="quizProgress">Question 1 / 15</span>
       <span id="timerDisplay" class="timer hidden">⏱ 15s</span>
-      <button id="favoriteButton" class="fav-btn" onclick="toggleFavorite()" aria-label="Ajouter aux favoris">☆</button>
+      <button id="favoriteButton" class="fav-btn" onclick="toggleFavorite()">☆</button>
       <span id="quizScore">Score : 0</span>
     </div>
     <div id="signStage" class="sign-stage"></div>
     <div id="signCaption" class="sign-caption"></div>
-    <div class="question">Quelle est la désignation exacte de ce panneau ou la règle applicable ?</div>
+    <div class="question">Quelle est la designation exacte de ce panneau ?</div>
     <div id="optionList" class="options"></div>
     <div id="feedbackZone"></div>
     <div id="nextButtonZone" class="next"></div>
   </div>
 
   <div id="quizSummary" class="content hidden">
-    <h2 id="summaryTitle" class="section-title">Session terminée</h2>
+    <h2 id="summaryTitle" class="section-title">Session terminee</h2>
     <div class="score">
-      <div class="score-ring">
-        <strong id="summaryPercent">0%</strong>
-        <span id="summaryFraction">0 / 0</span>
-      </div>
+      <div class="score-ring"><strong id="summaryPercent">0%</strong><span id="summaryFraction">0/0</span></div>
     </div>
     <p id="summaryMessage" class="muted" style="text-align:center"></p>
     <div id="categoryResults"></div>
     <div id="errorResults"></div>
     <div class="action-row">
       <button class="ghost" onclick="configureQuiz()">Nouvelle config</button>
-      <button class="ghost" onclick="replayQuiz()">Refaire la session</button>
+      <button class="ghost" onclick="replayQuiz()">Refaire</button>
     </div>
     <div id="reviewErrorsZone" style="margin-top:9px"></div>
   </div>
-
 </section>
 
-<!-- ================= REPERTOIRE ================= -->
-
+<!-- REPERTOIRE -->
 <section id="repo" class="view hidden">
   <div class="content">
-    <h2 class="section-title">Répertoire des panneaux</h2>
+    <h2 class="section-title">Repertoire des panneaux</h2>
     <p id="repoCount" class="muted"></p>
-    <input id="repoSearch" class="search" placeholder="Code, nom, catégorie..." oninput="renderRepository()">
+    <input id="repoSearch" class="search" placeholder="Code, nom, categorie..." oninput="renderRepository()">
     <div id="repoList"></div>
   </div>
 </section>
 
-<!-- ================= INFRACTIONS ================= -->
-
+<!-- INFRACTIONS -->
 <section id="infractions" class="view hidden">
   <div class="content">
-    <h2 class="section-title">Infractions, degrés & amendes</h2>
-    <p class="muted">Barème officiel des infractions et retraits de permis en Belgique.</p>
-    <input id="infractionSearch" class="search" placeholder="GSM, degré, alcool, vitesse..." oninput="renderInfractions()">
+    <h2 class="section-title">Infractions, degres & amendes</h2>
+    <p class="muted">Bareme officiel des infractions en Belgique.</p>
+    <input id="infractionSearch" class="search" placeholder="GSM, degre, alcool, vitesse..." oninput="renderInfractions()">
     <div id="infractionList"></div>
   </div>
 </section>
 
-<!-- ================= REGLES ================= -->
-
+<!-- REGLES -->
 <section id="rules" class="view hidden">
   <div class="content">
-    <h2 class="section-title">Règles d'or & priorités</h2>
-    <p class="muted">Les fondamentaux indispensables de la circulation routière.</p>
-    <input id="ruleSearch" class="search" placeholder="priorité, tram, rond-point..." oninput="renderRules()">
+    <h2 class="section-title">Regles d'or & priorites</h2>
+    <p class="muted">Les fondamentaux de la circulation routiere.</p>
+    <input id="ruleSearch" class="search" placeholder="priorite, tram, rond-point..." oninput="renderRules()">
     <div id="ruleList"></div>
   </div>
 </section>
 
-<!-- ================= TECHNIQUE & VOITURE ================= -->
-
+<!-- TECHNIQUE -->
 <section id="matiereAuto" class="view hidden">
   <div class="content">
-    <h2 class="section-title">Technique, Tunnels & Sécurité de la voiture</h2>
-    <p class="muted">Niveaux, contrôles, équipements obligatoires, éco-conduite et premiers secours.</p>
-    <input id="autoSearch" class="search" placeholder="Huile, tunnel, éco-conduite, secours..." oninput="renderMatiereAuto()">
+    <h2 class="section-title">Technique, Tunnels & Securite</h2>
+    <p class="muted">Controles, equipements, eco-conduite et secours.</p>
+    <input id="autoSearch" class="search" placeholder="Huile, tunnel, secours..." oninput="renderMatiereAuto()">
     <div id="autoList"></div>
   </div>
 </section>
 
-<!-- ================= PIEGES & ZONES GRISES ================= -->
-
+<!-- PIEGES -->
 <section id="piegesRoutes" class="view hidden">
   <div class="content">
-    <h2 class="section-title">Pièges subtils & Zones grises du Code</h2>
-    <p class="muted">Stationnement 5m/15m, feux verts vs piétons, autoroute et disque bleu.</p>
-    <input id="piegeSearch" class="search" placeholder="5 mètres, feux verts, autoroute, disque..." oninput="renderPiegesRoutes()">
+    <h2 class="section-title">Pieges subtils & Zones grises</h2>
+    <p class="muted">Stationnement, feux verts, autoroute, disque bleu.</p>
+    <input id="piegeSearch" class="search" placeholder="5 metres, feux, autoroute..." oninput="renderPiegesRoutes()">
     <div id="piegeList"></div>
   </div>
 </section>
 
-<!-- ================= USAGERS & MANOEUVRES ================= -->
-
+<!-- USAGERS -->
 <section id="usagersManoeuvres" class="view hidden">
   <div class="content">
-    <h2 class="section-title">Usagers vulnérables, Manœuvres & Permis</h2>
-    <p class="muted">Cyclistes, règles juridiques des manœuvres, pentes et restrictions de nuit.</p>
-    <input id="usagerSearch" class="search" placeholder="Cycliste, manœuvre, pente, nuit..." oninput="renderUsagersManoeuvres()">
+    <h2 class="section-title">Usagers vulnerables, Manoeuvres & Permis</h2>
+    <p class="muted">Cyclistes, regles des manoeuvres, pentes, nuit.</p>
+    <input id="usagerSearch" class="search" placeholder="Cycliste, manoeuvre, pente..." oninput="renderUsagersManoeuvres()">
     <div id="usagerList"></div>
   </div>
 </section>
