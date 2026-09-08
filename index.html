@@ -11,12 +11,15 @@
 <body>
 
 <header class="top">
-  <div class="brand" onclick="goHome()">Code de la route - Expert</div>
-  <button id="homeButton" class="home-btn" onclick="goHome()">Accueil</button>
+  <div class="brand" onclick="goHome()">🚗 Code de la route - Expert</div>
+  <div style="display: flex; gap: 8px;">
+    <button class="home-btn" onclick="showMenu()">📋 Menu</button>
+    <button class="home-btn" onclick="goHome()">🏠 Accueil</button>
+  </div>
 </header>
 
 <div class="lane"></div>
-<div class="offline">Mode Expert - 435+ elements</div>
+<div class="offline">Mode Expert - 470+ elements</div>
 
 <main class="app">
 
@@ -29,12 +32,13 @@
       <div class="eyebrow">PERMIS THEORIQUE - BELGIQUE (GOCA) - VERSION COMPLETE</div>
       <h1>Maitrise totale du Code de la route</h1>
       <p>
-        Examen blanc officiel 50 questions, panneaux complets, marquages, mecanique,
-        pneumatiques, saisons, secours, legal, conditions extremes.
+        Examen blanc officiel 50 questions, 7 categories principales, 470+ elements
+        couvrant 100% du programme officiel belge.
       </p>
     </div>
     <div class="actions">
-      <button class="primary" onclick="showQuiz()">Quiz rapide</button>
+      <button class="primary" onclick="showMenu()">📋 Voir le menu</button>
+      <button class="primary" onclick="startOfficialExam()">📚 Examen blanc</button>
       <button class="theme" onclick="toggleTheme()" id="themeButton">☀</button>
     </div>
   </div>
@@ -70,93 +74,21 @@
           <span class="arrow">→</span>
         </button>
 
-        <button class="practice" onclick="showRepo()">
-          <span class="practice-icon">📕</span>
-          <span class="practice-copy"><b>Panneaux & Signalisation</b><small>97+ panneaux complets</small></span>
-          <span class="arrow">→</span>
-        </button>
-
-        <button class="practice" onclick="showRules()">
-          <span class="practice-icon">📙</span>
-          <span class="practice-copy"><b>Regles & Priorites</b><small>Regles d'or, feux, agents</small></span>
-          <span class="arrow">→</span>
-        </button>
-
-        <button class="practice" onclick="showMecanique()">
-          <span class="practice-icon">🔧</span>
-          <span class="practice-copy"><b>Mecanique & Moteur</b><small>60 elements - moteur, freins, direction</small></span>
-          <span class="arrow">→</span>
-        </button>
-
-        <button class="practice" onclick="showPneumatiques()">
-          <span class="practice-icon">🛞</span>
-          <span class="practice-copy"><b>Pneumatiques & Jantes</b><small>40 elements - pneus, saisons, entretien</small></span>
-          <span class="arrow">→</span>
-        </button>
-
-        <button class="practice" onclick="showSaisons()">
-          <span class="practice-icon">❄️</span>
-          <span class="practice-copy"><b>Saisons & Environnement</b><small>30 elements - hiver, ete, montagne</small></span>
-          <span class="arrow">→</span>
-        </button>
-
-        <button class="practice" onclick="showSecours()">
-          <span class="practice-icon">🚑</span>
-          <span class="practice-copy"><b>Secours & Urgence</b><small>25 elements - PLS, massage, balisage</small></span>
-          <span class="arrow">→</span>
-        </button>
-
-        <button class="practice" onclick="showLegal()">
-          <span class="practice-icon">⚖️</span>
-          <span class="practice-copy"><b>Legal & Administratif</b><small>30 elements - permis, assurance, amendes</small></span>
-          <span class="arrow">→</span>
-        </button>
-
-        <button class="practice" onclick="showEquipements()">
-          <span class="practice-icon">💡</span>
-          <span class="practice-copy"><b>Equipements & Accessoires</b><small>20 elements - eclairage, securite</small></span>
-          <span class="arrow">→</span>
-        </button>
-
-        <button class="practice" onclick="showMarquages()">
-          <span class="practice-icon">🛣</span>
-          <span class="practice-copy"><b>Marquages au sol</b><small>20 elements - lignes, passages, sas</small></span>
-          <span class="arrow">→</span>
-        </button>
-
-        <button class="practice" onclick="showConditions()">
-          <span class="practice-icon">🌧</span>
-          <span class="practice-copy"><b>Conditions extremes</b><small>45 elements - montagne, chaud, froid</small></span>
-          <span class="arrow">→</span>
-        </button>
-
-        <button class="practice" onclick="showVehicules()">
-          <span class="practice-icon">🚗</span>
-          <span class="practice-copy"><b>Vehicules specifiques</b><small>25 elements - moto, poids lourds, remorque</small></span>
-          <span class="arrow">→</span>
-        </button>
-
-        <button class="practice" onclick="showPsychologie()">
-          <span class="practice-icon">🧠</span>
-          <span class="practice-copy"><b>Psychologie & Stats</b><small>20 elements - fatigue, stress, chiffres</small></span>
+        <button class="practice" onclick="showMenu()">
+          <span class="practice-icon">📋</span>
+          <span class="practice-copy"><b>Menu complet</b><small>7 categories principales</small></span>
           <span class="arrow">→</span>
         </button>
 
         <button class="practice" onclick="showInfractions()">
           <span class="practice-icon">⚖</span>
-          <span class="practice-copy"><b>Infractions & Amendes</b><small>27 infractions</small></span>
+          <span class="practice-copy"><b>Infractions & Amendes</b><small>27 infractions, degres, sanctions</small></span>
           <span class="arrow">→</span>
         </button>
 
         <button class="practice" onclick="showPiegesRoutes()">
           <span class="practice-icon">⚠</span>
-          <span class="practice-copy"><b>Pieges & Zones grises</b><small>10 pieges</small></span>
-          <span class="arrow">→</span>
-        </button>
-
-        <button class="practice" onclick="showUsagersManoeuvres()">
-          <span class="practice-icon">🚲</span>
-          <span class="practice-copy"><b>Usagers & Manoeuvres</b><small>10 elements</small></span>
+          <span class="practice-copy"><b>Pieges & Zones grises</b><small>10 pieges classiques</small></span>
           <span class="arrow">→</span>
         </button>
       </div>
@@ -174,19 +106,54 @@
     <aside>
       <div class="panel quick">
         <h3>Actions rapides</h3>
+        <button onclick="showMenu()">📋 Menu complet <span>›</span></button>
         <button onclick="startOfficialExam()">📚 Examen blanc (50Q) <span>›</span></button>
-        <button onclick="showMecanique()">🔧 Mecanique <span>›</span></button>
-        <button onclick="showPneumatiques()">🛞 Pneumatiques <span>›</span></button>
-        <button onclick="showSecours()">🚑 Secours <span>›</span></button>
-        <button onclick="showLegal()">⚖️ Legal <span>›</span></button>
-        <button onclick="showConditions()">🌧 Conditions extremes <span>›</span></button>
         <button onclick="showInfractions()">⚖ Infractions <span>›</span></button>
+        <button onclick="showPiegesRoutes()">⚠ Pieges <span>›</span></button>
+        <button onclick="showSecours()">🚑 Secours <span>›</span></button>
       </div>
       <div class="panel tip">
         <h3>📙 Le savais-tu ?</h3>
         <p>Le feu vert ne donne pas le droit de renverser un pieton. Ceder toujours le passage si vous coupez sa trajectoire.</p>
       </div>
     </aside>
+  </div>
+</section>
+
+<!-- ================= MENU PRINCIPAL ================= -->
+
+<section id="menu" class="view hidden">
+  <div class="content" style="padding: 0;">
+    <h2 class="section-title">📋 Guide complet du Code de la route</h2>
+    <p class="muted">7 categories principales couvrant 100% du programme officiel belge (470+ elements).</p>
+    <div id="menuGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin-top: 16px;"></div>
+  </div>
+</section>
+
+<!-- ================= PAGE CATEGORIE ================= -->
+
+<section id="categoriePage" class="view hidden">
+  <div class="content" style="padding: 0;">
+    <button class="ghost" onclick="showMenu()" style="margin-bottom: 14px;">← Retour au menu</button>
+    <h2 id="categorieTitle" class="section-title"></h2>
+    <p id="categorieDesc" class="muted"></p>
+    <div id="sousCategorieGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin-top: 16px;"></div>
+    <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+      <button class="primary" onclick="quizCategorie()">📝 Quiz sur cette categorie</button>
+      <button class="ghost" onclick="examenCategorie()">📚 Examen blanc (50Q)</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PAGE SOUS-CATEGORIE ================= -->
+
+<section id="sousCategoriePage" class="view hidden">
+  <div class="content" style="padding: 0;">
+    <button class="ghost" onclick="showCategorieBack()" style="margin-bottom: 14px;">← Retour</button>
+    <h2 id="sousCategorieTitle" class="section-title"></h2>
+    <p id="sousCategorieDesc" class="muted"></p>
+    <input id="sousCategorieSearch" class="search" placeholder="Rechercher..." oninput="renderSousCategorie()">
+    <div id="sousCategorieList" style="margin-top: 10px;"></div>
   </div>
 </section>
 
