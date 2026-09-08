@@ -157,10 +157,7 @@ var PANNEAUX_S = [
 ];
 
 // ---- FUSION DE TOUS LES PANNEAUX ----
-var PANNEAUX = [].concat(
-    PANNEAUX_A, PANNEAUX_B, PANNEAUX_C, PANNEAUX_D,
-    PANNEAUX_E, PANNEAUX_F, PANNEAUX_X, PANNEAUX_T, PANNEAUX_S
-);
+var PANNEAUX = [].concat(PANNEAUX_A, PANNEAUX_B, PANNEAUX_C, PANNEAUX_D, PANNEAUX_E, PANNEAUX_F, PANNEAUX_X, PANNEAUX_T, PANNEAUX_S);
 
 // ---- MECANIQUE MOTEUR (60 elements) ----
 var MECANIQUE_MOTEUR = [
@@ -613,25 +610,25 @@ var ALL_KNOWLEDGE = [].concat(
 
 // ---- CATEGORIES COMPLETES ----
 var CATEGORIES = {
-    A:{label:"Danger",color:"var(--red)"},
-    B:{label:"Priorite",color:"var(--amber)"},
-    C:{label:"Interdiction",color:"var(--red)"},
-    D:{label:"Obligation",color:"var(--blue)"},
-    E:{label:"Stationnement",color:"var(--blue)"},
-    F:{label:"Indication",color:"var(--teal)"},
-    X:{label:"Panonceaux",color:"var(--purple)"},
-    T:{label:"Travaux",color:"var(--orange)"},
-    S:{label:"Service",color:"var(--green)"},
-    MECA:{label:"Mecanique",color:"var(--dark)"},
-    PNEU:{label:"Pneumatiques",color:"var(--dark)"},
-    SAI:{label:"Saisons",color:"var(--dark)"},
-    SEC:{label:"Secours",color:"var(--dark)"},
-    LEG:{label:"Legal",color:"var(--dark)"},
-    EQ:{label:"Equipements",color:"var(--dark)"},
-    MAR:{label:"Marquages",color:"var(--dark)"},
-    CND:{label:"Conditions extremes",color:"var(--dark)"},
-    VEH:{label:"Vehicules",color:"var(--dark)"},
-    PSY:{label:"Psychologie",color:"var(--dark)"}
+    A: { label: "Danger", color: "var(--red)" },
+    B: { label: "Priorite", color: "var(--amber)" },
+    C: { label: "Interdiction", color: "var(--red)" },
+    D: { label: "Obligation", color: "var(--blue)" },
+    E: { label: "Stationnement", color: "var(--blue)" },
+    F: { label: "Indication", color: "var(--teal)" },
+    X: { label: "Panonceaux", color: "var(--purple)" },
+    T: { label: "Travaux", color: "var(--orange)" },
+    S: { label: "Service", color: "var(--green)" },
+    MECA: { label: "Mecanique", color: "var(--dark)" },
+    PNEU: { label: "Pneumatiques", color: "var(--dark)" },
+    SAI: { label: "Saisons", color: "var(--dark)" },
+    SEC: { label: "Secours", color: "var(--dark)" },
+    LEG: { label: "Legal", color: "var(--dark)" },
+    EQ: { label: "Equipements", color: "var(--dark)" },
+    MAR: { label: "Marquages", color: "var(--dark)" },
+    CND: { label: "Conditions extremes", color: "var(--dark)" },
+    VEH: { label: "Vehicules", color: "var(--dark)" },
+    PSY: { label: "Psychologie", color: "var(--dark)" }
 };
 
 // ---- STRUCTURE DU MENU 7 CATEGORIES ----
@@ -650,7 +647,7 @@ var MENU_STRUCTURE = [
             { id: "E", label: "Stationnement", count: 3 },
             { id: "F", label: "Indication", count: 18 },
             { id: "X", label: "Panonceaux", count: 10 },
-            { id: "T", label: "Travaux", count:             { id: "T", label: "Travaux", count: 4 },
+            { id: "T", label: "Travaux", count: 4 },
             { id: "S", label: "Service", count: 9 }
         ],
         totalCount: 98,
@@ -1041,32 +1038,18 @@ function renderSousCategorie() {
     var results = data.filter(function(item) {
         var match = false;
         if (item.sousCat) {
-            // Verifier si la sous-categorie correspond
-            var catKeys = Object.keys(CATEGORIES);
-            for (var i = 0; i < catKeys.length; i++) {
-                var key = catKeys[i];
-                if (CATEGORIES[key].label === sc.label || key === sc.id) {
-                    if (item.cat === key) match = true;
-                }
-            }
-            // Verifier par le nom de la sous-categorie
             if (item.sousCat === sc.label) match = true;
         }
-        // Si l'element a un id qui commence par sc.id
         if (item.id && item.id.indexOf(sc.id) === 0) match = true;
-        // Si l'element a une categorie qui correspond
         if (item.cat === sc.id) match = true;
-        // Si pas de sousCat, on garde
         if (!item.sousCat && !item.id) match = true;
         return match;
     });
 
-    // Si aucun resultat, prendre tous les elements de la categorie
     if (results.length === 0) {
         results = data;
     }
 
-    // Appliquer la recherche
     if (query) {
         results = results.filter(function(item) {
             var searchStr = (item.titre || item.nom || "") + " " + (item.desc || "") + " " + (item.sousCat || "");
@@ -1396,4 +1379,354 @@ function startReview() {
     });
     var list = shuffle(Object.values(reviewMap));
     if (!list.length) { showQuiz(); return; }
-   
+    state.questions = list;
+    state.timer = false;
+    state.isOfficialExam = false;
+    beginSession(true);
+}
+
+function reviewErrors() {
+    state.questions = state.errors.map(function(error) { return error.panel; });
+    state.timer = false;
+    state.isOfficialExam = false;
+    beginSession(true);
+}
+
+// ---- SVG GENERATION ----
+function makeSignSVG(panel, small) {
+    small = small || false;
+    var ink = "#171a1f";
+    var content = "";
+    if (panel.cat === "A" || panel.cat === "T") {
+        var color = panel.cat === "T" ? "#ff8c00" : "#c81e2c";
+        content = '<polygon points="90,12 168,154 12,154" fill="#fff" stroke="' + color + '" stroke-width="12" stroke-linejoin="round"/>';
+        content += '<rect x="85" y="70" width="10" height="40" rx="3" fill="' + ink + '"/><circle cx="90" cy="122" r="5" fill="' + ink + '"/>';
+    } else if (panel.cat === "B") {
+        if (panel.code === "B1") {
+            content = '<polygon points="12,30 168,30 90,160" fill="#fff" stroke="#c81e2c" stroke-width="12" stroke-linejoin="round"/>';
+        } else if (panel.code === "B5") {
+            content = '<polygon points="60,10 120,10 170,60 170,120 120,170 60,170 10,120 10,60" fill="#c81e2c" stroke="#7a0f18" stroke-width="3" stroke-linejoin="round"/><text x="90" y="102" text-anchor="middle" font-size="' + (small ? 16 : 30) + '" font-weight="900" fill="#fff" font-family="Arial">STOP</text>';
+        } else {
+            content = '<polygon points="90,12 168,90 90,168 12,90" fill="#e8a400" stroke="' + ink + '" stroke-width="2.5"/>';
+        }
+    } else if (panel.cat === "C") {
+        if (panel.code === "C1") {
+            content = '<circle cx="90" cy="90" r="76" fill="#fff" stroke="#c81e2c" stroke-width="14"/>';
+        } else if (panel.code === "C3") {
+            content = '<circle cx="90" cy="90" r="76" fill="#c81e2c"/><rect x="30" y="76" width="120" height="28" rx="4" fill="#fff"/>';
+        } else if (panel.num) {
+            content = '<circle cx="90" cy="90" r="76" fill="#fff" stroke="#c81e2c" stroke-width="14"/><text x="90" y="108" text-anchor="middle" font-size="' + (small ? 22 : 52) + '" font-weight="900" fill="' + ink + '" font-family="Arial">' + escapeHTML(panel.num) + '</text>';
+        } else {
+            content = '<circle cx="90" cy="90" r="76" fill="#fff" stroke="#9aa1aa" stroke-width="3"/><line x1="35" y1="125" x2="125" y2="35" stroke="#4a4d52" stroke-width="8"/>';
+        }
+    } else if (panel.cat === "D") {
+        content = '<circle cx="90" cy="90" r="76" fill="#1c5fa8"/><path d="M90 130 V50 M65 75 L90 50 L115 75" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>';
+    } else if (panel.cat === "E") {
+        if (panel.code === "E1" || panel.code === "E3") {
+            content = '<circle cx="90" cy="90" r="76" fill="#1c5fa8" stroke="#c81e2c" stroke-width="12"/><line x1="35" y1="145" x2="145" y2="35" stroke="#c81e2c" stroke-width="12"/>';
+        } else {
+            content = '<rect x="12" y="12" width="156" height="156" rx="14" fill="#1c5fa8"/><text x="90" y="122" text-anchor="middle" font-size="' + (small ? 42 : 90) + '" font-weight="900" fill="#fff" font-family="Arial">P</text>';
+        }
+    } else if (panel.cat === "F") {
+        content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#fff" stroke="' + ink + '" stroke-width="3"/><text x="90" y="45" text-anchor="middle" font-size="' + (small ? 12 : 18) + '" font-weight="900" fill="' + ink + '" letter-spacing="2">ZONE</text><circle cx="90" cy="105" r="42" fill="#fff" stroke="#c81e2c" stroke-width="9"/><text x="90" y="118" text-anchor="middle" font-size="' + (small ? 18 : 34) + '" font-weight="900" fill="' + ink + '" font-family="Arial">30</text>';
+    } else if (panel.cat === "X") {
+        content = '<rect x="12" y="55" width="156" height="70" rx="6" fill="#fff" stroke="' + ink + '" stroke-width="4"/><text x="90" y="98" text-anchor="middle" font-size="' + (small ? 16 : 24) + '" font-weight="900" fill="' + ink + '" font-family="Arial">Panonceau</text>';
+    } else if (panel.cat === "S") {
+        content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#1c5fa8"/><text x="90" y="122" text-anchor="middle" font-size="' + (small ? 42 : 90) + '" font-weight="900" fill="#fff" font-family="Arial">S</text>';
+    } else {
+        content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#1c5fa8"/><text x="90" y="122" text-anchor="middle" font-size="' + (small ? 42 : 90) + '" font-weight="900" fill="#fff" font-family="Arial">?</text>';
+    }
+    return '<svg class="sign-svg" viewBox="0 0 180 180" preserveAspectRatio="xMidYMid meet" role="img" aria-label="' + escapeHTML(panel.nom || panel.titre || "") + '" xmlns="http://www.w3.org/2000/svg">' + content + '</svg>';
+}
+
+function renderProgressDots() {
+    if (!$("progressDots")) return;
+    var html = "";
+    for (var i = 0; i < state.questions.length; i++) {
+        html += '<i class="' + (i < state.index ? "done" : "") + '"></i>';
+    }
+    $("progressDots").innerHTML = html;
+}
+
+function renderQuestion() {
+    clearInterval(state.timerId);
+    if (state.index >= state.questions.length) { showSummary(); return; }
+    renderProgressDots();
+
+    var panel = state.questions[state.index];
+    var totalQ = state.questions.length;
+
+    if ($("quizProgress")) {
+        $("quizProgress").textContent = (state.isOfficialExam ? "Examen Officiel" : (state.review ? "Revision" : "Question")) + " " + (state.index + 1) + " / " + totalQ;
+    }
+    if ($("quizScore")) $("quizScore").textContent = "Score : " + state.score;
+    if ($("favoriteButton")) {
+        var code = panel.code || panel.id || panel.titre || "";
+        $("favoriteButton").textContent = favorites().indexOf(code) >= 0 ? "⭐" : "☆";
+    }
+    if ($("signStage")) $("signStage").innerHTML = makeSignSVG(panel, false);
+    if ($("signCaption")) {
+        $("signCaption").textContent = (panel.code || panel.id || "") + " — " + (CATEGORIES[panel.cat]?.label || "");
+    }
+
+    var distractors = shuffle(ALL_KNOWLEDGE.filter(function(p) { return (p.code || p.id || p.titre) !== (panel.code || panel.id || panel.titre); })).slice(0, 3);
+    state.options = shuffle([panel].concat(distractors));
+    state.answered = false;
+
+    if ($("optionList")) {
+        var optionsHtml = "";
+        for (var i = 0; i < state.options.length; i++) {
+            var label = state.options[i].nom || state.options[i].titre || "";
+            optionsHtml += '<button class="option" onclick="answerQuestion(' + i + ')">' + escapeHTML(label) + '</button>';
+        }
+        $("optionList").innerHTML = optionsHtml;
+    }
+
+    if ($("feedbackZone")) $("feedbackZone").innerHTML = "";
+    if ($("nextButtonZone")) $("nextButtonZone").innerHTML = "";
+
+    if (state.timer && $("timerDisplay")) {
+        state.seconds = 15;
+        $("timerDisplay").classList.remove("hidden");
+        $("timerDisplay").classList.remove("low");
+        $("timerDisplay").textContent = "⏳ 15s";
+
+        state.timerId = setInterval(function() {
+            state.seconds--;
+            $("timerDisplay").textContent = "⏳ " + state.seconds + "s";
+            $("timerDisplay").classList.toggle("low", state.seconds <= 5);
+            if (state.seconds <= 0) {
+                clearInterval(state.timerId);
+                timeoutQuestion();
+            }
+        }, 1000);
+    } else if ($("timerDisplay")) {
+        $("timerDisplay").classList.add("hidden");
+    }
+}
+
+function timeoutQuestion() { if (state.answered) return;
+    completeAnswer(-1); }
+
+function answerQuestion(index) { if (state.answered) return;
+    clearInterval(state.timerId);
+    completeAnswer(index); }
+
+async function completeAnswer(selectedIndex) {
+    state.answered = true;
+    var panel = state.questions[state.index];
+    var selected = selectedIndex >= 0 ? state.options[selectedIndex] : null;
+    var correct = selected && (selected.code || selected.id || selected.titre) === (panel.code || panel.id || panel.titre);
+
+    var categoryState = state.categoryStats[panel.cat] || { correct: 0, total: 0 };
+    categoryState.total++;
+
+    if (correct) {
+        state.score++;
+        categoryState.correct++;
+    } else {
+        state.errors.push({ panel: panel, answer: selected ? (selected.nom || selected.titre || "") : "Temps ecoule" });
+        var code = panel.code || panel.id || panel.titre || "";
+        appData.mistakes[code] = (appData.mistakes[code] || 0) + 1;
+        await saveAppData();
+    }
+    state.categoryStats[panel.cat] = categoryState;
+
+    var options = document.querySelectorAll("#optionList .option");
+    for (var i = 0; i < options.length; i++) {
+        options[i].classList.add("locked");
+        if ((state.options[i].code || state.options[i].id || state.options[i].titre) === (panel.code || panel.id || panel.titre)) {
+            options[i].classList.add("correct");
+        } else if (i === selectedIndex) {
+            options[i].classList.add("wrong");
+        }
+    }
+
+    if ($("feedbackZone")) {
+        var label = panel.nom || panel.titre || "";
+        $("feedbackZone").innerHTML = '<div class="feedback ' + (correct ? "" : "bad") + '"><b>' + (correct ? "Bonne reponse" : selectedIndex < 0 ? "Temps ecoule - c'etait : " + escapeHTML(label) : "Erreur - c'etait : " + escapeHTML(label)) + '</b>' + escapeHTML(panel.desc || "") + '</div>';
+    }
+
+    if ($("nextButtonZone")) {
+        $("nextButtonZone").innerHTML = '<button class="primary" style="width:100%" onclick="nextQuestion()">' + (state.index + 1 >= state.questions.length ? "Voir le resume" : "Question suivante") + '</button>';
+    }
+    if ($("quizScore")) $("quizScore").textContent = "Score : " + state.score;
+}
+
+function nextQuestion() { state.index++;
+    renderQuestion(); }
+
+async function toggleFavorite() {
+    var panel = state.questions[state.index];
+    var code = panel.code || panel.id || panel.titre || "";
+    var index = appData.favorites.indexOf(code);
+    if (index >= 0) { appData.favorites.splice(index, 1); } else { appData.favorites.push(code); }
+
+    var button = $("favoriteButton");
+    if (button) {
+        button.textContent = favorites().indexOf(code) >= 0 ? "⭐" : "☆";
+        button.classList.remove("pop");
+        void button.offsetWidth;
+        button.classList.add("pop");
+    }
+    await saveAppData();
+    updateHomeStats();
+}
+
+async function showSummary() {
+    clearInterval(state.timerId);
+    var total = state.questions.length;
+    var score = state.score;
+    var percentage = total ? Math.round(100 * score / total) : 0;
+
+    if (!state.review) {
+        appData.stats.sessions++;
+        appData.stats.correct += score;
+        appData.stats.total += total;
+        await saveAppData();
+    }
+
+    if ($("quizRunning")) $("quizRunning").classList.add("hidden");
+    if ($("quizSummary")) $("quizSummary").classList.remove("hidden");
+
+    var passed = true;
+    if (state.isOfficialExam) {
+        passed = score >= 41;
+        $("summaryTitle").textContent = passed ? "🎉 EXAMEN REUSSI (Officiel)" : "❌ EXAMEN ECHOUE (Officiel)";
+    } else {
+        $("summaryTitle").textContent = state.review ? "Revision terminee" : "Session terminee";
+    }
+
+    if ($("summaryPercent")) {
+        $("summaryPercent").textContent = "0%";
+        animateCount($("summaryPercent"), 0, percentage, "%", 700);
+    }
+    if ($("summaryFraction")) $("summaryFraction").textContent = score + " / " + total;
+
+    if ($("summaryMessage")) {
+        if (state.isOfficialExam) {
+            $("summaryMessage").textContent = passed ? "Felicitations ! Avec " + score + "/50, tu obtiens ton permis theorique." : "Tu as obtenu " + score + "/50. Seuil : 41/50.";
+        } else {
+            $("summaryMessage").textContent = percentage >= 90 ? "Excellent !" : percentage >= 70 ? "Bon score." : "Entrainement requis.";
+        }
+    }
+
+    if ($("categoryResults")) {
+        var catHtml = "";
+        var catEntries = Object.entries(state.categoryStats);
+        for (var i = 0; i < catEntries.length; i++) {
+            var cat = catEntries[i][0];
+            var result = catEntries[i][1];
+            var percent = Math.round(100 * result.correct / result.total);
+            catHtml += '<div class="category-result"><div class="category-result-top"><span>' + (CATEGORIES[cat]?.label || cat) + '</span><span>' + result.correct + '/' + result.total + '</span></div><div class="category-track"><span data-target="' + percent + '" style="background:' + (CATEGORIES[cat]?.color || 'var(--blue)') + ';"></span></div></div>';
+        }
+        $("categoryResults").innerHTML = catHtml;
+    }
+
+    requestAnimationFrame(function() {
+        var spans = document.querySelectorAll("#categoryResults .category-track span");
+        for (var i = 0; i < spans.length; i++) {
+            spans[i].style.width = spans[i].dataset.target + "%";
+        }
+    });
+
+    if (state.errors.length) {
+        if ($("errorResults")) {
+            var errorHtml = '<details class="errors"><summary>Revoir les ' + state.errors.length + ' erreur(s)</summary>';
+            for (var i = 0; i < state.errors.length; i++) {
+                var error = state.errors[i];
+                var label = error.panel.nom || error.panel.titre || "";
+                errorHtml += '<div class="error"><b>[' + escapeHTML(error.panel.code || error.panel.id || "") + '] ' + escapeHTML(label) + '</b><div class="your-answer">Ta reponse : ' + escapeHTML(error.answer) + '</div><div>' + escapeHTML(error.panel.desc || "") + '</div></div>';
+            }
+            errorHtml += '</details>';
+            $("errorResults").innerHTML = errorHtml;
+        }
+        if ($("reviewErrorsZone")) {
+            $("reviewErrorsZone").innerHTML = '<button class="danger" style="width:100%" onclick="reviewErrors()">Refaire mes erreurs (' + state.errors.length + ')</button>';
+        }
+    } else {
+        if ($("errorResults")) $("errorResults").innerHTML = "";
+        if ($("reviewErrorsZone")) $("reviewErrorsZone").innerHTML = "";
+    }
+    updateHomeStats();
+}
+
+function replayQuiz() { beginSession(state.review); }
+
+// ---- KEYBOARD SHORTCUTS ----
+document.addEventListener("keydown", function(event) {
+    if ($("quizRunning") && $("quizRunning").classList.contains("hidden")) return;
+    if (event.key >= "1" && event.key <= "4" && !state.answered) { answerQuestion(Number(event.key) - 1); }
+    if (event.key === "Enter" && state.answered) { nextQuestion(); }
+    if (event.key.toLowerCase() === "f") { toggleFavorite(); }
+    if (event.key === "Escape") { goHome(); }
+});
+
+if ($("questionCount")) {
+    $("questionCount").addEventListener("input", function(event) {
+        state.questionCount = Number(event.target.value);
+        if ($("questionCountValue")) $("questionCountValue").textContent = state.questionCount;
+    });
+}
+
+// ---- EXPORT DES FONCTIONS ----
+window.goHome = goHome;
+window.showMenu = showMenu;
+window.showCategorie = showCategorie;
+window.showSousCategorie = showSousCategorie;
+window.quizCategorie = quizCategorie;
+window.examenCategorie = examenCategorie;
+window.showQuiz = showQuiz;
+window.startOfficialExam = startOfficialExam;
+window.showRepo = showRepo;
+window.showRules = showRules;
+window.showMecanique = showMecanique;
+window.showPneumatiques = showPneumatiques;
+window.showSaisons = showSaisons;
+window.showSecours = showSecours;
+window.showLegal = showLegal;
+window.showEquipements = showEquipements;
+window.showMarquages = showMarquages;
+window.showConditions = showConditions;
+window.showVehicules = showVehicules;
+window.showPsychologie = showPsychologie;
+window.showInfractions = showInfractions;
+window.showPiegesRoutes = showPiegesRoutes;
+window.showUsagersManoeuvres = showUsagersManoeuvres;
+window.renderMecanique = renderMecanique;
+window.renderPneumatiques = renderPneumatiques;
+window.renderSaisons = renderSaisons;
+window.renderSecours = renderSecours;
+window.renderLegal = renderLegal;
+window.renderEquipements = renderEquipements;
+window.renderMarquages = renderMarquages;
+window.renderConditions = renderConditions;
+window.renderVehicules = renderVehicules;
+window.renderPsychologie = renderPsychologie;
+window.renderRepository = renderRepository;
+window.renderRules = renderRules;
+window.renderInfractions = renderInfractions;
+window.renderPiegesRoutes = renderPiegesRoutes;
+window.renderUsagersManoeuvres = renderUsagersManoeuvres;
+window.toggleTheme = toggleTheme;
+window.startReview = startReview;
+window.startQuiz = startQuiz;
+window.configureQuiz = configureQuiz;
+window.replayQuiz = replayQuiz;
+window.reviewErrors = reviewErrors;
+window.toggleFavorite = toggleFavorite;
+window.answerQuestion = answerQuestion;
+window.nextQuestion = nextQuestion;
+window.showCategorieBack = showCategorieBack;
+
+// ---- INITIALISATION ----
+async function init() {
+    await loadAppData();
+    applyTheme();
+    renderCategorySelector();
+    updateHomeStats();
+    goHome();
+    document.body.classList.add("ready");
+}
+
+document.addEventListener('DOMContentLoaded', init);
