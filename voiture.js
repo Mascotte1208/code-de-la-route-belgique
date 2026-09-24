@@ -1,4 +1,4 @@
-export const MATIERE_AUTO = [
+var MATIERE_AUTO = [
   {
     "id": "auto_1",
     "titre": "Niveau d'huile moteur",

@@ -212,7 +212,7 @@ var MECANIQUE_MOTEUR = [
     {id:"mec_050",titre:"Bobines d'allumage",cat:"MECA",sousCat:"Allumage",desc:"Defaut = perte de puissance."},
     {id:"mec_051",titre:"Cables d'allumage",cat:"MECA",sousCat:"Allumage",desc:"Fissures = etincelles, rates."},
     {id:"mec_052",titre:"Catalyseur",cat:"MECA",sousCat:"Echappement",desc:"Transforme les gaz polluants."},
-    {id:"mec_053",titre:"Filtre a particules",cat:"MECA",sousCat:"Echappement",desc:"Retient les suies. Colmatage = risque de casse."},
+    {id:"mec_053",titre:"Filtre a particules",cat:"MECA",sousCat:"Echappement",desc:"Retient les suies (particules fines) des gaz d'echappement diesel. Colmatage = risque de casse ; une regeneration periodique a haute temperature le nettoie."},
     {id:"mec_054",titre:"Ligne d'echappement",cat:"MECA",sousCat:"Echappement",desc:"Corrosion = trou, bruit."},
     {id:"mec_055",titre:"Pot catalytique",cat:"MECA",sousCat:"Echappement",desc:"Usure = bruit excessif."},
     {id:"mec_056",titre:"Silencieux",cat:"MECA",sousCat:"Echappement",desc:"Perfore = bruit excessif."},
@@ -253,7 +253,7 @@ var PNEUMATIQUES = [
     {id:"pneu_027",titre:"Chaines a neige",cat:"PNEU",sousCat:"Saisons",desc:"Vitesse max 50 km/h."},
     {id:"pneu_028",titre:"Chaussettes a neige",cat:"PNEU",sousCat:"Saisons",desc:"Alternative aux chaines."},
     {id:"pneu_029",titre:"Pneus ete par temps chaud",cat:"PNEU",sousCat:"Saisons",desc:"Surveillance de la pression."},
-    {id:"pneu_030",titre:"Aquaplanage",cat:"PNEU",sousCat:"Saisons",desc:"Perte d'adherence sur l'eau."},
+    {id:"pneu_030",titre:"Aquaplanage",cat:"PNEU",sousCat:"Saisons",desc:"Perte d'adherence sur l'eau : le pneu ne peut plus l'evacuer et la voiture flotte. Lever le pied sans freiner ni tourner brusquement."},
     {id:"pneu_031",titre:"Crevaison",cat:"PNEU",sousCat:"Saisons",desc:"Ne pas rouler a plat."},
     {id:"pneu_032",titre:"Chaines homologuees",cat:"PNEU",sousCat:"Equipements",desc:"Taille correcte."},
     {id:"pneu_033",titre:"Chaussettes",cat:"PNEU",sousCat:"Equipements",desc:"Faciles a installer."},
@@ -268,34 +268,23 @@ var PNEUMATIQUES = [
 
 // ---- SAISONS ET ENVIRONNEMENT ----
 var SAISONS_ENVIRONNEMENT = [
-    {id:"sai_001",titre:"Conduite sur neige",cat:"SAI",sousCat:"Hiver",desc:"Vitesse reduite, distances doublees."},
-    {id:"sai_002",titre:"Conduite sur verglas",cat:"SAI",sousCat:"Hiver",desc:"Freinage ABS, pas de volant brusque."},
     {id:"sai_003",titre:"Fumee blanche",cat:"SAI",sousCat:"Hiver",desc:"Condensation ou fuite de refroidissement."},
     {id:"sai_004",titre:"Gel des serrures",cat:"SAI",sousCat:"Hiver",desc:"Produit degrippant."},
     {id:"sai_005",titre:"Neige sur le toit",cat:"SAI",sousCat:"Hiver",desc:"Obligation de degager (116 € d'amende)."},
-    {id:"sai_006",titre:"Brouillard givrant",cat:"SAI",sousCat:"Hiver",desc:"Feux de brouillard."},
-    {id:"sai_007",titre:"Route enneigee",cat:"SAI",sousCat:"Hiver",desc:"Vitesse ≤ 50 km/h si visibilite < 50m."},
     {id:"sai_008",titre:"Conduite en montagne",cat:"SAI",sousCat:"Montagne",desc:"Celui qui descend cede le passage."},
-    {id:"sai_009",titre:"Frein moteur",cat:"SAI",sousCat:"Montagne",desc:"Utiliser les rapports inferieurs."},
     {id:"sai_010",titre:"Pneus montagne",cat:"SAI",sousCat:"Montagne",desc:"Pneus specifiques, chaines."},
     {id:"sai_011",titre:"Cols de montagne",cat:"SAI",sousCat:"Montagne",desc:"Restrictions de poids, hauteur."},
     {id:"sai_012",titre:"Zones de montagne",cat:"SAI",sousCat:"Montagne",desc:"Panneaux A3, A5."},
     {id:"sai_013",titre:"Conduite par canicule",cat:"SAI",sousCat:"Ete",desc:"Surveillance temperature moteur."},
-    {id:"sai_014",titre:"Climatisation",cat:"SAI",sousCat:"Ete",desc:"Verification du gaz."},
-    {id:"sai_015",titre:"Protection solaire",cat:"SAI",sousCat:"Ete",desc:"Pare-soleil, lunettes."},
-    {id:"sai_016",titre:"Routes goudronnees",cat:"SAI",sousCat:"Ete",desc:"Risque d'aquaplanage."},
-    {id:"sai_017",titre:"Orages",cat:"SAI",sousCat:"Ete",desc:"Feux de croisement."},
     {id:"sai_018",titre:"Zones faibles emissions",cat:"SAI",sousCat:"Ecologie",desc:"Crit'Air, ZFE."},
     {id:"sai_019",titre:"Crit'Air",cat:"SAI",sousCat:"Ecologie",desc:"Vignette obligatoire."},
     {id:"sai_020",titre:"Eco-conduite",cat:"SAI",sousCat:"Ecologie",desc:"Vitesse optimale."},
     {id:"sai_021",titre:"Recyclage pneus",cat:"SAI",sousCat:"Ecologie",desc:"Centre agree."},
-    {id:"sai_022",titre:"Filtre a particules",cat:"SAI",sousCat:"Ecologie",desc:"Regeneration."},
+    {id:"sai_022",titre:"Filtre a particules",cat:"SAI",sousCat:"Ecologie",desc:"Se regenere automatiquement a haute vitesse ; en usage urbain repete, un colmatage peut necessiter une intervention."},
     {id:"sai_023",titre:"Huile usagee",cat:"SAI",sousCat:"Ecologie",desc:"Depot en dechetterie."},
     {id:"sai_024",titre:"Batterie usagee",cat:"SAI",sousCat:"Ecologie",desc:"Recyclage."},
     {id:"sai_025",titre:"Vehicules electriques",cat:"SAI",sousCat:"Ecologie",desc:"Bornes de recharge."},
     {id:"sai_026",titre:"Chargement ecologique",cat:"SAI",sousCat:"Ecologie",desc:"Reduire consommation."},
-    {id:"sai_027",titre:"Conduite grand froid",cat:"SAI",sousCat:"Extreme",desc:"Verifier batterie, huile."},
-    {id:"sai_028",titre:"Gel des vitres",cat:"SAI",sousCat:"Extreme",desc:"Degivrage."},
     {id:"sai_029",titre:"Buee sur les vitres",cat:"SAI",sousCat:"Extreme",desc:"Ventilation, desembuage."},
     {id:"sai_030",titre:"Diesel par temps froid",cat:"SAI",sousCat:"Extreme",desc:"Risque de gelification."}
 ];
@@ -324,7 +313,7 @@ var SECOURS_URGENCE = [
     {id:"sec_020",titre:"Triangle homologue",cat:"SEC",sousCat:"Equipements",desc:"Verifier la date."},
     {id:"sec_021",titre:"Lampe de poche",cat:"SEC",sousCat:"Equipements",desc:"Recommande."},
     {id:"sec_022",titre:"Cables demarrage",cat:"SEC",sousCat:"Equipements",desc:"Recommandes."},
-    {id:"sec_023",titre:"Kit reparation",cat:"SEC",sousCat:"Equipements",desc:"Alternative."},
+    {id:"sec_023",titre:"Kit reparation",cat:"SEC",sousCat:"Equipements",desc:"Alternative a la roue de secours ; usage limite (crevaisons simples, non recommande pour un flanc endommage)."},
     {id:"sec_024",titre:"Couverture survie",cat:"SEC",sousCat:"Equipements",desc:"Recommande."},
     {id:"sec_025",titre:"Gants protection",cat:"SEC",sousCat:"Equipements",desc:"Recommandes."}
 ];
@@ -376,7 +365,7 @@ var EQUIPEMENTS = [
     {id:"eq_009",titre:"Limiteur",cat:"EQ",sousCat:"Aides",desc:"Recommande."},
     {id:"eq_010",titre:"Avertisseur somnolence",cat:"EQ",sousCat:"Aides",desc:"Recommande."},
     {id:"eq_011",titre:"Surveillance pression",cat:"EQ",sousCat:"Aides",desc:"Recommande."},
-    {id:"eq_012",titre:"Kit reparation",cat:"EQ",sousCat:"Securite",desc:"Alternative."},
+    {id:"eq_012",titre:"Kit reparation",cat:"EQ",sousCat:"Securite",desc:"Alternative a la roue de secours ; usage limite (crevaisons simples, non recommande pour un flanc endommage)."},
     {id:"eq_013",titre:"Roue galette",cat:"EQ",sousCat:"Securite",desc:"Vitesse max 80 km/h."},
     {id:"eq_014",titre:"Leve-vitre",cat:"EQ",sousCat:"Confort",desc:"Verification."},
     {id:"eq_015",titre:"Retroviseurs",cat:"EQ",sousCat:"Confort",desc:"Angle mort."},
@@ -428,11 +417,11 @@ var CONDITIONS_EXTREMES = [
     {id:"cnd_013",titre:"Orages",cat:"CND",sousCat:"Ete",desc:"Feux de croisement."},
     {id:"cnd_014",titre:"Essence chaud",cat:"CND",sousCat:"Ete",desc:"Vaporisation."},
     {id:"cnd_015",titre:"Conduite pluie",cat:"CND",sousCat:"Pluie",desc:"Distance x2."},
-    {id:"cnd_016",titre:"Aquaplanage",cat:"CND",sousCat:"Pluie",desc:"Ralentir."},
+    {id:"cnd_016",titre:"Aquaplanage",cat:"CND",sousCat:"Pluie",desc:"Sur route mouillee ou inondee, ralentir avant les flaques : en cas de perte d'adherence, relacher l'accelerateur sans freiner ni tourner brusquement."},
     {id:"cnd_017",titre:"Brouillard",cat:"CND",sousCat:"Brouillard",desc:"Feux brouillard + croisement."},
     {id:"cnd_018",titre:"Vent fort",cat:"CND",sousCat:"Vent",desc:"Tenir le volant."},
     {id:"cnd_019",titre:"Conduite nuit",cat:"CND",sousCat:"Nuit",desc:"Feux de croisement."},
-    {id:"cnd_020",titre:"Tunnels",cat:"CND",sousCat:"Tunnels",desc:"Feux croisement, distance 50m."},
+    {id:"cnd_020",titre:"Tunnels",cat:"CND",sousCat:"Tunnels",desc:"Feux de croisement obligatoires, distance 50m, interdiction de s'arreter."},
     {id:"cnd_021",titre:"Montagne",cat:"CND",sousCat:"Montagne",desc:"Celui qui descend cede."},
     {id:"cnd_022",titre:"Frein moteur",cat:"CND",sousCat:"Montagne",desc:"Rapports inferieurs."},
     {id:"cnd_023",titre:"Cols",cat:"CND",sousCat:"Montagne",desc:"Regles de croisement."},
@@ -515,80 +504,92 @@ var PSYCHOLOGIE_STATS = [
 
 // ---- INFRACTIONS ----
 var INFRACTIONS = [
-    {titre:"Oubli du clignotant",degre:"1er Degre",amende:"58 €",desc:"Omettre d'indiquer un changement de direction."},
-    {titre:"Stationnement genant",degre:"1er Degre",amende:"58 €",desc:"Stationner sur une zone non autorisee."},
-    {titre:"Bande de bus",degre:"1er Degre",amende:"58 €",desc:"Emprunter une bande reservee aux bus."},
-    {titre:"Defaut de documents",degre:"1er Degre",amende:"58 €",desc:"Ne pas presenter permis, carte grise, assurance."},
-    {titre:"Feux de brouillard abusifs",degre:"1er Degre",amende:"58 €",desc:"Allumer les feux antibrouillard par temps clair."},
-    {titre:"Ceinture de securite",degre:"2eme Degre",amende:"116 €",desc:"Non-port obligatoire pour tous les occupants."},
-    {titre:"Feu orange",degre:"2eme Degre",amende:"116 €",desc:"S'engager au feu orange alors qu'on peut s'arreter."},
-    {titre:"Stationnement sur passage pieton",degre:"2eme Degre",amende:"116 €",desc:"Se garer sur un passage cloute."},
-    {titre:"Conduite sans feux la nuit",degre:"2eme Degre",amende:"116 €",desc:"Oublier d'allumer les feux de croisement."},
-    {titre:"Depassement par la droite",degre:"2eme Degre",amende:"116 €",desc:"Depasser par la droite sauf cas particulier."},
-    {titre:"Distance de securite",degre:"2eme Degre",amende:"116 €",desc:"Ne pas laisser une distance suffisante."},
-    {titre:"Priorite pieton",degre:"2eme Degre",amende:"116 €",desc:"Ne pas ceder le passage a un pieton engage."},
-    {titre:"GSM au volant",degre:"3eme Degre",amende:"174 €",desc:"Tenir un telephone en main. Retrait 15 jours."},
-    {titre:"Feu rouge",degre:"3eme Degre",amende:"174 €",desc:"S'engager alors que le feu est rouge."},
-    {titre:"STOP",degre:"3eme Degre",amende:"174 €",desc:"Oublier de marquer un arret complet."},
-    {titre:"Ligne blanche continue",degre:"3eme Degre",amende:"174 €",desc:"Franchir ou rouler sur une ligne continue."},
-    {titre:"Sens interdit",degre:"3eme Degre",amende:"174 €",desc:"S'engager dans une rue en sens interdit."},
-    {titre:"Passage a niveau ferme",degre:"3eme Degre",amende:"174 €",desc:"Passer outre des barrieres en mouvement."},
-    {titre:"Demi-tour sur autoroute",degre:"4eme Degre",amende:"Tribunal",desc:"Marche arriere ou contresens sur autoroute."},
-    {titre:"Refus d'obeir",degre:"4eme Degre",amende:"Tribunal",desc:"Ignorer les ordres d'un agent."},
-    {titre:"Courses de vitesse",degre:"4eme Degre",amende:"Tribunal",desc:"Concours de vitesse sur la voie publique."},
-    {titre:"Delit de fuite",degre:"Delit penal",amende:"Tribunal",desc:"Quitter les lieux d'un accident."},
-    {titre:"Exces vitesse agglomeration",degre:"Vitesse",amende:"53 € + 11 €/km/h",desc:"Tarif de base 53 € + 11 €/km/h."},
-    {titre:"Exces vitesse hors agglo",degre:"Vitesse",amende:"53 € + 6 €/km/h",desc:"Tarif de base 53 € + 6 €/km/h."},
-    {titre:"Alcool 0,2 g/L (novice)",degre:"Alcool Novice",amende:"Retrait immediat",desc:"Tolerance quasi-nulle pour jeunes conducteurs."},
-    {titre:"Alcool 0,5 a 0,8 g/L",degre:"Alcool",amende:"179 € + Retrait 3h",desc:"Retrait immediat du permis pour 3 heures."},
-    {titre:"Alcool > 0,8 g/L",degre:"Alcool / Tribunal",amende:"420 € a 1200 €",desc:"Retrait 15 jours et tribunal."}
+    {id:"inf_001",titre:"Oubli du clignotant",cat:"INF",degre:"1er Degre",amende:"58 €",desc:"Omettre d'indiquer un changement de direction."},
+    {id:"inf_002",titre:"Stationnement genant",cat:"INF",degre:"1er Degre",amende:"58 €",desc:"Stationner sur une zone non autorisee."},
+    {id:"inf_003",titre:"Bande de bus",cat:"INF",degre:"1er Degre",amende:"58 €",desc:"Emprunter une bande reservee aux bus."},
+    {id:"inf_004",titre:"Defaut de documents",cat:"INF",degre:"1er Degre",amende:"58 €",desc:"Ne pas presenter permis, carte grise, assurance."},
+    {id:"inf_005",titre:"Feux de brouillard abusifs",cat:"INF",degre:"1er Degre",amende:"58 €",desc:"Allumer les feux antibrouillard par temps clair."},
+    {id:"inf_006",titre:"Ceinture de securite",cat:"INF",degre:"2eme Degre",amende:"116 €",desc:"Non-port obligatoire pour tous les occupants."},
+    {id:"inf_007",titre:"Feu orange",cat:"INF",degre:"2eme Degre",amende:"116 €",desc:"S'engager au feu orange alors qu'on peut s'arreter."},
+    {id:"inf_008",titre:"Stationnement sur passage pieton",cat:"INF",degre:"2eme Degre",amende:"116 €",desc:"Se garer sur un passage cloute."},
+    {id:"inf_009",titre:"Conduite sans feux la nuit",cat:"INF",degre:"2eme Degre",amende:"116 €",desc:"Oublier d'allumer les feux de croisement."},
+    {id:"inf_010",titre:"Depassement par la droite",cat:"INF",degre:"2eme Degre",amende:"116 €",desc:"Depasser par la droite sauf cas particulier."},
+    {id:"inf_011",titre:"Distance de securite",cat:"INF",degre:"2eme Degre",amende:"116 €",desc:"Ne pas laisser une distance suffisante."},
+    {id:"inf_012",titre:"Priorite pieton",cat:"INF",degre:"2eme Degre",amende:"116 €",desc:"Ne pas ceder le passage a un pieton engage."},
+    {id:"inf_013",titre:"GSM au volant",cat:"INF",degre:"3eme Degre",amende:"174 €",desc:"Tenir un telephone en main. Retrait 15 jours."},
+    {id:"inf_014",titre:"Feu rouge",cat:"INF",degre:"3eme Degre",amende:"174 €",desc:"S'engager alors que le feu est rouge."},
+    {id:"inf_015",titre:"STOP",cat:"INF",degre:"3eme Degre",amende:"174 €",desc:"Oublier de marquer un arret complet."},
+    {id:"inf_016",titre:"Ligne blanche continue",cat:"INF",degre:"3eme Degre",amende:"174 €",desc:"Franchir ou rouler sur une ligne continue."},
+    {id:"inf_017",titre:"Sens interdit",cat:"INF",degre:"3eme Degre",amende:"174 €",desc:"S'engager dans une rue en sens interdit."},
+    {id:"inf_018",titre:"Passage a niveau ferme",cat:"INF",degre:"3eme Degre",amende:"174 €",desc:"Passer outre des barrieres en mouvement."},
+    {id:"inf_019",titre:"Demi-tour sur autoroute",cat:"INF",degre:"4eme Degre",amende:"Tribunal",desc:"Marche arriere ou contresens sur autoroute."},
+    {id:"inf_020",titre:"Refus d'obeir",cat:"INF",degre:"4eme Degre",amende:"Tribunal",desc:"Ignorer les ordres d'un agent."},
+    {id:"inf_021",titre:"Courses de vitesse",cat:"INF",degre:"4eme Degre",amende:"Tribunal",desc:"Concours de vitesse sur la voie publique."},
+    {id:"inf_022",titre:"Delit de fuite",cat:"INF",degre:"Delit penal",amende:"Tribunal",desc:"Quitter les lieux d'un accident."},
+    {id:"inf_023",titre:"Exces vitesse agglomeration",cat:"INF",degre:"Vitesse",amende:"53 € + 11 €/km/h",desc:"Tarif de base 53 € + 11 €/km/h."},
+    {id:"inf_024",titre:"Exces vitesse hors agglo",cat:"INF",degre:"Vitesse",amende:"53 € + 6 €/km/h",desc:"Tarif de base 53 € + 6 €/km/h."},
+    {id:"inf_025",titre:"Alcool 0,2 g/L (novice)",cat:"INF",degre:"Alcool Novice",amende:"Retrait immediat",desc:"Tolerance quasi-nulle pour jeunes conducteurs."},
+    {id:"inf_026",titre:"Alcool 0,5 a 0,8 g/L",cat:"INF",degre:"Alcool",amende:"179 € + Retrait 3h",desc:"Retrait immediat du permis pour 3 heures."},
+    {id:"inf_027",titre:"Alcool > 0,8 g/L",cat:"INF",degre:"Alcool / Tribunal",amende:"420 € a 1200 €",desc:"Retrait 15 jours et tribunal."}
 ];
 
 // ---- REGLES ----
 var RULES = [
-    {titre:"La Priorite a Droite",desc:"A toute intersection, ceder le passage a tout conducteur venant de droite."},
-    {titre:"Ronds-Points et Giratoires",desc:"Sauf panneaux B1/B5, priorite a droite DANS le rond-point."},
-    {titre:"Priorite des Trams",desc:"Le tram a TOUJOURS la priorite, meme venant de gauche."},
-    {titre:"Vitesses Maximales",desc:"Agglo: 50 km/h (30 Bruxelles). Hors agglo: 90/70 km/h. Autoroute: 120 km/h."},
-    {titre:"Arret vs Stationnement",desc:"Arret = court, conducteur a bord. Stationnement = plus long."},
-    {titre:"Couloir de secours",desc:"Se serrer sur autoroute pour laisser passer les secours."},
-    {titre:"Agents qualifies",desc:"Les agents ont priorite sur toute signalisation."},
-    {titre:"Feu orange",desc:"Arret obligatoire sauf impossibilite de s'arreter en securite."},
-    {titre:"Feu vert et pietons",desc:"Ceder le passage aux pietons meme si le feu est vert."},
-    {titre:"Bande d'arret d'urgence",desc:"Interdiction de s'y arreter sauf force majeure."},
-    {titre:"Depassement des cyclistes",desc:"Marge laterale 1,0 m en agglo, 1,5 m hors agglo."},
-    {titre:"Tunnels",desc:"Feux de croisement obligatoires. Distance 50m. Interdiction de s'arreter."}
+    {id:"rul_01",titre:"La Priorite a Droite",cat:"RUL",desc:"A toute intersection, ceder le passage a tout conducteur venant de droite."},
+    {id:"rul_02",titre:"Ronds-Points et Giratoires",cat:"RUL",desc:"Sauf panneaux B1/B5, priorite a droite DANS le rond-point."},
+    {id:"rul_03",titre:"Priorite des Trams",cat:"RUL",desc:"Le tram a TOUJOURS la priorite, meme venant de gauche."},
+    {id:"rul_04",titre:"Vitesses Maximales",cat:"RUL",desc:"Agglo: 50 km/h (30 Bruxelles). Hors agglo: 90/70 km/h. Autoroute: 120 km/h."},
+    {id:"rul_05",titre:"Arret vs Stationnement",cat:"RUL",desc:"Arret = court, conducteur a bord. Stationnement = plus long."},
+    {id:"rul_06",titre:"Couloir de secours",cat:"RUL",desc:"Se serrer sur autoroute pour laisser passer les secours."},
+    {id:"rul_07",titre:"Agents qualifies",cat:"RUL",desc:"Les agents ont priorite sur toute signalisation."},
+    {id:"rul_08",titre:"Feu orange",cat:"RUL",desc:"Arret obligatoire sauf impossibilite de s'arreter en securite."},
+    {id:"rul_09",titre:"Feu vert et pietons",cat:"RUL",desc:"Ceder le passage aux pietons meme si le feu est vert."},
+    {id:"rul_10",titre:"Bande d'arret d'urgence",cat:"RUL",desc:"Interdiction de s'y arreter sauf force majeure."},
+    {id:"rul_11",titre:"Depassement des cyclistes",cat:"RUL",desc:"Marge laterale 1,0 m en agglo, 1,5 m hors agglo."},
+    {id:"rul_12",titre:"Tunnels",cat:"RUL",desc:"Feux de croisement obligatoires. Distance 50m. Interdiction de s'arreter."}
 ];
 
 // ---- PIEGES ----
 var PIEGES_ROUTES = [
-    {id:"piege_1",titre:"Priorite a droite absolue",cat:"Pieges",desc:"Sans signalisation, priorite a droite s'applique toujours."},
-    {id:"piege_2",titre:"Stationnement 5 metres",cat:"Pieges",desc:"Interdit de stationner a moins de 5m avant un passage pieton."},
-    {id:"piege_3",titre:"Sortie chemin de terre",cat:"Pieges",desc:"Quiconque sort d'un chemin de terre doit toujours ceder le passage."},
-    {id:"piege_4",titre:"Depassement cyclistes",cat:"Pieges",desc:"Marge laterale 1,0m en agglo, 1,5m hors agglo."},
-    {id:"piege_5",titre:"Rond-point classique",cat:"Pieges",desc:"Un rond-point n'est prioritaire que s'il y a les panneaux B1 et D10."},
-    {id:"piege_6",titre:"Feu orange fixe",cat:"Pieges",desc:"Le feu orange oblige a l'arret, sauf impossibilite de s'arreter."},
-    {id:"piege_7",titre:"Feu vert et pietons",cat:"Pieges",desc:"Ceder le passage aux pietons meme si le feu est vert."},
-    {id:"piege_8",titre:"Bande d'arret d'urgence",cat:"Pieges",desc:"Interdit de s'y arreter sauf force majeure."},
-    {id:"piege_9",titre:"Sens de stationnement",cat:"Pieges",desc:"Se garer dans le sens de la marche du cote droit."},
-    {id:"piege_10",titre:"Depassement par la droite autoroute",cat:"Pieges",desc:"Interdit sauf files ininterrompues."}
+    {id:"piege_1",titre:"Priorite a droite absolue",cat:"TRP",desc:"Sans signalisation, priorite a droite s'applique toujours."},
+    {id:"piege_2",titre:"Stationnement 5 metres",cat:"TRP",desc:"Interdit de stationner a moins de 5m avant un passage pieton."},
+    {id:"piege_3",titre:"Sortie chemin de terre",cat:"TRP",desc:"Quiconque sort d'un chemin de terre doit toujours ceder le passage."},
+    {id:"piege_4",titre:"Depassement cyclistes",cat:"TRP",desc:"Marge laterale 1,0m en agglo, 1,5m hors agglo."},
+    {id:"piege_5",titre:"Rond-point classique",cat:"TRP",desc:"Un rond-point n'est prioritaire que s'il y a les panneaux B1 et D10."},
+    {id:"piege_6",titre:"Feu orange fixe",cat:"TRP",desc:"Le feu orange oblige a l'arret, sauf impossibilite de s'arreter."},
+    {id:"piege_7",titre:"Feu vert et pietons",cat:"TRP",desc:"Ceder le passage aux pietons meme si le feu est vert."},
+    {id:"piege_8",titre:"Bande d'arret d'urgence",cat:"TRP",desc:"Interdit de s'y arreter sauf force majeure."},
+    {id:"piege_9",titre:"Sens de stationnement",cat:"TRP",desc:"Se garer dans le sens de la marche du cote droit."},
+    {id:"piege_10",titre:"Depassement par la droite autoroute",cat:"TRP",desc:"Interdit sauf files ininterrompues."}
 ];
 
 // ---- USAGERS ----
 var USAGERS_MANOEUVRES = [
-    {id:"usager_1",titre:"Rues cyclables",cat:"Usagers",desc:"Interdit de depasser les cyclistes. Vitesse max 30 km/h."},
-    {id:"usager_2",titre:"Sas a velos",cat:"Usagers",desc:"Espace reserve aux velos aux feux tricolores."},
-    {id:"usager_3",titre:"Manoeuvre",cat:"Manoeuvres",desc:"Celui qui effectue une manoeuvre doit ceder le passage a tous."},
-    {id:"usager_4",titre:"Croisement pentes",cat:"Manoeuvres",desc:"Le vehicule qui descend s'arrete pour laisser passer celui qui monte."},
-    {id:"usager_5",titre:"Permis provisoire nuit",cat:"Manoeuvres",desc:"Interdit de circuler vendredi, samedi, dimanche 22h-6h."},
-    {id:"usager_6",titre:"Chargement",cat:"Manoeuvres",desc:"Chargement ne peut masquer les plaques. Signalisation si depassement 1m."},
-    {id:"usager_7",titre:"Cavaliers",cat:"Usagers",desc:"Ralentir, ne pas klaxonner pour ne pas effrayer le cheval."},
-    {id:"usager_8",titre:"PMR",cat:"Usagers",desc:"Personnes a mobilite reduite. Priorite, temps de traverse plus long."},
-    {id:"usager_9",titre:"Enfants",cat:"Usagers",desc:"Imprevisibles. Ralentir a proximite des ecoles."},
-    {id:"usager_10",titre:"Marche arriere",cat:"Manoeuvres",desc:"Interdite sauf pour manoeuvre. Ceder le passage a tous."}
+    {id:"usager_1",titre:"Rues cyclables",cat:"USA",sousCat:"Usagers",desc:"Interdit de depasser les cyclistes. Vitesse max 30 km/h."},
+    {id:"usager_2",titre:"Sas a velos",cat:"USA",sousCat:"Usagers",desc:"Espace reserve aux velos aux feux tricolores."},
+    {id:"usager_3",titre:"Manoeuvre",cat:"USA",sousCat:"Manoeuvres",desc:"Celui qui effectue une manoeuvre doit ceder le passage a tous."},
+    {id:"usager_4",titre:"Croisement pentes",cat:"USA",sousCat:"Manoeuvres",desc:"Le vehicule qui descend s'arrete pour laisser passer celui qui monte."},
+    {id:"usager_5",titre:"Permis provisoire nuit",cat:"USA",sousCat:"Manoeuvres",desc:"Interdit de circuler vendredi, samedi, dimanche 22h-6h."},
+    {id:"usager_6",titre:"Chargement",cat:"USA",sousCat:"Manoeuvres",desc:"Chargement ne peut masquer les plaques. Signalisation si depassement 1m."},
+    {id:"usager_7",titre:"Cavaliers",cat:"USA",sousCat:"Usagers",desc:"Ralentir, ne pas klaxonner pour ne pas effrayer le cheval."},
+    {id:"usager_8",titre:"PMR",cat:"USA",sousCat:"Usagers",desc:"Personnes a mobilite reduite. Priorite, temps de traverse plus long."},
+    {id:"usager_9",titre:"Enfants",cat:"USA",sousCat:"Usagers",desc:"Imprevisibles. Ralentir a proximite des ecoles."},
+    {id:"usager_10",titre:"Marche arriere",cat:"USA",sousCat:"Manoeuvres",desc:"Interdite sauf pour manoeuvre. Ceder le passage a tous."}
 ];
 
 // ---- FUSION ALL_KNOWLEDGE ----
+// ---- ENTRETIEN & DOCUMENTS AUTO (voiture.js) ----
+function plainTextFromAuto(html) {
+    return String(html || "")
+        .replace(/<br\s*\/?>/gi, " ")
+        .replace(/\*\*(.*?)\*\*/g, "$1")
+        .replace(/\s+/g, " ")
+        .trim();
+}
+var AUTO_ENTRETIEN = (typeof MATIERE_AUTO !== "undefined" ? MATIERE_AUTO : []).map(function(item) {
+    return { id: item.id, titre: item.titre, cat: "AUTO", sousCat: item.cat, desc: plainTextFromAuto(item.desc) };
+});
+
 var ALL_KNOWLEDGE = [].concat(
     PANNEAUX,
     MECANIQUE_MOTEUR,
@@ -604,7 +605,8 @@ var ALL_KNOWLEDGE = [].concat(
     INFRACTIONS,
     RULES,
     PIEGES_ROUTES,
-    USAGERS_MANOEUVRES
+    USAGERS_MANOEUVRES,
+    AUTO_ENTRETIEN
 );
 
 // ---- CATEGORIES ----
@@ -627,7 +629,12 @@ var CATEGORIES = {
     MAR:{label:"Marquages",color:"var(--dark)"},
     CND:{label:"Conditions extremes",color:"var(--dark)"},
     VEH:{label:"Vehicules",color:"var(--dark)"},
-    PSY:{label:"Psychologie",color:"var(--dark)"}
+    PSY:{label:"Psychologie",color:"var(--dark)"},
+    RUL:{label:"Regles d'or",color:"var(--purple)"},
+    TRP:{label:"Pieges",color:"var(--purple)"},
+    USA:{label:"Usagers & manoeuvres",color:"var(--purple)"},
+    INF:{label:"Infractions",color:"var(--purple)"},
+    AUTO:{label:"Entretien auto",color:"var(--good)"}
 };
 
 // ---- MENU STRUCTURE ----
@@ -639,17 +646,16 @@ var MENU_STRUCTURE = [
         color:"var(--blue)",
         description:"Tous les panneaux du code belge : danger, priorite, interdiction, obligation, stationnement, indication, panonceaux, travaux et service.",
         subCategories:[
-            {id:"A",label:"Danger",count:29},
-            {id:"B",label:"Priorite",count:6},
-            {id:"C",label:"Interdiction",count:15},
-            {id:"D",label:"Obligation",count:4},
-            {id:"E",label:"Stationnement",count:3},
-            {id:"F",label:"Indication",count:18},
-            {id:"X",label:"Panonceaux",count:10},
-            {id:"T",label:"Travaux",count:4},
-            {id:"S",label:"Service",count:9}
+            {id:"A",label:"Danger",match:function(item){ return item.cat === "A"; }},
+            {id:"B",label:"Priorite",match:function(item){ return item.cat === "B"; }},
+            {id:"C",label:"Interdiction",match:function(item){ return item.cat === "C"; }},
+            {id:"D",label:"Obligation",match:function(item){ return item.cat === "D"; }},
+            {id:"E",label:"Stationnement",match:function(item){ return item.cat === "E"; }},
+            {id:"F",label:"Indication",match:function(item){ return item.cat === "F"; }},
+            {id:"X",label:"Panonceaux",match:function(item){ return item.cat === "X"; }},
+            {id:"T",label:"Travaux",match:function(item){ return item.cat === "T"; }},
+            {id:"S",label:"Service",match:function(item){ return item.cat === "S"; }}
         ],
-        totalCount:98,
         data:PANNEAUX
     },
     {
@@ -659,14 +665,13 @@ var MENU_STRUCTURE = [
         color:"var(--dark)",
         description:"Moteur, freins, direction, suspension, electrique, pneumatiques, equipements.",
         subCategories:[
-            {id:"MECA",label:"Moteur & Systemes",count:28},
-            {id:"MECA_FREIN",label:"Systeme de freinage",count:11},
-            {id:"MECA_DIR",label:"Direction & Suspension",count:9},
-            {id:"MECA_ELEC",label:"Electrique & Eclairage",count:12},
-            {id:"PNEU",label:"Pneumatiques & Jantes",count:40},
-            {id:"EQ",label:"Equipements & Accessoires",count:20}
+            {id:"MECA",label:"Moteur & Systemes",match:function(item){ return item.cat === "MECA" && ["Moteur","Transmission","Injection","Confort","Allumage","Echappement"].indexOf(item.sousCat) >= 0; }},
+            {id:"MECA_FREIN",label:"Systeme de freinage",match:function(item){ return item.cat === "MECA" && item.sousCat === "Freinage"; }},
+            {id:"MECA_DIR",label:"Direction & Suspension",match:function(item){ return item.cat === "MECA" && ["Direction","Suspension"].indexOf(item.sousCat) >= 0; }},
+            {id:"MECA_ELEC",label:"Electrique & Eclairage",match:function(item){ return item.cat === "MECA" && ["Electrique","Eclairage"].indexOf(item.sousCat) >= 0; }},
+            {id:"PNEU",label:"Pneumatiques & Jantes",match:function(item){ return item.cat === "PNEU"; }},
+            {id:"EQ",label:"Equipements & Accessoires",match:function(item){ return item.cat === "EQ"; }}
         ],
-        totalCount:120,
         data:[].concat(MECANIQUE_MOTEUR, PNEUMATIQUES, EQUIPEMENTS)
     },
     {
@@ -676,13 +681,12 @@ var MENU_STRUCTURE = [
         color:"var(--teal)",
         description:"Conduite hivernale, estivale, en montagne, conditions extremes et ecologie.",
         subCategories:[
-            {id:"SAI_HIVER",label:"Conduite hivernale",count:8},
-            {id:"SAI_ETE",label:"Conduite estivale",count:6},
-            {id:"SAI_MONT",label:"Conduite en montagne",count:5},
-            {id:"CND_EXT",label:"Conditions extremes",count:15},
-            {id:"SAI_ECO",label:"Ecologie & Environnement",count:11}
+            {id:"SAI_HIVER",label:"Conduite hivernale",match:function(item){ return item.sousCat === "Hiver"; }},
+            {id:"SAI_ETE",label:"Conduite estivale",match:function(item){ return item.sousCat === "Ete"; }},
+            {id:"SAI_MONT",label:"Conduite en montagne",match:function(item){ return item.sousCat === "Montagne"; }},
+            {id:"SAI_ECO",label:"Ecologie & Environnement",match:function(item){ return item.sousCat === "Ecologie"; }},
+            {id:"CND_EXT",label:"Conditions extremes",match:function(item){ return ["Extreme","Pluie","Brouillard","Vent","Nuit","Tunnels"].indexOf(item.sousCat) >= 0; }}
         ],
-        totalCount:45,
         data:[].concat(SAISONS_ENVIRONNEMENT, CONDITIONS_EXTREMES)
     },
     {
@@ -692,11 +696,10 @@ var MENU_STRUCTURE = [
         color:"var(--red)",
         description:"Gestes de premiers secours, PLS, massage cardiaque, balisage, equipements obligatoires.",
         subCategories:[
-            {id:"SEC_GESTES",label:"Gestes de premiers secours",count:10},
-            {id:"SEC_BALISAGE",label:"Balisage & Signalisation d'urgence",count:6},
-            {id:"SEC_EQUIP",label:"Equipements obligatoires",count:9}
+            {id:"SEC_GESTES",label:"Gestes de premiers secours",match:function(item){ return item.sousCat === "Gestes"; }},
+            {id:"SEC_BALISAGE",label:"Balisage & Signalisation d'urgence",match:function(item){ return item.sousCat === "Balisage"; }},
+            {id:"SEC_EQUIP",label:"Equipements obligatoires",match:function(item){ return item.sousCat === "Equipements"; }}
         ],
-        totalCount:25,
         data:SECOURS_URGENCE
     },
     {
@@ -706,14 +709,13 @@ var MENU_STRUCTURE = [
         color:"var(--purple)",
         description:"Regles d'or, pieges, usagers vulnerables, infractions, permis, assurance, controle technique.",
         subCategories:[
-            {id:"LEG_REGLES",label:"Regles d'or & Priorites",count:12},
-            {id:"LEG_PIEGES",label:"Pieges & Zones grises",count:10},
-            {id:"LEG_USAGERS",label:"Usagers & Manoeuvres",count:10},
-            {id:"LEG_INFRACT",label:"Infractions & Amendes",count:27},
-            {id:"LEG_DOCS",label:"Documents & Permis",count:12},
-            {id:"LEG_ASSUR",label:"Assurance & Controle technique",count:8}
+            {id:"LEG_REGLES",label:"Regles d'or & Priorites",match:function(item){ return item.cat === "RUL"; }},
+            {id:"LEG_PIEGES",label:"Pieges & Zones grises",match:function(item){ return item.cat === "TRP"; }},
+            {id:"LEG_USAGERS",label:"Usagers & Manoeuvres",match:function(item){ return item.cat === "USA"; }},
+            {id:"LEG_INFRACT",label:"Infractions & Amendes",match:function(item){ return item.cat === "INF" || (item.cat === "LEG" && item.sousCat === "Sanctions"); }},
+            {id:"LEG_DOCS",label:"Documents & Permis",match:function(item){ return item.cat === "LEG" && ["Permis","Documents"].indexOf(item.sousCat) >= 0; }},
+            {id:"LEG_ASSUR",label:"Assurance & Controle technique",match:function(item){ return item.cat === "LEG" && ["Assurance","Controle"].indexOf(item.sousCat) >= 0; }}
         ],
-        totalCount:79,
         data:[].concat(RULES, PIEGES_ROUTES, USAGERS_MANOEUVRES, INFRACTIONS, LEGAL_ADMIN)
     },
     {
@@ -723,11 +725,11 @@ var MENU_STRUCTURE = [
         color:"var(--amber)",
         description:"Motos, cyclomoteurs, poids lourds, autocars, remorques et attelages.",
         subCategories:[
-            {id:"VEH_MOTO",label:"Motos & Cyclomoteurs",count:9},
-            {id:"VEH_PL",label:"Poids lourds & Autocars",count:8},
-            {id:"VEH_REM",label:"Remorques & Attelages",count:6}
+            {id:"VEH_MOTO",label:"Motos & Cyclomoteurs",match:function(item){ return ["Moto","Cyclo"].indexOf(item.sousCat) >= 0; }},
+            {id:"VEH_PL",label:"Poids lourds & Autocars",match:function(item){ return item.sousCat === "Poids lourds"; }},
+            {id:"VEH_REM",label:"Remorques & Attelages",match:function(item){ return item.sousCat === "Remorque"; }},
+            {id:"VEH_PRIO",label:"Vehicules prioritaires",match:function(item){ return item.sousCat === "Prioritaires"; }}
         ],
-        totalCount:23,
         data:VEHICULES_SPECIFIQUES
     },
     {
@@ -737,11 +739,24 @@ var MENU_STRUCTURE = [
         color:"var(--green)",
         description:"Psychologie de la conduite, fatigue, stress, distraction, statistiques du permis belge.",
         subCategories:[
-            {id:"PSY_CHOLOGIE",label:"Psychologie de la conduite",count:10},
-            {id:"PSY_STATS",label:"Statistiques & Chiffres cles",count:10}
+            {id:"PSY_CHOLOGIE",label:"Psychologie de la conduite",match:function(item){ return item.sousCat === "Psychologie"; }},
+            {id:"PSY_STATS",label:"Statistiques & Chiffres cles",match:function(item){ return item.sousCat === "Statistiques"; }}
         ],
-        totalCount:20,
         data:PSYCHOLOGIE_STATS
+    },
+    {
+        id:"entretien",
+        label:"Entretien & Documents",
+        icon:"🧰",
+        color:"var(--good)",
+        description:"Verifications avant le depart, charges et permis, documents obligatoires, equipements de securite a bord.",
+        subCategories:[
+            {id:"AUTO_TECH",label:"Verifications techniques",match:function(item){ return item.sousCat === "Technique"; }},
+            {id:"AUTO_LEGAL",label:"Charges & legal",match:function(item){ return item.sousCat === "Légal & Charges"; }},
+            {id:"AUTO_ADMIN",label:"Documents administratifs",match:function(item){ return item.sousCat === "Administratif"; }},
+            {id:"AUTO_SEC",label:"Securite a bord",match:function(item){ return item.sousCat === "Sécurité"; }}
+        ],
+        data:AUTO_ENTRETIEN
     }
 ];// =========================================================
 // STOCKAGE & ETAT
@@ -790,7 +805,7 @@ function stats() { return appData.stats; }
 function mistakes() { return appData.mistakes; }
 
 var state = {
-    categories: ["A", "B", "C", "D", "E", "F", "MECA", "PNEU", "SAI", "SEC", "LEG", "EQ", "MAR", "CND", "VEH", "PSY"],
+    categories: ["A", "B", "C", "D", "E", "F", "X", "T", "S", "MECA", "PNEU", "SAI", "SEC", "LEG", "EQ", "MAR", "CND", "VEH", "PSY", "RUL", "TRP", "USA", "INF", "AUTO"],
     questionCount: 15,
     timer: false,
     questions: [],
@@ -974,9 +989,11 @@ function renderMenu() {
             return function() { showCategorie(c.id); };
         })(cat);
 
+        var catData = cat.data || [];
         var subLabels = "";
         for (var j = 0; j < cat.subCategories.length; j++) {
-            subLabels += '<span style="font-size: 10px; background: var(--soft); padding: 2px 8px; border-radius: 10px;">' + cat.subCategories[j].label + ' (' + cat.subCategories[j].count + ')</span>';
+            var subCount = catData.filter(cat.subCategories[j].match).length;
+            subLabels += '<span style="font-size: 10px; background: var(--soft); padding: 2px 8px; border-radius: 10px;">' + cat.subCategories[j].label + ' (' + subCount + ')</span>';
         }
 
         card.innerHTML = `
@@ -984,7 +1001,7 @@ function renderMenu() {
                 <span style="font-size: 28px;">${cat.icon}</span>
                 <div>
                     <b style="font-size: 17px;">${cat.label}</b>
-                    <span style="font-size: 12px; color: var(--muted); display: block;">${cat.totalCount} elements • ${cat.subCategories.length} sous-categories</span>
+                    <span style="font-size: 12px; color: var(--muted); display: block;">${catData.length} elements • ${cat.subCategories.length} sous-categories</span>
                 </div>
             </div>
             <p style="font-size: 12px; color: var(--muted); margin: 0; line-height: 1.4;">${cat.description}</p>
@@ -1006,14 +1023,16 @@ function showCategorie(categoryId) {
     if ($("categoriePage")) $("categoriePage").classList.remove("hidden");
     if ($("homeButton")) $("homeButton").style.display = "block";
 
+    var data = cat.data || [];
     document.getElementById("categorieTitle").textContent = cat.icon + " " + cat.label;
-    document.getElementById("categorieDesc").textContent = cat.description + " (" + cat.totalCount + " elements)";
+    document.getElementById("categorieDesc").textContent = cat.description + " (" + data.length + " elements)";
 
     var grid = document.getElementById("sousCategorieGrid");
     grid.innerHTML = "";
 
     for (var i = 0; i < cat.subCategories.length; i++) {
         var sc = cat.subCategories[i];
+        var count = data.filter(sc.match).length;
         var card = document.createElement("button");
         card.className = "practice";
         card.style.width = "100%";
@@ -1025,7 +1044,7 @@ function showCategorie(categoryId) {
         card.innerHTML = `
             <div style="display: flex; flex-direction: column; align-items: flex-start;">
                 <b>${sc.label}</b>
-                <span style="font-size: 11px; color: var(--muted);">${sc.count} elements</span>
+                <span style="font-size: 11px; color: var(--muted);">${count} elements</span>
             </div>
             <span class="arrow">→</span>
         `;
@@ -1051,8 +1070,9 @@ function showSousCategorie(sousCatId) {
     if ($("sousCategoriePage")) $("sousCategoriePage").classList.remove("hidden");
     if ($("homeButton")) $("homeButton").style.display = "block";
 
+    var data0 = cat.data || [];
     document.getElementById("sousCategorieTitle").textContent = cat.icon + " " + sc.label;
-    document.getElementById("sousCategorieDesc").textContent = sc.count + " elements • " + cat.label;
+    document.getElementById("sousCategorieDesc").textContent = data0.filter(sc.match).length + " elements • " + cat.label;
     renderSousCategorie();
 }
 
@@ -1066,20 +1086,7 @@ function renderSousCategorie() {
     if (!list) return;
 
     var data = cat.data || [];
-    var results = data.filter(function(item) {
-        var match = false;
-        if (item.sousCat) {
-            if (item.sousCat === sc.label) match = true;
-        }
-        if (item.id && item.id.indexOf(sc.id) === 0) match = true;
-        if (item.cat === sc.id) match = true;
-        if (!item.sousCat && !item.id) match = true;
-        return match;
-    });
-
-    if (results.length === 0) {
-        results = data;
-    }
+    var results = data.filter(sc.match);
 
     if (query) {
         results = results.filter(function(item) {
@@ -1539,6 +1546,36 @@ function makeSignSVG(panel, small) {
         content = '<rect x="12" y="55" width="156" height="70" rx="6" fill="#fff" stroke="' + ink + '" stroke-width="4"/><text x="90" y="98" text-anchor="middle" font-size="' + (small ? 16 : 24) + '" font-weight="900" fill="' + ink + '" font-family="Arial">Panonceau</text>';
     } else if (panel.cat === "S") {
         content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#1c5fa8"/><text x="90" y="122" text-anchor="middle" font-size="' + (small ? 42 : 90) + '" font-weight="900" fill="#fff" font-family="Arial">S</text>';
+    } else if (panel.cat === "MECA") {
+        content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#3d4451"/><path d="M55 70 a20 20 0 1 1 0 0.1" fill="none" stroke="#fff" stroke-width="9"/><path d="M120 60 L150 30 M150 30 l8 8 M150 30 l-8 8 M100 80 L140 120 M60 110 L40 130 M40 130 l0 12 M40 130 l-12 0" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round"/><circle cx="75" cy="95" r="26" fill="none" stroke="#fff" stroke-width="9"/>';
+    } else if (panel.cat === "PNEU") {
+        content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#20242b"/><circle cx="90" cy="90" r="62" fill="none" stroke="#fff" stroke-width="10"/><circle cx="90" cy="90" r="30" fill="#fff"/><circle cx="90" cy="90" r="10" fill="#20242b"/>' + [0,60,120,180,240,300].map(function(a){var r1=52,r2=70,x1=90+r1*Math.cos(a*Math.PI/180),y1=90+r1*Math.sin(a*Math.PI/180),x2=90+r2*Math.cos(a*Math.PI/180),y2=90+r2*Math.sin(a*Math.PI/180);return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="#fff" stroke-width="7"/>';}).join('');
+    } else if (panel.cat === "SAI") {
+        content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#0e7c86"/><g stroke="#fff" stroke-width="8" stroke-linecap="round">' + [0,60,120].map(function(a){var x=54*Math.cos(a*Math.PI/180),y=54*Math.sin(a*Math.PI/180);return '<line x1="'+(90-x)+'" y1="'+(90-y)+'" x2="'+(90+x)+'" y2="'+(90+y)+'"/>';}).join('') + '</g>';
+    } else if (panel.cat === "SEC") {
+        content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#c81e2c"/><rect x="72" y="34" width="36" height="112" rx="6" fill="#fff"/><rect x="34" y="72" width="112" height="36" rx="6" fill="#fff"/>';
+    } else if (panel.cat === "LEG") {
+        content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#6b46c1"/><line x1="90" y1="35" x2="90" y2="130" stroke="#fff" stroke-width="8"/><line x1="40" y1="55" x2="140" y2="55" stroke="#fff" stroke-width="8"/><path d="M40 55 L25 90 a15 15 0 0 0 30 0 Z" fill="none" stroke="#fff" stroke-width="7"/><path d="M140 55 L125 90 a15 15 0 0 0 30 0 Z" fill="none" stroke="#fff" stroke-width="7"/><rect x="65" y="128" width="50" height="10" rx="3" fill="#fff"/>';
+    } else if (panel.cat === "EQ") {
+        content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#e8a400"/><circle cx="90" cy="85" r="34" fill="#fff"/><path d="M78 118 h24 v10 a12 12 0 0 1 -24 0 Z" fill="#fff"/><line x1="90" y1="45" x2="90" y2="55" stroke="#fff" stroke-width="7" stroke-linecap="round"/>';
+    } else if (panel.cat === "MAR") {
+        content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#4a4d52"/><line x1="90" y1="20" x2="90" y2="55" stroke="#fff" stroke-width="10"/><line x1="90" y1="75" x2="90" y2="105" stroke="#fff" stroke-width="10"/><line x1="90" y1="125" x2="90" y2="160" stroke="#fff" stroke-width="10"/>';
+    } else if (panel.cat === "CND") {
+        content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#1c5fa8"/><path d="M55 95 a25 25 0 0 1 0-50 a32 32 0 0 1 62 8 a24 24 0 0 1 -6 47 Z" fill="#fff"/><g stroke="#e8a400" stroke-width="7" stroke-linecap="round"><line x1="55" y1="118" x2="45" y2="140"/><line x1="90" y1="118" x2="80" y2="140"/><line x1="125" y1="118" x2="115" y2="140"/></g>';
+    } else if (panel.cat === "VEH") {
+        content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#3d4451"/><rect x="25" y="80" width="90" height="35" rx="5" fill="#fff"/><rect x="115" y="95" width="35" height="20" rx="4" fill="#fff"/><circle cx="55" cy="120" r="14" fill="#20242b" stroke="#fff" stroke-width="5"/><circle cx="128" cy="120" r="14" fill="#20242b" stroke="#fff" stroke-width="5"/>';
+    } else if (panel.cat === "PSY") {
+        content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#1e7a3c"/><rect x="40" y="95" width="20" height="45" fill="#fff"/><rect x="70" y="70" width="20" height="70" fill="#fff"/><rect x="100" y="50" width="20" height="90" fill="#fff"/><rect x="130" y="80" width="20" height="60" fill="#fff"/>';
+    } else if (panel.cat === "RUL") {
+        content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#6b46c1"/><path d="M90 30 L140 45 V90 c0 35 -25 55 -50 60 c-25 -5 -50 -25 -50 -60 V45 Z" fill="#fff"/><path d="M65 92 l16 16 l34 -38" fill="none" stroke="#6b46c1" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>';
+    } else if (panel.cat === "TRP") {
+        content = '<polygon points="90,20 165,155 15,155" fill="#fff" stroke="#6b46c1" stroke-width="12" stroke-linejoin="round"/><rect x="83" y="70" width="14" height="45" rx="4" fill="#6b46c1"/><circle cx="90" cy="130" r="7" fill="#6b46c1"/>';
+    } else if (panel.cat === "USA") {
+        content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#6b46c1"/><circle cx="90" cy="55" r="18" fill="#fff"/><path d="M60 145 v-30 a30 30 0 0 1 60 0 v30 Z" fill="#fff"/>';
+    } else if (panel.cat === "INF") {
+        content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#6b46c1"/><circle cx="90" cy="90" r="58" fill="none" stroke="#fff" stroke-width="9"/><text x="90" y="108" text-anchor="middle" font-size="' + (small ? 40 : 78) + '" font-weight="900" fill="#fff" font-family="Arial">€</text>';
+    } else if (panel.cat === "AUTO") {
+        content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#1e7a3c"/><rect x="50" y="30" width="80" height="120" rx="6" fill="#fff"/><rect x="65" y="22" width="50" height="14" rx="4" fill="#fff"/><line x1="63" y1="65" x2="117" y2="65" stroke="#1e7a3c" stroke-width="6"/><line x1="63" y1="90" x2="117" y2="90" stroke="#1e7a3c" stroke-width="6"/><path d="M63 112 l8 8 l14 -16" fill="none" stroke="#1e7a3c" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><line x1="100" y1="118" x2="117" y2="118" stroke="#1e7a3c" stroke-width="6"/>';
     } else {
         content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#1c5fa8"/><text x="90" y="122" text-anchor="middle" font-size="' + (small ? 42 : 90) + '" font-weight="900" fill="#fff" font-family="Arial">?</text>';
     }
@@ -2246,18 +2283,18 @@ function showNoErrorResult() {
 // ---- 9. MODE QUESTIONS PIEGES ----
 function startTrapMode() {
     var mistakes = appData.mistakes || {};
-    var trapQuestions = [];
+    var trapQuestions = PIEGES_ROUTES.slice();
 
     for (var key in mistakes) {
         if (mistakes[key] >= 2) {
             var item = ALL_KNOWLEDGE.find(function(p) { return (p.code || p.id || p.titre) === key; });
-            if (item) trapQuestions.push(item);
+            if (item && trapQuestions.indexOf(item) === -1) trapQuestions.push(item);
         }
     }
 
     if (trapQuestions.length < 10) {
-        var all = shuffle(ALL_KNOWLEDGE.slice());
-        trapQuestions = all.slice(0, 10);
+        var extra = shuffle(ALL_KNOWLEDGE.filter(function(p) { return trapQuestions.indexOf(p) === -1; }));
+        trapQuestions = trapQuestions.concat(extra.slice(0, 10 - trapQuestions.length));
     }
 
     state.questions = shuffle(trapQuestions).slice(0, Math.min(15, trapQuestions.length));
