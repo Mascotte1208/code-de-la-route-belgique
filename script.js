@@ -2730,32 +2730,6 @@ function getQuestionsByDifficulty(level) {
     return pool;
 }
 
-function startDifficultyQuiz(level) {
-    var pool = getQuestionsByDifficulty(level);
-    if (pool.length < 2) {
-        alert("Pas assez de questions pour ce niveau.");
-        return;
-    }
-    state.questions = shuffle(pool).slice(0, Math.min(15, pool.length));
-    state.timer = false;
-    state.isOfficialExam = false;
-    state.review = false;
-
-    hideViews();
-    if ($("quiz")) $("quiz").classList.remove("hidden");
-    if ($("homeButton")) $("homeButton").style.display = "block";
-    if ($("quizConfig")) $("quizConfig").classList.add("hidden");
-    if ($("quizSummary")) $("quizSummary").classList.add("hidden");
-    if ($("quizRunning")) $("quizRunning").classList.remove("hidden");
-
-    var levelNames = { facile: "⭐ Facile", moyen: "⭐⭐ Moyen", difficile: "⭐⭐⭐ Difficile" };
-    $("quizModeLabel").textContent = levelNames[level] || "Quiz";
-    $("quizModeLabel").style.background = level === "facile" ? "var(--good)" : level === "moyen" ? "var(--amber)" : "var(--red)";
-    $("quizModeLabel").style.color = level === "moyen" ? "var(--ink)" : "white";
-
-    beginSession(false);
-}
-
 // ---- 18. REVISION DES ERREURS ----
 function startErrorOnlyMode() {
     var mistakes = appData.mistakes || {};
@@ -2917,7 +2891,6 @@ window.startNoErrorMode = startNoErrorMode;
 window.startTrapMode = startTrapMode;
 window.startExamMode = startExamMode;
 window.startErrorOnlyMode = startErrorOnlyMode;
-window.startDifficultyQuiz = startDifficultyQuiz;
 window.showDailyChallenge = showDailyChallenge;
 window.answerDailyChallenge = answerDailyChallenge;
 window.checkDailyChallenge = checkDailyChallenge;
