@@ -1402,6 +1402,11 @@ function configureQuiz() {
 
 function startQuiz() {
     var pool = ALL_KNOWLEDGE.filter(function(p) { return state.categories.indexOf(p.cat) >= 0; });
+    if (typeof currentDifficulty !== "undefined" && currentDifficulty && currentDifficulty !== "tous") {
+        var byDifficulty = getQuestionsByDifficulty(currentDifficulty);
+        var filtered = pool.filter(function(p) { return byDifficulty.indexOf(p) >= 0; });
+        if (filtered.length >= 2) pool = filtered;
+    }
     if (pool.length < 2) return;
     var timerCheckbox = document.getElementById("timerEnabled");
     state.timer = timerCheckbox ? timerCheckbox.checked : false;
@@ -1661,6 +1666,20 @@ function answerQuestion(index) { if (state.answered) return;
     clearInterval(state.timerId);
     completeAnswer(index); }
 
+// Enregistre chaque reponse (juste ou fausse) de facon identique quel que soit le mode de jeu,
+// pour que categories faibles, fiche de revision, mode pieges et mode difficile restent coherents.
+function recordAnswerOutcome(panel, correct) {
+    var code = panel.code || panel.id || panel.titre || "";
+    if (!code) return;
+    if (correct) {
+        var corrects = JSON.parse(localStorage.getItem("correctAnswers") || "{}");
+        corrects[code] = (corrects[code] || 0) + 1;
+        localStorage.setItem("correctAnswers", JSON.stringify(corrects));
+    } else {
+        appData.mistakes[code] = (appData.mistakes[code] || 0) + 1;
+    }
+}
+
 async function completeAnswer(selectedIndex) {
     state.answered = true;
     var panel = state.questions[state.index];
@@ -1673,6 +1692,7 @@ async function completeAnswer(selectedIndex) {
     if (correct) {
         state.score++;
         categoryState.correct++;
+        recordAnswerOutcome(panel, true);
         var currentStreak = parseInt(localStorage.getItem("currentStreak") || "0") + 1;
         localStorage.setItem("currentStreak", String(currentStreak));
         var bestStreak = parseInt(localStorage.getItem("bestStreak") || "0");
@@ -1681,8 +1701,7 @@ async function completeAnswer(selectedIndex) {
         }
     } else {
         state.errors.push({ panel: panel, answer: selected ? (selected.nom || selected.titre || "") : "Temps ecoule" });
-        var code = panel.code || panel.id || panel.titre || "";
-        appData.mistakes[code] = (appData.mistakes[code] || 0) + 1;
+        recordAnswerOutcome(panel, false);
         localStorage.setItem("currentStreak", "0");
         await saveAppData();
     }
@@ -1761,16 +1780,30 @@ async function toggleFavorite() {
 // RESUME
 // =========================================================
 
+// Enregistre la fin d'une session de la meme facon pour tous les modes de jeu
+// (quiz, examen, chrono, sans-erreur, defi du jour...) afin que le tableau de bord
+// (appData.stats) et le graphique de progression (statsHistory) reflètent tout ce
+// qui a ete joue, pas seulement le quiz classique.
+function recordSessionCompletion(correct, total, mode, countTowardStats) {
+    if (countTowardStats && total > 0) {
+        appData.stats.sessions++;
+        appData.stats.correct += correct;
+        appData.stats.total += total;
+    }
+    var percent = total > 0 ? Math.round(100 * correct / total) : 0;
+    var history = JSON.parse(localStorage.getItem("statsHistory") || "[]");
+    history.push({ date: new Date().toLocaleDateString(), score: percent, mode: mode, count: total });
+    localStorage.setItem("statsHistory", JSON.stringify(history.slice(-50)));
+}
+
 async function showSummary() {
     clearInterval(state.timerId);
     var total = state.questions.length;
     var score = state.score;
     var percentage = total ? Math.round(100 * score / total) : 0;
 
+    recordSessionCompletion(score, total, state.isOfficialExam ? "exam" : (state.review ? "review" : "quiz"), !state.review);
     if (!state.review) {
-        appData.stats.sessions++;
-        appData.stats.correct += score;
-        appData.stats.total += total;
         await saveAppData();
     }
 
@@ -2008,7 +2041,7 @@ function renderTimedQuestion() {
     $("nextButtonZone").innerHTML = "";
 }
 
-function answerTimedQuestion(index) {
+async function answerTimedQuestion(index) {
     if (timedModeState.answered || !timedModeState.active) return;
     timedModeState.answered = true;
 
@@ -2016,8 +2049,11 @@ function answerTimedQuestion(index) {
     var selected = timedModeState.options[index];
     var correct = selected && (selected.code || selected.id || selected.titre) === (panel.code || panel.id || panel.titre);
 
+    recordAnswerOutcome(panel, correct);
     if (correct) {
         timedModeState.score++;
+    } else {
+        await saveAppData();
     }
 
     $("quizScore").textContent = "Score: " + timedModeState.score;
@@ -2049,14 +2085,7 @@ function endTimedMode() {
         timedModeState.timer = null;
     }
 
-    var history = JSON.parse(localStorage.getItem("statsHistory") || "[]");
-    history.push({
-        date: new Date().toLocaleDateString(),
-        score: Math.round(timedModeState.score / 60 * 100),
-        mode: "timed",
-        count: timedModeState.index
-    });
-    localStorage.setItem("statsHistory", JSON.stringify(history.slice(-50)));
+    recordSessionCompletion(timedModeState.score, timedModeState.index, "timed", true);
 
     $("quizRunning").classList.add("hidden");
     $("quizSummary").classList.remove("hidden");
@@ -2096,10 +2125,9 @@ function showDailyChallenge() {
 
     content.innerHTML = `
         <div style="margin-bottom: 20px;">${makeSignSVG(panel, false)}</div>
-        <div style="font-size: 18px; font-weight: 900; margin-bottom: 10px;">${escapeHTML(panel.nom || panel.titre || "")}</div>
-        <p style="color: var(--muted);">${escapeHTML(panel.desc || "")}</p>
+        <p style="color: var(--muted);">Un element du programme, chaque jour. Devine sa designation exacte.</p>
         <div style="margin-top: 20px;">
-            ${isDone ? 
+            ${isDone ?
                 '<span style="background: var(--good); color: white; padding: 10px 20px; border-radius: 10px;">✅ Defi realise aujourd\'hui !</span>' :
                 '<button class="primary" onclick="answerDailyChallenge()">🎯 Relever le defi</button>'
             }
@@ -2107,12 +2135,14 @@ function showDailyChallenge() {
     `;
 }
 
+var dailyChallengeOptions = [];
+
 function answerDailyChallenge() {
     var challenge = JSON.parse(localStorage.getItem("dailyChallenge"));
     var panel = challenge.question;
 
     var distractors = shuffle(ALL_KNOWLEDGE.filter(function(p) { return (p.code || p.id || p.titre) !== (panel.code || panel.id || panel.titre); })).slice(0, 3);
-    var options = shuffle([panel].concat(distractors));
+    dailyChallengeOptions = shuffle([panel].concat(distractors));
 
     var content = $("dailyChallengeContent");
     var html = `
@@ -2121,20 +2151,25 @@ function answerDailyChallenge() {
         <div style="display: flex; flex-direction: column; gap: 10px; max-width: 400px; margin: auto;">
     `;
 
-    for (var i = 0; i < options.length; i++) {
-        var label = options[i].nom || options[i].titre || "";
-        var isCorrect = (options[i].code || options[i].id || options[i].titre) === (panel.code || panel.id || panel.titre);
-        html += `<button class="option" onclick="checkDailyChallenge(${i}, ${isCorrect ? 'true' : 'false'}, '${escapeHTML(label)}', '${escapeHTML(panel.desc || "")}')">${escapeHTML(label)}</button>`;
+    for (var i = 0; i < dailyChallengeOptions.length; i++) {
+        var label = dailyChallengeOptions[i].nom || dailyChallengeOptions[i].titre || "";
+        html += `<button class="option" onclick="checkDailyChallenge(${i})">${escapeHTML(label)}</button>`;
     }
 
     html += `</div>`;
     content.innerHTML = html;
 }
 
-function checkDailyChallenge(index, isCorrect, selectedLabel, correctDesc) {
+async function checkDailyChallenge(index) {
     var options = document.querySelectorAll("#dailyChallengeContent .option");
     var challenge = JSON.parse(localStorage.getItem("dailyChallenge"));
     var panel = challenge.question;
+    var selected = dailyChallengeOptions[index];
+    var isCorrect = !!selected && (selected.code || selected.id || selected.titre) === (panel.code || panel.id || panel.titre);
+    var correctDesc = panel.desc || "";
+
+    recordAnswerOutcome(panel, isCorrect);
+    if (!isCorrect) await saveAppData();
 
     for (var i = 0; i < options.length; i++) {
         options[i].classList.add("locked");
@@ -2151,9 +2186,7 @@ function checkDailyChallenge(index, isCorrect, selectedLabel, correctDesc) {
     if (isCorrect) {
         challenge.done = true;
         localStorage.setItem("dailyChallenge", JSON.stringify(challenge));
-        var history = JSON.parse(localStorage.getItem("statsHistory") || "[]");
-        history.push({ date: new Date().toLocaleDateString(), score: 100, mode: "daily", count: 1 });
-        localStorage.setItem("statsHistory", JSON.stringify(history.slice(-50)));
+        recordSessionCompletion(1, 1, "daily", true);
         updateBadges();
         updateHomeStats();
 
@@ -2225,7 +2258,7 @@ function renderNoErrorQuestion() {
     $("nextButtonZone").innerHTML = "";
 }
 
-function answerNoErrorQuestion(index) {
+async function answerNoErrorQuestion(index) {
     if (noErrorState.answered || !noErrorState.active) return;
     noErrorState.answered = true;
 
@@ -2233,9 +2266,11 @@ function answerNoErrorQuestion(index) {
     var selected = noErrorState.options[index];
     var correct = selected && (selected.code || selected.id || selected.titre) === (panel.code || panel.id || panel.titre);
 
+    recordAnswerOutcome(panel, correct);
     if (correct) {
         noErrorState.score++;
     } else {
+        await saveAppData();
         noErrorState.active = false;
         showNoErrorResult();
         return;
@@ -2269,9 +2304,7 @@ function showNoErrorResult() {
     $("summaryFraction").textContent = "sans erreur !";
     $("summaryMessage").textContent = noErrorState.score >= 20 ? "🌟 Impressionnant !" : noErrorState.score >= 10 ? "👍 Bon entrainement !" : "📚 Continue à t'entrainer !";
 
-    var history = JSON.parse(localStorage.getItem("statsHistory") || "[]");
-    history.push({ date: new Date().toLocaleDateString(), score: noErrorState.score, mode: "noerror", count: noErrorState.score });
-    localStorage.setItem("statsHistory", JSON.stringify(history.slice(-50)));
+    recordSessionCompletion(noErrorState.score, noErrorState.score + 1, "noerror", true);
 
     $("categoryResults").innerHTML = "";
     $("errorResults").innerHTML = "";
@@ -2657,31 +2690,6 @@ function resetFlashcards() {
     renderFlashcard();
 }
 
-// ---- 16. QUESTION ALEATOIRE ----
-function showRandomQuestion() {
-    hideViews();
-    if ($("randomQuestionPage")) $("randomQuestionPage").classList.remove("hidden");
-    if ($("homeButton")) $("homeButton").style.display = "block";
-    renderRandomQuestion();
-}
-
-function renderRandomQuestion() {
-    var panel = ALL_KNOWLEDGE[Math.floor(Math.random() * ALL_KNOWLEDGE.length)];
-    var container = $("randomQuestionDisplay");
-    if (!container) return;
-
-    container.innerHTML = `
-        <div style="display: flex; flex-direction: column; align-items: center;">
-            ${makeSignSVG(panel, false)}
-            <div style="font-size: 14px; color: var(--muted); margin-top: 10px;">${escapeHTML(panel.code || panel.id || "")}</div>
-            <div style="font-size: 20px; font-weight: 900; margin-top: 5px;">${escapeHTML(panel.nom || panel.titre || "")}</div>
-            <div style="font-size: 14px; color: var(--muted); margin-top: 10px; max-width: 500px;">${escapeHTML(panel.desc || "")}</div>
-            <div style="font-size: 12px; color: var(--muted); margin-top: 5px;">Categorie: ${CATEGORIES[panel.cat]?.label || panel.cat || "Inconnue"}</div>
-            <button class="primary" style="margin-top: 15px;" onclick="showRandomQuestion()">🎲 Nouvelle question</button>
-        </div>
-    `;
-}
-
 // ---- 17. NIVEAU DE DIFFICULTE ----
 var currentDifficulty = "tous";
 
@@ -2918,8 +2926,6 @@ window.nextFlashcard = nextFlashcard;
 window.prevFlashcard = prevFlashcard;
 window.shuffleFlashcards = shuffleFlashcards;
 window.resetFlashcards = resetFlashcards;
-window.showRandomQuestion = showRandomQuestion;
-window.renderRandomQuestion = renderRandomQuestion;
 window.generateRevisionSheet = generateRevisionSheet;
 window.setDailyGoal = setDailyGoal;
 window.setDifficulty = setDifficulty;
