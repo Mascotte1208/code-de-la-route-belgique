@@ -1101,27 +1101,7 @@ function renderSousCategorie() {
     list.classList.add("fade-list");
 
     if (results.length) {
-        var html = "";
-        for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var title = item.titre || item.nom || "";
-            var desc = item.desc || "";
-            var code = item.code || item.id || "";
-            var badge = item.sousCat || CATEGORIES[item.cat]?.label || "";
-            var color = CATEGORIES[item.cat]?.color || "var(--blue)";
-
-            html += `
-                <div class="rule-card" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px;">
-                    ${code ? '<span style="font-weight: 900; font-size: 12px; color: var(--muted); min-width: 50px;">' + escapeHTML(code) + '</span>' : ''}
-                    <div style="flex: 1;">
-                        <b style="font-size: 14px;">${escapeHTML(title)}</b>
-                        <p style="font-size: 12px; margin: 3px 0 0; color: var(--muted);">${escapeHTML(desc)}</p>
-                    </div>
-                    ${badge ? '<span class="badge" style="background:' + color + '; font-size: 9px;">' + escapeHTML(badge) + '</span>' : ''}
-                </div>
-            `;
-        }
-        list.innerHTML = html;
+        list.innerHTML = results.map(renderKnowledgeCard).join("");
     } else {
         list.innerHTML = '<div class="empty">Aucun element ne correspond.</div>';
     }
@@ -1290,6 +1270,25 @@ function showUsagersManoeuvres() {
 // RENDU GENERIQUE
 // =========================================================
 
+function renderKnowledgeCard(item) {
+    var title = item.titre || item.nom || "";
+    var desc = item.desc || "";
+    var code = item.code || item.id || "";
+    var badge = item.sousCat || CATEGORIES[item.cat]?.label || "";
+    var color = CATEGORIES[item.cat]?.color || "var(--blue)";
+    return `
+        <div class="repo-item">
+            <div class="repo-thumb">${makeSignSVG(item, true)}</div>
+            <div style="flex: 1; min-width: 0;">
+                ${code ? '<div class="repo-code">' + escapeHTML(code) + '</div>' : ''}
+                <div class="repo-name">${escapeHTML(title)}</div>
+                <p class="repo-desc">${escapeHTML(desc)}</p>
+            </div>
+            ${badge ? '<span class="badge" style="background:' + color + '; font-size: 9px; flex: none;">' + escapeHTML(badge) + '</span>' : ''}
+        </div>
+    `;
+}
+
 function renderGeneric(list, searchId, listId, titleKey, descKey, catKey) {
     var query = $(searchId) ? $(searchId).value.trim().toLowerCase() : "";
     var results = list.filter(function(item) {
@@ -1305,26 +1304,7 @@ function renderGeneric(list, searchId, listId, titleKey, descKey, catKey) {
     listEl.classList.add("fade-list");
 
     if (results.length) {
-        var html = "";
-        for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var title = item.titre || item.nom || "";
-            var desc = item.desc || "";
-            var badge = item.sousCat || CATEGORIES[item.cat]?.label || "";
-            var color = CATEGORIES[item.cat]?.color || "var(--blue)";
-            var code = item.code || item.id || "";
-            html += `
-                <div class="rule-card" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px;">
-                    ${code ? '<span style="font-weight: 900; font-size: 12px; color: var(--muted); min-width: 50px;">' + escapeHTML(code) + '</span>' : ''}
-                    <div style="flex: 1;">
-                        <b style="font-size: 14px;">${escapeHTML(title)}</b>
-                        <p style="font-size: 12px; margin: 3px 0 0; color: var(--muted);">${escapeHTML(desc)}</p>
-                    </div>
-                    ${badge ? '<span class="badge" style="background:' + color + '; font-size: 9px;">' + escapeHTML(badge) + '</span>' : ''}
-                </div>
-            `;
-        }
-        listEl.innerHTML = html;
+        listEl.innerHTML = results.map(renderKnowledgeCard).join("");
     } else {
         listEl.innerHTML = '<div class="empty">Aucun element ne correspond.</div>';
     }
