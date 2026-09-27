@@ -25,58 +25,58 @@ if (!window.storage) {
 // =========================================================
 
 var PANNEAUX_A = [
-    {code:"A1a",nom:"Virage dangereux a gauche",cat:"A",desc:"Annonce un virage prononce vers la gauche."},
-    {code:"A1b",nom:"Virage dangereux a droite",cat:"A",desc:"Annonce un virage prononce vers la droite."},
-    {code:"A1c",nom:"Succession de virages (premier a gauche)",cat:"A",desc:"Annonce plusieurs virages successifs, le premier a gauche."},
-    {code:"A1d",nom:"Succession de virages (premier a droite)",cat:"A",desc:"Annonce plusieurs virages successifs, le premier a droite."},
-    {code:"A3",nom:"Descente dangereuse",cat:"A",desc:"Pente raide indiquee par un pourcentage. Utilisez le frein moteur."},
-    {code:"A5",nom:"Montee a forte inclinaison",cat:"A",desc:"Indique une forte cote."},
-    {code:"A7a",nom:"Chaussee retrecie (des deux cotes)",cat:"A",desc:"Retrecissement de la route des deux cotes."},
-    {code:"A7b",nom:"Chaussee retrecie (a droite)",cat:"A",desc:"Retrecissement de la route du cote droit."},
-    {code:"A7c",nom:"Chaussee retrecie (a gauche)",cat:"A",desc:"Retrecissement de la route du cote gauche."},
-    {code:"A8",nom:"Accotement non stabilise",cat:"A",desc:"Accotement non revetu, risque de perte de controle."},
-    {code:"A9",nom:"Pont mobile",cat:"A",desc:"Approche d'un pont levant ou tournant."},
-    {code:"A11",nom:"Debouche sur un quai ou berge",cat:"A",desc:"Risque de chute dans l'eau si manoeuvre mal executee."},
-    {code:"A13",nom:"Cassis ou dos d'ane",cat:"A",desc:"Ralentisseur ou bosse sur la chaussee."},
-    {code:"A15",nom:"Chaussee glissante",cat:"A",desc:"Risque accru de glissade (pluie, verglas, gravillons)."},
-    {code:"A16",nom:"Verglas ou neige",cat:"A",desc:"Risque de verglas ou chaussee enneigee."},
-    {code:"A17",nom:"Projection de gravillons",cat:"A",desc:"Risque de projection de pierres ou gravillons."},
-    {code:"A18",nom:"Brouillard",cat:"A",desc:"Risque de brouillard epais."},
-    {code:"A19",nom:"Chutes de pierres",cat:"A",desc:"Risque d'eboulement ou chutes de pierres."},
-    {code:"A21",nom:"Passage pour pietons",cat:"A",desc:"Annonce un passage cloute a proximite."},
-    {code:"A23",nom:"Endroit frequente par des enfants",cat:"A",desc:"Presence d'ecoles ou aires de jeux."},
-    {code:"A24",nom:"Endroit frequente par des cavaliers",cat:"A",desc:"Presence de cavaliers ou centres equestres."},
-    {code:"A25",nom:"Passage de cyclistes",cat:"A",desc:"Debouche de cyclistes ou piste cyclable."},
-    {code:"A27",nom:"Traversee d'animaux",cat:"A",desc:"Traversee possible d'animaux (cerfs, sangliers, etc.)."},
-    {code:"A31",nom:"Travaux",cat:"A",desc:"Presence d'un chantier sur ou le long de la voie publique."},
-    {code:"A32",nom:"Files (embouteillage)",cat:"A",desc:"Risque de formation de files ou ralentissements."},
-    {code:"A33",nom:"Feux de circulation",cat:"A",desc:"Annonce des feux tricolores en amont."},
-    {code:"A45",nom:"Passage a niveau (non garde)",cat:"A",desc:"Annonce un passage a niveau sans barrieres."},
-    {code:"A47",nom:"Passage a niveau (garde)",cat:"A",desc:"Annonce un passage a niveau avec barrieres."},
-    {code:"A51",nom:"Danger indetermine",cat:"A",desc:"Danger particulier precise par un panonceau additionnel."}
+    {code:"A1a",nom:"Virage dangereux a gauche",cat:"A",pict:"curveLeft",desc:"Annonce un virage prononce vers la gauche."},
+    {code:"A1b",nom:"Virage dangereux a droite",cat:"A",pict:"curveRight",desc:"Annonce un virage prononce vers la droite."},
+    {code:"A1c",nom:"Succession de virages (premier a gauche)",cat:"A",pict:"doubleCurveLeft",desc:"Annonce plusieurs virages successifs, le premier a gauche."},
+    {code:"A1d",nom:"Succession de virages (premier a droite)",cat:"A",pict:"doubleCurveRight",desc:"Annonce plusieurs virages successifs, le premier a droite."},
+    {code:"A3",nom:"Descente dangereuse",cat:"A",pict:"slopeDown",desc:"Pente raide indiquee par un pourcentage. Utilisez le frein moteur."},
+    {code:"A5",nom:"Montee a forte inclinaison",cat:"A",pict:"slopeUp",desc:"Indique une forte cote."},
+    {code:"A7a",nom:"Chaussee retrecie (des deux cotes)",cat:"A",pict:"narrowBoth",desc:"Retrecissement de la route des deux cotes."},
+    {code:"A7b",nom:"Chaussee retrecie (a droite)",cat:"A",pict:"narrowRight",desc:"Retrecissement de la route du cote droit."},
+    {code:"A7c",nom:"Chaussee retrecie (a gauche)",cat:"A",pict:"narrowLeft",desc:"Retrecissement de la route du cote gauche."},
+    {code:"A8",nom:"Accotement non stabilise",cat:"A",pict:"shoulder",desc:"Accotement non revetu, risque de perte de controle."},
+    {code:"A9",nom:"Pont mobile",cat:"A",pict:"bridge",desc:"Approche d'un pont levant ou tournant."},
+    {code:"A11",nom:"Debouche sur un quai ou berge",cat:"A",pict:"quay",desc:"Risque de chute dans l'eau si manoeuvre mal executee."},
+    {code:"A13",nom:"Cassis ou dos d'ane",cat:"A",pict:"bump",desc:"Ralentisseur ou bosse sur la chaussee."},
+    {code:"A15",nom:"Chaussee glissante",cat:"A",pict:"slippery",desc:"Risque accru de glissade (pluie, verglas, gravillons)."},
+    {code:"A16",nom:"Verglas ou neige",cat:"A",pict:"snowflake",desc:"Risque de verglas ou chaussee enneigee."},
+    {code:"A17",nom:"Projection de gravillons",cat:"A",pict:"gravel",desc:"Risque de projection de pierres ou gravillons."},
+    {code:"A18",nom:"Brouillard",cat:"A",pict:"fog",desc:"Risque de brouillard epais."},
+    {code:"A19",nom:"Chutes de pierres",cat:"A",pict:"fallingRocks",desc:"Risque d'eboulement ou chutes de pierres."},
+    {code:"A21",nom:"Passage pour pietons",cat:"A",pict:"pedestrian",desc:"Annonce un passage cloute a proximite."},
+    {code:"A23",nom:"Endroit frequente par des enfants",cat:"A",pict:"children",desc:"Presence d'ecoles ou aires de jeux."},
+    {code:"A24",nom:"Endroit frequente par des cavaliers",cat:"A",pict:"horse",desc:"Presence de cavaliers ou centres equestres."},
+    {code:"A25",nom:"Passage de cyclistes",cat:"A",pict:"bicycle",desc:"Debouche de cyclistes ou piste cyclable."},
+    {code:"A27",nom:"Traversee d'animaux",cat:"A",pict:"deer",desc:"Traversee possible d'animaux (cerfs, sangliers, etc.)."},
+    {code:"A31",nom:"Travaux",cat:"A",pict:"workman",desc:"Presence d'un chantier sur ou le long de la voie publique."},
+    {code:"A32",nom:"Files (embouteillage)",cat:"A",pict:"queue",desc:"Risque de formation de files ou ralentissements."},
+    {code:"A33",nom:"Feux de circulation",cat:"A",pict:"trafficLight",desc:"Annonce des feux tricolores en amont."},
+    {code:"A45",nom:"Passage a niveau (non garde)",cat:"A",pict:"trainCrossing",desc:"Annonce un passage a niveau sans barrieres."},
+    {code:"A47",nom:"Passage a niveau (garde)",cat:"A",pict:"trainGate",desc:"Annonce un passage a niveau avec barrieres."},
+    {code:"A51",nom:"Danger indetermine",cat:"A",pict:"exclaim",desc:"Danger particulier precise par un panonceau additionnel."}
 ];
 
 // ---- PANNEAUX B ----
 var PANNEAUX_B = [
     {code:"B1",nom:"Cedez le passage",cat:"B",desc:"Triangle pointe vers le bas. Ceder le passage aux usagers de la voie prioritaire."},
     {code:"B5",nom:"Stop (Arret obligatoire)",cat:"B",desc:"Obligation de marquer l'arret complet avant la ligne d'effet."},
-    {code:"B9",nom:"Voie prioritaire",cat:"B",desc:"Losange jaune : vous etes prioritaire aux intersections."},
-    {code:"B11",nom:"Fin de voie prioritaire",cat:"B",desc:"Losange barre : fin du statut de route prioritaire."},
-    {code:"B15",nom:"Priorite a l'intersection",cat:"B",desc:"Vous avez la priorite uniquement a la prochaine intersection."},
-    {code:"B17",nom:"Priorite a droite",cat:"B",desc:"Regle generale : ceder le passage venant de droite."}
+    {code:"B9",nom:"Voie prioritaire",cat:"B",pict:"priorityRoad",desc:"Losange jaune : vous etes prioritaire aux intersections."},
+    {code:"B11",nom:"Fin de voie prioritaire",cat:"B",pict:"priorityRoadEnd",desc:"Losange barre : fin du statut de route prioritaire."},
+    {code:"B15",nom:"Priorite a l'intersection",cat:"B",pict:"priorityNext",desc:"Vous avez la priorite uniquement a la prochaine intersection."},
+    {code:"B17",nom:"Priorite a droite",cat:"B",pict:"priorityRight",desc:"Regle generale : ceder le passage venant de droite."}
 ];
 
 // ---- PANNEAUX C ----
 var PANNEAUX_C = [
     {code:"C1",nom:"Acces interdit dans les deux sens",cat:"C",desc:"Interdiction a tout conducteur de s'engager."},
     {code:"C3",nom:"Sens interdit",cat:"C",desc:"Interdiction de s'engager dans cette voie."},
-    {code:"C5",nom:"Acces interdit aux automobiles",cat:"C",desc:"Interdit aux voitures et camions."},
-    {code:"C7",nom:"Acces interdit aux motocycles",cat:"C",desc:"Interdit aux motos."},
-    {code:"C11",nom:"Acces interdit aux cyclistes",cat:"C",desc:"Interdit aux velos."},
-    {code:"C19",nom:"Acces interdit aux pietons",cat:"C",desc:"Interdit aux pietons."},
-    {code:"C23",nom:"Acces interdit aux camions",cat:"C",desc:"Interdit aux vehicules lourds de marchandises."},
-    {code:"C35",nom:"Interdiction de depasser",cat:"C",desc:"Interdiction de depasser les vehicules a moteur."},
-    {code:"C39",nom:"Interdiction de depasser pour camions",cat:"C",desc:"Interdiction pour les camions > 3,5t de depasser."},
+    {code:"C5",nom:"Acces interdit aux automobiles",cat:"C",pict:"car",desc:"Interdit aux voitures et camions."},
+    {code:"C7",nom:"Acces interdit aux motocycles",cat:"C",pict:"motorcycle",desc:"Interdit aux motos."},
+    {code:"C11",nom:"Acces interdit aux cyclistes",cat:"C",pict:"bicycle",desc:"Interdit aux velos."},
+    {code:"C19",nom:"Acces interdit aux pietons",cat:"C",pict:"pedestrian",desc:"Interdit aux pietons."},
+    {code:"C23",nom:"Acces interdit aux camions",cat:"C",pict:"truck",desc:"Interdit aux vehicules lourds de marchandises."},
+    {code:"C35",nom:"Interdiction de depasser",cat:"C",pict:"noOvertake",desc:"Interdiction de depasser les vehicules a moteur."},
+    {code:"C39",nom:"Interdiction de depasser pour camions",cat:"C",pict:"noOvertakeTruck",desc:"Interdiction pour les camions > 3,5t de depasser."},
     {code:"C43 30",nom:"Vitesse limitee a 30 km/h",cat:"C",desc:"Vitesse maximale autorisee de 30 km/h.","num":"30"},
     {code:"C43 50",nom:"Vitesse limitee a 50 km/h",cat:"C",desc:"Vitesse maximale autorisee de 50 km/h.","num":"50"},
     {code:"C43 70",nom:"Vitesse limitee a 70 km/h",cat:"C",desc:"Vitesse maximale autorisee de 70 km/h.","num":"70"},
@@ -86,10 +86,10 @@ var PANNEAUX_C = [
 
 // ---- PANNEAUX D ----
 var PANNEAUX_D = [
-    {code:"D1a",nom:"Direction obligatoire a droite",cat:"D",desc:"Obligation de tourner a droite."},
-    {code:"D1b",nom:"Direction obligatoire a gauche",cat:"D",desc:"Obligation de tourner a gauche."},
-    {code:"D9",nom:"Piste cyclable obligatoire",cat:"D",desc:"Voie exclusive reservee aux cyclistes."},
-    {code:"D10",nom:"Chemin pour pietons",cat:"D",desc:"Voie reservee exclusivement aux pietons."}
+    {code:"D1a",nom:"Direction obligatoire a droite",cat:"D",pict:"arrowRight",desc:"Obligation de tourner a droite."},
+    {code:"D1b",nom:"Direction obligatoire a gauche",cat:"D",pict:"arrowLeft",desc:"Obligation de tourner a gauche."},
+    {code:"D9",nom:"Piste cyclable obligatoire",cat:"D",pict:"bicycleWhite",desc:"Voie exclusive reservee aux cyclistes."},
+    {code:"D10",nom:"Chemin pour pietons",cat:"D",pict:"pedestrianWhite",desc:"Voie reservee exclusivement aux pietons."}
 ];
 
 // ---- PANNEAUX E ----
@@ -101,58 +101,58 @@ var PANNEAUX_E = [
 
 // ---- PANNEAUX F ----
 var PANNEAUX_F = [
-    {code:"F1",nom:"Commencement d'agglomeration",cat:"F",desc:"Vitesse limitee par defaut a 50 km/h (30 km/h a Bruxelles)."},
-    {code:"F3",nom:"Fin d'agglomeration",cat:"F",desc:"Les regles d'agglomeration prennent fin."},
-    {code:"F4a",nom:"Debut de zone 30",cat:"F",desc:"Entree d'une zone ou la vitesse est limitee a 30 km/h."},
-    {code:"F4b",nom:"Fin de zone 30",cat:"F",desc:"Sortie de la zone 30."},
-    {code:"F5",nom:"Autoroute",cat:"F",desc:"Debut d'autoroute (vitesse min. 70, max. 120 km/h)."},
-    {code:"F9",nom:"Route pour automobiles",cat:"F",desc:"Voie reservee aux vehicules automobiles."},
-    {code:"F11b",nom:"Cul-de-sac (Impasse)",cat:"F",desc:"Voie sans issue."},
-    {code:"F12a",nom:"Zone residentielle / Zone de rencontre",cat:"F",desc:"Pietons prioritaires sur toute la largeur. Vitesse max 20 km/h."},
-    {code:"F19",nom:"Sens unique",cat:"F",desc:"Indique une rue a sens unique."},
-    {code:"F20",nom:"Voie reservee aux bus",cat:"F",desc:"Voie exclusivement reservee aux bus et transports en commun."},
-    {code:"F21",nom:"Voie de tramway",cat:"F",desc:"Voie reservee aux trams."},
-    {code:"F23",nom:"Debut de piste cyclable",cat:"F",desc:"Entree d'une piste cyclable."},
-    {code:"F24",nom:"Fin de piste cyclable",cat:"F",desc:"Sortie de la piste cyclable."},
-    {code:"F25",nom:"Zone de rencontre",cat:"F",desc:"Zone pietons prioritaires, vitesse max 20 km/h."},
-    {code:"F26",nom:"Fin de zone de rencontre",cat:"F",desc:"Sortie de la zone de rencontre."},
-    {code:"F27",nom:"Zone pietonne",cat:"F",desc:"Zone exclusivement reservee aux pietons."},
-    {code:"F28",nom:"Fin de zone pietonne",cat:"F",desc:"Sortie de la zone pietonne."}
+    {code:"F1",nom:"Commencement d'agglomeration",cat:"F",pict:"town",desc:"Vitesse limitee par defaut a 50 km/h (30 km/h a Bruxelles)."},
+    {code:"F3",nom:"Fin d'agglomeration",cat:"F",pict:"townEnd",desc:"Les regles d'agglomeration prennent fin."},
+    {code:"F4a",nom:"Debut de zone 30",cat:"F",pict:"zone30",desc:"Entree d'une zone ou la vitesse est limitee a 30 km/h."},
+    {code:"F4b",nom:"Fin de zone 30",cat:"F",pict:"zone30End",desc:"Sortie de la zone 30."},
+    {code:"F5",nom:"Autoroute",cat:"F",pict:"highway",desc:"Debut d'autoroute (vitesse min. 70, max. 120 km/h)."},
+    {code:"F9",nom:"Route pour automobiles",cat:"F",pict:"carRoad",desc:"Voie reservee aux vehicules automobiles."},
+    {code:"F11b",nom:"Cul-de-sac (Impasse)",cat:"F",pict:"deadEnd",desc:"Voie sans issue."},
+    {code:"F12a",nom:"Zone residentielle / Zone de rencontre",cat:"F",pict:"residential",desc:"Pietons prioritaires sur toute la largeur. Vitesse max 20 km/h."},
+    {code:"F19",nom:"Sens unique",cat:"F",pict:"oneWay",desc:"Indique une rue a sens unique."},
+    {code:"F20",nom:"Voie reservee aux bus",cat:"F",pict:"bus",desc:"Voie exclusivement reservee aux bus et transports en commun."},
+    {code:"F21",nom:"Voie de tramway",cat:"F",pict:"tram",desc:"Voie reservee aux trams."},
+    {code:"F23",nom:"Debut de piste cyclable",cat:"F",pict:"bicycleWhite",desc:"Entree d'une piste cyclable."},
+    {code:"F24",nom:"Fin de piste cyclable",cat:"F",pict:"bicycleWhiteEnd",desc:"Sortie de la piste cyclable."},
+    {code:"F25",nom:"Zone de rencontre",cat:"F",pict:"residential",desc:"Zone pietons prioritaires, vitesse max 20 km/h."},
+    {code:"F26",nom:"Fin de zone de rencontre",cat:"F",pict:"residentialEnd",desc:"Sortie de la zone de rencontre."},
+    {code:"F27",nom:"Zone pietonne",cat:"F",pict:"pedestrianWhite",desc:"Zone exclusivement reservee aux pietons."},
+    {code:"F28",nom:"Fin de zone pietonne",cat:"F",pict:"pedestrianWhiteEnd",desc:"Sortie de la zone pietonne."}
 ];
 
 // ---- PANNEAUX X ----
 var PANNEAUX_X = [
-    {code:"X1",nom:"Distance avant le danger",cat:"X",desc:"Indique la distance a laquelle se situe le danger ou la regle."},
-    {code:"X2",nom:"Etendue de la mesure",cat:"X",desc:"Indique la longueur sur laquelle s'applique la prescription."},
-    {code:"X3",nom:"Repetition / Rappel",cat:"X",desc:"Confirme qu'une interdiction ou obligation est toujours d'application."},
-    {code:"X4",nom:"Hors agglomeration",cat:"X",desc:"Precise que la regle s'applique hors agglomeration."},
-    {code:"X5",nom:"Accotement stabilise / non stabilise",cat:"X",desc:"Precise la nature de l'accotement."},
-    {code:"X6",nom:"Sauf riverains",cat:"X",desc:"Interdiction ne s'applique pas aux riverains."},
-    {code:"X7",nom:"Poids lourds",cat:"X",desc:"Interdiction adaptee aux poids lourds."},
-    {code:"X8",nom:"Longueur",cat:"X",desc:"Indication de longueur maximale du vehicule."},
-    {code:"X9",nom:"Largeur",cat:"X",desc:"Indication de largeur maximale du vehicule."},
-    {code:"X10",nom:"Hauteur",cat:"X",desc:"Indication de hauteur maximale du vehicule."}
+    {code:"X1",nom:"Distance avant le danger",cat:"X",panonceauText:"100 m",desc:"Indique la distance a laquelle se situe le danger ou la regle."},
+    {code:"X2",nom:"Etendue de la mesure",cat:"X",panonceauText:"⟷ 500 m",desc:"Indique la longueur sur laquelle s'applique la prescription."},
+    {code:"X3",nom:"Repetition / Rappel",cat:"X",panonceauText:"RAPPEL",desc:"Confirme qu'une interdiction ou obligation est toujours d'application."},
+    {code:"X4",nom:"Hors agglomeration",cat:"X",panonceauText:"HORS AGGLO.",desc:"Precise que la regle s'applique hors agglomeration."},
+    {code:"X5",nom:"Accotement stabilise / non stabilise",cat:"X",panonceauText:"ACCOTEMENT",desc:"Precise la nature de l'accotement."},
+    {code:"X6",nom:"Sauf riverains",cat:"X",panonceauText:"SAUF RIVERAINS",desc:"Interdiction ne s'applique pas aux riverains."},
+    {code:"X7",nom:"Poids lourds",cat:"X",pict:"truck",desc:"Interdiction adaptee aux poids lourds."},
+    {code:"X8",nom:"Longueur",cat:"X",panonceauText:"⟷ L",desc:"Indication de longueur maximale du vehicule."},
+    {code:"X9",nom:"Largeur",cat:"X",panonceauText:"⟷ l",desc:"Indication de largeur maximale du vehicule."},
+    {code:"X10",nom:"Hauteur",cat:"X",panonceauText:"↕ h",desc:"Indication de hauteur maximale du vehicule."}
 ];
 
 // ---- PANNEAUX T (Travaux) ----
 var PANNEAUX_T = [
-    {code:"T1",nom:"Travaux (danger)",cat:"T",desc:"Annonce un danger lie a des travaux."},
-    {code:"T2",nom:"Deviation (gauche)",cat:"T",desc:"Indique une deviation par la gauche."},
-    {code:"T3",nom:"Deviation (droite)",cat:"T",desc:"Indique une deviation par la droite."},
-    {code:"T4",nom:"Fin de travaux",cat:"T",desc:"Fin de la zone de travaux."}
+    {code:"T1",nom:"Travaux (danger)",cat:"T",pict:"workman",desc:"Annonce un danger lie a des travaux."},
+    {code:"T2",nom:"Deviation (gauche)",cat:"T",pict:"arrowLeft",desc:"Indique une deviation par la gauche."},
+    {code:"T3",nom:"Deviation (droite)",cat:"T",pict:"arrowRight",desc:"Indique une deviation par la droite."},
+    {code:"T4",nom:"Fin de travaux",cat:"T",pict:"checkmark",desc:"Fin de la zone de travaux."}
 ];
 
 // ---- PANNEAUX S (Service) ----
 var PANNEAUX_S = [
-    {code:"S1",nom:"Aire de repos",cat:"S",desc:"Aire de repos avec parking."},
-    {code:"S2",nom:"Aire de service",cat:"S",desc:"Aire de service avec station-service."},
+    {code:"S1",nom:"Aire de repos",cat:"S",pict:"bench",desc:"Aire de repos avec parking."},
+    {code:"S2",nom:"Aire de service",cat:"S",pict:"fuelWrench",desc:"Aire de service avec station-service."},
     {code:"S3",nom:"Parking",cat:"S",desc:"Parking public."},
-    {code:"S4",nom:"Parking payant",cat:"S",desc:"Parking avec horodateur."},
-    {code:"S5",nom:"Police / Gendarmerie",cat:"S",desc:"Poste de police ou gendarmerie."},
-    {code:"S6",nom:"Hopital",cat:"S",desc:"Hopital ou clinique."},
-    {code:"S7",nom:"Pharmacie",cat:"S",desc:"Pharmacie."},
-    {code:"S8",nom:"Telephone de secours",cat:"S",desc:"Telephone d'urgence sur autoroute."},
-    {code:"S9",nom:"Poste d'essence",cat:"S",desc:"Station-service."}
+    {code:"S4",nom:"Parking payant",cat:"S",pict:"parkingPaid",desc:"Parking avec horodateur."},
+    {code:"S5",nom:"Police / Gendarmerie",cat:"S",pict:"police",desc:"Poste de police ou gendarmerie."},
+    {code:"S6",nom:"Hopital",cat:"S",pict:"hospital",desc:"Hopital ou clinique."},
+    {code:"S7",nom:"Pharmacie",cat:"S",pict:"pharmacy",desc:"Pharmacie."},
+    {code:"S8",nom:"Telephone de secours",cat:"S",pict:"phone",desc:"Telephone d'urgence sur autoroute."},
+    {code:"S9",nom:"Poste d'essence",cat:"S",pict:"fuel",desc:"Station-service."}
 ];
 
 // ---- FUSION PANNEAUX ----
@@ -1090,7 +1090,7 @@ function renderSousCategorie() {
 
     if (query) {
         results = results.filter(function(item) {
-            var searchStr = (item.titre || item.nom || "") + " " + (item.desc || "") + " " + (item.sousCat || "");
+            var searchStr = (item.code || item.id || "") + " " + (item.titre || item.nom || "") + " " + (item.desc || "") + " " + (item.sousCat || "");
             return searchStr.toLowerCase().indexOf(query) >= 0;
         });
     }
@@ -1293,7 +1293,7 @@ function renderGeneric(list, searchId, listId, titleKey, descKey, catKey) {
     var query = $(searchId) ? $(searchId).value.trim().toLowerCase() : "";
     var results = list.filter(function(item) {
         if (!query) return true;
-        var searchStr = (item.titre || item.nom || "") + " " + (item.desc || "") + " " + (item.sousCat || "") + " " + (CATEGORIES[item.cat]?.label || "");
+        var searchStr = (item.code || item.id || "") + " " + (item.titre || item.nom || "") + " " + (item.desc || "") + " " + (item.sousCat || "") + " " + (CATEGORIES[item.cat]?.label || "");
         return searchStr.toLowerCase().indexOf(query) >= 0;
     });
     var listEl = $(listId);
@@ -1491,6 +1491,121 @@ function replayQuiz() { beginSession(state.review); }
 // SVG PANNEAUX
 // =========================================================
 
+// Pictogrammes individuels des panneaux : chaque code a sa propre silhouette
+// (au lieu de partager la meme forme generique que les autres panneaux de sa
+// categorie). fg = couleur du trait/remplissage du pictogramme.
+function personSil(fg, cx, cy, s) {
+    cx = cx || 90; cy = cy || 95; s = s || 1;
+    return '<circle cx="' + cx + '" cy="' + (cy - 30 * s) + '" r="' + (9 * s) + '" fill="' + fg + '"/>' +
+        '<path d="M' + (cx - 12 * s) + ' ' + (cy + 22 * s) + ' Q' + cx + ' ' + (cy - 16 * s) + ' ' + (cx + 12 * s) + ' ' + (cy + 22 * s) + ' Z" fill="' + fg + '"/>';
+}
+function bikeSil(fg, cx, cy, s) {
+    cx = cx || 90; cy = cy || 100; s = s || 1;
+    var r = 16 * s;
+    return '<circle cx="' + (cx - 24 * s) + '" cy="' + cy + '" r="' + r + '" fill="none" stroke="' + fg + '" stroke-width="' + (5 * s) + '"/>' +
+        '<circle cx="' + (cx + 24 * s) + '" cy="' + cy + '" r="' + r + '" fill="none" stroke="' + fg + '" stroke-width="' + (5 * s) + '"/>' +
+        '<path d="M' + (cx - 24 * s) + ' ' + cy + ' L' + (cx - 4 * s) + ' ' + (cy - 26 * s) + ' L' + (cx + 24 * s) + ' ' + cy + ' M' + (cx - 4 * s) + ' ' + (cy - 26 * s) + ' L' + (cx + 6 * s) + ' ' + cy + ' M' + (cx - 14 * s) + ' ' + (cy - 26 * s) + ' L' + (cx + 4 * s) + ' ' + (cy - 26 * s) + '" fill="none" stroke="' + fg + '" stroke-width="' + (5 * s) + '" stroke-linecap="round" stroke-linejoin="round"/>';
+}
+function carSil(fg, cx, cy, s) {
+    cx = cx || 90; cy = cy || 100; s = s || 1;
+    return '<path d="M' + (cx - 45 * s) + ' ' + (cy + 10 * s) + ' q0 -14 14 -16 l10 -18 q4 -6 12 -6 h18 q8 0 12 6 l10 18 q14 2 14 16 v10 h-10 M' + (cx - 45 * s) + ' ' + (cy + 20 * s) + ' h90' + '" fill="none" stroke="' + fg + '" stroke-width="' + (6 * s) + '" stroke-linecap="round" stroke-linejoin="round"/>' +
+        '<circle cx="' + (cx - 24 * s) + '" cy="' + (cy + 20 * s) + '" r="' + (9 * s) + '" fill="' + fg + '"/><circle cx="' + (cx + 24 * s) + '" cy="' + (cy + 20 * s) + '" r="' + (9 * s) + '" fill="' + fg + '"/>';
+}
+function truckSil(fg, cx, cy, s) {
+    cx = cx || 90; cy = cy || 100; s = s || 1;
+    return '<rect x="' + (cx - 46 * s) + '" y="' + (cy - 16 * s) + '" width="' + (58 * s) + '" height="' + (30 * s) + '" fill="none" stroke="' + fg + '" stroke-width="' + (6 * s) + '"/>' +
+        '<path d="M' + (cx + 12 * s) + ' ' + (cy - 16 * s) + ' h20 l14 16 v14 h-34 Z" fill="none" stroke="' + fg + '" stroke-width="' + (6 * s) + '" stroke-linejoin="round"/>' +
+        '<circle cx="' + (cx - 30 * s) + '" cy="' + (cy + 18 * s) + '" r="' + (8 * s) + '" fill="' + fg + '"/><circle cx="' + (cx + 26 * s) + '" cy="' + (cy + 18 * s) + '" r="' + (8 * s) + '" fill="' + fg + '"/>';
+}
+function motoSil(fg, cx, cy, s) {
+    cx = cx || 90; cy = cy || 100; s = s || 1;
+    var r = 15 * s;
+    return '<circle cx="' + (cx - 26 * s) + '" cy="' + cy + '" r="' + r + '" fill="none" stroke="' + fg + '" stroke-width="' + (5 * s) + '"/>' +
+        '<circle cx="' + (cx + 26 * s) + '" cy="' + cy + '" r="' + r + '" fill="none" stroke="' + fg + '" stroke-width="' + (5 * s) + '"/>' +
+        '<path d="M' + (cx - 26 * s) + ' ' + cy + ' L' + (cx - 2 * s) + ' ' + (cy - 8 * s) + ' L' + (cx + 10 * s) + ' ' + (cy - 24 * s) + ' M' + (cx - 2 * s) + ' ' + (cy - 8 * s) + ' L' + (cx + 26 * s) + ' ' + cy + '" fill="none" stroke="' + fg + '" stroke-width="' + (5 * s) + '" stroke-linecap="round" stroke-linejoin="round"/>';
+}
+function arrowShape(fg, dir) {
+    var rot = { up: 0, right: 90, down: 180, left: 270 }[dir] || 0;
+    return '<g transform="rotate(' + rot + ' 90 95)"><path d="M90 40 V150 M65 65 L90 40 L115 65" fill="none" stroke="' + fg + '" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></g>';
+}
+function curveArrow(fg, mirror) {
+    var m = mirror ? '<g transform="scale(-1,1) translate(-180,0)">' : '<g>';
+    return m + '<path d="M55 145 Q55 60 130 55" fill="none" stroke="' + fg + '" stroke-width="11" stroke-linecap="round"/><path d="M113 40 L135 52 L118 70" fill="none" stroke="' + fg + '" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></g>';
+}
+function doubleCurveArrow(fg, mirror) {
+    var m = mirror ? '<g transform="scale(-1,1) translate(-180,0)">' : '<g>';
+    return m + '<path d="M45 150 Q45 105 80 100 Q115 95 115 55" fill="none" stroke="' + fg + '" stroke-width="10" stroke-linecap="round"/><path d="M98 42 L120 53 L104 72" fill="none" stroke="' + fg + '" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></g>';
+}
+var PICTOGRAMS = {
+    curveLeft: function(fg) { return curveArrow(fg, true); },
+    curveRight: function(fg) { return curveArrow(fg, false); },
+    doubleCurveLeft: function(fg) { return doubleCurveArrow(fg, true); },
+    doubleCurveRight: function(fg) { return doubleCurveArrow(fg, false); },
+    slopeDown: function(fg) { return '<path d="M40 70 L140 130" stroke="' + fg + '" stroke-width="10" stroke-linecap="round"/><text x="95" y="60" text-anchor="middle" font-size="26" font-weight="900" fill="' + fg + '" font-family="Arial">14%</text>'; },
+    slopeUp: function(fg) { return '<path d="M40 130 L140 70" stroke="' + fg + '" stroke-width="10" stroke-linecap="round"/><text x="95" y="150" text-anchor="middle" font-size="26" font-weight="900" fill="' + fg + '" font-family="Arial">14%</text>'; },
+    narrowBoth: function(fg) { return '<path d="M35 55 L75 100 L35 145 M145 55 L105 100 L145 145" fill="none" stroke="' + fg + '" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>'; },
+    narrowRight: function(fg) { return '<path d="M35 145 V55 M145 55 L105 100 L145 145" fill="none" stroke="' + fg + '" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>'; },
+    narrowLeft: function(fg) { return '<path d="M145 145 V55 M35 55 L75 100 L35 145" fill="none" stroke="' + fg + '" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>'; },
+    shoulder: function(fg) { return '<path d="M35 60 V140 M35 140 H145" fill="none" stroke="' + fg + '" stroke-width="8" stroke-linecap="round"/><path d="M35 60 L145 60 L145 100" fill="none" stroke="' + fg + '" stroke-width="8" stroke-dasharray="3 8" stroke-linecap="round"/>'; },
+    bridge: function(fg) { return '<path d="M30 120 H150 M30 120 V90 M150 120 V70 M150 70 L120 90" fill="none" stroke="' + fg + '" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>'; },
+    quay: function(fg) { return '<path d="M30 100 H150 M30 100 V140 M150 100 V140" fill="none" stroke="' + fg + '" stroke-width="8" stroke-linecap="round"/><path d="M25 140 Q45 130 65 140 Q85 150 105 140 Q125 130 145 140" fill="none" stroke="' + fg + '" stroke-width="6" stroke-linecap="round"/>'; },
+    bump: function(fg) { return '<path d="M30 130 Q60 130 65 100 Q70 70 90 70 Q110 70 115 100 Q120 130 150 130" fill="none" stroke="' + fg + '" stroke-width="8" stroke-linecap="round"/>'; },
+    slippery: function(fg) { return carSil(fg, 82, 85, 0.75) + '<path d="M55 130 Q65 122 75 130 M85 130 Q95 122 105 130 M100 138 Q110 130 120 138" fill="none" stroke="' + fg + '" stroke-width="5" stroke-linecap="round"/>'; },
+    snowflake: function(fg) { return [0, 60, 120].map(function(a) { var x = 40 * Math.cos(a * Math.PI / 180), y = 40 * Math.sin(a * Math.PI / 180); return '<line x1="' + (90 - x) + '" y1="' + (95 - y) + '" x2="' + (90 + x) + '" y2="' + (95 + y) + '" stroke="' + fg + '" stroke-width="8" stroke-linecap="round"/>'; }).join(''); },
+    gravel: function(fg) { return carSil(fg, 75, 90, 0.7) + '<circle cx="125" cy="70" r="5" fill="' + fg + '"/><circle cx="138" cy="90" r="4" fill="' + fg + '"/><circle cx="130" cy="110" r="4" fill="' + fg + '"/>'; },
+    fog: function(fg) { return [65, 85, 105, 125].map(function(y, i) { var w = i % 2 ? 90 : 70; return '<line x1="' + (90 - w / 2) + '" y1="' + y + '" x2="' + (90 + w / 2) + '" y2="' + y + '" stroke="' + fg + '" stroke-width="8" stroke-linecap="round"/>'; }).join(''); },
+    fallingRocks: function(fg) { return '<path d="M35 145 L75 60 L100 90 L120 55 L150 145 Z" fill="none" stroke="' + fg + '" stroke-width="7" stroke-linejoin="round"/><circle cx="125" cy="40" r="8" fill="' + fg + '"/><path d="M118 55 l14 -14" stroke="' + fg + '" stroke-width="4" stroke-linecap="round"/>'; },
+    pedestrian: function(fg) { return personSil(fg, 90, 90, 1.1); },
+    pedestrianWhite: function(fg) { return personSil(fg, 90, 95, 1.2); },
+    pedestrianWhiteEnd: function(fg) { return personSil(fg, 90, 95, 1.2) + '<line x1="35" y1="145" x2="145" y2="35" stroke="#c81e2c" stroke-width="9"/>'; },
+    children: function(fg) { return personSil(fg, 68, 95, 0.9) + personSil(fg, 108, 100, 0.75) + '<line x1="80" y1="105" x2="96" y2="108" stroke="' + fg + '" stroke-width="5" stroke-linecap="round"/>'; },
+    horse: function(fg) { return personSil(fg, 100, 75, 0.7) + '<path d="M35 135 Q35 110 55 108 L95 105 Q110 105 112 120 M55 108 L50 90 L65 95 L60 108 M50 135 V115 M85 135 V118" fill="none" stroke="' + fg + '" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>'; },
+    bicycle: function(fg) { return bikeSil(fg, 90, 100, 0.85); },
+    bicycleWhite: function(fg) { return bikeSil(fg, 90, 100, 0.95); },
+    bicycleWhiteEnd: function(fg) { return bikeSil(fg, 90, 100, 0.95) + '<line x1="35" y1="145" x2="145" y2="35" stroke="#c81e2c" stroke-width="9"/>'; },
+    deer: function(fg) { return '<path d="M45 140 Q45 110 65 108 L110 105 Q130 103 133 120 M65 108 L58 85 M58 85 L48 75 M58 85 L64 73 M60 140 V118 M100 140 V112 M115 140 V115" fill="none" stroke="' + fg + '" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>'; },
+    workman: function(fg) { return personSil(fg, 78, 85, 1) + '<path d="M90 95 L120 115 M120 115 L135 100 M120 115 L112 140" fill="none" stroke="' + fg + '" stroke-width="6" stroke-linecap="round"/>'; },
+    queue: function(fg) { return [0, 1, 2].map(function(i) { return '<rect x="' + (45 + i * 30) + '" y="' + (110 - i * 12) + '" width="20" height="' + (26 + i * 12) + '" fill="none" stroke="' + fg + '" stroke-width="6"/>'; }).join(''); },
+    trafficLight: function(fg) { return '<rect x="72" y="45" width="36" height="90" rx="8" fill="none" stroke="' + fg + '" stroke-width="6"/><circle cx="90" cy="65" r="9" fill="' + fg + '"/><circle cx="90" cy="90" r="9" fill="none" stroke="' + fg + '" stroke-width="4"/><circle cx="90" cy="115" r="9" fill="none" stroke="' + fg + '" stroke-width="4"/>'; },
+    trainCrossing: function(fg) { return '<path d="M60 45 L120 145 M120 45 L60 145" stroke="' + fg + '" stroke-width="9" stroke-linecap="round"/><circle cx="90" cy="95" r="58" fill="none" stroke="' + fg + '" stroke-width="6"/>'; },
+    trainGate: function(fg) { return '<rect x="35" y="85" width="110" height="14" rx="4" fill="' + fg + '"/><rect x="35" y="85" width="18" height="14" fill="#fff"/><rect x="71" y="85" width="18" height="14" fill="#fff"/><rect x="107" y="85" width="18" height="14" fill="#fff"/><circle cx="35" cy="92" r="8" fill="' + fg + '"/>'; },
+    exclaim: function(fg) { return '<rect x="82" y="55" width="16" height="55" rx="6" fill="' + fg + '"/><circle cx="90" cy="128" r="10" fill="' + fg + '"/>'; },
+    priorityRoad: function(fg) { return '<rect x="65" y="70" width="50" height="50" fill="' + fg + '" transform="rotate(45 90 95)"/>'; },
+    priorityRoadEnd: function(fg) { return '<rect x="65" y="70" width="50" height="50" fill="none" stroke="' + fg + '" stroke-width="6" transform="rotate(45 90 95)"/><line x1="40" y1="150" x2="140" y2="40" stroke="#c81e2c" stroke-width="9"/>'; },
+    priorityNext: function(fg) { return '<rect x="65" y="70" width="50" height="50" fill="none" stroke="' + fg + '" stroke-width="7" transform="rotate(45 90 95)"/><rect x="65" y="70" width="50" height="20" fill="' + fg + '" transform="rotate(45 90 95)"/>'; },
+    priorityRight: function(fg) { return '<path d="M55 65 L125 135 M125 65 L55 135" stroke="' + fg + '" stroke-width="13" stroke-linecap="round"/>'; },
+    car: function(fg) { return carSil(fg, 90, 95, 1); },
+    motorcycle: function(fg) { return motoSil(fg, 90, 95, 1); },
+    truck: function(fg) { return truckSil(fg, 90, 95, 1); },
+    noOvertake: function(fg) { return carSil(fg, 105, 78, 0.62) + carSil("#c81e2c", 65, 112, 0.62); },
+    noOvertakeTruck: function(fg) { return truckSil(fg, 105, 78, 0.6) + carSil("#c81e2c", 65, 112, 0.6); },
+    arrowRight: function(fg) { return arrowShape(fg, "right"); },
+    arrowLeft: function(fg) { return arrowShape(fg, "left"); },
+    checkmark: function(fg) { return '<path d="M55 95 L80 125 L135 60" fill="none" stroke="' + fg + '" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>'; },
+    town: function(fg) { return '<path d="M35 135 V95 L55 80 L75 95 V135 M85 135 V70 L110 55 L135 70 V135 M85 135 H150" fill="none" stroke="' + fg + '" stroke-width="6" stroke-linejoin="round"/>'; },
+    townEnd: function(fg) { return PICTOGRAMS.town(fg) + '<line x1="30" y1="140" x2="150" y2="50" stroke="#c81e2c" stroke-width="9"/>'; },
+    highway: function(fg) { return '<path d="M50 145 L75 45 H105 L130 145 M65 105 H115 M72 80 H108" fill="none" stroke="' + fg + '" stroke-width="7" stroke-linejoin="round"/>'; },
+    carRoad: function(fg) { return carSil(fg, 90, 100, 1); },
+    deadEnd: function(fg) { return '<path d="M90 145 V55 M60 85 L90 55 L120 85" fill="none" stroke="' + fg + '" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><line x1="45" y1="145" x2="135" y2="145" stroke="' + fg + '" stroke-width="9" stroke-linecap="round"/>'; },
+    residential: function(fg) { return personSil(fg, 65, 100, 0.75) + carSil(fg, 118, 108, 0.55); },
+    residentialEnd: function(fg) { return PICTOGRAMS.residential(fg) + '<line x1="35" y1="145" x2="145" y2="35" stroke="#c81e2c" stroke-width="9"/>'; },
+    oneWay: function(fg) { return '<rect x="35" y="78" width="70" height="32" fill="' + fg + '"/><path d="M100 63 L135 94 L100 125 Z" fill="' + fg + '"/>'; },
+    bus: function(fg) { return '<rect x="45" y="55" width="90" height="60" rx="10" fill="none" stroke="' + fg + '" stroke-width="7"/><rect x="58" y="68" width="24" height="18" fill="' + fg + '"/><rect x="98" y="68" width="24" height="18" fill="' + fg + '"/><circle cx="65" cy="118" r="8" fill="' + fg + '"/><circle cx="115" cy="118" r="8" fill="' + fg + '"/>'; },
+    tram: function(fg) { return '<rect x="45" y="55" width="90" height="55" rx="6" fill="none" stroke="' + fg + '" stroke-width="7"/><line x1="60" y1="70" x2="120" y2="70" stroke="' + fg + '" stroke-width="6"/><line x1="90" y1="30" x2="90" y2="55" stroke="' + fg + '" stroke-width="5"/><circle cx="65" cy="118" r="8" fill="' + fg + '"/><circle cx="115" cy="118" r="8" fill="' + fg + '"/>'; },
+    bench: function(fg) { return '<path d="M40 100 H140 M40 100 V140 M140 100 V140 M55 100 V80 H125 V100" fill="none" stroke="' + fg + '" stroke-width="7" stroke-linejoin="round"/>'; },
+    fuelWrench: function(fg) { return '<rect x="55" y="55" width="35" height="80" rx="6" fill="none" stroke="' + fg + '" stroke-width="6"/><path d="M55 75 H40 V95 H55" fill="none" stroke="' + fg + '" stroke-width="6"/><path d="M110 130 L145 95 M145 95 a10 10 0 1 0 -14 -14 l-8 8 l6 6 l-20 20 Z" fill="none" stroke="' + fg + '" stroke-width="6" stroke-linejoin="round"/>'; },
+    parkingPaid: function(fg) { return '<text x="78" y="118" text-anchor="middle" font-size="70" font-weight="900" fill="' + fg + '" font-family="Arial">P</text><circle cx="128" cy="125" r="18" fill="none" stroke="' + fg + '" stroke-width="5"/><text x="128" y="131" text-anchor="middle" font-size="16" font-weight="900" fill="' + fg + '" font-family="Arial">€</text>'; },
+    police: function(fg) { return '<path d="M90 40 L130 55 V95 Q130 130 90 150 Q50 130 50 95 V55 Z" fill="none" stroke="' + fg + '" stroke-width="6" stroke-linejoin="round"/><path d="M75 98 l10 12 l24 -30" fill="none" stroke="' + fg + '" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>'; },
+    hospital: function(fg) { return '<rect x="72" y="45" width="16" height="70" fill="' + fg + '" transform="translate(2,0)"/><rect x="55" y="72" width="70" height="16" fill="' + fg + '" transform="translate(2,0)"/>'; },
+    pharmacy: function(fg) { return '<rect x="70" y="50" width="20" height="80" rx="4" fill="' + fg + '"/><rect x="50" y="80" width="80" height="20" rx="4" fill="' + fg + '"/>'; },
+    phone: function(fg) { return '<path d="M65 55 q-10 10 0 25 q15 20 35 35 q15 10 25 0 l8 -8 q4 -4 0 -9 l-14 -14 q-4 -4 -9 0 l-6 6 q-10 -6 -19 -19 l6 -6 q4 -5 0 -9 l-14 -14 q-5 -4 -9 0 Z" fill="' + fg + '"/>'; },
+    fuel: function(fg) { return '<rect x="50" y="60" width="45" height="75" rx="4" fill="none" stroke="' + fg + '" stroke-width="6"/><line x1="50" y1="80" x2="95" y2="80" stroke="' + fg + '" stroke-width="6"/><path d="M95 90 h15 q10 0 10 10 v25 q0 8 8 8 q8 0 8 -8 v-45 l-14 -14" fill="none" stroke="' + fg + '" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>'; }
+};
+function renderPictogram(panel, fg) {
+    var fn = panel.pict && PICTOGRAMS[panel.pict];
+    return fn ? fn(fg) : "";
+}
+
 function makeSignSVG(panel, small) {
     small = small || false;
     var ink = "#171a1f";
@@ -1498,14 +1613,14 @@ function makeSignSVG(panel, small) {
     if (panel.cat === "A" || panel.cat === "T") {
         var color = panel.cat === "T" ? "#ff8c00" : "#c81e2c";
         content = '<polygon points="90,12 168,154 12,154" fill="#fff" stroke="' + color + '" stroke-width="12" stroke-linejoin="round"/>';
-        content += '<rect x="85" y="70" width="10" height="40" rx="3" fill="' + ink + '"/><circle cx="90" cy="122" r="5" fill="' + ink + '"/>';
+        content += renderPictogram(panel, ink) || ('<rect x="85" y="70" width="10" height="40" rx="3" fill="' + ink + '"/><circle cx="90" cy="122" r="5" fill="' + ink + '"/>');
     } else if (panel.cat === "B") {
         if (panel.code === "B1") {
             content = '<polygon points="12,30 168,30 90,160" fill="#fff" stroke="#c81e2c" stroke-width="12" stroke-linejoin="round"/>';
         } else if (panel.code === "B5") {
             content = '<polygon points="60,10 120,10 170,60 170,120 120,170 60,170 10,120 10,60" fill="#c81e2c" stroke="#7a0f18" stroke-width="3" stroke-linejoin="round"/><text x="90" y="102" text-anchor="middle" font-size="' + (small ? 16 : 30) + '" font-weight="900" fill="#fff" font-family="Arial">STOP</text>';
         } else {
-            content = '<polygon points="90,12 168,90 90,168 12,90" fill="#e8a400" stroke="' + ink + '" stroke-width="2.5"/>';
+            content = '<polygon points="90,12 168,90 90,168 12,90" fill="#e8a400" stroke="' + ink + '" stroke-width="2.5"/>' + renderPictogram(panel, ink);
         }
     } else if (panel.cat === "C") {
         if (panel.code === "C1") {
@@ -1514,23 +1629,38 @@ function makeSignSVG(panel, small) {
             content = '<circle cx="90" cy="90" r="76" fill="#c81e2c"/><rect x="30" y="76" width="120" height="28" rx="4" fill="#fff"/>';
         } else if (panel.num) {
             content = '<circle cx="90" cy="90" r="76" fill="#fff" stroke="#c81e2c" stroke-width="14"/><text x="90" y="108" text-anchor="middle" font-size="' + (small ? 22 : 52) + '" font-weight="900" fill="' + ink + '" font-family="Arial">' + escapeHTML(panel.num) + '</text>';
+        } else if (panel.pict) {
+            content = '<circle cx="90" cy="90" r="76" fill="#fff" stroke="#c81e2c" stroke-width="14"/>' + renderPictogram(panel, ink);
         } else {
             content = '<circle cx="90" cy="90" r="76" fill="#fff" stroke="#9aa1aa" stroke-width="3"/><line x1="35" y1="125" x2="125" y2="35" stroke="#4a4d52" stroke-width="8"/>';
         }
     } else if (panel.cat === "D") {
-        content = '<circle cx="90" cy="90" r="76" fill="#1c5fa8"/><path d="M90 130 V50 M65 75 L90 50 L115 75" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>';
+        content = '<circle cx="90" cy="90" r="76" fill="#1c5fa8"/>' + (renderPictogram(panel, "#fff") || '<path d="M90 130 V50 M65 75 L90 50 L115 75" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>');
     } else if (panel.cat === "E") {
-        if (panel.code === "E1" || panel.code === "E3") {
+        if (panel.code === "E1") {
+            content = '<circle cx="90" cy="90" r="76" fill="#1c5fa8"/><line x1="35" y1="145" x2="145" y2="35" stroke="#c81e2c" stroke-width="12"/>';
+        } else if (panel.code === "E3") {
             content = '<circle cx="90" cy="90" r="76" fill="#1c5fa8" stroke="#c81e2c" stroke-width="12"/><line x1="35" y1="145" x2="145" y2="35" stroke="#c81e2c" stroke-width="12"/>';
         } else {
             content = '<rect x="12" y="12" width="156" height="156" rx="14" fill="#1c5fa8"/><text x="90" y="122" text-anchor="middle" font-size="' + (small ? 42 : 90) + '" font-weight="900" fill="#fff" font-family="Arial">P</text>';
         }
     } else if (panel.cat === "F") {
-        content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#fff" stroke="' + ink + '" stroke-width="3"/><text x="90" y="45" text-anchor="middle" font-size="' + (small ? 12 : 18) + '" font-weight="900" fill="' + ink + '" letter-spacing="2">ZONE</text><circle cx="90" cy="105" r="42" fill="#fff" stroke="#c81e2c" stroke-width="9"/><text x="90" y="118" text-anchor="middle" font-size="' + (small ? 18 : 34) + '" font-weight="900" fill="' + ink + '" font-family="Arial">30</text>';
+        if (panel.code === "F4a" || panel.code === "F4b") {
+            content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#fff" stroke="' + ink + '" stroke-width="3"/><text x="90" y="45" text-anchor="middle" font-size="' + (small ? 12 : 18) + '" font-weight="900" fill="' + ink + '" letter-spacing="2">ZONE</text><circle cx="90" cy="105" r="42" fill="#fff" stroke="#c81e2c" stroke-width="9"/><text x="90" y="118" text-anchor="middle" font-size="' + (small ? 18 : 34) + '" font-weight="900" fill="' + ink + '" font-family="Arial">30</text>';
+            if (panel.code === "F4b") content += '<line x1="30" y1="140" x2="150" y2="50" stroke="#c81e2c" stroke-width="9"/>';
+        } else {
+            var whiteBgPicts = ["town", "townEnd", "deadEnd", "residential", "residentialEnd"];
+            if (whiteBgPicts.indexOf(panel.pict) >= 0) {
+                content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#fff" stroke="' + ink + '" stroke-width="6"/>' + renderPictogram(panel, ink);
+            } else {
+                content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#1c5fa8"/>' + (renderPictogram(panel, "#fff") || '<text x="90" y="122" text-anchor="middle" font-size="' + (small ? 42 : 90) + '" font-weight="900" fill="#fff" font-family="Arial">?</text>');
+            }
+        }
     } else if (panel.cat === "X") {
-        content = '<rect x="12" y="55" width="156" height="70" rx="6" fill="#fff" stroke="' + ink + '" stroke-width="4"/><text x="90" y="98" text-anchor="middle" font-size="' + (small ? 16 : 24) + '" font-weight="900" fill="' + ink + '" font-family="Arial">Panonceau</text>';
+        content = '<rect x="12" y="55" width="156" height="70" rx="6" fill="#fff" stroke="' + ink + '" stroke-width="4"/>';
+        content += panel.pict ? renderPictogram(panel, ink) : ('<text x="90" y="98" text-anchor="middle" font-size="' + (small ? 14 : 20) + '" font-weight="900" fill="' + ink + '" font-family="Arial">' + escapeHTML(panel.panonceauText || panel.nom || "") + '</text>');
     } else if (panel.cat === "S") {
-        content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#1c5fa8"/><text x="90" y="122" text-anchor="middle" font-size="' + (small ? 42 : 90) + '" font-weight="900" fill="#fff" font-family="Arial">S</text>';
+        content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#1c5fa8"/>' + (renderPictogram(panel, "#fff") || ('<text x="90" y="122" text-anchor="middle" font-size="' + (small ? 42 : 90) + '" font-weight="900" fill="#fff" font-family="Arial">' + (panel.code === "S3" ? "P" : "S") + '</text>'));
     } else if (panel.cat === "MECA") {
         content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#3d4451"/><path d="M55 70 a20 20 0 1 1 0 0.1" fill="none" stroke="#fff" stroke-width="9"/><path d="M120 60 L150 30 M150 30 l8 8 M150 30 l-8 8 M100 80 L140 120 M60 110 L40 130 M40 130 l0 12 M40 130 l-12 0" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round"/><circle cx="75" cy="95" r="26" fill="none" stroke="#fff" stroke-width="9"/>';
     } else if (panel.cat === "PNEU") {
