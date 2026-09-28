@@ -24,139 +24,163 @@ if (!window.storage) {
 // DONNEES OFFICIELLES - PANNEAUX A
 // =========================================================
 
+// Donnees verifiees sur securotheque.wallonie.be (SPW) le 28/09/2026 par l'utilisateur
+// (captures d'ecran des planches officielles A a F). Les panneaux-gabarits a nom de
+// lieu variable (F15, F25-F43...) et les categories non confirmees dans la source
+// (anciennes categories "S" et "X" inventees) ont ete retires plutot que devines.
 var PANNEAUX_A = [
     {code:"A1a",nom:"Virage dangereux a gauche",cat:"A",pict:"curveLeft",desc:"Annonce un virage prononce vers la gauche."},
     {code:"A1b",nom:"Virage dangereux a droite",cat:"A",pict:"curveRight",desc:"Annonce un virage prononce vers la droite."},
     {code:"A1c",nom:"Succession de virages (premier a gauche)",cat:"A",pict:"doubleCurveLeft",desc:"Annonce plusieurs virages successifs, le premier a gauche."},
     {code:"A1d",nom:"Succession de virages (premier a droite)",cat:"A",pict:"doubleCurveRight",desc:"Annonce plusieurs virages successifs, le premier a droite."},
-    {code:"A3",nom:"Descente dangereuse",cat:"A",pict:"slopeDown",desc:"Pente raide indiquee par un pourcentage. Utilisez le frein moteur."},
-    {code:"A5",nom:"Montee a forte inclinaison",cat:"A",pict:"slopeUp",desc:"Indique une forte cote."},
+    {code:"A3",nom:"Descente dangereuse",cat:"A",pict:"slopeDown",desc:"Pente raide indiquee par un pourcentage sur le panneau. Utilisez le frein moteur."},
+    {code:"A5",nom:"Montee a forte inclinaison",cat:"A",pict:"slopeUp",desc:"Forte cote indiquee par un pourcentage sur le panneau."},
     {code:"A7a",nom:"Chaussee retrecie (des deux cotes)",cat:"A",pict:"narrowBoth",desc:"Retrecissement de la route des deux cotes."},
     {code:"A7b",nom:"Chaussee retrecie (a droite)",cat:"A",pict:"narrowRight",desc:"Retrecissement de la route du cote droit."},
     {code:"A7c",nom:"Chaussee retrecie (a gauche)",cat:"A",pict:"narrowLeft",desc:"Retrecissement de la route du cote gauche."},
-    {code:"A8",nom:"Accotement non stabilise",cat:"A",pict:"shoulder",desc:"Accotement non revetu, risque de perte de controle."},
     {code:"A9",nom:"Pont mobile",cat:"A",pict:"bridge",desc:"Approche d'un pont levant ou tournant."},
-    {code:"A11",nom:"Debouche sur un quai ou berge",cat:"A",pict:"quay",desc:"Risque de chute dans l'eau si manoeuvre mal executee."},
-    {code:"A13",nom:"Cassis ou dos d'ane",cat:"A",pict:"bump",desc:"Ralentisseur ou bosse sur la chaussee."},
+    {code:"A11",nom:"Debouche sur un quai ou une berge",cat:"A",pict:"quay",desc:"Risque de chute dans l'eau si la manoeuvre est mal executee."},
+    {code:"A13",nom:"Cassis",cat:"A",pict:"dip",desc:"Depression brusque de la chaussee (creux)."},
+    {code:"A14",nom:"Dos d'ane",cat:"A",pict:"bump",desc:"Bosse ou ralentisseur sur la chaussee."},
     {code:"A15",nom:"Chaussee glissante",cat:"A",pict:"slippery",desc:"Risque accru de glissade (pluie, verglas, gravillons)."},
-    {code:"A16",nom:"Verglas ou neige",cat:"A",pict:"snowflake",desc:"Risque de verglas ou chaussee enneigee."},
     {code:"A17",nom:"Projection de gravillons",cat:"A",pict:"gravel",desc:"Risque de projection de pierres ou gravillons."},
-    {code:"A18",nom:"Brouillard",cat:"A",pict:"fog",desc:"Risque de brouillard epais."},
-    {code:"A19",nom:"Chutes de pierres",cat:"A",pict:"fallingRocks",desc:"Risque d'eboulement ou chutes de pierres."},
-    {code:"A21",nom:"Passage pour pietons",cat:"A",pict:"pedestrian",desc:"Annonce un passage cloute a proximite."},
-    {code:"A23",nom:"Endroit frequente par des enfants",cat:"A",pict:"children",desc:"Presence d'ecoles ou aires de jeux."},
-    {code:"A24",nom:"Endroit frequente par des cavaliers",cat:"A",pict:"horse",desc:"Presence de cavaliers ou centres equestres."},
-    {code:"A25",nom:"Passage de cyclistes",cat:"A",pict:"bicycle",desc:"Debouche de cyclistes ou piste cyclable."},
-    {code:"A27",nom:"Traversee d'animaux",cat:"A",pict:"deer",desc:"Traversee possible d'animaux (cerfs, sangliers, etc.)."},
+    {code:"A19",nom:"Chutes de pierres",cat:"A",pict:"fallingRocks",desc:"Risque d'eboulement ou de chutes de pierres."},
+    {code:"A21",nom:"Passage pour pietons",cat:"A",pict:"pedestrian",desc:"Annonce un passage pour pietons a proximite."},
+    {code:"A23",nom:"Endroit frequente par des enfants",cat:"A",pict:"children",desc:"Presence probable d'ecoles ou d'aires de jeux."},
+    {code:"A25",nom:"Traversee de cyclistes",cat:"A",pict:"bicycle",desc:"Debouche de cyclistes ou piste cyclable qui traverse."},
+    {code:"A27",nom:"Passage d'animaux sauvages",cat:"A",pict:"deer",desc:"Traversee possible d'animaux sauvages (cerfs, sangliers, etc.)."},
+    {code:"A29",nom:"Passage d'animaux domestiques",cat:"A",pict:"domesticAnimal",desc:"Traversee possible de betail ou d'animaux domestiques."},
     {code:"A31",nom:"Travaux",cat:"A",pict:"workman",desc:"Presence d'un chantier sur ou le long de la voie publique."},
-    {code:"A32",nom:"Files (embouteillage)",cat:"A",pict:"queue",desc:"Risque de formation de files ou ralentissements."},
     {code:"A33",nom:"Feux de circulation",cat:"A",pict:"trafficLight",desc:"Annonce des feux tricolores en amont."},
-    {code:"A45",nom:"Passage a niveau (non garde)",cat:"A",pict:"trainCrossing",desc:"Annonce un passage a niveau sans barrieres."},
-    {code:"A47",nom:"Passage a niveau (garde)",cat:"A",pict:"trainGate",desc:"Annonce un passage a niveau avec barrieres."},
-    {code:"A51",nom:"Danger indetermine",cat:"A",pict:"exclaim",desc:"Danger particulier precise par un panonceau additionnel."}
+    {code:"A35",nom:"Aeronefs volant a basse altitude",cat:"A",pict:"airplane",desc:"Endroit ou des avions peuvent voler a tres basse altitude."},
+    {code:"A37",nom:"Vent lateral",cat:"A",pict:"crosswind",desc:"Risque de vent lateral brusque (pont, sortie de foret)."},
+    {code:"A41",nom:"Annonce d'un passage a niveau",cat:"A",pict:"levelCrossingAhead",desc:"Signal avance annoncant un passage a niveau plus loin."},
+    {code:"A43",nom:"Passage a niveau sans barrieres",cat:"A",pict:"trainCrossing",desc:"Traversee de voie(s) ferree(s) sans barrieres ni demi-barrieres."},
+    {code:"A45",nom:"Signalisation avancee de passage a niveau",cat:"A",pict:"levelCrossingLattice",desc:"Marque le compte a rebours vers un passage a niveau."},
+    {code:"A47",nom:"Passage a niveau muni de barrieres",cat:"A",pict:"trainGate",desc:"Traversee de voie(s) ferree(s) equipee de barrieres ou demi-barrieres."},
+    {code:"A51",nom:"Autres dangers",cat:"A",pict:"exclaim",desc:"Danger indetermine, souvent precise par un panonceau additionnel."}
 ];
 
-// ---- PANNEAUX B ----
+// ---- PANNEAUX B (priorite) ----
 var PANNEAUX_B = [
-    {code:"B1",nom:"Cedez le passage",cat:"B",desc:"Triangle pointe vers le bas. Ceder le passage aux usagers de la voie prioritaire."},
+    {code:"B1",nom:"Cedez le passage",cat:"B",desc:"Triangle pointe vers le bas. Ceder le passage aux usagers de la voie abordee."},
+    {code:"B3",nom:"Annonce d'un cedez-le-passage",cat:"B",panonceauText:"200 m",desc:"Previent qu'un signal B1 se trouve 200 m plus loin."},
     {code:"B5",nom:"Stop (Arret obligatoire)",cat:"B",desc:"Obligation de marquer l'arret complet avant la ligne d'effet."},
-    {code:"B9",nom:"Voie prioritaire",cat:"B",pict:"priorityRoad",desc:"Losange jaune : vous etes prioritaire aux intersections."},
-    {code:"B11",nom:"Fin de voie prioritaire",cat:"B",pict:"priorityRoadEnd",desc:"Losange barre : fin du statut de route prioritaire."},
-    {code:"B15",nom:"Priorite a l'intersection",cat:"B",pict:"priorityNext",desc:"Vous avez la priorite uniquement a la prochaine intersection."},
-    {code:"B17",nom:"Priorite a droite",cat:"B",pict:"priorityRight",desc:"Regle generale : ceder le passage venant de droite."}
+    {code:"B7",nom:"Annonce d'un stop",cat:"B",panonceauText:"STOP 150m",desc:"Previent qu'un signal B5 se trouve 150 m plus loin."},
+    {code:"B9",nom:"Voie prioritaire",cat:"B",pict:"priorityRoad",desc:"Losange jaune : vous etes prioritaire sur cette route aux intersections."},
+    {code:"B11",nom:"Fin de voie prioritaire",cat:"B",pict:"priorityRoadEnd",desc:"Le statut de route prioritaire prend fin a cet endroit."},
+    {code:"B13",nom:"Annonce de la fin d'une voie prioritaire",cat:"B",panonceauText:"250 m",desc:"Previent qu'un signal B11 se trouve 250 m plus loin."},
+    {code:"B15",nom:"Croisement avec une voie sans priorite",cat:"B",pict:"flagTriangle",desc:"Annonce un croisement ou vous conservez la priorite sur les voies secondaires."},
+    {code:"B17",nom:"Priorite de droite",cat:"B",pict:"priorityRight",desc:"Rappelle la regle generale : ceder le passage aux vehicules venant de droite."},
+    {code:"B19",nom:"Cedez le passage au trafic venant en sens inverse",cat:"B",pict:"circleUpDown",desc:"Passage etroit : laissez passer les vehicules venant d'en face en premier."},
+    {code:"B21",nom:"Priorite sur le trafic venant en sens inverse",cat:"B",pict:"rectUpDown",desc:"Passage etroit : vous avez la priorite sur les vehicules venant d'en face."},
+    {code:"B22",nom:"Croisement avec une piste cyclable (danger a gauche)",cat:"B",pict:"bicycle",desc:"Des cyclistes peuvent deboucher depuis la gauche."},
+    {code:"B23",nom:"Croisement avec une piste cyclable (danger a droite)",cat:"B",pict:"bicycle",desc:"Des cyclistes peuvent deboucher depuis la droite."}
 ];
 
-// ---- PANNEAUX C ----
+// ---- PANNEAUX C (interdiction) ----
 var PANNEAUX_C = [
-    {code:"C1",nom:"Acces interdit dans les deux sens",cat:"C",desc:"Interdiction a tout conducteur de s'engager."},
-    {code:"C3",nom:"Sens interdit",cat:"C",desc:"Interdiction de s'engager dans cette voie."},
-    {code:"C5",nom:"Acces interdit aux automobiles",cat:"C",pict:"car",desc:"Interdit aux voitures et camions."},
-    {code:"C7",nom:"Acces interdit aux motocycles",cat:"C",pict:"motorcycle",desc:"Interdit aux motos."},
+    {code:"C1",nom:"Sens interdit",cat:"C",desc:"Interdiction de s'engager dans cette voie, dans ce sens."},
+    {code:"C3",nom:"Acces interdit dans les deux sens",cat:"C",desc:"Interdiction a tout conducteur de s'engager, dans les deux sens."},
+    {code:"C5",nom:"Acces interdit aux vehicules automobiles",cat:"C",pict:"car",desc:"Interdit aux voitures et camions."},
+    {code:"C7",nom:"Acces interdit aux motocyclettes",cat:"C",pict:"motorcycle",desc:"Interdit aux motos."},
+    {code:"C9",nom:"Acces interdit aux cyclomoteurs",cat:"C",pict:"bicycle",desc:"Interdit aux cyclomoteurs (velos a moteur auxiliaire)."},
     {code:"C11",nom:"Acces interdit aux cyclistes",cat:"C",pict:"bicycle",desc:"Interdit aux velos."},
     {code:"C19",nom:"Acces interdit aux pietons",cat:"C",pict:"pedestrian",desc:"Interdit aux pietons."},
-    {code:"C23",nom:"Acces interdit aux camions",cat:"C",pict:"truck",desc:"Interdit aux vehicules lourds de marchandises."},
-    {code:"C35",nom:"Interdiction de depasser",cat:"C",pict:"noOvertake",desc:"Interdiction de depasser les vehicules a moteur."},
-    {code:"C39",nom:"Interdiction de depasser pour camions",cat:"C",pict:"noOvertakeTruck",desc:"Interdiction pour les camions > 3,5t de depasser."},
+    {code:"C22",nom:"Acces interdit aux autobus",cat:"C",pict:"bus",desc:"Interdit aux autobus et autocars."},
+    {code:"C23",nom:"Acces interdit aux vehicules de transport de choses",cat:"C",pict:"truck",desc:"Interdit aux camions et vehicules affectes au transport de marchandises."},
+    {code:"C25",nom:"Longueur maximale autorisee",cat:"C",panonceauText:"⟷ 13 m",desc:"Interdit aux vehicules dont la longueur depasse celle indiquee."},
+    {code:"C27",nom:"Largeur maximale autorisee",cat:"C",panonceauText:"⟷ 2,50m",desc:"Interdit aux vehicules dont la largeur depasse celle indiquee."},
+    {code:"C29",nom:"Hauteur maximale autorisee",cat:"C",panonceauText:"↕ 3,50m",desc:"Interdit aux vehicules dont la hauteur depasse celle indiquee."},
+    {code:"C31a",nom:"Interdiction de tourner a gauche",cat:"C",pict:"noTurnLeft",desc:"Interdiction de tourner a gauche a la prochaine intersection."},
+    {code:"C31b",nom:"Interdiction de tourner a droite",cat:"C",pict:"noTurnRight",desc:"Interdiction de tourner a droite a la prochaine intersection."},
+    {code:"C33",nom:"Interdiction de faire demi-tour",cat:"C",pict:"noUTurn",desc:"Interdiction de faire demi-tour."},
+    {code:"C35",nom:"Interdiction de depasser",cat:"C",pict:"noOvertake",desc:"Interdiction de depasser les vehicules a moteur autres que les motos a deux roues."},
+    {code:"C39",nom:"Interdiction de depasser pour les vehicules de transport de choses",cat:"C",pict:"noOvertakeTruck",desc:"Interdiction pour les vehicules de transport de choses de plus de 3,5t de depasser."},
     {code:"C43 30",nom:"Vitesse limitee a 30 km/h",cat:"C",desc:"Vitesse maximale autorisee de 30 km/h.","num":"30"},
     {code:"C43 50",nom:"Vitesse limitee a 50 km/h",cat:"C",desc:"Vitesse maximale autorisee de 50 km/h.","num":"50"},
     {code:"C43 70",nom:"Vitesse limitee a 70 km/h",cat:"C",desc:"Vitesse maximale autorisee de 70 km/h.","num":"70"},
     {code:"C43 90",nom:"Vitesse limitee a 90 km/h",cat:"C",desc:"Vitesse maximale autorisee de 90 km/h.","num":"90"},
-    {code:"C45",nom:"Fin de toutes les interdictions locales",cat:"C",desc:"Fin des limitations de vitesse ou de depassement."}
+    {code:"C45",nom:"Fin de toutes les interdictions locales",cat:"C",desc:"Fin des limitations de vitesse ou de depassement imposees localement."},
+    {code:"C47",nom:"Peage",cat:"C",panonceauText:"PEAGE",desc:"Annonce un poste de peage."}
 ];
 
-// ---- PANNEAUX D ----
+// ---- PANNEAUX D (obligation) ----
 var PANNEAUX_D = [
-    {code:"D1a",nom:"Direction obligatoire a droite",cat:"D",pict:"arrowRight",desc:"Obligation de tourner a droite."},
-    {code:"D1b",nom:"Direction obligatoire a gauche",cat:"D",pict:"arrowLeft",desc:"Obligation de tourner a gauche."},
-    {code:"D9",nom:"Piste cyclable obligatoire",cat:"D",pict:"bicycleWhite",desc:"Voie exclusive reservee aux cyclistes."},
-    {code:"D10",nom:"Chemin pour pietons",cat:"D",pict:"pedestrianWhite",desc:"Voie reservee exclusivement aux pietons."}
+    {code:"D1a",nom:"Direction obligatoire : tout droit",cat:"D",pict:"arrowUp",desc:"Obligation de continuer tout droit."},
+    {code:"D1b",nom:"Direction obligatoire : a gauche",cat:"D",pict:"arrowLeft",desc:"Obligation de tourner a gauche."},
+    {code:"D1c",nom:"Direction obligatoire : en biais a gauche",cat:"D",pict:"arrowDiagLeft",desc:"Obligation de prendre la direction oblique indiquee vers la gauche."},
+    {code:"D1d",nom:"Direction obligatoire : en biais a droite",cat:"D",pict:"arrowDiagRight",desc:"Obligation de prendre la direction oblique indiquee vers la droite."},
+    {code:"D1e",nom:"Contournement obligatoire par la gauche",cat:"D",pict:"curveSimpleLeft",desc:"Obligation de contourner l'obstacle par la gauche."},
+    {code:"D1f",nom:"Contournement obligatoire par la droite",cat:"D",pict:"curveSimpleRight",desc:"Obligation de contourner l'obstacle par la droite."},
+    {code:"D3a",nom:"Direction obligatoire : a gauche ou tout droit",cat:"D",pict:"doubleArrowLeft",desc:"A la prochaine intersection, obligation d'aller a gauche ou tout droit."},
+    {code:"D3b",nom:"Direction obligatoire : a droite ou tout droit",cat:"D",pict:"doubleArrowRight",desc:"A la prochaine intersection, obligation d'aller a droite ou tout droit."},
+    {code:"D5",nom:"Sens giratoire obligatoire",cat:"D",pict:"roundabout",desc:"Annonce un giratoire ou la circulation se fait dans le sens indique."},
+    {code:"D7",nom:"Piste cyclable obligatoire",cat:"D",pict:"bicycleWhite",desc:"Voie exclusivement reservee aux cyclistes, obligatoire pour eux."},
+    {code:"D9a",nom:"Chemin obligatoire pour pietons et cyclistes (voies non separees)",cat:"D",pict:"splitPathA",desc:"Chemin commun obligatoire pour pietons et cyclistes, sans separation."},
+    {code:"D9b",nom:"Chemin obligatoire pour pietons et cyclistes (voies separees)",cat:"D",pict:"splitPathB",desc:"Chemin obligatoire pour pietons et cyclistes, avec voies separees."},
+    {code:"D10",nom:"Chemin obligatoire pour pietons et cyclistes",cat:"D",pict:"bikePedCombo",desc:"Chemin obligatoire partage entre pietons et cyclistes."},
+    {code:"D11",nom:"Chemin obligatoire pour pietons",cat:"D",pict:"pedestrianWhite",desc:"Voie reservee et obligatoire exclusivement pour les pietons."},
+    {code:"D13",nom:"Chemin obligatoire pour cavaliers",cat:"D",pict:"horseWhite",desc:"Voie reservee et obligatoire exclusivement pour les cavaliers."}
 ];
 
-// ---- PANNEAUX E ----
+// ---- PANNEAUX E (arret et stationnement) ----
 var PANNEAUX_E = [
     {code:"E1",nom:"Stationnement interdit",cat:"E",desc:"Interdiction de stationner du cote du panneau. L'arret reste autorise."},
     {code:"E3",nom:"Arret et stationnement interdits",cat:"E",desc:"Interdiction absolue de s'arreter et de stationner."},
-    {code:"E9a",nom:"Stationnement autorise (Parking)",cat:"E",desc:"Indique un emplacement ou un parking autorise."}
+    {code:"E5",nom:"Stationnement interdit du 1er au 15 du mois",cat:"E",panonceauText:"1-15",desc:"Stationnement alterne : interdit la premiere quinzaine du mois."},
+    {code:"E7",nom:"Stationnement interdit du 16 a la fin du mois",cat:"E",panonceauText:"16-31",desc:"Stationnement alterne : interdit la seconde quinzaine du mois."},
+    {code:"E9a",nom:"Parking",cat:"E",desc:"Indique un emplacement de stationnement autorise."},
+    {code:"E9b",nom:"Parking pour voitures",cat:"E",pict:"car",desc:"Emplacement de stationnement reserve aux voitures."},
+    {code:"E9c",nom:"Parking pour camions",cat:"E",pict:"truck",desc:"Emplacement de stationnement reserve aux camions."},
+    {code:"E9d",nom:"Parking pour autobus",cat:"E",pict:"bus",desc:"Emplacement de stationnement reserve aux autobus et autocars."},
+    {code:"E9h",nom:"Parking pour camping-cars",cat:"E",pict:"caravan",desc:"Emplacement de stationnement reserve aux camping-cars."},
+    {code:"E9i",nom:"Parking pour motos et cyclomoteurs",cat:"E",pict:"motorcycle",desc:"Emplacement de stationnement reserve aux deux-roues motorises."}
 ];
 
-// ---- PANNEAUX F ----
+// ---- PANNEAUX F (indication) ----
 var PANNEAUX_F = [
-    {code:"F1",nom:"Commencement d'agglomeration",cat:"F",pict:"town",desc:"Vitesse limitee par defaut a 50 km/h (30 km/h a Bruxelles)."},
-    {code:"F3",nom:"Fin d'agglomeration",cat:"F",pict:"townEnd",desc:"Les regles d'agglomeration prennent fin."},
+    {code:"F1a",nom:"Debut d'agglomeration",cat:"F",pict:"town",desc:"Vitesse limitee par defaut a 50 km/h (30 km/h a Bruxelles), sauf indication contraire."},
+    {code:"F3a",nom:"Fin d'agglomeration",cat:"F",pict:"townEnd",desc:"Les regles de circulation en agglomeration prennent fin."},
     {code:"F4a",nom:"Debut de zone 30",cat:"F",pict:"zone30",desc:"Entree d'une zone ou la vitesse est limitee a 30 km/h."},
     {code:"F4b",nom:"Fin de zone 30",cat:"F",pict:"zone30End",desc:"Sortie de la zone 30."},
-    {code:"F5",nom:"Autoroute",cat:"F",pict:"highway",desc:"Debut d'autoroute (vitesse min. 70, max. 120 km/h)."},
+    {code:"F5",nom:"Autoroute",cat:"F",pict:"highway",desc:"Debut d'autoroute (vitesse minimale 70, maximale 120 km/h)."},
+    {code:"F7",nom:"Fin d'autoroute",cat:"F",pict:"highwayEnd",desc:"Fin du regime autoroutier."},
+    {code:"F8",nom:"Annonce d'un tunnel",cat:"F",pict:"tunnel",desc:"Annonce l'approche d'un tunnel."},
     {code:"F9",nom:"Route pour automobiles",cat:"F",pict:"carRoad",desc:"Voie reservee aux vehicules automobiles."},
-    {code:"F11b",nom:"Cul-de-sac (Impasse)",cat:"F",pict:"deadEnd",desc:"Voie sans issue."},
-    {code:"F12a",nom:"Zone residentielle / Zone de rencontre",cat:"F",pict:"residential",desc:"Pietons prioritaires sur toute la largeur. Vitesse max 20 km/h."},
+    {code:"F11",nom:"Fin de route pour automobiles",cat:"F",pict:"carRoadEnd",desc:"Fin de la voie reservee aux vehicules automobiles."},
+    {code:"F12a",nom:"Zone residentielle ou zone de rencontre",cat:"F",pict:"residential",desc:"Pietons prioritaires sur toute la largeur de la voie publique. Vitesse max 20 km/h."},
+    {code:"F12b",nom:"Fin de zone residentielle ou de rencontre",cat:"F",pict:"residentialEnd",desc:"Sortie de la zone residentielle ou de rencontre."},
+    {code:"F14",nom:"Impasse",cat:"F",pict:"deadEnd",desc:"La voie ne mene nulle part (cul-de-sac)."},
+    {code:"F17",nom:"Voie reservee aux bus",cat:"F",pict:"bus",desc:"Voie exclusivement reservee aux autobus et transports en commun."},
+    {code:"F18",nom:"Voie reservee aux trams",cat:"F",pict:"tram",desc:"Voie exclusivement reservee aux trams."},
     {code:"F19",nom:"Sens unique",cat:"F",pict:"oneWay",desc:"Indique une rue a sens unique."},
-    {code:"F20",nom:"Voie reservee aux bus",cat:"F",pict:"bus",desc:"Voie exclusivement reservee aux bus et transports en commun."},
-    {code:"F21",nom:"Voie de tramway",cat:"F",pict:"tram",desc:"Voie reservee aux trams."},
-    {code:"F23",nom:"Debut de piste cyclable",cat:"F",pict:"bicycleWhite",desc:"Entree d'une piste cyclable."},
-    {code:"F24",nom:"Fin de piste cyclable",cat:"F",pict:"bicycleWhiteEnd",desc:"Sortie de la piste cyclable."},
-    {code:"F25",nom:"Zone de rencontre",cat:"F",pict:"residential",desc:"Zone pietons prioritaires, vitesse max 20 km/h."},
-    {code:"F26",nom:"Fin de zone de rencontre",cat:"F",pict:"residentialEnd",desc:"Sortie de la zone de rencontre."},
-    {code:"F27",nom:"Zone pietonne",cat:"F",pict:"pedestrianWhite",desc:"Zone exclusivement reservee aux pietons."},
-    {code:"F28",nom:"Fin de zone pietonne",cat:"F",pict:"pedestrianWhiteEnd",desc:"Sortie de la zone pietonne."}
+    {code:"F21",nom:"Circulation dans les deux sens",cat:"F",pict:"twoWay",desc:"Annonce la fin d'une chaussee a sens unique : circulation a double sens."},
+    {code:"F49",nom:"Indication d'un passage pour pietons",cat:"F",pict:"pedestrianWhite",desc:"Signale l'emplacement d'un passage pour pietons."},
+    {code:"F50",nom:"Indication d'une traversee cyclable",cat:"F",pict:"bicycleWhite",desc:"Signale l'emplacement d'une traversee pour cyclistes."},
+    {code:"F59a",nom:"Indication d'un parking",cat:"F",desc:"Signale la direction ou se trouve un parking."},
+    {code:"F61",nom:"Telephone",cat:"F",pict:"phone",desc:"Signale la presence d'un telephone."},
+    {code:"F62",nom:"Poste d'appel d'urgence (SOS)",cat:"F",pict:"phoneSos",desc:"Signale une borne d'appel d'urgence, frequente sur autoroute."},
+    {code:"F63a",nom:"Station-service",cat:"F",pict:"fuel",desc:"Signale un poste de ravitaillement en carburant."},
+    {code:"F63f",nom:"Borne de recharge electrique",cat:"F",pict:"evCharge",desc:"Signale une borne de recharge pour vehicule electrique."},
+    {code:"F65",nom:"Hotel ou logement",cat:"F",pict:"bed",desc:"Signale un hebergement (hotel, gite)."},
+    {code:"F67",nom:"Restaurant",cat:"F",pict:"forkKnife",desc:"Signale un restaurant."},
+    {code:"F69",nom:"Debit de boissons ou snack-bar",cat:"F",pict:"cup",desc:"Signale un cafe ou snack-bar."},
+    {code:"F71",nom:"Camping",cat:"F",pict:"tent",desc:"Signale un terrain de camping."},
+    {code:"F73",nom:"Caravaning",cat:"F",pict:"caravan",desc:"Signale un terrain reserve aux caravanes et camping-cars."},
+    {code:"F77",nom:"Information touristique",cat:"F",pict:"infoI",desc:"Signale un point d'information touristique."}
 ];
 
-// ---- PANNEAUX X ----
-var PANNEAUX_X = [
-    {code:"X1",nom:"Distance avant le danger",cat:"X",panonceauText:"100 m",desc:"Indique la distance a laquelle se situe le danger ou la regle."},
-    {code:"X2",nom:"Etendue de la mesure",cat:"X",panonceauText:"⟷ 500 m",desc:"Indique la longueur sur laquelle s'applique la prescription."},
-    {code:"X3",nom:"Repetition / Rappel",cat:"X",panonceauText:"RAPPEL",desc:"Confirme qu'une interdiction ou obligation est toujours d'application."},
-    {code:"X4",nom:"Hors agglomeration",cat:"X",panonceauText:"HORS AGGLO.",desc:"Precise que la regle s'applique hors agglomeration."},
-    {code:"X5",nom:"Accotement stabilise / non stabilise",cat:"X",panonceauText:"ACCOTEMENT",desc:"Precise la nature de l'accotement."},
-    {code:"X6",nom:"Sauf riverains",cat:"X",panonceauText:"SAUF RIVERAINS",desc:"Interdiction ne s'applique pas aux riverains."},
-    {code:"X7",nom:"Poids lourds",cat:"X",pict:"truck",desc:"Interdiction adaptee aux poids lourds."},
-    {code:"X8",nom:"Longueur",cat:"X",panonceauText:"⟷ L",desc:"Indication de longueur maximale du vehicule."},
-    {code:"X9",nom:"Largeur",cat:"X",panonceauText:"⟷ l",desc:"Indication de largeur maximale du vehicule."},
-    {code:"X10",nom:"Hauteur",cat:"X",panonceauText:"↕ h",desc:"Indication de hauteur maximale du vehicule."}
-];
-
-// ---- PANNEAUX T (Travaux) ----
+// ---- PANNEAUX T (chantiers/travaux) ----
 var PANNEAUX_T = [
-    {code:"T1",nom:"Travaux (danger)",cat:"T",pict:"workman",desc:"Annonce un danger lie a des travaux."},
-    {code:"T2",nom:"Deviation (gauche)",cat:"T",pict:"arrowLeft",desc:"Indique une deviation par la gauche."},
-    {code:"T3",nom:"Deviation (droite)",cat:"T",pict:"arrowRight",desc:"Indique une deviation par la droite."},
-    {code:"T4",nom:"Fin de travaux",cat:"T",pict:"checkmark",desc:"Fin de la zone de travaux."}
-];
-
-// ---- PANNEAUX S (Service) ----
-var PANNEAUX_S = [
-    {code:"S1",nom:"Aire de repos",cat:"S",pict:"bench",desc:"Aire de repos avec parking."},
-    {code:"S2",nom:"Aire de service",cat:"S",pict:"fuelWrench",desc:"Aire de service avec station-service."},
-    {code:"S3",nom:"Parking",cat:"S",desc:"Parking public."},
-    {code:"S4",nom:"Parking payant",cat:"S",pict:"parkingPaid",desc:"Parking avec horodateur."},
-    {code:"S5",nom:"Police / Gendarmerie",cat:"S",pict:"police",desc:"Poste de police ou gendarmerie."},
-    {code:"S6",nom:"Hopital",cat:"S",pict:"hospital",desc:"Hopital ou clinique."},
-    {code:"S7",nom:"Pharmacie",cat:"S",pict:"pharmacy",desc:"Pharmacie."},
-    {code:"S8",nom:"Telephone de secours",cat:"S",pict:"phone",desc:"Telephone d'urgence sur autoroute."},
-    {code:"S9",nom:"Poste d'essence",cat:"S",pict:"fuel",desc:"Station-service."}
+    {code:"T1",nom:"Travaux (danger)",cat:"T",pict:"workman",desc:"Annonce un danger lie a des travaux sur la voie publique."},
+    {code:"T2",nom:"Deviation (gauche)",cat:"T",pict:"arrowLeft",desc:"Indique une deviation de la circulation par la gauche."},
+    {code:"T3",nom:"Deviation (droite)",cat:"T",pict:"arrowRight",desc:"Indique une deviation de la circulation par la droite."},
+    {code:"T4",nom:"Fin de chantier",cat:"T",pict:"checkmark",desc:"Fin de la zone de travaux."}
 ];
 
 // ---- FUSION PANNEAUX ----
-var PANNEAUX = [].concat(PANNEAUX_A, PANNEAUX_B, PANNEAUX_C, PANNEAUX_D, PANNEAUX_E, PANNEAUX_F, PANNEAUX_X, PANNEAUX_T, PANNEAUX_S);
+var PANNEAUX = [].concat(PANNEAUX_A, PANNEAUX_B, PANNEAUX_C, PANNEAUX_D, PANNEAUX_E, PANNEAUX_F, PANNEAUX_T);
 
 // ---- MECANIQUE MOTEUR ----
 var MECANIQUE_MOTEUR = [
@@ -617,9 +641,7 @@ var CATEGORIES = {
     D:{label:"Obligation",color:"var(--blue)"},
     E:{label:"Stationnement",color:"var(--blue)"},
     F:{label:"Indication",color:"var(--teal)"},
-    X:{label:"Panonceaux",color:"var(--purple)"},
     T:{label:"Travaux",color:"var(--orange)"},
-    S:{label:"Service",color:"var(--green)"},
     MECA:{label:"Mecanique",color:"var(--dark)"},
     PNEU:{label:"Pneumatiques",color:"var(--dark)"},
     SAI:{label:"Saisons",color:"var(--dark)"},
@@ -644,7 +666,7 @@ var MENU_STRUCTURE = [
         label:"Signalisation & Panneaux",
         icon:"🚦",
         color:"var(--blue)",
-        description:"Tous les panneaux du code belge : danger, priorite, interdiction, obligation, stationnement, indication, panonceaux, travaux et service.",
+        description:"Tous les panneaux du code belge : danger, priorite, interdiction, obligation, stationnement, indication et travaux.",
         subCategories:[
             {id:"A",label:"Danger",match:function(item){ return item.cat === "A"; }},
             {id:"B",label:"Priorite",match:function(item){ return item.cat === "B"; }},
@@ -652,9 +674,7 @@ var MENU_STRUCTURE = [
             {id:"D",label:"Obligation",match:function(item){ return item.cat === "D"; }},
             {id:"E",label:"Stationnement",match:function(item){ return item.cat === "E"; }},
             {id:"F",label:"Indication",match:function(item){ return item.cat === "F"; }},
-            {id:"X",label:"Panonceaux",match:function(item){ return item.cat === "X"; }},
-            {id:"T",label:"Travaux",match:function(item){ return item.cat === "T"; }},
-            {id:"S",label:"Service",match:function(item){ return item.cat === "S"; }}
+            {id:"T",label:"Travaux",match:function(item){ return item.cat === "T"; }}
         ],
         data:PANNEAUX
     },
@@ -805,7 +825,7 @@ function stats() { return appData.stats; }
 function mistakes() { return appData.mistakes; }
 
 var state = {
-    categories: ["A", "B", "C", "D", "E", "F", "X", "T", "S", "MECA", "PNEU", "SAI", "SEC", "LEG", "EQ", "MAR", "CND", "VEH", "PSY", "RUL", "TRP", "USA", "INF", "AUTO"],
+    categories: ["A", "B", "C", "D", "E", "F", "T", "MECA", "PNEU", "SAI", "SEC", "LEG", "EQ", "MAR", "CND", "VEH", "PSY", "RUL", "TRP", "USA", "INF", "AUTO"],
     questionCount: 15,
     timer: false,
     questions: [],
@@ -1599,7 +1619,43 @@ var PICTOGRAMS = {
     hospital: function(fg) { return '<rect x="72" y="45" width="16" height="70" fill="' + fg + '" transform="translate(2,0)"/><rect x="55" y="72" width="70" height="16" fill="' + fg + '" transform="translate(2,0)"/>'; },
     pharmacy: function(fg) { return '<rect x="70" y="50" width="20" height="80" rx="4" fill="' + fg + '"/><rect x="50" y="80" width="80" height="20" rx="4" fill="' + fg + '"/>'; },
     phone: function(fg) { return '<path d="M65 55 q-10 10 0 25 q15 20 35 35 q15 10 25 0 l8 -8 q4 -4 0 -9 l-14 -14 q-4 -4 -9 0 l-6 6 q-10 -6 -19 -19 l6 -6 q4 -5 0 -9 l-14 -14 q-5 -4 -9 0 Z" fill="' + fg + '"/>'; },
-    fuel: function(fg) { return '<rect x="50" y="60" width="45" height="75" rx="4" fill="none" stroke="' + fg + '" stroke-width="6"/><line x1="50" y1="80" x2="95" y2="80" stroke="' + fg + '" stroke-width="6"/><path d="M95 90 h15 q10 0 10 10 v25 q0 8 8 8 q8 0 8 -8 v-45 l-14 -14" fill="none" stroke="' + fg + '" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>'; }
+    fuel: function(fg) { return '<rect x="50" y="60" width="45" height="75" rx="4" fill="none" stroke="' + fg + '" stroke-width="6"/><line x1="50" y1="80" x2="95" y2="80" stroke="' + fg + '" stroke-width="6"/><path d="M95 90 h15 q10 0 10 10 v25 q0 8 8 8 q8 0 8 -8 v-45 l-14 -14" fill="none" stroke="' + fg + '" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>'; },
+    dip: function(fg) { return '<path d="M30 100 Q60 100 65 130 Q70 160 90 160 Q110 160 115 130 Q120 100 150 100" fill="none" stroke="' + fg + '" stroke-width="8" stroke-linecap="round" transform="translate(0,-30)"/>'; },
+    domesticAnimal: function(fg) { return '<path d="M40 140 Q40 115 58 113 L100 110 Q118 108 120 122 M58 113 L48 95 L65 90 L68 108 M60 140 V120 M95 140 V116 M108 140 V118" fill="none" stroke="' + fg + '" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M40 128 L25 118" stroke="' + fg + '" stroke-width="6" stroke-linecap="round"/>'; },
+    airplane: function(fg) { return '<path d="M90 45 L98 95 L145 120 L145 130 L98 118 L94 145 L110 158 L110 165 L90 160 L70 165 L70 158 L86 145 L82 118 L35 130 L35 120 L82 95 Z" fill="' + fg + '"/>'; },
+    crosswind: function(fg) { return [70, 90, 110].map(function(y, i) { var off = i * 6; return '<path d="M' + (40 + off) + ' ' + y + ' q15 -14 30 0 q15 14 30 0 q15 -14 30 0" fill="none" stroke="' + fg + '" stroke-width="7" stroke-linecap="round"/>'; }).join(''); },
+    levelCrossingAhead: function(fg) { return '<rect x="35" y="82" width="110" height="12" rx="3" fill="' + fg + '"/><circle cx="35" cy="88" r="7" fill="' + fg + '"/><line x1="35" y1="95" x2="35" y2="140" stroke="' + fg + '" stroke-width="6" stroke-linecap="round"/>'; },
+    levelCrossingLattice: function(fg) { return [-40, 0, 40].map(function(dx) { return '<g transform="translate(' + dx + ',0)"><path d="M90 65 L110 95 L90 125 L70 95 Z" fill="none" stroke="' + fg + '" stroke-width="6"/></g>'; }).join(''); },
+    flagTriangle: function(fg) { return '<path d="M90 30 V90 M90 30 L130 42 L90 58 Z" fill="' + fg + '" stroke="' + fg + '" stroke-width="6" stroke-linejoin="round"/>'; },
+    circleUpDown: function(fg) { return '<circle cx="90" cy="90" r="58" fill="none" stroke="' + fg + '" stroke-width="7"/><path d="M70 115 V65 M60 78 L70 65 L80 78" fill="none" stroke="' + fg + '" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M110 65 V115 M100 102 L110 115 L120 102" fill="none" stroke="#c81e2c" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>'; },
+    rectUpDown: function(fg) { return '<path d="M70 140 V60 M58 76 L70 60 L82 76" fill="none" stroke="#c81e2c" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><path d="M110 60 V140 M98 124 L110 140 L122 124" fill="none" stroke="' + fg + '" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>'; },
+    arrowUp: function(fg) { return arrowShape(fg, "up"); },
+    arrowDiagLeft: function(fg) { return '<g transform="rotate(-45 90 95)">' + arrowShape(fg, "up") + '</g>'; },
+    arrowDiagRight: function(fg) { return '<g transform="rotate(45 90 95)">' + arrowShape(fg, "up") + '</g>'; },
+    curveSimpleLeft: function(fg) { return '<path d="M115 55 Q60 55 60 100 V140" fill="none" stroke="' + fg + '" stroke-width="12" stroke-linecap="round"/><path d="M45 125 L60 140 L75 125" fill="none" stroke="' + fg + '" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>'; },
+    curveSimpleRight: function(fg) { return '<path d="M65 55 Q120 55 120 100 V140" fill="none" stroke="' + fg + '" stroke-width="12" stroke-linecap="round"/><path d="M105 125 L120 140 L135 125" fill="none" stroke="' + fg + '" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>'; },
+    doubleArrowLeft: function(fg) { return '<path d="M90 140 V60 M75 75 L90 60 L105 75" fill="none" stroke="' + fg + '" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><path d="M90 100 H55 M68 88 L55 100 L68 112" fill="none" stroke="' + fg + '" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>'; },
+    doubleArrowRight: function(fg) { return '<path d="M90 140 V60 M75 75 L90 60 L105 75" fill="none" stroke="' + fg + '" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><path d="M90 100 H125 M112 88 L125 100 L112 112" fill="none" stroke="' + fg + '" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>'; },
+    roundabout: function(fg) { return '<circle cx="90" cy="90" r="45" fill="none" stroke="' + fg + '" stroke-width="10"/><path d="M126 60 L133 78 L114 74 Z" fill="' + fg + '"/>'; },
+    splitPathA: function(fg) { return '<line x1="90" y1="35" x2="90" y2="155" stroke="' + fg + '" stroke-width="4"/>' + bikeSil(fg, 58, 100, 0.5) + personSil(fg, 118, 105, 0.55) + bikeSil(fg, 118, 125, 0.35); },
+    splitPathB: function(fg) { return '<line x1="90" y1="35" x2="90" y2="155" stroke="' + fg + '" stroke-width="8"/>' + bikeSil(fg, 55, 95, 0.55) + personSil(fg, 125, 95, 0.7); },
+    bikePedCombo: function(fg) { return bikeSil(fg, 65, 110, 0.55) + personSil(fg, 118, 90, 0.7); },
+    horseWhite: function(fg) { return PICTOGRAMS.horse(fg); },
+    noTurnLeft: function(fg) { return arrowShape(fg, "left") + '<line x1="35" y1="35" x2="145" y2="145" stroke="#c81e2c" stroke-width="9"/>'; },
+    noTurnRight: function(fg) { return arrowShape(fg, "right") + '<line x1="145" y1="35" x2="35" y2="145" stroke="#c81e2c" stroke-width="9"/>'; },
+    noUTurn: function(fg) { return '<path d="M110 130 V80 a25 25 0 0 0 -50 0 v25" fill="none" stroke="' + fg + '" stroke-width="10" stroke-linecap="round"/><path d="M45 90 L60 105 L75 90" fill="none" stroke="' + fg + '" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><line x1="35" y1="35" x2="145" y2="145" stroke="#c81e2c" stroke-width="9"/>'; },
+    caravan: function(fg) { return '<path d="M35 110 h80 a10 10 0 0 1 10 10 v10 h-90 Z" fill="none" stroke="' + fg + '" stroke-width="6" stroke-linejoin="round"/><line x1="20" y1="130" x2="35" y2="120" stroke="' + fg + '" stroke-width="5"/><circle cx="60" cy="132" r="9" fill="' + fg + '"/><circle cx="95" cy="132" r="9" fill="' + fg + '"/>'; },
+    tunnel: function(fg) { return '<path d="M35 135 V95 a55 55 0 0 1 110 0 v40" fill="none" stroke="' + fg + '" stroke-width="8"/><line x1="35" y1="135" x2="35" y2="150" stroke="' + fg + '" stroke-width="8"/><line x1="145" y1="135" x2="145" y2="150" stroke="' + fg + '" stroke-width="8"/>'; },
+    highwayEnd: function(fg) { return PICTOGRAMS.highway(fg) + '<line x1="30" y1="150" x2="150" y2="40" stroke="#c81e2c" stroke-width="9"/>'; },
+    carRoadEnd: function(fg) { return PICTOGRAMS.carRoad(fg) + '<line x1="30" y1="150" x2="150" y2="40" stroke="#c81e2c" stroke-width="9"/>'; },
+    twoWay: function(fg) { return '<path d="M60 65 V135 M48 78 L60 65 L72 78" fill="none" stroke="' + fg + '" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path d="M120 135 V65 M108 122 L120 135 L132 122" fill="none" stroke="' + fg + '" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>'; },
+    phoneSos: function(fg) { return PICTOGRAMS.phone(fg) + '<text x="90" y="150" text-anchor="middle" font-size="16" font-weight="900" fill="' + fg + '" font-family="Arial">SOS</text>'; },
+    evCharge: function(fg) { return '<path d="M95 40 L60 100 h20 l-15 45 l45 -65 h-20 Z" fill="' + fg + '"/>'; },
+    bed: function(fg) { return '<path d="M35 140 V95 h110 v45 M35 115 h30 a12 12 0 0 1 0 -24 h20 a12 12 0 0 1 12 12 v12" fill="none" stroke="' + fg + '" stroke-width="6" stroke-linejoin="round"/><line x1="35" y1="128" x2="145" y2="128" stroke="' + fg + '" stroke-width="5"/>'; },
+    forkKnife: function(fg) { return '<line x1="60" y1="40" x2="60" y2="150" stroke="' + fg + '" stroke-width="7" stroke-linecap="round"/><path d="M45 40 v35 M60 40 v35 M75 40 v35" stroke="' + fg + '" stroke-width="5" stroke-linecap="round"/><path d="M120 40 v50 a15 15 0 0 1 -15 15 v45" fill="none" stroke="' + fg + '" stroke-width="7" stroke-linecap="round"/>'; },
+    cup: function(fg) { return '<path d="M50 60 h70 v40 a35 35 0 0 1 -70 0 Z" fill="none" stroke="' + fg + '" stroke-width="7"/><path d="M120 75 h15 a15 15 0 0 1 0 30 h-15" fill="none" stroke="' + fg + '" stroke-width="6"/><line x1="45" y1="150" x2="135" y2="150" stroke="' + fg + '" stroke-width="7" stroke-linecap="round"/>'; },
+    tent: function(fg) { return '<path d="M90 45 L150 140 H30 Z" fill="none" stroke="' + fg + '" stroke-width="7" stroke-linejoin="round"/><path d="M90 45 L90 140" stroke="' + fg + '" stroke-width="5"/><path d="M65 140 L90 90 L115 140" fill="none" stroke="' + fg + '" stroke-width="5" stroke-linejoin="round"/>'; },
+    infoI: function(fg) { return '<circle cx="90" cy="55" r="11" fill="' + fg + '"/><rect x="80" y="78" width="20" height="62" rx="4" fill="' + fg + '"/>'; }
 };
 function renderPictogram(panel, fg) {
     var fn = panel.pict && PICTOGRAMS[panel.pict];
@@ -1615,20 +1671,26 @@ function makeSignSVG(panel, small) {
         content = '<polygon points="90,12 168,154 12,154" fill="#fff" stroke="' + color + '" stroke-width="12" stroke-linejoin="round"/>';
         content += renderPictogram(panel, ink) || ('<rect x="85" y="70" width="10" height="40" rx="3" fill="' + ink + '"/><circle cx="90" cy="122" r="5" fill="' + ink + '"/>');
     } else if (panel.cat === "B") {
-        if (panel.code === "B1") {
+        if (panel.code === "B1" || panel.code === "B3") {
             content = '<polygon points="12,30 168,30 90,160" fill="#fff" stroke="#c81e2c" stroke-width="12" stroke-linejoin="round"/>';
-        } else if (panel.code === "B5") {
-            content = '<polygon points="60,10 120,10 170,60 170,120 120,170 60,170 10,120 10,60" fill="#c81e2c" stroke="#7a0f18" stroke-width="3" stroke-linejoin="round"/><text x="90" y="102" text-anchor="middle" font-size="' + (small ? 16 : 30) + '" font-weight="900" fill="#fff" font-family="Arial">STOP</text>';
+            if (panel.panonceauText) content += '<text x="90" y="115" text-anchor="middle" font-size="' + (small ? 14 : 22) + '" font-weight="900" fill="' + ink + '" font-family="Arial">' + escapeHTML(panel.panonceauText) + '</text>';
+        } else if (panel.code === "B5" || panel.code === "B7") {
+            content = '<polygon points="60,10 120,10 170,60 170,120 120,170 60,170 10,120 10,60" fill="#c81e2c" stroke="#7a0f18" stroke-width="3" stroke-linejoin="round"/><text x="90" y="102" text-anchor="middle" font-size="' + (small ? 13 : 24) + '" font-weight="900" fill="#fff" font-family="Arial">' + escapeHTML(panel.panonceauText || "STOP") + '</text>';
+        } else if (panel.code === "B11" || panel.code === "B13") {
+            content = '<rect x="65" y="70" width="50" height="50" fill="none" stroke="' + ink + '" stroke-width="6" transform="rotate(45 90 95)"/><line x1="40" y1="150" x2="140" y2="40" stroke="#c81e2c" stroke-width="9"/>';
+            if (panel.panonceauText) content += '<text x="90" y="158" text-anchor="middle" font-size="' + (small ? 12 : 18) + '" font-weight="900" fill="' + ink + '" font-family="Arial">' + escapeHTML(panel.panonceauText) + '</text>';
         } else {
             content = '<polygon points="90,12 168,90 90,168 12,90" fill="#e8a400" stroke="' + ink + '" stroke-width="2.5"/>' + renderPictogram(panel, ink);
         }
     } else if (panel.cat === "C") {
         if (panel.code === "C1") {
-            content = '<circle cx="90" cy="90" r="76" fill="#fff" stroke="#c81e2c" stroke-width="14"/>';
-        } else if (panel.code === "C3") {
             content = '<circle cx="90" cy="90" r="76" fill="#c81e2c"/><rect x="30" y="76" width="120" height="28" rx="4" fill="#fff"/>';
+        } else if (panel.code === "C3") {
+            content = '<circle cx="90" cy="90" r="76" fill="#fff" stroke="#c81e2c" stroke-width="14"/>';
         } else if (panel.num) {
             content = '<circle cx="90" cy="90" r="76" fill="#fff" stroke="#c81e2c" stroke-width="14"/><text x="90" y="108" text-anchor="middle" font-size="' + (small ? 22 : 52) + '" font-weight="900" fill="' + ink + '" font-family="Arial">' + escapeHTML(panel.num) + '</text>';
+        } else if (panel.panonceauText) {
+            content = '<circle cx="90" cy="90" r="76" fill="#fff" stroke="#c81e2c" stroke-width="14"/><text x="90" y="100" text-anchor="middle" font-size="' + (small ? 14 : 22) + '" font-weight="900" fill="' + ink + '" font-family="Arial">' + escapeHTML(panel.panonceauText) + '</text>';
         } else if (panel.pict) {
             content = '<circle cx="90" cy="90" r="76" fill="#fff" stroke="#c81e2c" stroke-width="14"/>' + renderPictogram(panel, ink);
         } else {
@@ -1640,7 +1702,9 @@ function makeSignSVG(panel, small) {
         if (panel.code === "E1") {
             content = '<circle cx="90" cy="90" r="76" fill="#1c5fa8"/><line x1="35" y1="145" x2="145" y2="35" stroke="#c81e2c" stroke-width="12"/>';
         } else if (panel.code === "E3") {
-            content = '<circle cx="90" cy="90" r="76" fill="#1c5fa8" stroke="#c81e2c" stroke-width="12"/><line x1="35" y1="145" x2="145" y2="35" stroke="#c81e2c" stroke-width="12"/>';
+            content = '<circle cx="90" cy="90" r="76" fill="#1c5fa8"/><line x1="35" y1="145" x2="145" y2="35" stroke="#c81e2c" stroke-width="10"/><line x1="35" y1="35" x2="145" y2="145" stroke="#c81e2c" stroke-width="10"/>';
+        } else if (panel.code === "E5" || panel.code === "E7") {
+            content = '<circle cx="90" cy="90" r="76" fill="#1c5fa8"/><line x1="35" y1="145" x2="145" y2="35" stroke="#c81e2c" stroke-width="12"/><text x="90" y="150" text-anchor="middle" font-size="' + (small ? 13 : 18) + '" font-weight="900" fill="#fff" font-family="Arial">' + escapeHTML(panel.panonceauText || "") + '</text>';
         } else {
             content = '<rect x="12" y="12" width="156" height="156" rx="14" fill="#1c5fa8"/><text x="90" y="122" text-anchor="middle" font-size="' + (small ? 42 : 90) + '" font-weight="900" fill="#fff" font-family="Arial">P</text>';
         }
@@ -1648,6 +1712,8 @@ function makeSignSVG(panel, small) {
         if (panel.code === "F4a" || panel.code === "F4b") {
             content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#fff" stroke="' + ink + '" stroke-width="3"/><text x="90" y="45" text-anchor="middle" font-size="' + (small ? 12 : 18) + '" font-weight="900" fill="' + ink + '" letter-spacing="2">ZONE</text><circle cx="90" cy="105" r="42" fill="#fff" stroke="#c81e2c" stroke-width="9"/><text x="90" y="118" text-anchor="middle" font-size="' + (small ? 18 : 34) + '" font-weight="900" fill="' + ink + '" font-family="Arial">30</text>';
             if (panel.code === "F4b") content += '<line x1="30" y1="140" x2="150" y2="50" stroke="#c81e2c" stroke-width="9"/>';
+        } else if (panel.code === "F59a") {
+            content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#1c5fa8"/><text x="90" y="122" text-anchor="middle" font-size="' + (small ? 42 : 90) + '" font-weight="900" fill="#fff" font-family="Arial">P</text>';
         } else {
             var whiteBgPicts = ["town", "townEnd", "deadEnd", "residential", "residentialEnd"];
             if (whiteBgPicts.indexOf(panel.pict) >= 0) {
@@ -1656,11 +1722,6 @@ function makeSignSVG(panel, small) {
                 content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#1c5fa8"/>' + (renderPictogram(panel, "#fff") || '<text x="90" y="122" text-anchor="middle" font-size="' + (small ? 42 : 90) + '" font-weight="900" fill="#fff" font-family="Arial">?</text>');
             }
         }
-    } else if (panel.cat === "X") {
-        content = '<rect x="12" y="55" width="156" height="70" rx="6" fill="#fff" stroke="' + ink + '" stroke-width="4"/>';
-        content += panel.pict ? renderPictogram(panel, ink) : ('<text x="90" y="98" text-anchor="middle" font-size="' + (small ? 14 : 20) + '" font-weight="900" fill="' + ink + '" font-family="Arial">' + escapeHTML(panel.panonceauText || panel.nom || "") + '</text>');
-    } else if (panel.cat === "S") {
-        content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#1c5fa8"/>' + (renderPictogram(panel, "#fff") || ('<text x="90" y="122" text-anchor="middle" font-size="' + (small ? 42 : 90) + '" font-weight="900" fill="#fff" font-family="Arial">' + (panel.code === "S3" ? "P" : "S") + '</text>'));
     } else if (panel.cat === "MECA") {
         content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#3d4451"/><path d="M55 70 a20 20 0 1 1 0 0.1" fill="none" stroke="#fff" stroke-width="9"/><path d="M120 60 L150 30 M150 30 l8 8 M150 30 l-8 8 M100 80 L140 120 M60 110 L40 130 M40 130 l0 12 M40 130 l-12 0" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round"/><circle cx="75" cy="95" r="26" fill="none" stroke="#fff" stroke-width="9"/>';
     } else if (panel.cat === "PNEU") {
