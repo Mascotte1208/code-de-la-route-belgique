@@ -128,7 +128,7 @@ var PANNEAUX_D = [
     {code:"D9a",nom:"Chemin obligatoire pour pietons et cyclistes (voies non separees)",cat:"D",pict:"splitPathA",desc:"Chemin commun obligatoire pour pietons et cyclistes, sans separation."},
     {code:"D9b",nom:"Chemin obligatoire pour pietons et cyclistes (voies separees)",cat:"D",pict:"splitPathB",desc:"Chemin obligatoire pour pietons et cyclistes, avec voies separees."},
     {code:"D10",nom:"Chemin obligatoire pour pietons et cyclistes",cat:"D",pict:"bikePedCombo",desc:"Chemin obligatoire partage entre pietons et cyclistes."},
-    {code:"D11",nom:"Chemin obligatoire pour pietons",cat:"D",pict:"pedestrianWhite",desc:"Voie reservee et obligatoire exclusivement pour les pietons."},
+    {code:"D11",nom:"Chemin obligatoire pour pietons",cat:"D",pict:"pedestrianChildWhite",desc:"Voie reservee et obligatoire exclusivement pour les pietons."},
     {code:"D13",nom:"Chemin obligatoire pour cavaliers",cat:"D",pict:"horseWhite",desc:"Voie reservee et obligatoire exclusivement pour les cavaliers."}
 ];
 
@@ -142,14 +142,19 @@ var PANNEAUX_E = [
     {code:"E9b",nom:"Parking pour voitures",cat:"E",pict:"car",desc:"Emplacement de stationnement reserve aux voitures."},
     {code:"E9c",nom:"Parking pour camions",cat:"E",pict:"truck",desc:"Emplacement de stationnement reserve aux camions."},
     {code:"E9d",nom:"Parking pour autobus",cat:"E",pict:"bus",desc:"Emplacement de stationnement reserve aux autobus et autocars."},
+    {code:"E9e",nom:"Stationnement en epi (parallele a la voie)",cat:"E",pict:"parkBayH",desc:"Indique le mode de stationnement autorise : vehicules paralleles a la chaussee."},
+    {code:"E9f",nom:"Stationnement perpendiculaire a la voie",cat:"E",pict:"parkBayV",desc:"Indique le mode de stationnement autorise : vehicules perpendiculaires a la chaussee."},
+    {code:"E9g",nom:"Stationnement en epi (oblique)",cat:"E",pict:"parkBayDiag",desc:"Indique le mode de stationnement autorise : vehicules en oblique par rapport a la chaussee."},
     {code:"E9h",nom:"Parking pour camping-cars",cat:"E",pict:"caravan",desc:"Emplacement de stationnement reserve aux camping-cars."},
-    {code:"E9i",nom:"Parking pour motos et cyclomoteurs",cat:"E",pict:"motorcycle",desc:"Emplacement de stationnement reserve aux deux-roues motorises."}
+    {code:"E9i",nom:"Parking pour motos et cyclomoteurs",cat:"E",pict:"motorcycle",desc:"Emplacement de stationnement reserve aux deux-roues motorises."},
+    {code:"E9j",nom:"Stationnement a duree limitee ou alterne",cat:"E",pict:"altParkCar",desc:"Emplacement de stationnement soumis a une regle particuliere (alternance ou disque)."},
+    {code:"E11",nom:"Stationnement alterne semi-mensuel",cat:"E",desc:"Stationnement alterne selon la quinzaine du mois : cote impair du 1er au 15, cote pair du 16 a la fin du mois."}
 ];
 
 // ---- PANNEAUX F (indication) ----
 var PANNEAUX_F = [
     {code:"F1a",nom:"Debut d'agglomeration",cat:"F",pict:"town",desc:"Vitesse limitee par defaut a 50 km/h (30 km/h a Bruxelles), sauf indication contraire."},
-    {code:"F1b",nom:"Fin d'agglomeration",cat:"F",pict:"townEnd",desc:"Les regles de circulation en agglomeration prennent fin."},
+    {code:"F3",nom:"Fin d'agglomeration",cat:"F",pict:"townEnd",desc:"Les regles de circulation en agglomeration prennent fin."},
     {code:"F4a",nom:"Debut de zone 30",cat:"F",pict:"zone30",desc:"Entree d'une zone ou la vitesse est limitee a 30 km/h."},
     {code:"F4b",nom:"Fin de zone 30",cat:"F",pict:"zone30End",desc:"Sortie de la zone 30."},
     {code:"F5",nom:"Autoroute",cat:"F",pict:"highway",desc:"Debut d'autoroute (vitesse minimale 70, maximale 120 km/h)."},
@@ -1586,7 +1591,7 @@ var PICTOGRAMS = {
     pedestrianWhite: function(fg) { return personSil(fg, 90, 95, 1.2); },
     pedestrianWhiteEnd: function(fg) { return personSil(fg, 90, 95, 1.2) + '<line x1="35" y1="145" x2="145" y2="35" stroke="#c81e2c" stroke-width="9"/>'; },
     children: function(fg) { return personSil(fg, 68, 95, 0.9) + personSil(fg, 108, 100, 0.75) + '<line x1="80" y1="105" x2="96" y2="108" stroke="' + fg + '" stroke-width="5" stroke-linecap="round"/>'; },
-    horse: function(fg) { return personSil(fg, 100, 75, 0.7) + '<path d="M35 135 Q35 110 55 108 L95 105 Q110 105 112 120 M55 108 L50 90 L65 95 L60 108 M50 135 V115 M85 135 V118" fill="none" stroke="' + fg + '" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>'; },
+    horse: function(fg) { return personSil(fg, 108, 65, 0.85) + '<path d="M28 140 Q28 108 54 105 L100 101 Q118 99 121 117 M54 105 L47 82 L67 76 L70 100 M45 140 V113 M92 140 V116" fill="none" stroke="' + fg + '" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>'; },
     bicycle: function(fg) { return bikeSil(fg, 90, 100, 0.85); },
     bicycleWhite: function(fg) { return bikeSil(fg, 90, 100, 0.95); },
     bicycleWhiteEnd: function(fg) { return bikeSil(fg, 90, 100, 0.95) + '<line x1="35" y1="145" x2="145" y2="35" stroke="#c81e2c" stroke-width="9"/>'; },
@@ -1616,7 +1621,7 @@ var PICTOGRAMS = {
     deadEnd: function(fg) { return '<path d="M90 145 V55 M60 85 L90 55 L120 85" fill="none" stroke="' + fg + '" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><line x1="45" y1="145" x2="135" y2="145" stroke="' + fg + '" stroke-width="9" stroke-linecap="round"/>'; },
     residential: function(fg) { return personSil(fg, 65, 100, 0.75) + carSil(fg, 118, 108, 0.55); },
     residentialEnd: function(fg) { return PICTOGRAMS.residential(fg) + '<line x1="35" y1="145" x2="145" y2="35" stroke="#c81e2c" stroke-width="9"/>'; },
-    oneWay: function(fg) { return '<rect x="35" y="78" width="70" height="32" fill="' + fg + '"/><path d="M100 63 L135 94 L100 125 Z" fill="' + fg + '"/>'; },
+    oneWay: function(fg) { return '<rect x="74" y="70" width="32" height="70" fill="' + fg + '"/><path d="M55 75 L90 40 L125 75 Z" fill="' + fg + '"/>'; },
     bus: function(fg) { return '<rect x="45" y="55" width="90" height="60" rx="10" fill="none" stroke="' + fg + '" stroke-width="7"/><rect x="58" y="68" width="24" height="18" fill="' + fg + '"/><rect x="98" y="68" width="24" height="18" fill="' + fg + '"/><circle cx="65" cy="118" r="8" fill="' + fg + '"/><circle cx="115" cy="118" r="8" fill="' + fg + '"/>'; },
     tram: function(fg) { return '<rect x="45" y="55" width="90" height="55" rx="6" fill="none" stroke="' + fg + '" stroke-width="7"/><line x1="60" y1="70" x2="120" y2="70" stroke="' + fg + '" stroke-width="6"/><line x1="90" y1="30" x2="90" y2="55" stroke="' + fg + '" stroke-width="5"/><circle cx="65" cy="118" r="8" fill="' + fg + '"/><circle cx="115" cy="118" r="8" fill="' + fg + '"/>'; },
     bench: function(fg) { return '<path d="M40 100 H140 M40 100 V140 M140 100 V140 M55 100 V80 H125 V100" fill="none" stroke="' + fg + '" stroke-width="7" stroke-linejoin="round"/>'; },
@@ -1643,10 +1648,11 @@ var PICTOGRAMS = {
     curveSimpleRight: function(fg) { return '<path d="M65 55 Q120 55 120 100 V140" fill="none" stroke="' + fg + '" stroke-width="12" stroke-linecap="round"/><path d="M105 125 L120 140 L135 125" fill="none" stroke="' + fg + '" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>'; },
     doubleArrowLeft: function(fg) { return '<path d="M90 140 V60 M75 75 L90 60 L105 75" fill="none" stroke="' + fg + '" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><path d="M90 100 H55 M68 88 L55 100 L68 112" fill="none" stroke="' + fg + '" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>'; },
     doubleArrowRight: function(fg) { return '<path d="M90 140 V60 M75 75 L90 60 L105 75" fill="none" stroke="' + fg + '" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><path d="M90 100 H125 M112 88 L125 100 L112 112" fill="none" stroke="' + fg + '" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>'; },
-    roundabout: function(fg) { return '<circle cx="90" cy="90" r="45" fill="none" stroke="' + fg + '" stroke-width="10"/><path d="M126 60 L133 78 L114 74 Z" fill="' + fg + '"/>'; },
-    splitPathA: function(fg) { return '<line x1="90" y1="35" x2="90" y2="155" stroke="' + fg + '" stroke-width="4"/>' + bikeSil(fg, 58, 100, 0.5) + personSil(fg, 118, 105, 0.55) + bikeSil(fg, 118, 125, 0.35); },
-    splitPathB: function(fg) { return '<line x1="90" y1="35" x2="90" y2="155" stroke="' + fg + '" stroke-width="8"/>' + bikeSil(fg, 55, 95, 0.55) + personSil(fg, 125, 95, 0.7); },
-    bikePedCombo: function(fg) { return bikeSil(fg, 65, 110, 0.55) + personSil(fg, 118, 90, 0.7); },
+    roundabout: function(fg) { return '<path d="M132 90 a42 42 0 1 0 -14 31" fill="none" stroke="' + fg + '" stroke-width="13" stroke-linecap="round"/><path d="M104 132 L128 128 L120 150 Z" fill="' + fg + '"/>'; },
+    splitPathA: function(fg) { return '<line x1="90" y1="25" x2="90" y2="165" stroke="' + fg + '" stroke-width="7" stroke-dasharray="16 12"/>' + bikeSil(fg, 48, 100, 0.95) + personSil(fg, 132, 100, 1.05); },
+    splitPathB: function(fg) { return '<line x1="90" y1="25" x2="90" y2="165" stroke="' + fg + '" stroke-width="10"/>' + bikeSil(fg, 48, 100, 0.95) + personSil(fg, 132, 100, 1.05); },
+    bikePedCombo: function(fg) { return bikeSil(fg, 58, 105, 0.95) + personSil(fg, 132, 98, 1.05); },
+    pedestrianChildWhite: function(fg) { return personSil(fg, 60, 90, 1.15) + personSil(fg, 118, 115, 0.85); },
     horseWhite: function(fg) { return PICTOGRAMS.horse(fg); },
     noTurnLeft: function(fg) { return arrowShape(fg, "left") + '<line x1="35" y1="35" x2="145" y2="145" stroke="#c81e2c" stroke-width="9"/>'; },
     noTurnRight: function(fg) { return arrowShape(fg, "right") + '<line x1="145" y1="35" x2="35" y2="145" stroke="#c81e2c" stroke-width="9"/>'; },
@@ -1665,19 +1671,23 @@ var PICTOGRAMS = {
     infoI: function(fg) { return '<circle cx="90" cy="55" r="11" fill="' + fg + '"/><rect x="80" y="78" width="20" height="62" rx="4" fill="' + fg + '"/>'; },
     hazmatArrowUp: function(fg) { return '<rect x="62" y="28" width="56" height="32" rx="2" fill="#e8630c" stroke="' + fg + '" stroke-width="3"/><path d="M90 150 V78 M68 100 L90 76 L112 100" fill="none" stroke="' + fg + '" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>'; },
     hazmatArrowRight: function(fg) { return '<rect x="62" y="28" width="56" height="32" rx="2" fill="#e8630c" stroke="' + fg + '" stroke-width="3"/><path d="M40 118 H112 M90 98 L112 118 L90 138" fill="none" stroke="' + fg + '" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>'; },
-    pedestrianZone: function(fg) { return personSil(fg, 58, 105, 0.85) + '<path d="M95 140 V100 L120 84 L145 100 V140 M95 140 H145" fill="none" stroke="' + fg + '" stroke-width="6" stroke-linejoin="round"/>'; },
+    pedestrianZone: function(fg) { return personSil(fg, 55, 108, 1.1) + '<path d="M95 145 V95 L128 72 L161 95 V145 M95 145 H161" fill="none" stroke="' + fg + '" stroke-width="8" stroke-linejoin="round"/>'; },
     pedestrianZoneEnd: function(fg) { return PICTOGRAMS.pedestrianZone(fg) + '<line x1="30" y1="145" x2="150" y2="45" stroke="#c81e2c" stroke-width="9"/>'; },
     laneSplit: function(fg) { return '<path d="M90 150 V100" stroke="' + fg + '" stroke-width="9" stroke-linecap="round"/><path d="M90 100 L55 55" fill="none" stroke="' + fg + '" stroke-width="9" stroke-linecap="round"/><path d="M42 68 L55 55 L59 73" fill="none" stroke="' + fg + '" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path d="M90 100 L125 55" fill="none" stroke="' + fg + '" stroke-width="9" stroke-linecap="round"/><path d="M121 73 L125 55 L138 68" fill="none" stroke="' + fg + '" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>'; },
     busLane: function(fg) { return '<line x1="68" y1="25" x2="68" y2="155" stroke="' + fg + '" stroke-width="6" stroke-dasharray="16 12"/><line x1="112" y1="25" x2="112" y2="155" stroke="' + fg + '" stroke-width="6" stroke-dasharray="16 12"/><text x="90" y="100" text-anchor="middle" font-size="22" font-weight="900" fill="' + fg + '" font-family="Arial" transform="rotate(-90 90 100)">BUS</text>'; },
     tramLane: function(fg) { return '<line x1="68" y1="25" x2="68" y2="155" stroke="' + fg + '" stroke-width="6" stroke-dasharray="16 12"/><line x1="112" y1="25" x2="112" y2="155" stroke="' + fg + '" stroke-width="6" stroke-dasharray="16 12"/><text x="90" y="105" text-anchor="middle" font-size="17" font-weight="900" fill="' + fg + '" font-family="Arial" transform="rotate(-90 90 105)">TRAM</text>'; },
     twoWayH: function(fg) { return '<path d="M40 100 H140 M55 85 L40 100 L55 115 M125 85 L140 100 L125 115" fill="none" stroke="' + fg + '" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>'; },
-    b15a: function(fg) { return '<line x1="90" y1="138" x2="90" y2="42" stroke="' + fg + '" stroke-width="9" stroke-linecap="round"/><path d="M90 45 L122 62 L90 79 Z" fill="' + fg + '"/>'; },
-    b15b: function(fg) { return '<line x1="90" y1="138" x2="90" y2="42" stroke="' + fg + '" stroke-width="9" stroke-linecap="round"/><path d="M90 45 H118 L106 62 L118 79 H90 Z" fill="' + fg + '"/>'; },
-    b15c: function(fg) { return '<line x1="90" y1="138" x2="90" y2="68" stroke="' + fg + '" stroke-width="9" stroke-linecap="round"/><path d="M90 72 L118 88 L90 104 Z" fill="' + fg + '"/>'; },
-    b15d: function(fg) { return '<line x1="90" y1="138" x2="90" y2="42" stroke="' + fg + '" stroke-width="9" stroke-linecap="round"/><path d="M90 45 L58 62 L90 79 Z" fill="' + fg + '"/>'; },
-    b15e: function(fg) { return '<line x1="90" y1="138" x2="90" y2="42" stroke="' + fg + '" stroke-width="9" stroke-linecap="round"/><path d="M90 45 H62 L74 62 L62 79 H90 Z" fill="' + fg + '"/>'; },
-    b15f: function(fg) { return '<line x1="90" y1="138" x2="90" y2="94" stroke="' + fg + '" stroke-width="9" stroke-linecap="round"/><path d="M90 98 L118 114 L90 130 Z" fill="' + fg + '"/>'; },
-    b15g: function(fg) { return '<line x1="90" y1="138" x2="90" y2="68" stroke="' + fg + '" stroke-width="9" stroke-linecap="round"/><path d="M90 72 H118 L106 88 L118 104 H90 Z" fill="' + fg + '"/>'; }
+    parkBayH: function(fg) { return '<line x1="50" y1="105" x2="130" y2="105" stroke="' + fg + '" stroke-width="7"/><line x1="50" y1="92" x2="50" y2="118" stroke="' + fg + '" stroke-width="7"/><line x1="130" y1="92" x2="130" y2="118" stroke="' + fg + '" stroke-width="7"/>'; },
+    parkBayV: function(fg) { return '<line x1="90" y1="65" x2="90" y2="145" stroke="' + fg + '" stroke-width="7"/><line x1="73" y1="65" x2="107" y2="65" stroke="' + fg + '" stroke-width="7"/><line x1="73" y1="145" x2="107" y2="145" stroke="' + fg + '" stroke-width="7"/>'; },
+    parkBayDiag: function(fg) { return '<line x1="55" y1="140" x2="125" y2="70" stroke="' + fg + '" stroke-width="7"/><line x1="43" y1="124" x2="67" y2="152" stroke="' + fg + '" stroke-width="7"/><line x1="113" y1="58" x2="137" y2="86" stroke="' + fg + '" stroke-width="7"/>'; },
+    altParkCar: function(fg) { return carSil(fg, 90, 122, 0.55) + '<path d="M122 75 a28 28 0 1 1 -12 -22" fill="none" stroke="' + fg + '" stroke-width="7"/><path d="M112 43 L127 48 L120 61 Z" fill="' + fg + '"/>'; },
+    b15a: function(fg) { return '<line x1="90" y1="138" x2="90" y2="38" stroke="' + fg + '" stroke-width="11" stroke-linecap="round"/><path d="M90 40 L134 62 L90 84 Z" fill="' + fg + '"/>'; },
+    b15b: function(fg) { return '<line x1="90" y1="138" x2="90" y2="38" stroke="' + fg + '" stroke-width="11" stroke-linecap="round"/><path d="M90 40 H128 L112 62 L128 84 H90 Z" fill="' + fg + '"/>'; },
+    b15c: function(fg) { return '<line x1="90" y1="138" x2="90" y2="56" stroke="' + fg + '" stroke-width="11" stroke-linecap="round"/><path d="M90 58 L134 80 L90 102 Z" fill="' + fg + '"/>'; },
+    b15d: function(fg) { return '<line x1="90" y1="138" x2="90" y2="38" stroke="' + fg + '" stroke-width="11" stroke-linecap="round"/><path d="M90 40 L46 62 L90 84 Z" fill="' + fg + '"/>'; },
+    b15e: function(fg) { return '<line x1="90" y1="138" x2="90" y2="38" stroke="' + fg + '" stroke-width="11" stroke-linecap="round"/><path d="M90 40 H52 L68 62 L52 84 H90 Z" fill="' + fg + '"/>'; },
+    b15f: function(fg) { return '<line x1="90" y1="138" x2="90" y2="76" stroke="' + fg + '" stroke-width="11" stroke-linecap="round"/><path d="M90 78 L134 100 L90 122 Z" fill="' + fg + '"/>'; },
+    b15g: function(fg) { return '<line x1="90" y1="138" x2="90" y2="56" stroke="' + fg + '" stroke-width="11" stroke-linecap="round"/><path d="M90 58 H128 L112 80 L128 102 H90 Z" fill="' + fg + '"/>'; }
 };
 function renderPictogram(panel, fg) {
     var fn = panel.pict && PICTOGRAMS[panel.pict];
@@ -1704,15 +1714,15 @@ function makeSignSVG(panel, small) {
         } else if (panel.code === "B9") {
             content = '<rect x="52" y="52" width="76" height="76" fill="#e8a400" stroke="' + ink + '" stroke-width="3" transform="rotate(45 90 90)"/>';
         } else if (panel.code === "B11") {
-            content = '<rect x="52" y="52" width="76" height="76" fill="none" stroke="' + ink + '" stroke-width="3" transform="rotate(45 90 90)"/><path d="M60 60 L120 120 M60 66 L114 120 M66 60 L120 114" stroke="#e8a400" stroke-width="5"/><line x1="30" y1="135" x2="150" y2="45" stroke="#c81e2c" stroke-width="9"/>';
+            content = '<path d="M42 42 L108 108" stroke="' + ink + '" stroke-width="18" stroke-linecap="square"/><path d="M72 72 L138 138" stroke="#e8a400" stroke-width="18" stroke-linecap="square"/><line x1="32" y1="128" x2="148" y2="52" stroke="#c81e2c" stroke-width="11"/>';
         } else if (panel.code === "B13") {
-            content = '<rect x="60" y="18" width="52" height="52" fill="none" stroke="' + ink + '" stroke-width="3" transform="rotate(45 86 44)"/><path d="M68 26 L104 62 M68 31 L99 62 M73 26 L104 57" stroke="#e8a400" stroke-width="4"/><line x1="38" y1="65" x2="134" y2="5" stroke="#c81e2c" stroke-width="7"/><rect x="30" y="120" width="120" height="38" rx="4" fill="#1c5fa8"/><text x="90" y="147" text-anchor="middle" font-size="' + (small ? 13 : 18) + '" font-weight="900" fill="#fff" font-family="Arial">' + escapeHTML(panel.panonceauText || "") + '</text>';
+            content = '<path d="M52 15 L100 63" stroke="' + ink + '" stroke-width="13" stroke-linecap="square"/><path d="M73 36 L121 84" stroke="#e8a400" stroke-width="13" stroke-linecap="square"/><line x1="44" y1="75" x2="130" y2="24" stroke="#c81e2c" stroke-width="8"/><rect x="30" y="120" width="120" height="38" rx="4" fill="#1c5fa8"/><text x="90" y="147" text-anchor="middle" font-size="' + (small ? 13 : 18) + '" font-weight="900" fill="#fff" font-family="Arial">' + escapeHTML(panel.panonceauText || "") + '</text>';
         } else if (panel.code && panel.code.indexOf("B15") === 0) {
             content = '<polygon points="90,15 165,155 15,155" fill="#fff" stroke="#c81e2c" stroke-width="11" stroke-linejoin="round"/>' + renderPictogram(panel, ink);
         } else if (panel.code === "B17") {
             content = '<polygon points="90,15 165,155 15,155" fill="#fff" stroke="#c81e2c" stroke-width="11" stroke-linejoin="round"/>' + renderPictogram({ pict: "priorityRight" }, ink);
         } else if (panel.code === "B19") {
-            content = '<rect x="15" y="15" width="150" height="150" rx="10" fill="#fff" stroke="' + ink + '" stroke-width="4"/>' + renderPictogram({ pict: "circleUpDown" }, ink);
+            content = '<rect x="15" y="15" width="150" height="150" rx="8" fill="#fff" stroke="' + ink + '" stroke-width="8"/>' + renderPictogram({ pict: "circleUpDown" }, ink);
         } else if (panel.code === "B21") {
             content = '<rect x="15" y="15" width="150" height="150" rx="10" fill="#1c5fa8"/>' + renderPictogram({ pict: "rectUpDown" }, "#fff");
         } else if (panel.code === "B22" || panel.code === "B23") {
@@ -1743,6 +1753,8 @@ function makeSignSVG(panel, small) {
             content = '<circle cx="90" cy="90" r="76" fill="#1c5fa8"/><line x1="35" y1="145" x2="145" y2="35" stroke="#c81e2c" stroke-width="10"/><line x1="35" y1="35" x2="145" y2="145" stroke="#c81e2c" stroke-width="10"/>';
         } else if (panel.code === "E5" || panel.code === "E7") {
             content = '<circle cx="90" cy="90" r="76" fill="#1c5fa8"/><line x1="35" y1="145" x2="145" y2="35" stroke="#c81e2c" stroke-width="12"/><text x="90" y="150" text-anchor="middle" font-size="' + (small ? 13 : 18) + '" font-weight="900" fill="#fff" font-family="Arial">' + escapeHTML(panel.panonceauText || "") + '</text>';
+        } else if (panel.code === "E11") {
+            content = '<circle cx="90" cy="90" r="76" fill="#1c5fa8" stroke="#c81e2c" stroke-width="8"/><line x1="35" y1="90" x2="145" y2="90" stroke="#c81e2c" stroke-width="6"/><text x="65" y="72" text-anchor="middle" font-size="' + (small ? 12 : 17) + '" font-weight="900" fill="#fff" font-family="Arial">16-31</text><text x="115" y="118" text-anchor="middle" font-size="' + (small ? 12 : 17) + '" font-weight="900" fill="#fff" font-family="Arial">1-15</text>';
         } else if (panel.pict) {
             content = '<rect x="12" y="12" width="156" height="156" rx="14" fill="#1c5fa8"/><text x="90" y="80" text-anchor="middle" font-size="' + (small ? 34 : 60) + '" font-weight="900" fill="#fff" font-family="Arial">P</text><g transform="translate(40,90) scale(0.55)">' + renderPictogram(panel, "#fff") + '</g>';
         } else {
@@ -1752,6 +1764,8 @@ function makeSignSVG(panel, small) {
         if (panel.code === "F4a" || panel.code === "F4b") {
             content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#fff" stroke="' + ink + '" stroke-width="3"/><text x="90" y="45" text-anchor="middle" font-size="' + (small ? 12 : 18) + '" font-weight="900" fill="' + ink + '" letter-spacing="2">ZONE</text><circle cx="90" cy="105" r="42" fill="#fff" stroke="#c81e2c" stroke-width="9"/><text x="90" y="118" text-anchor="middle" font-size="' + (small ? 18 : 34) + '" font-weight="900" fill="' + ink + '" font-family="Arial">30</text>';
             if (panel.code === "F4b") content += '<line x1="30" y1="140" x2="150" y2="50" stroke="#c81e2c" stroke-width="9"/>';
+        } else if (panel.code === "F49" || panel.code === "F50") {
+            content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#1c5fa8"/><polygon points="90,32 152,148 28,148" fill="#fff"/>' + (panel.code === "F49" ? personSil(ink, 90, 118, 0.85) : bikeSil(ink, 90, 122, 0.7));
         } else {
             var whiteBgPicts = ["town", "townEnd"];
             if (whiteBgPicts.indexOf(panel.pict) >= 0) {
