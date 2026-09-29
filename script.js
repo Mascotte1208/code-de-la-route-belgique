@@ -253,6 +253,18 @@ var IMAGE_PANELS = {
     "F59c1":1,"F59c2":1,"F59c3":1,"F60":1,"F61":1,"F62":1
 };
 
+// Cartes du cours video : image reelle extraite des captures d'ecran des videos
+// officielles Le Permis Belge (voir cours/), affichee telle quelle a la place d'une icone.
+var COURS_IMAGES = {
+    cours_102: "conducteurs_exemples.png",
+    cours_105: "voie_publique_7parties.png",
+    cours_106: "terrain_public_ex.png",
+    cours_107: "terrain_non_public_ex.png",
+    cours_203: "geste1_stop_bras.png",
+    cours_204: "geste2_stop_face.png",
+    cours_205: "geste3_roulez_profil.png"
+};
+
 // ---- MECANIQUE MOTEUR ----
 var MECANIQUE_MOTEUR = [
     {id:"mec_001",titre:"Huile moteur",cat:"MECA",sousCat:"Moteur",desc:"Viscosite 5W30/10W40. Vidange tous les 15 000-30 000 km."},
@@ -672,6 +684,34 @@ var USAGERS_MANOEUVRES = [
     {id:"usager_10",titre:"Marche arriere",cat:"USA",sousCat:"Manoeuvres",desc:"Interdite sauf pour manoeuvre. Ceder le passage a tous."}
 ];
 
+// ---- COURS VIDEO ----
+// Contenu transcrit fidelement depuis les videos officielles "Le Permis Belge"
+// (captures d'ecran fournies par l'utilisateur). Aucune information inventee :
+// chaque carte reprend le texte exact affiche a l'ecran.
+var COURS_VIDEO = [
+    // Lecon 1.1 - La voie publique et les usagers
+    {id:"cours_101",titre:"Le pieton",cat:"COURS",sousCat:"Lecon 1.1",desc:"Toute personne qui se deplace a pied. Aussi : personne en chaise roulante ou engin de deplacement, a l'allure du pas. L'allure du pas = la vitesse a laquelle un pieton marche, environ 5 km/h."},
+    {id:"cours_102",titre:"Le conducteur",cat:"COURS",sousCat:"Lecon 1.1",desc:"Toute personne qui conduit un vehicule. Aussi : guide des animaux de trait, de charge, ou conduit des bestiaux. Cyclistes et cavaliers = aussi des conducteurs."},
+    {id:"cours_103",titre:"Piege examen : pousser un vehicule en panne",cat:"COURS",sousCat:"Lecon 1.1",desc:"Pousser une moto ou une voiture en panne = tu es CONDUCTEUR (pas pieton)."},
+    {id:"cours_104",titre:"3 types de lieux",cat:"COURS",sousCat:"Lecon 1.1",desc:"1. Voie publique : libre pour tous (rues, trottoirs, autoroutes). 2. Terrain public : acces avec raison (parking de supermarche). 3. Terrain non public : ferme / reserve (garage prive, base militaire)."},
+    {id:"cours_105",titre:"La voie publique : les 7 parties",cat:"COURS",sousCat:"Lecon 1.1",desc:"Tout endroit librement accessible. Les 7 parties : 1. Chaussee, 2. Terre-plein central, 3. Bande de circulation, 4. Accotement de plain-pied, 5. Piste cyclable, 6. Trottoir, 7. Accotement en saillie."},
+    {id:"cours_106",titre:"Terrain public",cat:"COURS",sousCat:"Lecon 1.1",desc:"Ouvert, avec une raison d'y etre. Exemples : parking de supermarche, station-service, parking de fast-food."},
+    {id:"cours_107",titre:"Terrain non public",cat:"COURS",sousCat:"Lecon 1.1",desc:"Ferme au public ou reserve. Exemples : garage prive, cour d'immeuble cloturee, parking d'entreprise."},
+    {id:"cours_108",titre:"Ou s'applique le code de la route ?",cat:"COURS",sousCat:"Lecon 1.1",desc:"Voie publique : 100% du code s'applique. Terrain public : regles de securite (priorites, vitesse, stationnement). Terrain non public : ne s'applique pas (sauf regles du proprietaire)."},
+    {id:"cours_109",titre:"A retenir - Lecon 1.1",cat:"COURS",sousCat:"Lecon 1.1",desc:"2 types d'usagers : pieton (a pied ou engin <= 5 km/h) et conducteur (moto poussee = conducteur). 3 types de lieux : voie publique (libre), terrain public (avec raison), terrain non public (ferme). Le code s'applique 100% sur voie publique, partiellement sur terrain public, pas sur terrain non public."},
+    // Lecon 1.2 - Les agents qualifies
+    {id:"cours_201",titre:"Qui sont les agents qualifies ?",cat:"COURS",sousCat:"Lecon 1.2",desc:"Ce sont des personnes autorisees a donner des ordres aux usagers. On appelle ces ordres des injonctions. Tu dois obeir immediatement. Plusieurs types d'agents qualifies existent : police locale, federale, militaire, ..."},
+    {id:"cours_202",titre:"Piege examen : agents qualifies",cat:"COURS",sousCat:"Lecon 1.2",desc:"Questions sur les agents qualifies = fautes graves (-5 points a l'examen)."},
+    {id:"cours_203",titre:"Geste 1 : bras leve verticalement",cat:"COURS",sousCat:"Lecon 1.2",desc:"-> STOP. Deja dans le carrefour ? Degage-le au plus vite !"},
+    {id:"cours_204",titre:"Geste 2 : de face ou de dos",cat:"COURS",sousCat:"Lecon 1.2",desc:"-> STOP. 0, 1 ou 2 bras tendus horizontalement = pareil."},
+    {id:"cours_205",titre:"Geste 3 : de profil",cat:"COURS",sousCat:"Lecon 1.2",desc:"-> ROULEZ. Tout droit, gauche ou droite : tu roules !"},
+    {id:"cours_206",titre:"4 injonctions supplementaires",cat:"COURS",sousCat:"Lecon 1.2",desc:"Balancement d'un feu rouge -> obligation de s'arreter. Mouvement rotatif de la main -> accelerer le rythme. Main a plat, de haut en bas -> reduire la vitesse. Sifflet -> attire l'attention (pas d'ordre precis)."},
+    {id:"cours_207",titre:"La hierarchie",cat:"COURS",sousCat:"Lecon 1.2",desc:"L'agent qualifie est PRIORITAIRE SUR TOUT : 1. Agents qualifies, 2. Signaux lumineux (feux), 3. Panneaux de signalisation, 4. Regles de circulation. Feu rouge + agent dit de passer -> tu passes, l'agent prime sur TOUT."},
+    {id:"cours_208",titre:"Vehicules prioritaires",cat:"COURS",sousCat:"Lecon 1.2",desc:"Ambulances, police, pompiers, douanes / armee. Gyrophare + sirene = mission urgente -> degager la voie et au besoin s'arreter."},
+    {id:"cours_209",titre:"Gyrophare seul (sans sirene)",cat:"COURS",sousCat:"Lecon 1.2",desc:"Continue normalement, mais redouble de prudence. Gyrophare = feux bleus clignotants. Sirene = avertisseur sonore special."},
+    {id:"cours_210",titre:"A retenir - Lecon 1.2",cat:"COURS",sousCat:"Lecon 1.2",desc:"3 gestes essentiels : face/dos = STOP, profil = roulez, bras leve = STOP (faute grave -5 pts a l'examen). La hierarchie : l'agent qualifie est prioritaire sur TOUT (agents > feux > panneaux > regles). Vehicules prioritaires : sirene + gyrophare = degage la voie, gyrophare seul = tu continues en redoublant de prudence."}
+];
+
 // ---- FUSION ALL_KNOWLEDGE ----
 // ---- ENTRETIEN & DOCUMENTS AUTO (voiture.js) ----
 function plainTextFromAuto(html) {
@@ -701,7 +741,8 @@ var ALL_KNOWLEDGE = [].concat(
     RULES,
     PIEGES_ROUTES,
     USAGERS_MANOEUVRES,
-    AUTO_ENTRETIEN
+    AUTO_ENTRETIEN,
+    COURS_VIDEO
 );
 
 // ---- CATEGORIES ----
@@ -727,7 +768,8 @@ var CATEGORIES = {
     TRP:{label:"Pieges",color:"var(--purple)"},
     USA:{label:"Usagers & manoeuvres",color:"var(--purple)"},
     INF:{label:"Infractions",color:"var(--purple)"},
-    AUTO:{label:"Entretien auto",color:"var(--good)"}
+    AUTO:{label:"Entretien auto",color:"var(--good)"},
+    COURS:{label:"Cours video",color:"var(--orange)"}
 };
 
 // ---- MENU STRUCTURE ----
@@ -848,6 +890,18 @@ var MENU_STRUCTURE = [
             {id:"AUTO_SEC",label:"Securite a bord",match:function(item){ return item.sousCat === "Sécurité"; }}
         ],
         data:AUTO_ENTRETIEN
+    },
+    {
+        id:"cours_video",
+        label:"Cours Video",
+        icon:"🎥",
+        color:"var(--orange)",
+        description:"Cours complets rediges a partir des videos officielles Le Permis Belge : theorie detaillee, pieges d'examen et schemas reels, lecon par lecon.",
+        subCategories:[
+            {id:"LECON_11",label:"Lecon 1.1 - La voie publique et les usagers",match:function(item){ return item.sousCat === "Lecon 1.1"; }},
+            {id:"LECON_12",label:"Lecon 1.2 - Les agents qualifies",match:function(item){ return item.sousCat === "Lecon 1.2"; }}
+        ],
+        data:COURS_VIDEO
     }
 ];// =========================================================
 // STOCKAGE & ETAT
@@ -896,7 +950,7 @@ function stats() { return appData.stats; }
 function mistakes() { return appData.mistakes; }
 
 var state = {
-    categories: ["A", "B", "C", "D", "E", "F", "T", "MECA", "PNEU", "SAI", "SEC", "LEG", "EQ", "MAR", "CND", "VEH", "PSY", "RUL", "TRP", "USA", "INF", "AUTO"],
+    categories: ["A", "B", "C", "D", "E", "F", "T", "MECA", "PNEU", "SAI", "SEC", "LEG", "EQ", "MAR", "CND", "VEH", "PSY", "RUL", "TRP", "USA", "INF", "AUTO", "COURS"],
     questionCount: 15,
     timer: false,
     questions: [],
@@ -1758,6 +1812,9 @@ function makeSignSVG(panel, small) {
     if (panel.code && IMAGE_PANELS[panel.code]) {
         return '<img class="sign-svg" src="panneaux/' + panel.code + '.png" alt="' + escapeHTML(panel.nom || panel.titre || "") + '" style="object-fit:contain;background:#fff;border-radius:10px;" />';
     }
+    if (panel.id && COURS_IMAGES[panel.id]) {
+        return '<img class="sign-svg" src="cours/' + COURS_IMAGES[panel.id] + '" alt="' + escapeHTML(panel.titre || "") + '" style="object-fit:contain;background:#fff;border-radius:10px;" />';
+    }
     var ink = "#171a1f";
     var content = "";
     if (panel.cat === "A" || panel.cat === "T") {
@@ -1941,6 +1998,8 @@ function makeSignSVG(panel, small) {
         content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#6b46c1"/><circle cx="90" cy="90" r="58" fill="none" stroke="#fff" stroke-width="9"/><text x="90" y="108" text-anchor="middle" font-size="' + (small ? 40 : 78) + '" font-weight="900" fill="#fff" font-family="Arial">€</text>';
     } else if (panel.cat === "AUTO") {
         content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#1e7a3c"/><rect x="50" y="30" width="80" height="120" rx="6" fill="#fff"/><rect x="65" y="22" width="50" height="14" rx="4" fill="#fff"/><line x1="63" y1="65" x2="117" y2="65" stroke="#1e7a3c" stroke-width="6"/><line x1="63" y1="90" x2="117" y2="90" stroke="#1e7a3c" stroke-width="6"/><path d="M63 112 l8 8 l14 -16" fill="none" stroke="#1e7a3c" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><line x1="100" y1="118" x2="117" y2="118" stroke="#1e7a3c" stroke-width="6"/>';
+    } else if (panel.cat === "COURS") {
+        content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#ff8c00"/><circle cx="90" cy="90" r="46" fill="#fff"/><polygon points="76,66 76,114 118,90" fill="#ff8c00"/>';
     } else {
         content = '<rect x="12" y="12" width="156" height="156" rx="10" fill="#1c5fa8"/><text x="90" y="122" text-anchor="middle" font-size="' + (small ? 42 : 90) + '" font-weight="900" fill="#fff" font-family="Arial">?</text>';
     }
