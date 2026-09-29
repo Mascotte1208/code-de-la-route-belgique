@@ -20,7 +20,7 @@
 </header>
 
 <div class="lane"></div>
-<div class="offline">🚀 Mode Expert Pro - 19 fonctionnalités</div>
+<div class="offline">🎥 Cours Video - Le Permis Belge</div>
 
 <main class="app">
 
@@ -30,22 +30,21 @@
 
   <div class="hero">
     <div>
-      <div class="eyebrow">🚗 PERMIS THEORIQUE - BELGIQUE (GOCA) - VERSION PRO</div>
-      <h1>Maîtrise totale du Code de la route</h1>
+      <div class="eyebrow">🚗 PERMIS THEORIQUE - BELGIQUE - LE PERMIS BELGE</div>
+      <h1>Cours Video</h1>
       <p>
-        Examen blanc officiel, 8 catégories, 469 éléments, statistiques, badges,
-        défis quotidiens, flashcards et bien plus encore !
+        Les lecons du Permis Belge, transcrites lecon par lecon avec leurs schemas
+        et leurs pieges d'examen.
       </p>
     </div>
     <div class="actions">
-      <button class="primary" onclick="showMenu()">📋 Voir le menu</button>
-      <button class="primary" onclick="startOfficialExam()">📚 Examen blanc</button>
+      <button class="primary" onclick="showCategorie('cours_video')">🎥 Voir les lecons</button>
       <button class="theme" onclick="toggleTheme()" id="themeButton">☀️</button>
     </div>
   </div>
 
   <!-- STATS RAPIDES -->
-  <div class="stats">
+  <div class="stats" style="display:none">
     <div class="stat"><i>📁</i><div><b id="statSessions">0</b><span>Sessions</span></div></div>
     <div class="stat"><i>📊</i><div><b id="statSuccess">0%</b><span>Réussite</span></div></div>
     <div class="stat"><i>⭐</i><div><b id="statFavs">0</b><span>Favoris</span></div></div>
@@ -55,12 +54,12 @@
   </div>
 
   <!-- BADGES -->
-  <div id="badgeDisplay" style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; padding: 12px; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--line);">
+  <div id="badgeDisplay" style="display: none; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; padding: 12px; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--line);">
     <div style="font-size: 13px; font-weight: 900; color: var(--muted); width: 100%;">🏆 Mes badges :</div>
     <div id="badgeList" style="display: flex; gap: 8px; flex-wrap: wrap;"></div>
   </div>
 
-  <div class="grid">
+  <div class="grid" style="display:none">
     <div>
       <h2 class="section-title">Modules d'entraînement</h2>
       <p class="muted">Choisis ton format de révision.</p>
@@ -177,8 +176,8 @@
     <div style="display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;">
       <button class="ghost" onclick="goHome()">🏠 Accueil</button>
     </div>
-    <h2 class="section-title">📋 Guide complet du Code de la route</h2>
-    <p class="muted">8 catégories principales couvrant 100% du programme officiel belge (469 éléments).</p>
+    <h2 class="section-title">🎥 Cours Video</h2>
+    <p class="muted">Les lecons officielles du Permis Belge, transcrites lecon par lecon.</p>
     <div id="menuGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin-top: 16px;"></div>
   </div>
 </section>

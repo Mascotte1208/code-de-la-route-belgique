@@ -1453,8 +1453,9 @@ function renderMenu() {
     if (!grid) return;
     grid.innerHTML = "";
 
-    for (var i = 0; i < MENU_STRUCTURE.length; i++) {
-        var cat = MENU_STRUCTURE[i];
+    var visibleMenu = MENU_STRUCTURE.filter(function(c) { return c.id === "cours_video"; });
+    for (var i = 0; i < visibleMenu.length; i++) {
+        var cat = visibleMenu[i];
         var card = document.createElement("div");
         card.className = "stat";
         card.style.cursor = "pointer";
