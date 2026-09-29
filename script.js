@@ -721,7 +721,21 @@ var COURS_VIDEO = [
     {id:"cours_308",titre:"Zone d'evitement",cat:"COURS",sousCat:"Lecon 1.5",desc:"Lignes obliques hachurees. Interdit d'y circuler, de s'arreter ou stationner."},
     {id:"cours_309",titre:"Ilot directionnel",cat:"COURS",sousCat:"Lecon 1.5",desc:"Canalise la circulation. Toujours le contourner par la DROITE."},
     {id:"cours_310",titre:"Fleches de selection",cat:"COURS",sousCat:"Lecon 1.5",desc:"Placez-vous sur la bande qui correspond a votre destination."},
-    {id:"cours_311",titre:"A retenir - Lecon 1.5",cat:"COURS",sousCat:"Lecon 1.5",desc:"Continue = INTERDIT (-5 points). Discontinue = AUTORISE. Juxtaposee = regarde TON cote. Jaune-orange prime sur blanc : marquages temporaires (travaux) > marquages permanents. Voie centrale = 70 km/h max."}
+    {id:"cours_311",titre:"A retenir - Lecon 1.5",cat:"COURS",sousCat:"Lecon 1.5",desc:"Continue = INTERDIT (-5 points). Discontinue = AUTORISE. Juxtaposee = regarde TON cote. Jaune-orange prime sur blanc : marquages temporaires (travaux) > marquages permanents. Voie centrale = 70 km/h max."},
+    // Lecon 2.1 - Agglomeration
+    {id:"cours_401",titre:"C'est quoi une agglomeration ?",cat:"COURS",sousCat:"Lecon 2.1",desc:"Un endroit avec une forte concentration d'habitations. Plus d'usagers = adapte ta vitesse."},
+    {id:"cours_402",titre:"A l'examen : les mots pour agglomeration",cat:"COURS",sousCat:"Lecon 2.1",desc:"« Ville », « village », « zone urbaine » = agglomeration. « Route ordinaire » = hors agglo."},
+    {id:"cours_403",titre:"Piege : panneau de nom de commune",cat:"COURS",sousCat:"Lecon 2.1",desc:"Le panneau jaune avec un nom de localite (ex: Villers-en-Fagne / Philippeville) indique la frontiere entre 2 communes. Aucune influence sur la vitesse !"},
+    {id:"cours_404",titre:"Vitesse en agglomeration",cat:"COURS",sousCat:"Lecon 2.1",desc:"Ca depend de la region ! Flandre et Wallonie : 50 km/h. Bruxelles : 30 km/h."},
+    {id:"cours_405",titre:"Signal 30 au-dessus du signal agglo",cat:"COURS",sousCat:"Lecon 2.1",desc:"La limite de 30 km/h s'applique dans TOUTE l'agglomeration."},
+    {id:"cours_406",titre:"Signal 50 ou 70 au-dessus du signal agglo",cat:"COURS",sousCat:"Lecon 2.1",desc:"Valable seulement jusqu'au prochain carrefour ou jusqu'au signal de fin, PAS dans toute l'agglo."},
+    {id:"cours_407",titre:"Vitesse hors agglomeration",cat:"COURS",sousCat:"Lecon 2.1",desc:"Ca change aussi selon la region ! Flandre et Bruxelles : 70 km/h. Wallonie : 90 km/h."},
+    {id:"cours_408",titre:"Piege : signal de vitesse hors agglo",cat:"COURS",sousCat:"Lecon 2.1",desc:"Tu es hors agglo mais tu vois un signal 50 km/h ? Tu respectes le signal : il prime TOUJOURS sur la vitesse par defaut."},
+    {id:"cours_409",titre:"Recap vitesses + autoroute",cat:"COURS",sousCat:"Lecon 2.1",desc:"Bruxelles : 30/70. Flandre : 50/70. Wallonie : 50/90 (en agglo / hors agglo). Autoroute = 120 km/h partout en Belgique."},
+    {id:"cours_410",titre:"Ou te placer sur la chaussee ?",cat:"COURS",sousCat:"Lecon 2.1",desc:"Regle generale : roule le plus a DROITE possible. Circuler a gauche sans raison = INTERDIT."},
+    {id:"cours_411",titre:"Placement hors agglo et autoroute",cat:"COURS",sousCat:"Lecon 2.1",desc:"Toujours a droite. La bande de gauche = uniquement pour depasser ou embouteillage."},
+    {id:"cours_412",titre:"Placement en agglomeration",cat:"COURS",sousCat:"Lecon 2.1",desc:"Tu choisis ta bande ! Sur une chaussee a 2+ bandes par sens, place-toi selon ta destination. Ex: tu tournes a gauche au prochain carrefour ? Place-toi a gauche des maintenant."},
+    {id:"cours_413",titre:"A retenir - Lecon 2.1",cat:"COURS",sousCat:"Lecon 2.1",desc:"Agglo = 50 km/h (Flandre/Wallonie), 30 km/h (Bruxelles). Hors agglo = 70 km/h (Flandre/BXL), 90 km/h (Wallonie). Un signal peut toujours modifier la vitesse. Placement : a droite (sauf en agglo tu choisis)."}
 ];
 
 // Cours video sous forme de lecture continue (chapitres, encadres, schemas reels),
@@ -876,6 +890,62 @@ var COURS_ARTICLES = {
                 {titre: "Discontinue = AUTORISE", text: "Pour depasser, tourner, faire un demi-tour, changer de bande."},
                 {titre: "Juxtaposee = regarde TON cote", text: "Discontinue de ton cote = OK. Continue de ton cote = interdit."},
                 {titre: "Jaune-orange prime sur blanc", text: "Marquage temporaire (travaux) > marquage permanent. Voie centrale = 70 km/h max."}
+            ]
+        }
+    },
+    LECON_21: {
+        titre: "Lecon 2.1 - Agglomeration",
+        chapitres: [
+            {
+                titre: "C'est quoi une agglomeration ?",
+                blocks: [
+                    {def: "Un endroit avec une forte concentration d'habitations. Plus d'usagers = adapte ta vitesse."},
+                    {sousTitre: "Comment la reconnaitre ?"},
+                    {panels: ["F1a", "F3"], caption: "F1a : debut d'agglomeration. F3 : fin d'agglomeration."},
+                    {tip: "A l'examen : « ville », « village », « zone urbaine » = agglomeration. « Route ordinaire » = hors agglo."},
+                    {img: "agglo_frontiere_commune.png", caption: "Le panneau jaune avec un nom de localite indique la frontiere entre 2 communes. Aucune influence sur la vitesse !"}
+                ]
+            },
+            {
+                titre: "Vitesse en agglomeration",
+                blocks: [
+                    {sousTitre: "Ca depend de la region !"},
+                    {table: [
+                        ["Flandre & Wallonie", "50 km/h"],
+                        ["Bruxelles", "30 km/h"]
+                    ]},
+                    {img: "agglo_cas1_cas2.png", caption: "Signal 30 AU-DESSUS d'un signal agglo ? La limite de 30 km/h s'applique dans TOUTE l'agglomeration. Un signal 50 ou 70 km/h au-dessus ? Valable seulement jusqu'au prochain carrefour ou jusqu'au signal de fin, PAS dans toute l'agglo."},
+                    {sousTitre: "Hors agglomeration : ca change aussi selon la region !"},
+                    {table: [
+                        ["Flandre & Bruxelles", "70 km/h"],
+                        ["Wallonie", "90 km/h"]
+                    ]},
+                    {piege: "Tu es hors agglo mais tu vois un signal 50 km/h ? Tu respectes le signal. Le signal de limitation prime TOUJOURS sur la vitesse par defaut."},
+                    {img: "agglo_photo_zone50.png", caption: "Exemple reel : une ZONE 50 juste a cote du panneau de fin d'agglomeration."},
+                    {sousTitre: "Recap vitesses"},
+                    {table: [
+                        ["Bruxelles", "30 km/h en agglo, 70 km/h hors agglo"],
+                        ["Flandre", "50 km/h en agglo, 70 km/h hors agglo"],
+                        ["Wallonie", "50 km/h en agglo, 90 km/h hors agglo"]
+                    ]},
+                    {def: "Autoroute = 120 km/h, partout en Belgique."}
+                ]
+            },
+            {
+                titre: "Le placement",
+                blocks: [
+                    {sousTitre: "Ou te placer sur la chaussee ?"},
+                    {def: "Regle generale : roule le plus a DROITE possible. Circuler a gauche sans raison = INTERDIT."},
+                    {img: "agglo_placement.png", caption: "Hors agglo + autoroute : toujours a droite, la bande de gauche est uniquement pour depasser ou en cas d'embouteillage. En agglomeration : tu choisis ta bande ! Sur une chaussee a 2+ bandes par sens, place-toi selon ta destination."},
+                    {tip: "Ex : tu tournes a gauche au prochain carrefour ? Place-toi a gauche des maintenant."}
+                ]
+            }
+        ],
+        recap: {
+            items: [
+                {titre: "Agglo = 50 km/h (Flandre/Wallonie), 30 km/h (Bruxelles)", text: "Signal 30 au-dessus du signal agglo = 30 dans toute l'agglo. Autres vitesses = jusqu'au carrefour."},
+                {titre: "Hors agglo = 70 km/h (Flandre/BXL), 90 km/h (Wallonie)", text: "Un signal peut toujours modifier la vitesse, meme hors agglo."},
+                {titre: "Placement : a droite", text: "Sauf en agglomeration avec deux bandes ou plus par sens : tu choisis."}
             ]
         }
     }
@@ -1069,7 +1139,8 @@ var MENU_STRUCTURE = [
         subCategories:[
             {id:"LECON_11",label:"Lecon 1.1 - La voie publique et les usagers",match:function(item){ return item.sousCat === "Lecon 1.1"; }},
             {id:"LECON_12",label:"Lecon 1.2 - Les agents qualifies",match:function(item){ return item.sousCat === "Lecon 1.2"; }},
-            {id:"LECON_15",label:"Lecon 1.5 - Les marquages routiers",match:function(item){ return item.sousCat === "Lecon 1.5"; }}
+            {id:"LECON_15",label:"Lecon 1.5 - Les marquages routiers",match:function(item){ return item.sousCat === "Lecon 1.5"; }},
+            {id:"LECON_21",label:"Lecon 2.1 - Agglomeration",match:function(item){ return item.sousCat === "Lecon 2.1"; }}
         ],
         data:COURS_VIDEO
     }
@@ -1447,6 +1518,13 @@ function renderCoursBlock(block) {
         return '<table class="cours-table">' + block.table.map(function(row) {
             return '<tr><td>' + escapeHTML(row[0]) + '</td><td>' + escapeHTML(row[1]) + '</td></tr>';
         }).join('') + '</table>';
+    }
+    if (block.panels) {
+        var html = '<div class="cours-panels">' + block.panels.map(function(code) {
+            return '<div class="cours-panel-cell"><img src="panneaux/' + code + '.png" alt="' + escapeHTML(code) + '"><span>' + escapeHTML(code) + '</span></div>';
+        }).join('') + '</div>';
+        if (block.caption) html += '<div class="cours-caption">' + escapeHTML(block.caption) + '</div>';
+        return html;
     }
     return "";
 }

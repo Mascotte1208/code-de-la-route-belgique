@@ -1011,6 +1011,10 @@ button:focus-visible,input:focus-visible{
 .cours-img-wrap{margin:14px 0}
 .cours-img-wrap img{width:100%;max-width:520px;display:block;margin:0 auto;border-radius:12px;border:1px solid var(--line);background:#fff}
 .cours-caption{text-align:center;font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.4;max-width:520px;margin-left:auto;margin-right:auto}
+.cours-panels{display:flex;gap:16px;justify-content:center;margin:14px 0;flex-wrap:wrap}
+.cours-panel-cell{display:flex;flex-direction:column;align-items:center;gap:6px}
+.cours-panel-cell img{width:90px;height:90px;object-fit:contain;background:#fff;border-radius:10px;border:1px solid var(--line)}
+.cours-panel-cell span{font-size:11px;font-weight:800;color:var(--muted)}
 .cours-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
 .cours-table td{border:1px solid var(--line);padding:10px 12px;vertical-align:top}
 .cours-table td:first-child{font-weight:800;white-space:nowrap;background:var(--soft)}
