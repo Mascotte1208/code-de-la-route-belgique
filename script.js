@@ -709,7 +709,19 @@ var COURS_VIDEO = [
     {id:"cours_207",titre:"La hierarchie",cat:"COURS",sousCat:"Lecon 1.2",desc:"L'agent qualifie est PRIORITAIRE SUR TOUT : 1. Agents qualifies, 2. Signaux lumineux (feux), 3. Panneaux de signalisation, 4. Regles de circulation. Feu rouge + agent dit de passer -> tu passes, l'agent prime sur TOUT."},
     {id:"cours_208",titre:"Vehicules prioritaires",cat:"COURS",sousCat:"Lecon 1.2",desc:"Ambulances, police, pompiers, douanes / armee. Gyrophare + sirene = mission urgente -> degager la voie et au besoin s'arreter."},
     {id:"cours_209",titre:"Gyrophare seul (sans sirene)",cat:"COURS",sousCat:"Lecon 1.2",desc:"Continue normalement, mais redouble de prudence. Gyrophare = feux bleus clignotants. Sirene = avertisseur sonore special."},
-    {id:"cours_210",titre:"A retenir - Lecon 1.2",cat:"COURS",sousCat:"Lecon 1.2",desc:"3 gestes essentiels : face/dos = STOP, profil = roulez, bras leve = STOP (faute grave -5 pts a l'examen). La hierarchie : l'agent qualifie est prioritaire sur TOUT (agents > feux > panneaux > regles). Vehicules prioritaires : sirene + gyrophare = degage la voie, gyrophare seul = tu continues en redoublant de prudence."}
+    {id:"cours_210",titre:"A retenir - Lecon 1.2",cat:"COURS",sousCat:"Lecon 1.2",desc:"3 gestes essentiels : face/dos = STOP, profil = roulez, bras leve = STOP (faute grave -5 pts a l'examen). La hierarchie : l'agent qualifie est prioritaire sur TOUT (agents > feux > panneaux > regles). Vehicules prioritaires : sirene + gyrophare = degage la voie, gyrophare seul = tu continues en redoublant de prudence."},
+    // Lecon 1.5 - Les marquages routiers
+    {id:"cours_301",titre:"2 couleurs, 3 types de lignes",cat:"COURS",sousCat:"Lecon 1.5",desc:"Blanc = marquage permanent. Jaune-orange = marquage temporaire (travaux). Le jaune-orange prime toujours sur le blanc."},
+    {id:"cours_302",titre:"Les 3 types de lignes",cat:"COURS",sousCat:"Lecon 1.5",desc:"Continue : interdit de franchir. Discontinue : autorise de franchir. Juxtaposee : depend de TON cote."},
+    {id:"cours_303",titre:"Ligne continue",cat:"COURS",sousCat:"Lecon 1.5",desc:"Interdit de la franchir. Faute grave = -5 points a l'examen ! Sauf obstacle ou travaux inevitables. C'est comme un mur invisible."},
+    {id:"cours_304",titre:"Ligne discontinue",cat:"COURS",sousCat:"Lecon 1.5",desc:"Autorise de la franchir. Pour depasser, tourner a gauche, faire un demi-tour ou changer de bande."},
+    {id:"cours_305",titre:"La ligne juxtaposee",cat:"COURS",sousCat:"Lecon 1.5",desc:"Continue + discontinue cote a cote. La regle : suis la ligne qui est de TON cote. Discontinue de ton cote = tu peux franchir. Continue de ton cote = interdit."},
+    {id:"cours_306",titre:"Piege examen : ligne juxtaposee",cat:"COURS",sousCat:"Lecon 1.5",desc:"C'est un piege frequent a l'examen. Regarde toujours de QUEL COTE tu es : ton voisin a peut-etre le droit de franchir, mais pas toi."},
+    {id:"cours_307",titre:"La chaussee a voie centrale",cat:"COURS",sousCat:"Lecon 1.5",desc:"Concept recent (2022). Bande centrale = voitures. Bandes laterales = velos. Les autos peuvent deborder sur les bandes laterales pour croiser ou depasser, sans mettre en danger les usagers qui s'y trouvent. Vitesse max : 70 km/h (Bruxelles, Flandre et Wallonie)."},
+    {id:"cours_308",titre:"Zone d'evitement",cat:"COURS",sousCat:"Lecon 1.5",desc:"Lignes obliques hachurees. Interdit d'y circuler, de s'arreter ou stationner."},
+    {id:"cours_309",titre:"Ilot directionnel",cat:"COURS",sousCat:"Lecon 1.5",desc:"Canalise la circulation. Toujours le contourner par la DROITE."},
+    {id:"cours_310",titre:"Fleches de selection",cat:"COURS",sousCat:"Lecon 1.5",desc:"Placez-vous sur la bande qui correspond a votre destination."},
+    {id:"cours_311",titre:"A retenir - Lecon 1.5",cat:"COURS",sousCat:"Lecon 1.5",desc:"Continue = INTERDIT (-5 points). Discontinue = AUTORISE. Juxtaposee = regarde TON cote. Jaune-orange prime sur blanc : marquages temporaires (travaux) > marquages permanents. Voie centrale = 70 km/h max."}
 ];
 
 // Cours video sous forme de lecture continue (chapitres, encadres, schemas reels),
@@ -813,6 +825,57 @@ var COURS_ARTICLES = {
                 {titre: "3 gestes essentiels", text: "Face/dos = STOP. Profil = roulez. Bras leve = STOP. Faute grave (-5 pts) a l'examen !"},
                 {titre: "La hierarchie", text: "L'agent qualifie est prioritaire sur TOUT. Agents > Feux > Panneaux > Regles."},
                 {titre: "Les vehicules prioritaires", text: "Sirene + gyrophare = degage la voie. Gyrophare seul = tu continues en redoublant de prudence."}
+            ]
+        }
+    },
+    LECON_15: {
+        titre: "Lecon 1.5 - Les marquages routiers",
+        chapitres: [
+            {
+                titre: "Les bases",
+                blocks: [
+                    {sousTitre: "2 couleurs, 3 types de lignes."},
+                    {def: "Blanc = marquage permanent."},
+                    {def: "Jaune-orange = marquage temporaire (generalement pour les travaux)."},
+                    {piege: "Le jaune-orange prime toujours sur le blanc."},
+                    {sousTitre: "Les 3 types de lignes."},
+                    {table: [
+                        ["Continue", "INTERDIT de franchir"],
+                        ["Discontinue", "AUTORISE de franchir"],
+                        ["Juxtaposee", "Depend de TON cote"]
+                    ]},
+                    {tip: "La ligne juxtaposee, c'est une continue a cote d'une discontinue : ca depend de quel cote tu es."}
+                ]
+            },
+            {
+                titre: "Continue vs discontinue",
+                blocks: [
+                    {sousTitre: "L'une te coute 5 points. L'autre te laisse passer."},
+                    {img: "marquage_continue_discontinue.png", caption: "Ligne continue : interdit de la franchir, faute grave (-5 points a l'examen), sauf obstacle ou travaux inevitables. Ligne discontinue : autorise de la franchir pour depasser, tourner a gauche, faire un demi-tour ou changer de bande."},
+                    {ok: "La ligne continue, c'est comme un mur invisible : tu ne la franchis jamais."},
+                    {sousTitre: "La ligne juxtaposee."},
+                    {img: "marquage_juxtaposee.png", caption: "Continue + discontinue cote a cote. Laquelle suivre ?"},
+                    {def: "La regle : suis la ligne qui est de TON cote. Discontinue de ton cote = tu peux franchir. Continue de ton cote = interdit."},
+                    {piege: "C'est un piege frequent a l'examen. Regarde toujours de QUEL COTE tu es : ton voisin a peut-etre le droit de franchir, mais pas toi. Chacun regarde son propre cote."}
+                ]
+            },
+            {
+                titre: "La chaussee a voie centrale",
+                blocks: [
+                    {sousTitre: "Un concept recent (2022)."},
+                    {img: "chaussee_voie_centrale.png", caption: "Bande centrale = voitures. Bandes laterales = velos. Les autos peuvent deborder sur les bandes laterales pour croiser ou depasser, mais sans mettre en danger les usagers qui s'y trouvent."},
+                    {def: "Vitesse max : 70 km/h (Bruxelles, Flandre et Wallonie)."},
+                    {sousTitre: "Les autres marquages : 3 marquages a reconnaitre."},
+                    {img: "autres_marquages.png", caption: "Zone d'evitement : lignes obliques hachurees, interdit d'y circuler, de s'arreter ou stationner. Ilot directionnel : canalise la circulation, toujours le contourner par la DROITE. Fleches de selection : placez-vous sur la bande qui correspond a votre destination."}
+                ]
+            }
+        ],
+        recap: {
+            items: [
+                {titre: "Continue = INTERDIT (-5 points !)", text: "Tu ne franchis jamais une ligne continue, sauf obstacle inevitable."},
+                {titre: "Discontinue = AUTORISE", text: "Pour depasser, tourner, faire un demi-tour, changer de bande."},
+                {titre: "Juxtaposee = regarde TON cote", text: "Discontinue de ton cote = OK. Continue de ton cote = interdit."},
+                {titre: "Jaune-orange prime sur blanc", text: "Marquage temporaire (travaux) > marquage permanent. Voie centrale = 70 km/h max."}
             ]
         }
     }
@@ -1005,7 +1068,8 @@ var MENU_STRUCTURE = [
         description:"Cours complets rediges a partir des videos officielles Le Permis Belge : theorie detaillee, pieges d'examen et schemas reels, lecon par lecon.",
         subCategories:[
             {id:"LECON_11",label:"Lecon 1.1 - La voie publique et les usagers",match:function(item){ return item.sousCat === "Lecon 1.1"; }},
-            {id:"LECON_12",label:"Lecon 1.2 - Les agents qualifies",match:function(item){ return item.sousCat === "Lecon 1.2"; }}
+            {id:"LECON_12",label:"Lecon 1.2 - Les agents qualifies",match:function(item){ return item.sousCat === "Lecon 1.2"; }},
+            {id:"LECON_15",label:"Lecon 1.5 - Les marquages routiers",match:function(item){ return item.sousCat === "Lecon 1.5"; }}
         ],
         data:COURS_VIDEO
     }
