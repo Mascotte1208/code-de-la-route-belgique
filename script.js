@@ -70,7 +70,13 @@ var PANNEAUX_B = [
     {code:"B9",nom:"Voie prioritaire",cat:"B",desc:"Losange jaune/orange plein : vous etes prioritaire sur cette route aux intersections."},
     {code:"B11",nom:"Fin de voie prioritaire",cat:"B",desc:"Le statut de route prioritaire prend fin a cet endroit."},
     {code:"B13",nom:"Annonce de la fin d'une voie prioritaire",cat:"B",panonceauText:"250 m",desc:"Previent qu'un signal B11 se trouve a la distance indiquee."},
-    {code:"B15",nom:"Croisement avec une voie sans priorite",cat:"B",desc:"Triangle de danger : annonce un croisement ou vous conservez la priorite sur les voies secondaires."},
+    {code:"B15a",nom:"Croisement avec une voie sans priorite (variante a)",cat:"B",pict:"b15a",desc:"Triangle de danger : annonce un croisement ou vous conservez la priorite. La forme du pictogramme (mat + fanion) precise la configuration exacte du carrefour."},
+    {code:"B15b",nom:"Croisement avec une voie sans priorite (variante b)",cat:"B",pict:"b15b",desc:"Triangle de danger : annonce un croisement ou vous conservez la priorite. La forme du pictogramme (mat + fanion) precise la configuration exacte du carrefour."},
+    {code:"B15c",nom:"Croisement avec une voie sans priorite (variante c)",cat:"B",pict:"b15c",desc:"Triangle de danger : annonce un croisement ou vous conservez la priorite. La forme du pictogramme (mat + fanion) precise la configuration exacte du carrefour."},
+    {code:"B15d",nom:"Croisement avec une voie sans priorite (variante d)",cat:"B",pict:"b15d",desc:"Triangle de danger : annonce un croisement ou vous conservez la priorite. La forme du pictogramme (mat + fanion) precise la configuration exacte du carrefour."},
+    {code:"B15e",nom:"Croisement avec une voie sans priorite (variante e)",cat:"B",pict:"b15e",desc:"Triangle de danger : annonce un croisement ou vous conservez la priorite. La forme du pictogramme (mat + fanion) precise la configuration exacte du carrefour."},
+    {code:"B15f",nom:"Croisement avec une voie sans priorite (variante f)",cat:"B",pict:"b15f",desc:"Triangle de danger : annonce un croisement ou vous conservez la priorite. La forme du pictogramme (mat + fanion) precise la configuration exacte du carrefour."},
+    {code:"B15g",nom:"Croisement avec une voie sans priorite (variante g)",cat:"B",pict:"b15g",desc:"Triangle de danger : annonce un croisement ou vous conservez la priorite. La forme du pictogramme (mat + fanion) precise la configuration exacte du carrefour."},
     {code:"B17",nom:"Priorite de droite",cat:"B",desc:"Triangle de danger avec une croix : rappelle la regle generale, ceder le passage aux vehicules venant de droite."},
     {code:"B19",nom:"Cedez le passage au trafic venant en sens inverse",cat:"B",desc:"Panneau carre blanc : passage etroit, laissez passer les vehicules venant d'en face en premier."},
     {code:"B21",nom:"Priorite sur le trafic venant en sens inverse",cat:"B",desc:"Panneau carre bleu : passage etroit, vous avez la priorite sur les vehicules venant d'en face."},
@@ -1628,7 +1634,7 @@ var PICTOGRAMS = {
     levelCrossingAhead: function(fg) { return '<rect x="35" y="82" width="110" height="12" rx="3" fill="' + fg + '"/><circle cx="35" cy="88" r="7" fill="' + fg + '"/><line x1="35" y1="95" x2="35" y2="140" stroke="' + fg + '" stroke-width="6" stroke-linecap="round"/>'; },
     levelCrossingLattice: function(fg) { return [-40, 0, 40].map(function(dx) { return '<g transform="translate(' + dx + ',0)"><path d="M90 65 L110 95 L90 125 L70 95 Z" fill="none" stroke="' + fg + '" stroke-width="6"/></g>'; }).join(''); },
     flagTriangle: function(fg) { return '<path d="M90 30 V90 M90 30 L130 42 L90 58 Z" fill="' + fg + '" stroke="' + fg + '" stroke-width="6" stroke-linejoin="round"/>'; },
-    circleUpDown: function(fg) { return '<circle cx="90" cy="90" r="58" fill="none" stroke="' + fg + '" stroke-width="7"/><path d="M70 115 V65 M60 78 L70 65 L80 78" fill="none" stroke="' + fg + '" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M110 65 V115 M100 102 L110 115 L120 102" fill="none" stroke="#c81e2c" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>'; },
+    circleUpDown: function(fg) { return '<circle cx="90" cy="90" r="58" fill="none" stroke="' + fg + '" stroke-width="7"/><path d="M70 115 V65 M60 78 L70 65 L80 78" fill="none" stroke="' + fg + '" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M110 65 V115 M100 102 L110 115 L120 102" fill="none" stroke="' + fg + '" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>'; },
     rectUpDown: function(fg) { return '<path d="M70 140 V60 M58 76 L70 60 L82 76" fill="none" stroke="#c81e2c" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><path d="M110 60 V140 M98 124 L110 140 L122 124" fill="none" stroke="' + fg + '" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>'; },
     arrowUp: function(fg) { return arrowShape(fg, "up"); },
     arrowDiagLeft: function(fg) { return '<g transform="rotate(-45 90 95)">' + arrowShape(fg, "up") + '</g>'; },
@@ -1664,7 +1670,14 @@ var PICTOGRAMS = {
     laneSplit: function(fg) { return '<path d="M90 150 V100" stroke="' + fg + '" stroke-width="9" stroke-linecap="round"/><path d="M90 100 L55 55" fill="none" stroke="' + fg + '" stroke-width="9" stroke-linecap="round"/><path d="M42 68 L55 55 L59 73" fill="none" stroke="' + fg + '" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path d="M90 100 L125 55" fill="none" stroke="' + fg + '" stroke-width="9" stroke-linecap="round"/><path d="M121 73 L125 55 L138 68" fill="none" stroke="' + fg + '" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>'; },
     busLane: function(fg) { return '<line x1="68" y1="25" x2="68" y2="155" stroke="' + fg + '" stroke-width="6" stroke-dasharray="16 12"/><line x1="112" y1="25" x2="112" y2="155" stroke="' + fg + '" stroke-width="6" stroke-dasharray="16 12"/><text x="90" y="100" text-anchor="middle" font-size="22" font-weight="900" fill="' + fg + '" font-family="Arial" transform="rotate(-90 90 100)">BUS</text>'; },
     tramLane: function(fg) { return '<line x1="68" y1="25" x2="68" y2="155" stroke="' + fg + '" stroke-width="6" stroke-dasharray="16 12"/><line x1="112" y1="25" x2="112" y2="155" stroke="' + fg + '" stroke-width="6" stroke-dasharray="16 12"/><text x="90" y="105" text-anchor="middle" font-size="17" font-weight="900" fill="' + fg + '" font-family="Arial" transform="rotate(-90 90 105)">TRAM</text>'; },
-    twoWayH: function(fg) { return '<path d="M40 100 H140 M55 85 L40 100 L55 115 M125 85 L140 100 L125 115" fill="none" stroke="' + fg + '" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>'; }
+    twoWayH: function(fg) { return '<path d="M40 100 H140 M55 85 L40 100 L55 115 M125 85 L140 100 L125 115" fill="none" stroke="' + fg + '" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>'; },
+    b15a: function(fg) { return '<line x1="90" y1="138" x2="90" y2="42" stroke="' + fg + '" stroke-width="9" stroke-linecap="round"/><path d="M90 45 L122 62 L90 79 Z" fill="' + fg + '"/>'; },
+    b15b: function(fg) { return '<line x1="90" y1="138" x2="90" y2="42" stroke="' + fg + '" stroke-width="9" stroke-linecap="round"/><path d="M90 45 H118 L106 62 L118 79 H90 Z" fill="' + fg + '"/>'; },
+    b15c: function(fg) { return '<line x1="90" y1="138" x2="90" y2="68" stroke="' + fg + '" stroke-width="9" stroke-linecap="round"/><path d="M90 72 L118 88 L90 104 Z" fill="' + fg + '"/>'; },
+    b15d: function(fg) { return '<line x1="90" y1="138" x2="90" y2="42" stroke="' + fg + '" stroke-width="9" stroke-linecap="round"/><path d="M90 45 L58 62 L90 79 Z" fill="' + fg + '"/>'; },
+    b15e: function(fg) { return '<line x1="90" y1="138" x2="90" y2="42" stroke="' + fg + '" stroke-width="9" stroke-linecap="round"/><path d="M90 45 H62 L74 62 L62 79 H90 Z" fill="' + fg + '"/>'; },
+    b15f: function(fg) { return '<line x1="90" y1="138" x2="90" y2="94" stroke="' + fg + '" stroke-width="9" stroke-linecap="round"/><path d="M90 98 L118 114 L90 130 Z" fill="' + fg + '"/>'; },
+    b15g: function(fg) { return '<line x1="90" y1="138" x2="90" y2="68" stroke="' + fg + '" stroke-width="9" stroke-linecap="round"/><path d="M90 72 H118 L106 88 L118 104 H90 Z" fill="' + fg + '"/>'; }
 };
 function renderPictogram(panel, fg) {
     var fn = panel.pict && PICTOGRAMS[panel.pict];
@@ -1691,11 +1704,11 @@ function makeSignSVG(panel, small) {
         } else if (panel.code === "B9") {
             content = '<rect x="52" y="52" width="76" height="76" fill="#e8a400" stroke="' + ink + '" stroke-width="3" transform="rotate(45 90 90)"/>';
         } else if (panel.code === "B11") {
-            content = '<rect x="58" y="58" width="64" height="64" fill="none" stroke="' + ink + '" stroke-width="7" transform="rotate(45 90 90)"/><line x1="35" y1="125" x2="145" y2="55" stroke="#c81e2c" stroke-width="9"/>';
+            content = '<rect x="52" y="52" width="76" height="76" fill="none" stroke="' + ink + '" stroke-width="3" transform="rotate(45 90 90)"/><path d="M60 60 L120 120 M60 66 L114 120 M66 60 L120 114" stroke="#e8a400" stroke-width="5"/><line x1="30" y1="135" x2="150" y2="45" stroke="#c81e2c" stroke-width="9"/>';
         } else if (panel.code === "B13") {
-            content = '<rect x="60" y="30" width="52" height="52" fill="none" stroke="' + ink + '" stroke-width="6" transform="rotate(45 86 56)"/><line x1="40" y1="75" x2="132" y2="20" stroke="#c81e2c" stroke-width="7"/><rect x="30" y="120" width="120" height="38" rx="4" fill="#1c5fa8"/><text x="90" y="147" text-anchor="middle" font-size="' + (small ? 13 : 18) + '" font-weight="900" fill="#fff" font-family="Arial">' + escapeHTML(panel.panonceauText || "") + '</text>';
-        } else if (panel.code === "B15") {
-            content = '<polygon points="90,15 165,155 15,155" fill="#fff" stroke="#c81e2c" stroke-width="11" stroke-linejoin="round"/><path d="M90 75 V125 M65 100 H115" stroke="' + ink + '" stroke-width="10" stroke-linecap="round"/>';
+            content = '<rect x="60" y="18" width="52" height="52" fill="none" stroke="' + ink + '" stroke-width="3" transform="rotate(45 86 44)"/><path d="M68 26 L104 62 M68 31 L99 62 M73 26 L104 57" stroke="#e8a400" stroke-width="4"/><line x1="38" y1="65" x2="134" y2="5" stroke="#c81e2c" stroke-width="7"/><rect x="30" y="120" width="120" height="38" rx="4" fill="#1c5fa8"/><text x="90" y="147" text-anchor="middle" font-size="' + (small ? 13 : 18) + '" font-weight="900" fill="#fff" font-family="Arial">' + escapeHTML(panel.panonceauText || "") + '</text>';
+        } else if (panel.code && panel.code.indexOf("B15") === 0) {
+            content = '<polygon points="90,15 165,155 15,155" fill="#fff" stroke="#c81e2c" stroke-width="11" stroke-linejoin="round"/>' + renderPictogram(panel, ink);
         } else if (panel.code === "B17") {
             content = '<polygon points="90,15 165,155 15,155" fill="#fff" stroke="#c81e2c" stroke-width="11" stroke-linejoin="round"/>' + renderPictogram({ pict: "priorityRight" }, ink);
         } else if (panel.code === "B19") {
