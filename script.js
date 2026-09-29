@@ -712,6 +712,112 @@ var COURS_VIDEO = [
     {id:"cours_210",titre:"A retenir - Lecon 1.2",cat:"COURS",sousCat:"Lecon 1.2",desc:"3 gestes essentiels : face/dos = STOP, profil = roulez, bras leve = STOP (faute grave -5 pts a l'examen). La hierarchie : l'agent qualifie est prioritaire sur TOUT (agents > feux > panneaux > regles). Vehicules prioritaires : sirene + gyrophare = degage la voie, gyrophare seul = tu continues en redoublant de prudence."}
 ];
 
+// Cours video sous forme de lecture continue (chapitres, encadres, schemas reels),
+// affiches a la place de la liste de cartes pour la categorie "cours_video".
+// Contenu et schemas transcrits fidelement depuis les videos Le Permis Belge.
+var COURS_ARTICLES = {
+    LECON_11: {
+        titre: "Lecon 1.1 - La voie publique et les usagers",
+        chapitres: [
+            {
+                titre: "Les usagers",
+                blocks: [
+                    {sousTitre: "Le pieton : pas si simple."},
+                    {def: "Toute personne qui se deplace a pied."},
+                    {p: "Aussi : personne en chaise roulante ou engin de deplacement, a l'allure du pas."},
+                    {tip: "L'allure du pas = la vitesse a laquelle un pieton marche, environ 5 km/h."},
+                    {sousTitre: "Le conducteur : attention aux pieges."},
+                    {def: "Toute personne qui conduit un vehicule."},
+                    {p: "Aussi : guide des animaux de trait, de charge, ou conduit des bestiaux."},
+                    {ok: "Cyclistes et cavaliers = aussi des conducteurs."},
+                    {img: "conducteurs_exemples.png", caption: "Cycliste, cavalier, automobiliste, motard : tous sont juridiquement des conducteurs."},
+                    {piege: "Pousser une moto ou une voiture en panne = tu es CONDUCTEUR."}
+                ]
+            },
+            {
+                titre: "Les lieux",
+                blocks: [
+                    {sousTitre: "3 types de lieux, 3 niveaux de regles."},
+                    {img: "3_types_lieux.png", caption: "Voie publique (libre pour tous), terrain public (acces avec raison), terrain non public (ferme / reserve)."},
+                    {sousTitre: "La voie publique : tout endroit librement accessible."},
+                    {img: "voie_publique_7parties.png", caption: "Les 7 parties : 1. Chaussee, 2. Terre-plein central, 3. Bande de circulation, 4. Accotement de plain-pied, 5. Piste cyclable, 6. Trottoir, 7. Accotement en saillie."},
+                    {sousTitre: "Terrain public vs terrain non public."},
+                    {img: "terrain_public_ex.png", caption: "Terrain public : ouvert, avec une raison d'y etre. Ex : parking de supermarche, station-service, parking de fast-food."},
+                    {img: "terrain_non_public_ex.png", caption: "Terrain non public : ferme au public ou reserve. Ex : garage prive, cour d'immeuble cloturee, parking d'entreprise."}
+                ]
+            },
+            {
+                titre: "Le code de la route",
+                blocks: [
+                    {sousTitre: "Ou s'applique-t-il ?"},
+                    {table: [
+                        ["Voie publique", "100% du code s'applique"],
+                        ["Terrain public", "Regles de securite (priorites, vitesse, stationnement)"],
+                        ["Terrain non public", "Ne s'applique pas (sauf regles du proprietaire)"]
+                    ]}
+                ]
+            }
+        ],
+        recap: {
+            items: [
+                {titre: "2 types d'usagers", text: "Pieton (a pied ou engin <= 5 km/h) et conducteur. Moto poussee = conducteur."},
+                {titre: "3 types de lieux", text: "Voie publique (libre), terrain public (avec raison), terrain non public (ferme)."},
+                {titre: "Le code s'applique...", text: "100% sur voie publique, partiellement sur terrain public, pas sur terrain non public."}
+            ]
+        }
+    },
+    LECON_12: {
+        titre: "Lecon 1.2 - Les agents qualifies",
+        chapitres: [
+            {
+                titre: "Definition",
+                blocks: [
+                    {sousTitre: "Qui sont les agents qualifies ?"},
+                    {def: "Ce sont des personnes autorisees a donner des ordres aux usagers."},
+                    {p: "On appelle ces ordres des injonctions. Tu dois obeir immediatement."},
+                    {tip: "Plusieurs types d'agents qualifies existent : police locale, federale, militaire, ..."},
+                    {piege: "Questions sur les agents qualifies = fautes graves (-5 points a l'examen)."}
+                ]
+            },
+            {
+                titre: "Les injonctions",
+                blocks: [
+                    {sousTitre: "Les 3 gestes a connaitre absolument."},
+                    {img: "geste1_stop_bras.png", caption: "Bras leve verticalement -> STOP. Deja dans le carrefour ? Degage-le au plus vite !"},
+                    {img: "geste2_stop_face.png", caption: "De face ou de dos -> STOP. 0, 1 ou 2 bras tendus horizontalement = pareil."},
+                    {img: "geste3_roulez_profil.png", caption: "De profil -> ROULEZ. Tout droit, gauche ou droite : tu roules !"},
+                    {sousTitre: "4 injonctions supplementaires."},
+                    {img: "injonctions_supplementaires.png", caption: "Balancement d'un feu rouge -> obligation de s'arreter. Mouvement rotatif de la main -> accelerer le rythme. Main a plat, de haut en bas -> reduire la vitesse. Sifflet -> attire l'attention (pas d'ordre precis)."}
+                ]
+            },
+            {
+                titre: "La hierarchie",
+                blocks: [
+                    {sousTitre: "L'agent qualifie est PRIORITAIRE SUR TOUT."},
+                    {img: "hierarchie.png", caption: "1. Agents qualifies, 2. Signaux lumineux (feux), 3. Panneaux de signalisation, 4. Regles de circulation."},
+                    {piege: "Feu rouge + agent dit de passer -> tu passes. L'agent prime sur TOUT."}
+                ]
+            },
+            {
+                titre: "Vehicules prioritaires",
+                blocks: [
+                    {img: "vehicules_icons.png", caption: "Ambulances, police, pompiers, douanes / armee."},
+                    {alerte: "Gyrophare + sirene = mission urgente -> degager la voie et au besoin s'arreter."},
+                    {tip: "Gyrophare seul (sans sirene) ? Continue normalement, mais redouble de prudence."},
+                    {def: "Gyrophare = feux bleus clignotants. Sirene = avertisseur sonore special."}
+                ]
+            }
+        ],
+        recap: {
+            items: [
+                {titre: "3 gestes essentiels", text: "Face/dos = STOP. Profil = roulez. Bras leve = STOP. Faute grave (-5 pts) a l'examen !"},
+                {titre: "La hierarchie", text: "L'agent qualifie est prioritaire sur TOUT. Agents > Feux > Panneaux > Regles."},
+                {titre: "Les vehicules prioritaires", text: "Sirene + gyrophare = degage la voie. Gyrophare seul = tu continues en redoublant de prudence."}
+            ]
+        }
+    }
+};
+
 // ---- FUSION ALL_KNOWLEDGE ----
 // ---- ENTRETIEN & DOCUMENTS AUTO (voiture.js) ----
 function plainTextFromAuto(html) {
@@ -1218,7 +1324,15 @@ function showSousCategorie(sousCatId) {
     var data0 = cat.data || [];
     document.getElementById("sousCategorieTitle").textContent = cat.icon + " " + sc.label;
     document.getElementById("sousCategorieDesc").textContent = data0.filter(sc.match).length + " elements • " + cat.label;
-    renderSousCategorie();
+
+    var searchBox = document.getElementById("sousCategorieSearch");
+    if (searchBox) searchBox.style.display = (cat.id === "cours_video" && COURS_ARTICLES[sousCatId]) ? "none" : "";
+
+    if (cat.id === "cours_video" && COURS_ARTICLES[sousCatId]) {
+        renderLeconArticle(sousCatId);
+    } else {
+        renderSousCategorie();
+    }
 }
 
 function renderSousCategorie() {
@@ -1250,6 +1364,76 @@ function renderSousCategorie() {
     } else {
         list.innerHTML = '<div class="empty">Aucun element ne correspond.</div>';
     }
+}
+
+// =========================================================
+// COURS VIDEO : LECTURE DYNAMIQUE (chapitres + schemas)
+// =========================================================
+
+function renderCoursBlock(block) {
+    if (block.sousTitre) return '<div class="cours-soustitre">' + escapeHTML(block.sousTitre) + '</div>';
+    if (block.p) return '<p class="cours-p">' + escapeHTML(block.p) + '</p>';
+    if (block.def) return '<div class="cours-box def">📘<div>' + escapeHTML(block.def) + '</div></div>';
+    if (block.tip) return '<div class="cours-box tip">💡<div>' + escapeHTML(block.tip) + '</div></div>';
+    if (block.ok) return '<div class="cours-box ok">✅<div>' + escapeHTML(block.ok) + '</div></div>';
+    if (block.piege) return '<div class="cours-box piege">⚠️<div><b>Piege examen</b>' + escapeHTML(block.piege) + '</div></div>';
+    if (block.alerte) return '<div class="cours-box alerte">🚨<div>' + escapeHTML(block.alerte) + '</div></div>';
+    if (block.img) return '<div class="cours-img-wrap"><img src="cours/' + block.img + '" alt="' + escapeHTML(block.caption || "") + '" loading="lazy"><div class="cours-caption">' + escapeHTML(block.caption || "") + '</div></div>';
+    if (block.table) {
+        return '<table class="cours-table">' + block.table.map(function(row) {
+            return '<tr><td>' + escapeHTML(row[0]) + '</td><td>' + escapeHTML(row[1]) + '</td></tr>';
+        }).join('') + '</table>';
+    }
+    return "";
+}
+
+function renderLeconArticle(sousCatId) {
+    var lecon = COURS_ARTICLES[sousCatId];
+    var list = $("sousCategorieList");
+    if (!lecon || !list) return;
+
+    var delay = 0;
+    var pills = lecon.chapitres.map(function(chap, i) {
+        return '<button class="cours-pill" data-chap="chap-' + i + '" onclick="scrollToChapitre(\'chap-' + i + '\')">' + (i + 1) + '. ' + escapeHTML(chap.titre) + '</button>';
+    }).join('') + '<button class="cours-pill" data-chap="chap-recap" onclick="scrollToChapitre(\'chap-recap\')">★ A retenir</button>';
+
+    var chapitresHtml = lecon.chapitres.map(function(chap, i) {
+        var html = '<section id="chap-' + i + '" class="cours-chapitre" style="animation-delay:' + (delay++ * 0.06) + 's">';
+        html += '<div class="cours-chapitre-head"><span class="cours-num">' + (i + 1) + '</span><h3>' + escapeHTML(chap.titre) + '</h3></div>';
+        html += chap.blocks.map(renderCoursBlock).join('');
+        html += '</section>';
+        return html;
+    }).join('');
+
+    var recapHtml = '';
+    if (lecon.recap) {
+        recapHtml = '<section id="chap-recap" class="cours-recap" style="animation-delay:' + (delay++ * 0.06) + 's">';
+        recapHtml += '<h3>★ A retenir</h3><p class="sub">Les points cles de cette lecon</p>';
+        recapHtml += lecon.recap.items.map(function(item, i) {
+            return '<div class="cours-recap-item"><span class="cours-num">' + (i + 1) + '</span><div><b>' + escapeHTML(item.titre) + '</b><span>' + escapeHTML(item.text) + '</span></div></div>';
+        }).join('');
+        recapHtml += '</section>';
+    }
+
+    list.innerHTML = '<div class="cours-pills">' + pills + '</div>' + chapitresHtml + recapHtml;
+
+    var sections = list.querySelectorAll(".cours-chapitre, .cours-recap");
+    var pillEls = list.querySelectorAll(".cours-pill");
+    if (window.IntersectionObserver) {
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (!entry.isIntersecting) return;
+                pillEls.forEach(function(p) { p.classList.toggle("active", p.dataset.chap === entry.target.id); });
+            });
+        }, { rootMargin: "-20% 0px -70% 0px" });
+        sections.forEach(function(s) { obs.observe(s); });
+    }
+    if (pillEls[0]) pillEls[0].classList.add("active");
+}
+
+function scrollToChapitre(id) {
+    var el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function quizCategorie() {

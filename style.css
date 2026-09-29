@@ -989,6 +989,41 @@ button:focus-visible,input:focus-visible{
   .badge-item{font-size:11px;padding:2px 8px}
 }
 
+/* ---- COURS VIDEO : lecture dynamique ---- */
+.cours-pills{display:flex;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0;margin-bottom:6px}
+.cours-pill{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:999px;padding:7px 14px;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s var(--ease);white-space:nowrap}
+.cours-pill:hover{border-color:var(--orange);color:var(--orange)}
+.cours-pill.active{background:var(--orange);border-color:var(--orange);color:#fff}
+.cours-chapitre{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;margin-bottom:16px;box-shadow:var(--shadow);opacity:0;animation:coursIn .5s var(--ease) forwards}
+.cours-chapitre-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.cours-num{flex:none;width:40px;height:40px;border-radius:12px;background:var(--orange);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900}
+.cours-chapitre-head h3{margin:0;font-size:19px}
+.cours-soustitre{font-weight:800;font-size:15.5px;margin:18px 0 8px;color:var(--ink)}
+.cours-soustitre:first-child{margin-top:0}
+.cours-p{margin:0 0 10px;line-height:1.55;color:var(--ink)}
+.cours-box{border-radius:12px;padding:13px 15px;margin:10px 0;font-size:14px;line-height:1.5;display:flex;gap:10px;align-items:flex-start}
+.cours-box b{display:block;margin-bottom:2px}
+.cours-box.def{background:var(--soft);color:var(--ink)}
+.cours-box.tip{background:rgba(232,164,0,.12);color:var(--ink);border:1px solid rgba(232,164,0,.35)}
+.cours-box.ok{background:rgba(30,122,60,.12);color:var(--ink);border:1px solid rgba(30,122,60,.35)}
+.cours-box.piege{background:rgba(200,30,44,.1);color:var(--ink);border:1px solid rgba(200,30,44,.4)}
+.cours-box.alerte{background:rgba(200,30,44,.14);color:var(--ink);border:1px solid rgba(200,30,44,.5)}
+.cours-img-wrap{margin:14px 0}
+.cours-img-wrap img{width:100%;max-width:520px;display:block;margin:0 auto;border-radius:12px;border:1px solid var(--line);background:#fff}
+.cours-caption{text-align:center;font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.4;max-width:520px;margin-left:auto;margin-right:auto}
+.cours-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+.cours-table td{border:1px solid var(--line);padding:10px 12px;vertical-align:top}
+.cours-table td:first-child{font-weight:800;white-space:nowrap;background:var(--soft)}
+.cours-recap{background:var(--dark);color:#fff;border-radius:var(--radius);padding:24px;margin-bottom:16px;opacity:0;animation:coursIn .5s var(--ease) forwards}
+body.dark .cours-recap{background:#05070a}
+.cours-recap h3{margin:0 0 4px;font-size:22px}
+.cours-recap p.sub{margin:0 0 18px;opacity:.65;font-style:italic;font-size:13px}
+.cours-recap-item{display:flex;gap:14px;margin-bottom:16px}
+.cours-recap-item .cours-num{background:var(--orange)}
+.cours-recap-item b{display:block;font-size:15px;margin-bottom:3px}
+.cours-recap-item span{font-size:13px;opacity:.8;line-height:1.5}
+@keyframes coursIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none !important;transition:none !important}
 }
