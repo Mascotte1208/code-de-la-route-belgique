@@ -194,6 +194,20 @@ var PANNEAUX_T = [
 // ---- FUSION PANNEAUX ----
 var PANNEAUX = [].concat(PANNEAUX_A, PANNEAUX_B, PANNEAUX_C, PANNEAUX_D, PANNEAUX_E, PANNEAUX_F, PANNEAUX_T);
 
+// Panneaux dont l'image est une capture recadree directement depuis securotheque.wallonie.be
+// (fournie par l'utilisateur), affichee telle quelle plutot qu'un dessin SVG reconstitue.
+var IMAGE_PANELS = {
+    "B1":1,"B3":1,"B5":1,"B7":1,"B9":1,"B11":1,"B13":1,
+    "B15a":1,"B15b":1,"B15c":1,"B15d":1,"B15e":1,"B15f":1,"B15g":1,
+    "B17":1,"B19":1,"B21":1,"B22":1,"B23":1,
+    "D1a":1,"D1b":1,"D1c":1,"D1d":1,"D1e":1,"D1f":1,"D3a":1,"D3b":1,
+    "D4a":1,"D4b":1,"D5":1,"D7":1,"D9a":1,"D9b":1,"D10":1,"D11":1,"D13":1,
+    "E1":1,"E3":1,"E5":1,"E7":1,"E9a":1,"E9b":1,"E9c":1,"E9d":1,"E9e":1,
+    "E9f":1,"E9g":1,"E9h":1,"E9i":1,"E9j":1,"E11":1,
+    "F1a":1,"F3":1,"F4a":1,"F4b":1,"F5":1,"F7":1,"F8":1,"F9":1,"F11":1,
+    "F12a":1,"F12b":1,"F13":1,"F17":1,"F18":1,"F19":1,"F21":1,"F49":1,"F50":1
+};
+
 // ---- MECANIQUE MOTEUR ----
 var MECANIQUE_MOTEUR = [
     {id:"mec_001",titre:"Huile moteur",cat:"MECA",sousCat:"Moteur",desc:"Viscosite 5W30/10W40. Vidange tous les 15 000-30 000 km."},
@@ -1696,6 +1710,9 @@ function renderPictogram(panel, fg) {
 
 function makeSignSVG(panel, small) {
     small = small || false;
+    if (panel.code && IMAGE_PANELS[panel.code]) {
+        return '<img class="sign-svg" src="panneaux/' + panel.code + '.png" alt="' + escapeHTML(panel.nom || panel.titre || "") + '" style="object-fit:contain;background:#fff;border-radius:10px;" />';
+    }
     var ink = "#171a1f";
     var content = "";
     if (panel.cat === "A" || panel.cat === "T") {
