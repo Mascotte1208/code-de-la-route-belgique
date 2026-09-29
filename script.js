@@ -54,10 +54,13 @@ var PANNEAUX_A = [
     {code:"A33",nom:"Feux de circulation",cat:"A",pict:"trafficLight",desc:"Annonce des feux tricolores en amont."},
     {code:"A35",nom:"Aeronefs volant a basse altitude",cat:"A",pict:"airplane",desc:"Endroit ou des avions peuvent voler a tres basse altitude."},
     {code:"A37",nom:"Vent lateral",cat:"A",pict:"crosswind",desc:"Risque de vent lateral brusque (pont, sortie de foret)."},
+    {code:"A39",nom:"Debouche possible de vehicules venant en sens inverse",cat:"A",desc:"Annonce une chaussee a double sens apres une section a sens unique : attention aux vehicules venant en face."},
     {code:"A41",nom:"Annonce d'un passage a niveau",cat:"A",pict:"levelCrossingAhead",desc:"Signal avance annoncant un passage a niveau plus loin."},
     {code:"A43",nom:"Passage a niveau sans barrieres",cat:"A",pict:"trainCrossing",desc:"Traversee de voie(s) ferree(s) sans barrieres ni demi-barrieres."},
     {code:"A45",nom:"Signalisation avancee de passage a niveau",cat:"A",pict:"levelCrossingLattice",desc:"Marque le compte a rebours vers un passage a niveau."},
     {code:"A47",nom:"Passage a niveau muni de barrieres",cat:"A",pict:"trainGate",desc:"Traversee de voie(s) ferree(s) equipee de barrieres ou demi-barrieres."},
+    {code:"A49",nom:"Traversee frequente de vehicules de transport en commun",cat:"A",desc:"Signale un endroit ou des bus ou autocars traversent ou s'engagent frequemment sur la chaussee."},
+    {code:"A50",nom:"Risque de file ou de bouchon",cat:"A",desc:"Annonce un risque de ralentissement brusque ou de file de vehicules a l'arret plus loin."},
     {code:"A51",nom:"Autres dangers",cat:"A",pict:"exclaim",desc:"Danger indetermine, souvent precise par un panonceau additionnel."}
 ];
 
@@ -197,6 +200,10 @@ var PANNEAUX = [].concat(PANNEAUX_A, PANNEAUX_B, PANNEAUX_C, PANNEAUX_D, PANNEAU
 // Panneaux dont l'image est une capture recadree directement depuis securotheque.wallonie.be
 // (fournie par l'utilisateur), affichee telle quelle plutot qu'un dessin SVG reconstitue.
 var IMAGE_PANELS = {
+    "A1a":1,"A1b":1,"A1c":1,"A1d":1,"A3":1,"A5":1,"A7a":1,"A7b":1,"A7c":1,
+    "A9":1,"A11":1,"A13":1,"A14":1,"A15":1,"A17":1,"A19":1,"A21":1,"A23":1,
+    "A25":1,"A27":1,"A29":1,"A31":1,"A33":1,"A35":1,"A37":1,"A39":1,"A41":1,
+    "A43":1,"A45":1,"A47":1,"A49":1,"A50":1,"A51":1,
     "B1":1,"B3":1,"B5":1,"B7":1,"B9":1,"B11":1,"B13":1,
     "B15a":1,"B15b":1,"B15c":1,"B15d":1,"B15e":1,"B15f":1,"B15g":1,
     "B17":1,"B19":1,"B21":1,"B22":1,"B23":1,
