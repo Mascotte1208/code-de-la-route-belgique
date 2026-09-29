@@ -735,7 +735,22 @@ var COURS_VIDEO = [
     {id:"cours_410",titre:"Ou te placer sur la chaussee ?",cat:"COURS",sousCat:"Lecon 2.1",desc:"Regle generale : roule le plus a DROITE possible. Circuler a gauche sans raison = INTERDIT."},
     {id:"cours_411",titre:"Placement hors agglo et autoroute",cat:"COURS",sousCat:"Lecon 2.1",desc:"Toujours a droite. La bande de gauche = uniquement pour depasser ou embouteillage."},
     {id:"cours_412",titre:"Placement en agglomeration",cat:"COURS",sousCat:"Lecon 2.1",desc:"Tu choisis ta bande ! Sur une chaussee a 2+ bandes par sens, place-toi selon ta destination. Ex: tu tournes a gauche au prochain carrefour ? Place-toi a gauche des maintenant."},
-    {id:"cours_413",titre:"A retenir - Lecon 2.1",cat:"COURS",sousCat:"Lecon 2.1",desc:"Agglo = 50 km/h (Flandre/Wallonie), 30 km/h (Bruxelles). Hors agglo = 70 km/h (Flandre/BXL), 90 km/h (Wallonie). Un signal peut toujours modifier la vitesse. Placement : a droite (sauf en agglo tu choisis)."}
+    {id:"cours_413",titre:"A retenir - Lecon 2.1",cat:"COURS",sousCat:"Lecon 2.1",desc:"Agglo = 50 km/h (Flandre/Wallonie), 30 km/h (Bruxelles). Hors agglo = 70 km/h (Flandre/BXL), 90 km/h (Wallonie). Un signal peut toujours modifier la vitesse. Placement : a droite (sauf en agglo tu choisis)."},
+    // Lecon 2.2 - L'autoroute et la route pour automobiles
+    {id:"cours_501",titre:"Vitesse sur autoroute",cat:"COURS",sousCat:"Lecon 2.2",desc:"Entre 70 et 120 km/h. Si tu ne peux pas rouler a au moins 70, tu n'as rien a faire sur l'autoroute."},
+    {id:"cours_502",titre:"Chaque bande peut avoir sa vitesse",cat:"COURS",sousCat:"Lecon 2.2",desc:"Exemple : 70 (droite), 90 (milieu), 120 (gauche)."},
+    {id:"cours_503",titre:"Piege : sortie d'autoroute",cat:"COURS",sousCat:"Lecon 2.2",desc:"Freine sur la bande de sortie, PAS sur l'autoroute ! Dans l'ideal, commence a freiner une fois sur la bande de sortie."},
+    {id:"cours_504",titre:"S'inserer en securite : 3 etapes",cat:"COURS",sousCat:"Lecon 2.2",desc:"1. Verifie ton retroviseur (regarde derriere toi). 2. Allume ton clignotant (signale ton intention). 3. Insere-toi le plus tot possible : atteins au moins 70 km/h et cede le passage."},
+    {id:"cours_505",titre:"Piege : ceder le passage a l'insertion",cat:"COURS",sousCat:"Lecon 2.2",desc:"Tu dois CEDER LE PASSAGE aux vehicules deja sur l'autoroute. Ils ne sont pas obliges de te laisser entrer, meme si beaucoup le font par courtoisie."},
+    {id:"cours_506",titre:"Circuler sur l'autoroute",cat:"COURS",sousCat:"Lecon 2.2",desc:"Toujours a droite, sauf exceptions. Tu roules sur la bande la plus a droite. Gauche = uniquement pour depasser. Exceptions : embouteillage (toutes les bandes) + portiques (se placer selon sa direction)."},
+    {id:"cours_507",titre:"Qui ne peut pas circuler sur l'autoroute ?",cat:"COURS",sousCat:"Lecon 2.2",desc:"Pietons et cyclistes, cyclomoteurs (toutes classes), vehicules qui ne peuvent pas atteindre 70 km/h, vehicules agricoles, quadricycles sans habitacle."},
+    {id:"cours_508",titre:"Interdit sur autoroute (faute grave)",cat:"COURS",sousCat:"Lecon 2.2",desc:"Faire marche arriere, faire demi-tour, rouler a contresens (conducteur fantome), s'arreter ou stationner sur la BAU (sauf panne/accident), remorquer un vehicule, utiliser les raccordements transversaux. Ces infractions sont du 4eme degre = -5 points a l'examen !"},
+    {id:"cours_509",titre:"Motos dans les embouteillages",cat:"COURS",sousCat:"Lecon 2.2",desc:"Peuvent remonter les files entre les 2 bandes les plus a gauche. Max +20 km/h par rapport aux autres vehicules, jamais plus de 50 km/h. Au-dessus de 50, la moto reste sur sa bande."},
+    {id:"cours_510",titre:"La bande d'arret d'urgence (BAU)",cat:"COURS",sousCat:"Lecon 2.2",desc:"PAS une bande de circulation. Interdit d'y rouler, s'arreter ou stationner. Sauf panne ou accident."},
+    {id:"cours_511",titre:"En cas de panne sur autoroute",cat:"COURS",sousCat:"Lecon 2.2",desc:"Triangle de danger a 100 m derriere le vehicule (30 m sur route pour automobiles). Gilet jaune OBLIGATOIRE pour le conducteur, pas obligatoire pour les passagers. Restez derriere les barrieres."},
+    {id:"cours_512",titre:"La route pour automobiles",cat:"COURS",sousCat:"Lecon 2.2",desc:"Pas une autoroute, mais presque. Reservee aux vehicules a moteur. PAS de vitesse minimale (contrairement a l'autoroute)."},
+    {id:"cours_513",titre:"Vitesse sur route pour automobiles",cat:"COURS",sousCat:"Lecon 2.2",desc:"En agglo : memes regles (50 ou 30 selon la region). Hors agglo : memes regles (70 ou 90). Cas special : 4 bandes (2 par sens) + berme centrale hors agglomeration ? Vitesse max = 120 km/h, comme l'autoroute !"},
+    {id:"cours_514",titre:"A retenir - Lecon 2.2",cat:"COURS",sousCat:"Lecon 2.2",desc:"Autoroute : min 70, max 120 km/h, freine sur la bande de sortie. Insertion : retro -> clignotant -> insere-toi, cede le passage. Infractions = faute grave (-5 pts). Motos : max +20 km/h, jamais plus de 50. Route pour autos : pas de vitesse min, memes regles de vitesse sauf cas special a 120 km/h."}
 ];
 
 // Cours video sous forme de lecture continue (chapitres, encadres, schemas reels),
@@ -948,6 +963,83 @@ var COURS_ARTICLES = {
                 {titre: "Placement : a droite", text: "Sauf en agglomeration avec deux bandes ou plus par sens : tu choisis."}
             ]
         }
+    },
+    LECON_22: {
+        titre: "Lecon 2.2 - L'autoroute et la route pour automobiles",
+        chapitres: [
+            {
+                titre: "L'autoroute",
+                blocks: [
+                    {panels: ["F5", "F7"], caption: "F5 : debut d'autoroute. F7 : fin d'autoroute."},
+                    {sousTitre: "Vitesse : entre 70 et 120 km/h."},
+                    {def: "Vitesse minimale : 70 km/h. Vitesse maximale : 120 km/h."},
+                    {tip: "Si tu ne peux pas rouler a au moins 70, tu n'as rien a faire sur l'autoroute."},
+                    {img: "auto_bandes_vitesse.png", caption: "Chaque bande peut avoir sa propre vitesse : 70 (droite), 90 (milieu), 120 (gauche)."},
+                    {piege: "Sortie d'autoroute = freine sur la bande de sortie, PAS sur l'autoroute ! Dans l'ideal, tu dois commencer a freiner une fois sur la bande de sortie."}
+                ]
+            },
+            {
+                titre: "S'inserer",
+                blocks: [
+                    {sousTitre: "3 etapes pour s'inserer en securite."},
+                    {img: "auto_insertion.png", caption: "1. Verifie ton retroviseur : regarde derriere toi avant tout. 2. Allume ton clignotant : signale ton intention de t'inserer. 3. Insere-toi le plus tot possible : atteins au moins 70 km/h et cede le passage."},
+                    {piege: "Tu dois CEDER LE PASSAGE aux vehicules deja sur l'autoroute. Ils ne sont pas obliges de te laisser entrer ; beaucoup le font par courtoisie, mais ce n'est pas une obligation."}
+                ]
+            },
+            {
+                titre: "Circuler sur l'autoroute",
+                blocks: [
+                    {sousTitre: "Toujours a droite, sauf exceptions."},
+                    {img: "auto_portique.png", caption: "Tu roules sur la bande la plus a droite. Gauche = uniquement pour depasser. Exceptions : embouteillage (toutes les bandes) et portiques (se placer selon sa direction)."},
+                    {sousTitre: "Qui NE PEUT PAS circuler sur l'autoroute ?"},
+                    {table: [
+                        ["Pietons et cyclistes", "Interdit"],
+                        ["Cyclomoteurs (toutes classes)", "Interdit"],
+                        ["Vehicules qui ne peuvent pas atteindre 70 km/h", "Interdit"],
+                        ["Vehicules agricoles", "Interdit"],
+                        ["Quadricycles sans habitacle", "Interdit"]
+                    ]},
+                    {sousTitre: "Interdit sur autoroute : tout ça = faute grave (-5 points)."},
+                    {table: [
+                        ["Faire marche arriere", "4e degre"],
+                        ["Faire demi-tour", "4e degre"],
+                        ["Rouler a contresens (conducteur fantome)", "4e degre"],
+                        ["S'arreter ou stationner sur la BAU", "Sauf panne/accident"],
+                        ["Remorquer un vehicule", "4e degre"],
+                        ["Utiliser les raccordements transversaux", "4e degre"]
+                    ]}
+                ]
+            },
+            {
+                titre: "Motos, BAU et pannes",
+                blocks: [
+                    {sousTitre: "3 situations speciales."},
+                    {img: "auto_motos_embouteillage.png", caption: "Motos dans les embouteillages : peuvent remonter les files entre les 2 bandes les plus a gauche. Max +20 km/h par rapport aux autres vehicules, jamais plus de 50 km/h. Au-dessus de 50, la moto reste sur sa bande."},
+                    {def: "La bande d'arret d'urgence (BAU) : PAS une bande de circulation. Interdit d'y rouler, s'arreter ou stationner. Sauf panne ou accident."},
+                    {img: "auto_panne.png", caption: "En cas de panne sur autoroute : triangle de danger a 100 m derriere le vehicule (30 m sur route pour automobiles). Gilet jaune OBLIGATOIRE pour le conducteur, pas obligatoire pour les passagers. Restez derriere les barrieres."}
+                ]
+            },
+            {
+                titre: "La route pour automobiles",
+                blocks: [
+                    {panels: ["F9"], caption: "F9 : route reservee aux vehicules automobiles."},
+                    {sousTitre: "Pas une autoroute, mais presque."},
+                    {def: "Reservee aux vehicules a moteur. PAS de vitesse minimale (contrairement a l'autoroute)."},
+                    {sousTitre: "Vitesse maximale"},
+                    {def: "En agglo : memes regles (50 ou 30 selon la region). Hors agglo : memes regles (70 ou 90)."},
+                    {tip: "Cas special : 4 bandes (2 par sens) + berme centrale (terre-plein) hors agglomeration ? Vitesse max = 120 km/h, comme l'autoroute !"}
+                ]
+            }
+        ],
+        recap: {
+            items: [
+                {titre: "Autoroute : min 70, max 120 km/h", text: "Freine sur la bande de sortie, pas avant."},
+                {titre: "Insertion : retro -> clignotant -> insere-toi", text: "Cede le passage a ceux deja engages sur l'autoroute."},
+                {titre: "Infractions = faute grave (-5 pts)", text: "Marche arriere, demi-tour, contresens, arret sur BAU, remorquage = 4eme degre."},
+                {titre: "Motos : max +20 km/h, jamais > 50", text: "Entre les 2 bandes les plus a gauche uniquement. Au-dessus de 50 km/h = reste sur ta bande."},
+                {titre: "Route pour autos : pas de vitesse min", text: "Memes regles de vitesse sauf si 4 bandes + terre-plein hors agglo = 120 km/h."}
+            ]
+        }
     }
 };
 
@@ -1140,7 +1232,8 @@ var MENU_STRUCTURE = [
             {id:"LECON_11",label:"Lecon 1.1 - La voie publique et les usagers",match:function(item){ return item.sousCat === "Lecon 1.1"; }},
             {id:"LECON_12",label:"Lecon 1.2 - Les agents qualifies",match:function(item){ return item.sousCat === "Lecon 1.2"; }},
             {id:"LECON_15",label:"Lecon 1.5 - Les marquages routiers",match:function(item){ return item.sousCat === "Lecon 1.5"; }},
-            {id:"LECON_21",label:"Lecon 2.1 - Agglomeration",match:function(item){ return item.sousCat === "Lecon 2.1"; }}
+            {id:"LECON_21",label:"Lecon 2.1 - Agglomeration",match:function(item){ return item.sousCat === "Lecon 2.1"; }},
+            {id:"LECON_22",label:"Lecon 2.2 - L'autoroute et la route pour automobiles",match:function(item){ return item.sousCat === "Lecon 2.2"; }}
         ],
         data:COURS_VIDEO
     }
