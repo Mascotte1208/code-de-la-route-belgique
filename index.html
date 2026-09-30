@@ -4,21 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Code de la route Belgique — Toute la matière</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=games1">
   <script src="voiture.js" defer></script>
-  <script src="script.js" defer></script>
+  <script src="script.js?v=games1" defer></script>
+  <script src="games.js?v=games1" defer></script>
 </head>
 <body>
 <header class="top">
   <button class="brand" onclick="goHome()">🇧🇪 Code de la route Belgique</button>
   <nav aria-label="Navigation principale">
     <button class="home-btn" onclick="goHome()">Tous les cours</button>
+    <button class="home-btn" onclick="showGames()">🎮 Jeux</button>
     <button class="home-btn" id="themeButton" onclick="toggleTheme()" aria-label="Activer le mode sombre">🌙</button>
   </nav>
 </header>
 <main class="app">
   <section id="home" class="view">
     <div class="hero"><div class="eyebrow">COMPRENDRE ET APPRENDRE</div><h1>Toute la matière</h1><p>Les cours, les panneaux de signalisation et les leçons illustrées, réunis au même endroit.</p></div>
+    <button class="games-banner" onclick="showGames()"><b>🎮 Apprendre en jouant</b><span>Panneaux, cours vidéo ou défi mixte · 10 questions et leurs explications →</span></button>
     <label for="search">Rechercher dans toute la matière</label>
     <input class="search" id="search" type="search" placeholder="Un panneau, une règle, un sujet…" oninput="renderHome()">
     <p class="muted" id="searchCount" role="status"></p>
@@ -38,6 +41,32 @@
     <button class="ghost" onclick="backToCategory()">← Toutes les leçons</button>
     <h1 id="lessonTitle"></h1>
     <div id="sousCategorieList"></div>
+  </section>
+  <section id="games" class="view" hidden>
+    <button class="ghost" onclick="goHome()">← Tous les cours</button>
+    <h1>🎮 Apprendre en jouant</h1>
+    <div id="gameLobby">
+      <p class="muted">Une partie de 10 questions, à ton rythme. Lis la correction après chaque réponse.</p>
+      <div class="game-modes">
+        <button class="practice" onclick="startGame('panels')"><span class="practice-icon">🚦</span><span class="practice-copy"><b>Reconnais le panneau</b><small>Observe le panneau et retrouve sa signification parmi quatre réponses.</small></span></button>
+        <button class="practice" onclick="startGame('courses')"><span class="practice-icon">🎥</span><span class="practice-copy"><b>Les cours en pratique</b><small>Des questions tirées des cinq leçons : usagers, agents, marquages, agglomération et autoroute.</small></span></button>
+        <button class="practice" onclick="startGame('mixed')"><span class="practice-icon">🔀</span><span class="practice-copy"><b>Le défi mixte</b><small>Cinq panneaux et cinq questions de cours pour varier les sujets.</small></span></button>
+      </div>
+    </div>
+    <div id="gamePlay" class="game-card" hidden>
+      <button class="ghost" onclick="showGames()">← Changer de jeu</button>
+      <p id="gameProgress" class="muted"></p><p id="gameSource" class="eyebrow"></p>
+      <h2 id="gameQuestion" tabindex="-1"></h2>
+      <img id="gameImage" class="game-sign" alt="Panneau à identifier" hidden>
+      <div id="gameOptions" class="game-options"></div>
+      <p id="gameFeedback" class="game-feedback" role="status" aria-live="polite"></p>
+      <button id="gameNext" class="game-primary" onclick="nextGameQuestion()" hidden>Question suivante</button>
+    </div>
+    <div id="gameResult" class="game-card" hidden>
+      <h2 id="gameScore" class="game-score" tabindex="-1"></h2><p id="gameSummary"></p>
+      <div class="sub-categories"><button class="game-primary" onclick="replayGame()">Rejouer</button><button class="ghost" onclick="showGames()">Choisir un autre jeu</button><button class="ghost" onclick="goHome()">Consulter les cours</button></div>
+      <div id="gameCorrections"></div>
+    </div>
   </section>
 </main>
 </body>
