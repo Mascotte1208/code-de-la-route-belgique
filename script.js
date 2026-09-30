@@ -759,7 +759,22 @@ var COURS_VIDEO = [
     {id:"cours_808",titre:"Circulation en zone cyclable",cat:"COURS",sousCat:"Lecon 2.5",desc:"Les cyclistes peuvent utiliser : en rue a sens unique, toute la largeur de la chaussee ; en rue a double sens, la moitie droite de la chaussee."},
     {id:"cours_809",titre:"Distance de depassement d'un cycliste",cat:"COURS",sousCat:"Lecon 2.5",desc:"En agglomeration : 1 m minimum. Hors agglomeration : 1,5 m minimum. Tu ne peux pas garder cette distance ? Tu ne depasses PAS, point."},
     {id:"cours_810",titre:"Piege : cyclistes en groupe",cat:"COURS",sousCat:"Lecon 2.5",desc:"Cyclistes en groupe (15 a 150) = JAMAIS COUPER = faute grave ! Tu ne peux jamais couper un groupe de cyclistes, ni un rang d'enfants, ni un cortege. 15+ cyclistes : pas obliges d'emprunter la piste cyclable, peuvent rouler a 2 de front. 51+ cyclistes : minimum 2 capitaines de route (21 ans min)."},
-    {id:"cours_811",titre:"A retenir - Lecon 2.5",cat:"COURS",sousCat:"Lecon 2.5",desc:"Piste cyclable != bande suggeree : piste = hors chaussee, interdit d'y rouler ; bande suggeree = sur la chaussee, voitures autorisees. Zone cyclable = 30 km/h, pas de depassement, le velo est roi. Distance de depassement : 1 m en agglo, 1,5 m hors agglo, pas assez de place = tu ne depasses pas. Jamais couper un groupe de cyclistes (15+ = sur la chaussee, 51+ = 2 capitaines) : faute grave."}
+    {id:"cours_811",titre:"A retenir - Lecon 2.5",cat:"COURS",sousCat:"Lecon 2.5",desc:"Piste cyclable != bande suggeree : piste = hors chaussee, interdit d'y rouler ; bande suggeree = sur la chaussee, voitures autorisees. Zone cyclable = 30 km/h, pas de depassement, le velo est roi. Distance de depassement : 1 m en agglo, 1,5 m hors agglo, pas assez de place = tu ne depasses pas. Jamais couper un groupe de cyclistes (15+ = sur la chaussee, 51+ = 2 capitaines) : faute grave."},
+    // Lecon 3.1 - Les regles de priorite
+    {id:"cours_901",titre:"Priorite de droite : la regle de base",cat:"COURS",sousCat:"Lecon 3.1",desc:"Pas d'agent, pas de feu, pas de panneau ? Tu cedes le passage au conducteur venant de ta DROITE."},
+    {id:"cours_902",titre:"Piege : carrefour encombre",cat:"COURS",sousCat:"Lecon 3.1",desc:"Carrefour encombre ? Tu n'avances PAS, meme si tu as la priorite."},
+    {id:"cours_903",titre:"Un conducteur a droite qui ralentit",cat:"COURS",sousCat:"Lecon 3.1",desc:"Un conducteur a droite ralentit ou s'arrete ? Il ne perd PAS sa priorite. Reste prudent."},
+    {id:"cours_904",titre:"STOP vs ceder le passage",cat:"COURS",sousCat:"Lecon 3.1",desc:"STOP : arret COMPLET obligatoire (0 km/h), meme si la route est degagee, puis ceder le passage a TOUS. Ceder le passage : pas d'arret obligatoire, tu t'arretes au besoin, si la voie est libre tu passes."},
+    {id:"cours_905",titre:"Piege : panneau additionnel « STOP dans 150m »",cat:"COURS",sousCat:"Lecon 3.1",desc:"Annonce qu'un STOP arrive, prepare-toi a t'arreter. Ligne transversale = ligne d'arret tracee perpendiculairement (synonyme examen)."},
+    {id:"cours_906",titre:"Le rond-point : entrer, circuler, sortir",cat:"COURS",sousCat:"Lecon 3.1",desc:"En entrant : tu cedes le passage aux vehicules deja engages, clignotant droit obligatoire UNIQUEMENT si tu prends la 1ere sortie. En circulant : choisis ta bande selon ta destination, mais place-toi a DROITE suffisamment tot pour sortir. En sortant : clignotant DROIT obligatoire, toujours."},
+    {id:"cours_907",titre:"Voie prioritaire vs carrefour prioritaire",cat:"COURS",sousCat:"Lecon 3.1",desc:"Voie prioritaire : priorite sur TOUS les carrefours tant que tu restes sur cette route, fin = panneau barre d'un trait noir. Carrefour prioritaire : priorite UNIQUEMENT au carrefour suivant, les barres montrent la disposition du carrefour."},
+    {id:"cours_908",titre:"Trace prioritaire et passage etroit",cat:"COURS",sousCat:"Lecon 3.1",desc:"Trace prioritaire = trait large = voie prioritaire, tu suis le trait large, tu gardes la priorite. Passage etroit : regarde la fleche de DROITE, c'est celle qui te concerne. Rouge = tu cedes. Blanche = tu passes."},
+    {id:"cours_909",titre:"Les exceptions a la priorite de droite",cat:"COURS",sousCat:"Lecon 3.1",desc:"Trains et trams : toujours prioritaires. Tu sors d'un sentier, chemin de terre, parking ou propriete : tu cedes. Tu traverses un trottoir ou une piste cyclable : tu cedes aux usagers dessus. Tu fais une manoeuvre : tu n'es PAS prioritaire. Groupe de cyclistes, rang d'enfants, cortege : JAMAIS couper (faute grave)."},
+    {id:"cours_910",titre:"Qu'est-ce qu'une manoeuvre ?",cat:"COURS",sousCat:"Lecon 3.1",desc:"Manoeuvres = changer de bande, demi-tour, marche arriere, entrer/sortir d'un parking. La « tirette » n'est PAS une manoeuvre."},
+    {id:"cours_911",titre:"Le principe de la tirette",cat:"COURS",sousCat:"Lecon 3.1",desc:"Une voiture sur deux. 2 conditions obligatoires : une bande prend fin ou est interrompue, ET la circulation est fortement ralentie. Le conducteur sur la bande libre laisse s'inserer UN vehicule venant de la bande qui prend fin. L'insertion se fait juste AVANT le retrecissement, pas trop tot."},
+    {id:"cours_912",titre:"Piege : pas d'embouteillage, pas de tirette",cat:"COURS",sousCat:"Lecon 3.1",desc:"Pas d'embouteillage ? La tirette ne s'applique PAS. Tu respectes la signalisation normale."},
+    {id:"cours_913",titre:"Piege : la tirette ne s'applique jamais sur autoroute",cat:"COURS",sousCat:"Lecon 3.1",desc:"Insertion autoroute (triangle sur pointe) = la tirette NE S'APPLIQUE JAMAIS, meme en embouteillage. Tu cedes le passage. Point."},
+    {id:"cours_914",titre:"A retenir - Lecon 3.1",cat:"COURS",sousCat:"Lecon 3.1",desc:"Priorite de droite = la regle de base : pas d'agent/feu/panneau, tu cedes a droite, meme s'il s'arrete il garde sa priorite. STOP = arret complet, ceder = si necessaire. Rond-point : cede en entrant, clignotant en sortant (toujours), clignotant en entrant seulement pour la 1ere sortie. Tirette : 2 conditions + jamais sur autoroute. Manoeuvre = pas de priorite (changer de bande, demi-tour, marche arriere, parking), mais la tirette n'est PAS une manoeuvre."}
 ];
 
 // Cours video sous forme de lecture continue (chapitres, encadres, schemas reels),
@@ -1224,6 +1239,80 @@ var COURS_ARTICLES = {
                 {titre: "Jamais couper un groupe de cyclistes (-5 pts)", text: "15+ = sur la chaussee, 51+ = 2 capitaines. Couper un groupe = faute grave."}
             ]
         }
+    },
+    LECON_31: {
+        titre: "Lecon 3.1 - Les regles de priorite",
+        chapitres: [
+            {
+                titre: "Priorité de droite",
+                blocks: [
+                    {sousTitre: "La règle de base."},
+                    {def: "Pas d'agent, pas de feu, pas de panneau ? Tu cedes le passage au conducteur venant de ta DROITE."},
+                    {img: "prio_diagram_base.png", caption: "Sans signalisation, priorite au conducteur venant de la droite."},
+                    {piege: "Carrefour encombre ? Tu n'avances PAS, meme si tu as la priorite."},
+                    {img: "prio_carrefour_encombre.png", caption: "Un carrefour sature : personne n'avance, meme les prioritaires."},
+                    {tip: "Un conducteur a droite ralentit ou s'arrete ? Il ne perd PAS sa priorite. Reste prudent."}
+                ]
+            },
+            {
+                titre: "STOP vs céder le passage",
+                blocks: [
+                    {sousTitre: "La difference qui tombe a chaque examen."},
+                    {panels: ["B5", "B1"], caption: "B5 : STOP. B1 : cedez le passage."},
+                    {alerte: "STOP : arret COMPLET obligatoire (0 km/h), meme si la route est degagee. Puis ceder le passage a TOUS."},
+                    {ok: "Ceder le passage : pas d'arret obligatoire, tu t'arretes au besoin. Si la voie est libre, tu passes."},
+                    {tip: "Panneau additionnel « STOP dans 150m » = prepare-toi a t'arreter. Ligne transversale = ligne d'arret tracee perpendiculairement (synonyme examen)."}
+                ]
+            },
+            {
+                titre: "Le rond-point",
+                blocks: [
+                    {sousTitre: "Entrer, circuler, sortir."},
+                    {panels: ["B1", "D5"], caption: "B1 : cedez le passage a l'entree. D5 : sens giratoire obligatoire."},
+                    {def: "1. En entrant : tu cedes le passage aux vehicules deja engages. Clignotant droit obligatoire UNIQUEMENT si tu prends la 1ere sortie."},
+                    {def: "2. En circulant : choisis ta bande selon ta destination, mais place-toi a DROITE suffisamment tot pour sortir."},
+                    {def: "3. En sortant : clignotant DROIT obligatoire. Toujours."}
+                ]
+            },
+            {
+                titre: "Priorité : voie vs carrefour",
+                blocks: [
+                    {sousTitre: "Voie prioritaire != carrefour prioritaire."},
+                    {img: "prio_voie_vs_carrefour.png", caption: "Voie prioritaire : priorite sur TOUS les carrefours tant que tu restes sur cette route (fin = panneau barre d'un trait noir). Carrefour prioritaire : priorite UNIQUEMENT au carrefour suivant (les barres montrent la disposition du carrefour). Trace prioritaire (trait large) = tu gardes la priorite. Passage etroit : la fleche de DROITE te concerne, rouge = tu cedes, blanche = tu passes."}
+                ]
+            },
+            {
+                titre: "Les exceptions",
+                blocks: [
+                    {sousTitre: "Quand la priorite de droite ne s'applique PAS."},
+                    {alerte: "Trains et trams = toujours prioritaires."},
+                    {def: "Tu sors d'un sentier, chemin de terre, parking ou propriete -> tu cedes."},
+                    {def: "Tu traverses un trottoir ou une piste cyclable -> tu cedes aux usagers dessus."},
+                    {def: "Tu fais une manoeuvre -> tu n'es PAS prioritaire."},
+                    {piege: "Groupe de cyclistes, rang d'enfants, cortege -> JAMAIS couper (faute grave)."},
+                    {tip: "Manoeuvres = changer de bande, demi-tour, marche arriere, entrer/sortir d'un parking. La « tirette » n'est PAS une manoeuvre."}
+                ]
+            },
+            {
+                titre: "Le principe de la tirette",
+                blocks: [
+                    {sousTitre: "Une voiture sur deux."},
+                    {def: "2 conditions obligatoires : une bande prend fin ou est interrompue, ET la circulation est fortement ralentie."},
+                    {img: "prio_tirette_diagram.png", caption: "Le conducteur sur la bande libre laisse s'inserer UN vehicule venant de la bande qui prend fin. L'insertion se fait juste AVANT le retrecissement, pas trop tot."},
+                    {piege: "Pas d'embouteillage ? La tirette ne s'applique PAS. Tu respectes la signalisation normale."},
+                    {img: "prio_tirette_autoroute.png", caption: "Insertion autoroute (triangle sur pointe) = la tirette NE S'APPLIQUE JAMAIS, meme en embouteillage. Tu cedes le passage. Point."}
+                ]
+            }
+        ],
+        recap: {
+            items: [
+                {titre: "Priorite de droite = la regle de base", text: "Pas d'agent/feu/panneau, tu cedes a droite. Meme s'il s'arrete, il garde sa priorite."},
+                {titre: "STOP = arret complet. Ceder = si necessaire", text: "STOP : 0 km/h meme si c'est degage. Ceder : tu passes si la voie est libre."},
+                {titre: "Rond-point : cede en entrant, clignotant en sortant", text: "Clignotant droit en sortant = TOUJOURS. En entrant = seulement pour la 1ere sortie."},
+                {titre: "Tirette : 2 conditions + jamais sur autoroute", text: "Bande qui finit + embouteillage = tirette. Insertion autoroute = jamais la tirette."},
+                {titre: "Manoeuvre = pas de priorite", text: "Changer de bande, demi-tour, marche arriere, parking. Mais la tirette n'est PAS une manoeuvre."}
+            ]
+        }
     }
 };
 
@@ -1420,7 +1509,8 @@ var MENU_STRUCTURE = [
             {id:"LECON_22",label:"Lecon 2.2 - L'autoroute et la route pour automobiles",match:function(item){ return item.sousCat === "Lecon 2.2"; }},
             {id:"LECON_23",label:"Lecon 2.3 - Zone 30, residentielle et pietonne",match:function(item){ return item.sousCat === "Lecon 2.3"; }},
             {id:"LECON_24",label:"Lecon 2.4 - Train, tram et bus",match:function(item){ return item.sousCat === "Lecon 2.4"; }},
-            {id:"LECON_25",label:"Lecon 2.5 - La piste cyclable",match:function(item){ return item.sousCat === "Lecon 2.5"; }}
+            {id:"LECON_25",label:"Lecon 2.5 - La piste cyclable",match:function(item){ return item.sousCat === "Lecon 2.5"; }},
+            {id:"LECON_31",label:"Lecon 3.1 - Les regles de priorite",match:function(item){ return item.sousCat === "Lecon 3.1"; }}
         ],
         data:COURS_VIDEO
     }
