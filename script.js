@@ -146,8 +146,8 @@ var PANNEAUX_F = [
     {code:"F8",nom:"Annonce d'un tunnel",cat:"F",pict:"tunnel",desc:"Annonce l'approche d'un tunnel."},
     {code:"F9",nom:"Route pour automobiles",cat:"F",pict:"carRoad",desc:"Voie reservee aux vehicules automobiles."},
     {code:"F11",nom:"Fin de route pour automobiles",cat:"F",pict:"carRoadEnd",desc:"Fin de la voie reservee aux vehicules automobiles."},
-    {code:"F12a",nom:"Zone pietonne",cat:"F",pict:"pedestrianZone",desc:"Voie reservee aux pietons ; la circulation des vehicules y est tres restreinte."},
-    {code:"F12b",nom:"Fin de zone pietonne",cat:"F",pict:"pedestrianZoneEnd",desc:"Sortie de la zone pietonne."},
+    {code:"F12a",nom:"Debut de zone residentielle",cat:"F",pict:"pedestrianZone",desc:"Zone ou les pietons sont prioritaires et peuvent utiliser toute la largeur de la voie. Vitesse max 20 km/h."},
+    {code:"F12b",nom:"Fin de zone residentielle",cat:"F",pict:"pedestrianZoneEnd",desc:"Sortie de la zone residentielle."},
     {code:"F13",nom:"Voies de selection",cat:"F",pict:"laneSplit",desc:"Annonce une division de la chaussee en plusieurs voies de direction differente."},
     {code:"F17",nom:"Voie reservee aux bus",cat:"F",pict:"busLane",desc:"Voie exclusivement reservee aux autobus et transports en commun."},
     {code:"F18",nom:"Voie reservee aux trams",cat:"F",pict:"tramLane",desc:"Voie exclusivement reservee aux trams."},
@@ -720,7 +720,20 @@ var COURS_VIDEO = [
     {id:"cours_511",titre:"En cas de panne sur autoroute",cat:"COURS",sousCat:"Lecon 2.2",desc:"Triangle de danger a 100 m derriere le vehicule (30 m sur route pour automobiles). Gilet jaune OBLIGATOIRE pour le conducteur, pas obligatoire pour les passagers. Restez derriere les barrieres."},
     {id:"cours_512",titre:"La route pour automobiles",cat:"COURS",sousCat:"Lecon 2.2",desc:"Pas une autoroute, mais presque. Reservee aux vehicules a moteur. PAS de vitesse minimale (contrairement a l'autoroute)."},
     {id:"cours_513",titre:"Vitesse sur route pour automobiles",cat:"COURS",sousCat:"Lecon 2.2",desc:"En agglo : memes regles (50 ou 30 selon la region). Hors agglo : memes regles (70 ou 90). Cas special : 4 bandes (2 par sens) + berme centrale hors agglomeration ? Vitesse max = 120 km/h, comme l'autoroute !"},
-    {id:"cours_514",titre:"A retenir - Lecon 2.2",cat:"COURS",sousCat:"Lecon 2.2",desc:"Autoroute : min 70, max 120 km/h, freine sur la bande de sortie. Insertion : retro -> clignotant -> insere-toi, cede le passage. Infractions = faute grave (-5 pts). Motos : max +20 km/h, jamais plus de 50. Route pour autos : pas de vitesse min, memes regles de vitesse sauf cas special a 120 km/h."}
+    {id:"cours_514",titre:"A retenir - Lecon 2.2",cat:"COURS",sousCat:"Lecon 2.2",desc:"Autoroute : min 70, max 120 km/h, freine sur la bande de sortie. Insertion : retro -> clignotant -> insere-toi, cede le passage. Infractions = faute grave (-5 pts). Motos : max +20 km/h, jamais plus de 50. Route pour autos : pas de vitesse min, memes regles de vitesse sauf cas special a 120 km/h."},
+    // Lecon 2.3 - Zone 30, residentielle et pietonne
+    {id:"cours_601",titre:"Zone 30 a Bruxelles",cat:"COURS",sousCat:"Lecon 2.3",desc:"Depuis janvier 2021, Bruxelles est presque entierement limite 30 km/h. Une zone 30 reste d'application jusqu'au panneau de fin de zone. Vitesse max = 30 km/h sauf contre-indication par un signal."},
+    {id:"cours_602",titre:"Piege : panneau enfants seul",cat:"COURS",sousCat:"Lecon 2.3",desc:"Panneau « enfants » SEUL -> pas de limitation de vitesse particuliere ! C'est un panneau de DANGER, pas de limitation. Panneau enfants + zone 30 = la oui, 30 km/h s'applique."},
+    {id:"cours_603",titre:"Dispositifs sureleves",cat:"COURS",sousCat:"Lecon 2.3",desc:"Ralentisseurs, dos d'ane, cassis. Vitesse max = 30 km/h sur un dispositif souleve. Interdit de s'arreter, stationner ou depasser un vehicule a moteur dessus."},
+    {id:"cours_604",titre:"Exception : depasser un cycliste sur un dispositif",cat:"COURS",sousCat:"Lecon 2.3",desc:"Tu PEUX depasser un cycliste, cavalier ou trottinette sur un dispositif souleve. 1 bosse = dispositif souleve. 2 bosses = cassis/dos d'ane (imperfection de la route)."},
+    {id:"cours_605",titre:"Zone residentielle",cat:"COURS",sousCat:"Lecon 2.3",desc:"Les pietons sont prioritaires : ils utilisent TOUTE la largeur de la voie (usager faible). Ne pas les mettre en danger ni les gener, tu dois t'arreter si necessaire."},
+    {id:"cours_606",titre:"Vitesse et stationnement en zone residentielle",cat:"COURS",sousCat:"Lecon 2.3",desc:"Vitesse max = 20 km/h. Stationnement : gauche ET droite, si emplacements prevus."},
+    {id:"cours_607",titre:"Zone pietonne",cat:"COURS",sousCat:"Lecon 2.3",desc:"Reservee aux pietons. Acces interdit en voiture. Vitesse = allure du pas (+/- 5 km/h). Pietons utilisent TOUTE la voie."},
+    {id:"cours_608",titre:"Qui peut circuler en zone pietonne ?",cat:"COURS",sousCat:"Lecon 2.3",desc:"Cyclistes, taxis, riverains (si signalisation l'autorise). Vehicules prioritaires (si mission le justifie). Acces a ton garage si dans la zone."},
+    {id:"cours_609",titre:"Piege : deposer quelqu'un en zone pietonne",cat:"COURS",sousCat:"Lecon 2.3",desc:"Tu ne peux PAS entrer en voiture pour deposer quelqu'un ! Sauf signalisation specifique qui l'autorise."},
+    {id:"cours_610",titre:"Rue scolaire et rue reservee au jeu",cat:"COURS",sousCat:"Lecon 2.3",desc:"Rue scolaire : pres d'une ecole, barriere mobile a certaines heures. Rue reservee au jeu : jeux autorises, pietons sur toute la voie, barriere mobile. Pendant la fermeture des deux : pietons + cyclistes + riverains + vehicules prioritaires, vitesse = allure du pas (5 km/h)."},
+    {id:"cours_611",titre:"Point commun des rues speciales",cat:"COURS",sousCat:"Lecon 2.3",desc:"Barriere mobile + allure du pas + ceder passage aux pietons/cyclistes."},
+    {id:"cours_612",titre:"A retenir - Lecon 2.3",cat:"COURS",sousCat:"Lecon 2.3",desc:"30 km/h : zone 30, dispositif souleve. Panneau enfants seul = pas de limitation. Dispositif souleve = pas de depassement (sauf velo). 20 km/h : zone residentielle, pietons sur toute la voie. 5 km/h : zone pietonne, rue scolaire, rue jeu. Allure du pas, zone pietonne = interdit d'y entrer en voiture (meme pour deposer quelqu'un)."}
 ];
 
 // Cours video sous forme de lecture continue (chapitres, encadres, schemas reels),
@@ -1010,6 +1023,63 @@ var COURS_ARTICLES = {
                 {titre: "Route pour autos : pas de vitesse min", text: "Memes regles de vitesse sauf si 4 bandes + terre-plein hors agglo = 120 km/h."}
             ]
         }
+    },
+    LECON_23: {
+        titre: "Lecon 2.3 - Zone 30, residentielle et pietonne",
+        chapitres: [
+            {
+                titre: "Zone 30",
+                blocks: [
+                    {sousTitre: "Bienvenue a Bruxelles..."},
+                    {def: "Depuis janvier 2021, Bruxelles est presque entierement limite 30 km/h. Une zone 30 reste d'application jusqu'au panneau de fin de zone."},
+                    {alerte: "Vitesse max = 30 km/h sauf contre-indication par un signal."},
+                    {piege: "Panneau « enfants » SEUL -> pas de limitation de vitesse particuliere ! C'est un panneau de DANGER, pas de limitation. Panneau enfants + zone 30 = la oui, 30 km/h s'applique."},
+                    {img: "zone30_enfants.png", caption: "Le panneau enfants (danger) place au-dessus d'un panneau Zone 30."},
+                    {sousTitre: "Dispositifs sureleves : ralentisseurs, dos d'ane, cassis."},
+                    {alerte: "Vitesse max = 30 km/h sur un dispositif souleve."},
+                    {def: "Interdit sur un dispositif souleve : s'arreter, stationner, depasser un vehicule a moteur."},
+                    {ok: "Tu PEUX depasser un cycliste, cavalier ou trottinette sur un dispositif souleve."},
+                    {img: "zone_dispositifs.png", caption: "1 bosse = dispositif souleve. 2 bosses = cassis/dos d'ane (imperfection de la route)."}
+                ]
+            },
+            {
+                titre: "Zone residentielle",
+                blocks: [
+                    {sousTitre: "Les pietons sont prioritaires ?"},
+                    {panels: ["F12a", "F12b"], caption: "F12a : debut de zone residentielle. F12b : fin de zone residentielle."},
+                    {def: "Pietons utilisent TOUTE la largeur de la voie. Pieton = usager faible."},
+                    {tip: "Ne pas les mettre en danger ni les gener. Tu dois t'arreter si necessaire."},
+                    {alerte: "Vitesse max = 20 km/h."},
+                    {def: "Stationnement : gauche ET droite, si emplacements prevus."}
+                ]
+            },
+            {
+                titre: "Zone pietonne",
+                blocks: [
+                    {sousTitre: "Reservee aux pietons. Acces interdit en voiture."},
+                    {img: "zone_pietonne_sign.png", caption: "Panneau de zone pietonne : excepte chargement et dechargement, cyclistes autorises."},
+                    {alerte: "Vitesse = allure du pas (+/- 5 km/h). Pietons utilisent TOUTE la voie."},
+                    {sousTitre: "Qui peut y circuler ?"},
+                    {def: "Cyclistes, taxis, riverains (si signalisation l'autorise). Vehicules prioritaires (si mission le justifie). Acces a ton garage si dans la zone."},
+                    {piege: "Tu ne peux PAS entrer en voiture pour deposer quelqu'un ! Sauf signalisation specifique qui l'autorise."}
+                ]
+            },
+            {
+                titre: "Rues speciales",
+                blocks: [
+                    {sousTitre: "Rue scolaire et rue reservee au jeu."},
+                    {img: "zone_rues_speciales.png", caption: "Rue scolaire : pres d'une ecole, barriere mobile a certaines heures. Rue reservee au jeu : jeux autorises, pietons sur toute la voie, barriere mobile. Pendant la fermeture des deux : pietons + cyclistes + riverains + vehicules prioritaires, vitesse = allure du pas (5 km/h)."},
+                    {tip: "Point commun : barriere mobile + allure du pas + ceder passage aux pietons/cyclistes."}
+                ]
+            }
+        ],
+        recap: {
+            items: [
+                {titre: "30 km/h : zone 30, dispositif souleve", text: "Panneau « enfants » seul = pas de limitation. Dispositif souleve = pas de depassement (sauf velo)."},
+                {titre: "20 km/h : zone residentielle", text: "Pietons sur toute la voie. Stationnement gauche et droite si emplacements prevus."},
+                {titre: "5 km/h : zone pietonne, rue scolaire, rue jeu", text: "Allure du pas. Zone pietonne = interdit d'y entrer en voiture (meme pour deposer quelqu'un)."}
+            ]
+        }
     }
 };
 
@@ -1203,7 +1273,8 @@ var MENU_STRUCTURE = [
             {id:"LECON_12",label:"Lecon 1.2 - Les agents qualifies",match:function(item){ return item.sousCat === "Lecon 1.2"; }},
             {id:"LECON_15",label:"Lecon 1.5 - Les marquages routiers",match:function(item){ return item.sousCat === "Lecon 1.5"; }},
             {id:"LECON_21",label:"Lecon 2.1 - Agglomeration",match:function(item){ return item.sousCat === "Lecon 2.1"; }},
-            {id:"LECON_22",label:"Lecon 2.2 - L'autoroute et la route pour automobiles",match:function(item){ return item.sousCat === "Lecon 2.2"; }}
+            {id:"LECON_22",label:"Lecon 2.2 - L'autoroute et la route pour automobiles",match:function(item){ return item.sousCat === "Lecon 2.2"; }},
+            {id:"LECON_23",label:"Lecon 2.3 - Zone 30, residentielle et pietonne",match:function(item){ return item.sousCat === "Lecon 2.3"; }}
         ],
         data:COURS_VIDEO
     }
