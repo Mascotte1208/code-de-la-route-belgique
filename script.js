@@ -733,7 +733,21 @@ var COURS_VIDEO = [
     {id:"cours_609",titre:"Piege : deposer quelqu'un en zone pietonne",cat:"COURS",sousCat:"Lecon 2.3",desc:"Tu ne peux PAS entrer en voiture pour deposer quelqu'un ! Sauf signalisation specifique qui l'autorise."},
     {id:"cours_610",titre:"Rue scolaire et rue reservee au jeu",cat:"COURS",sousCat:"Lecon 2.3",desc:"Rue scolaire : pres d'une ecole, barriere mobile a certaines heures. Rue reservee au jeu : jeux autorises, pietons sur toute la voie, barriere mobile. Pendant la fermeture des deux : pietons + cyclistes + riverains + vehicules prioritaires, vitesse = allure du pas (5 km/h)."},
     {id:"cours_611",titre:"Point commun des rues speciales",cat:"COURS",sousCat:"Lecon 2.3",desc:"Barriere mobile + allure du pas + ceder passage aux pietons/cyclistes."},
-    {id:"cours_612",titre:"A retenir - Lecon 2.3",cat:"COURS",sousCat:"Lecon 2.3",desc:"30 km/h : zone 30, dispositif souleve. Panneau enfants seul = pas de limitation. Dispositif souleve = pas de depassement (sauf velo). 20 km/h : zone residentielle, pietons sur toute la voie. 5 km/h : zone pietonne, rue scolaire, rue jeu. Allure du pas, zone pietonne = interdit d'y entrer en voiture (meme pour deposer quelqu'un)."}
+    {id:"cours_612",titre:"A retenir - Lecon 2.3",cat:"COURS",sousCat:"Lecon 2.3",desc:"30 km/h : zone 30, dispositif souleve. Panneau enfants seul = pas de limitation. Dispositif souleve = pas de depassement (sauf velo). 20 km/h : zone residentielle, pietons sur toute la voie. 5 km/h : zone pietonne, rue scolaire, rue jeu. Allure du pas, zone pietonne = interdit d'y entrer en voiture (meme pour deposer quelqu'un)."},
+    // Lecon 2.4 - Train, tram et bus
+    {id:"cours_701",titre:"Passage a niveau avec barrieres",cat:"COURS",sousCat:"Lecon 2.4",desc:"Tu peux depasser TOUS les usagers : voitures, motos, velos, tout. 1 voie ou plusieurs voies : panneaux specifiques."},
+    {id:"cours_702",titre:"Passage a niveau sans barrieres",cat:"COURS",sousCat:"Lecon 2.4",desc:"Tu peux depasser UNIQUEMENT les cyclistes. Pas les voitures, pas les motos. Plus dangereux car aucune protection physique."},
+    {id:"cours_703",titre:"Un passage a niveau reste ferme 2 minutes en moyenne",cat:"COURS",sousCat:"Lecon 2.4",desc:"L'an dernier : 8 morts et 9 blesses sur les passages a niveau en Belgique. Attendre peut sauver une vie."},
+    {id:"cours_704",titre:"Quand s'arreter a un passage a niveau ?",cat:"COURS",sousCat:"Lecon 2.4",desc:"INTERDIT de s'engager quand : barrieres en mouvement ou fermees, feux rouges clignotants allumes, signal sonore en marche. Un seul de ces trois signaux actif suffit pour t'arreter."},
+    {id:"cours_705",titre:"Feu blanc clignotant",cat:"COURS",sousCat:"Lecon 2.4",desc:"Feu blanc clignotant -> tu peux passer, aucun train n'approche. Feux rouges clignotants -> STOP ! Interdit de s'engager."},
+    {id:"cours_706",titre:"Piege : infraction au passage a niveau",cat:"COURS",sousCat:"Lecon 2.4",desc:"Franchir un passage a niveau alors que c'est interdit = infraction du 4eme degre = -5 points a l'examen + retrait de permis immediat !"},
+    {id:"cours_707",titre:"Le tram est quasi toujours prioritaire",cat:"COURS",sousCat:"Lecon 2.4",desc:"Le tram a la priorite sur tous les usagers. Il n'est PAS soumis aux regles de priorite du code de la route."},
+    {id:"cours_708",titre:"Les 2 seules choses au-dessus du tram",cat:"COURS",sousCat:"Lecon 2.4",desc:"Les agents qualifies et ses feux de signalisation. Signal de danger triangulaire = un tram peut arriver, redouble de prudence !"},
+    {id:"cours_709",titre:"Site special franchissable (tram)",cat:"COURS",sousCat:"Lecon 2.4",desc:"Ligne CONTINUE, reserve au tram. Tu peux y circuler pour contourner un obstacle ou acceder a un stationnement, PAS pour changer de direction. Marquages en damier = endroit pour traverser le site."},
+    {id:"cours_710",titre:"Bande bus",cat:"COURS",sousCat:"Lecon 2.4",desc:"Ligne DISCONTINUE, reservee au bus. Tu peux y circuler pour contourner un obstacle, acceder a un stationnement ou changer de direction au carrefour. Depuis avril 2023 : interdit d'y circuler, s'arreter, stationner."},
+    {id:"cours_711",titre:"Piege : site special vs bande bus",cat:"COURS",sousCat:"Lecon 2.4",desc:"Difference cle : la bande bus, tu peux y aller pour tourner au carrefour. Le site special du tram, NON."},
+    {id:"cours_712",titre:"Interdit de s'immobiliser sur un passage a niveau",cat:"COURS",sousCat:"Lecon 2.4",desc:"Embouteillage ? Arrete-toi AVANT ou APRES, jamais dessus. 4eme degre = -5 points + retrait de permis."},
+    {id:"cours_713",titre:"A retenir - Lecon 2.4",cat:"COURS",sousCat:"Lecon 2.4",desc:"Passage a niveau : avec barrieres = tout depasser, sans barrieres sans feux = uniquement les cyclistes. Feux rouges/barrieres/signal = STOP (-5 pts). Le tram a quasi toujours la priorite : seuls les agents qualifies et ses feux sont au-dessus de lui. Site special = ligne CONTINUE, bande bus = DISCONTINUE (bande bus : tu peux tourner au carrefour, site special : non). Interdit de s'immobiliser sur un passage a niveau."}
 ];
 
 // Cours video sous forme de lecture continue (chapitres, encadres, schemas reels),
@@ -1080,6 +1094,57 @@ var COURS_ARTICLES = {
                 {titre: "5 km/h : zone pietonne, rue scolaire, rue jeu", text: "Allure du pas. Zone pietonne = interdit d'y entrer en voiture (meme pour deposer quelqu'un)."}
             ]
         }
+    },
+    LECON_24: {
+        titre: "Lecon 2.4 - Train, tram et bus",
+        chapitres: [
+            {
+                titre: "Les passages a niveau",
+                blocks: [
+                    {sousTitre: "Avec ou sans barrieres : pas les memes regles."},
+                    {img: "ttb_avec_sans_barrieres.png", caption: "AVEC barrieres : tu peux depasser TOUS les usagers (voitures, motos, velos, tout). SANS barrieres : tu peux depasser UNIQUEMENT les cyclistes, plus dangereux car aucune protection physique."},
+                    {tip: "Un passage a niveau reste ferme en moyenne 2 minutes. L'an dernier : 8 morts et 9 blesses sur les passages a niveau en Belgique. Attendre peut sauver une vie."}
+                ]
+            },
+            {
+                titre: "Quand s'arreter, quand passer",
+                blocks: [
+                    {img: "ttb_passage_niveau_photo.png", caption: "Passage a niveau avec croix de Saint-Andre, feux rouges clignotants et barrieres."},
+                    {piege: "INTERDIT de s'engager quand : barrieres en mouvement ou fermees, feux rouges clignotants allumes, signal sonore en marche. Un seul de ces trois signaux actif suffit pour t'arreter."},
+                    {ok: "Feu blanc clignotant -> tu peux passer, aucun train n'approche."},
+                    {alerte: "Feux rouges clignotants -> STOP ! Interdit de s'engager."},
+                    {piege: "Franchir un passage a niveau alors que c'est interdit = infraction du 4eme degre = -5 points a l'examen + retrait de permis immediat !"}
+                ]
+            },
+            {
+                titre: "Le tram",
+                blocks: [
+                    {sousTitre: "Quasi toujours prioritaire."},
+                    {alerte: "Le tram a la priorite sur tous les usagers. Il n'est PAS soumis aux regles de priorite du code de la route."},
+                    {sousTitre: "Les 2 seules choses au-dessus du tram :"},
+                    {def: "Les agents qualifies et ses feux de signalisation."},
+                    {img: "ttb_tram_danger_panel.png", caption: "Signal de danger triangulaire = un tram peut arriver. Redouble de prudence !"}
+                ]
+            },
+            {
+                titre: "Tram vs bus",
+                blocks: [
+                    {sousTitre: "Site special franchissable != bande bus."},
+                    {img: "ttb_site_vs_bande.png", caption: "Site special franchissable (tram) : ligne CONTINUE, tu peux y circuler pour contourner un obstacle ou acceder a un stationnement, PAS pour changer de direction. Bande bus : ligne DISCONTINUE, tu peux aussi y circuler pour changer de direction au carrefour. Depuis avril 2023 : interdit d'y circuler, s'arreter, stationner (bande bus)."},
+                    {img: "ttb_intersection_bandebus.png", caption: "Exemple : sur une bande bus, tu peux t'y placer brievement pour tourner au prochain carrefour."},
+                    {piege: "Difference cle : la bande bus, tu peux y aller pour tourner au carrefour. Le site special du tram, NON."},
+                    {piege: "Interdit de s'immobiliser sur un passage a niveau. Embouteillage ? Arrete-toi AVANT ou APRES, jamais dessus. 4eme degre = -5 points + retrait de permis."}
+                ]
+            }
+        ],
+        recap: {
+            items: [
+                {titre: "Passage a niveau : avec barrieres = tout depasser", text: "Sans barrieres sans feux = uniquement les cyclistes. Feux rouges/barrieres/signal = STOP (-5 pts)."},
+                {titre: "Le tram a quasi toujours la priorite", text: "Seuls les agents qualifies et ses feux sont au-dessus de lui."},
+                {titre: "Site special = ligne CONTINUE, bande bus = DISCONTINUE", text: "Bande bus : tu peux y aller pour tourner au carrefour. Site special : NON."},
+                {titre: "Interdit de s'immobiliser sur un passage a niveau", text: "Embouteillage = arrete-toi AVANT ou APRES, jamais dessus. 4eme degre = -5 pts + retrait de permis."}
+            ]
+        }
     }
 };
 
@@ -1274,7 +1339,8 @@ var MENU_STRUCTURE = [
             {id:"LECON_15",label:"Lecon 1.5 - Les marquages routiers",match:function(item){ return item.sousCat === "Lecon 1.5"; }},
             {id:"LECON_21",label:"Lecon 2.1 - Agglomeration",match:function(item){ return item.sousCat === "Lecon 2.1"; }},
             {id:"LECON_22",label:"Lecon 2.2 - L'autoroute et la route pour automobiles",match:function(item){ return item.sousCat === "Lecon 2.2"; }},
-            {id:"LECON_23",label:"Lecon 2.3 - Zone 30, residentielle et pietonne",match:function(item){ return item.sousCat === "Lecon 2.3"; }}
+            {id:"LECON_23",label:"Lecon 2.3 - Zone 30, residentielle et pietonne",match:function(item){ return item.sousCat === "Lecon 2.3"; }},
+            {id:"LECON_24",label:"Lecon 2.4 - Train, tram et bus",match:function(item){ return item.sousCat === "Lecon 2.4"; }}
         ],
         data:COURS_VIDEO
     }
