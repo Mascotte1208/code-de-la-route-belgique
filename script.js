@@ -774,7 +774,17 @@ var COURS_VIDEO = [
     {id:"cours_911",titre:"Le principe de la tirette",cat:"COURS",sousCat:"Lecon 3.1",desc:"Une voiture sur deux. 2 conditions obligatoires : une bande prend fin ou est interrompue, ET la circulation est fortement ralentie. Le conducteur sur la bande libre laisse s'inserer UN vehicule venant de la bande qui prend fin. L'insertion se fait juste AVANT le retrecissement, pas trop tot."},
     {id:"cours_912",titre:"Piege : pas d'embouteillage, pas de tirette",cat:"COURS",sousCat:"Lecon 3.1",desc:"Pas d'embouteillage ? La tirette ne s'applique PAS. Tu respectes la signalisation normale."},
     {id:"cours_913",titre:"Piege : la tirette ne s'applique jamais sur autoroute",cat:"COURS",sousCat:"Lecon 3.1",desc:"Insertion autoroute (triangle sur pointe) = la tirette NE S'APPLIQUE JAMAIS, meme en embouteillage. Tu cedes le passage. Point."},
-    {id:"cours_914",titre:"A retenir - Lecon 3.1",cat:"COURS",sousCat:"Lecon 3.1",desc:"Priorite de droite = la regle de base : pas d'agent/feu/panneau, tu cedes a droite, meme s'il s'arrete il garde sa priorite. STOP = arret complet, ceder = si necessaire. Rond-point : cede en entrant, clignotant en sortant (toujours), clignotant en entrant seulement pour la 1ere sortie. Tirette : 2 conditions + jamais sur autoroute. Manoeuvre = pas de priorite (changer de bande, demi-tour, marche arriere, parking), mais la tirette n'est PAS une manoeuvre."}
+    {id:"cours_914",titre:"A retenir - Lecon 3.1",cat:"COURS",sousCat:"Lecon 3.1",desc:"Priorite de droite = la regle de base : pas d'agent/feu/panneau, tu cedes a droite, meme s'il s'arrete il garde sa priorite. STOP = arret complet, ceder = si necessaire. Rond-point : cede en entrant, clignotant en sortant (toujours), clignotant en entrant seulement pour la 1ere sortie. Tirette : 2 conditions + jamais sur autoroute. Manoeuvre = pas de priorite (changer de bande, demi-tour, marche arriere, parking), mais la tirette n'est PAS une manoeuvre."},
+    // Lecon 3.2 - Les changements de direction
+    {id:"cours_1001",titre:"Avant de tourner : interdiction",cat:"COURS",sousCat:"Lecon 3.2",desc:"Rond rouge + fleche barree = interdit de tourner. Sens interdit = interdit d'entrer (y compris velos). Acces interdit = les 2 sens bloques, aucune exception."},
+    {id:"cours_1002",titre:"Avant de tourner : obligation",cat:"COURS",sousCat:"Lecon 3.2",desc:"Rond bleu + fleche blanche = tu DOIS aller dans cette direction. Pouvoir != devoir : a l'examen, les mots comptent !"},
+    {id:"cours_1003",titre:"Avant de tourner : indication",cat:"COURS",sousCat:"Lecon 3.2",desc:"Carre bleu + fleche blanche = sens unique, aucun vehicule n'arrive en sens inverse. Choix de bande = place-toi avant le marquage."},
+    {id:"cours_1004",titre:"Tourner a droite : les 4 etapes",cat:"COURS",sousCat:"Lecon 3.2",desc:"1. Verifie que c'est autorise. 2. Verifie que c'est sans danger pour les autres. 3. Tiens compte des usagers derriere toi (retroviseur). 4. Allume ton clignotant droit a temps, pas au dernier moment."},
+    {id:"cours_1005",titre:"Tourner a gauche : 2 etapes supplementaires",cat:"COURS",sousCat:"Lecon 3.2",desc:"Plus complexe : tu coupes la trajectoire. Memes 4 etapes que pour tourner a droite, PLUS : 5. Ceder le passage aux vehicules venant en sens INVERSE (ils ont la priorite car tu coupes leur trajectoire). 6. Tourner aussi LARGEMENT que possible."},
+    {id:"cours_1006",titre:"Piege : garder les roues droites",cat:"COURS",sousCat:"Lecon 3.2",desc:"En attendant pour tourner a gauche : garde tes ROUES DROITES. Si quelqu'un te percute par l'arriere, tu ne seras pas projete vers le sens inverse."},
+    {id:"cours_1007",titre:"Tourner a gauche en sens unique",cat:"COURS",sousCat:"Lecon 3.2",desc:"Serre-toi le plus possible a GAUCHE (personne n'arrive en face). Clignotant + retroviseur + angle mort."},
+    {id:"cours_1008",titre:"Changement de direction : jamais prioritaire sur le pieton",cat:"COURS",sousCat:"Lecon 3.2",desc:"Avec passage pieton : tu cedes aux pietons et cyclistes qui traversent. SANS passage pieton : MEME regle, tu cedes aussi. Changement de direction = NON prioritaire sur le pieton, avec OU sans passage pieton."},
+    {id:"cours_1009",titre:"A retenir - Lecon 3.2",cat:"COURS",sousCat:"Lecon 3.2",desc:"Avant de tourner : verifie les signaux (interdiction = rond rouge, obligation = rond bleu, indication = carre bleu, pouvoir != devoir). A droite : 4 etapes (verifier, danger, retro, cligno), toujours ceder aux pietons et cyclistes qui traversent. A gauche : + ceder au sens inverse + roues droites en attendant. Changement de direction = pieton toujours prioritaire, avec ou sans passage pieton."}
 ];
 
 // Cours video sous forme de lecture continue (chapitres, encadres, schemas reels),
@@ -1313,6 +1323,53 @@ var COURS_ARTICLES = {
                 {titre: "Manoeuvre = pas de priorite", text: "Changer de bande, demi-tour, marche arriere, parking. Mais la tirette n'est PAS une manoeuvre."}
             ]
         }
+    },
+    LECON_32: {
+        titre: "Lecon 3.2 - Les changements de direction",
+        chapitres: [
+            {
+                titre: "Avant de tourner",
+                blocks: [
+                    {sousTitre: "Est-ce que j'ai le droit ?"},
+                    {img: "dir_signaux_comparison.png", caption: "Interdiction : rond rouge + fleche barree = interdit de tourner (sens interdit = interdit d'entrer, y compris velos ; acces interdit = les 2 sens bloques, aucune exception). Obligation : rond bleu + fleche blanche = tu DOIS aller dans cette direction (pouvoir != devoir, a l'examen les mots comptent). Indication : carre bleu + fleche blanche = sens unique, aucun vehicule n'arrive en sens inverse (choix de bande = place-toi avant le marquage)."}
+                ]
+            },
+            {
+                titre: "Tourner à droite",
+                blocks: [
+                    {sousTitre: "4 etapes + 1 regle en or."},
+                    {img: "dir_droite_intersection.png", caption: "1. Verifie que c'est autorise. 2. Verifie que c'est sans danger pour les autres. 3. Tiens compte des usagers derriere toi (retroviseur). 4. Allume ton clignotant droit a temps, pas au dernier moment."}
+                ]
+            },
+            {
+                titre: "Tourner à gauche",
+                blocks: [
+                    {sousTitre: "Plus complexe : tu coupes la trajectoire."},
+                    {def: "1 a 4 : meme chose que tourner a droite (verifier, danger, retro, cligno)."},
+                    {img: "dir_gauche_intersection.png", caption: "5. Ceder le passage aux vehicules venant en sens INVERSE : ils ont la priorite parce que tu coupes leur trajectoire. 6. Tourner aussi LARGEMENT que possible."},
+                    {piege: "En attendant pour tourner a gauche : garde tes ROUES DROITES."},
+                    {img: "dir_roues_droites.png", caption: "Si quelqu'un te percute par l'arriere, tu ne seras pas projete vers le sens inverse."},
+                    {tip: "Tourner a gauche en sens unique : serre-toi le plus possible a GAUCHE (personne n'arrive en face). Clignotant + retroviseur + angle mort."},
+                    {img: "dir_sens_unique.png", caption: "En sens unique, tu te places directement a gauche pour tourner."}
+                ]
+            },
+            {
+                titre: "Changement de direction et piétons",
+                blocks: [
+                    {alerte: "Tu n'es JAMAIS prioritaire sur le pieton."},
+                    {img: "dir_pieton_comparison.png", caption: "Avec passage pieton : tu cedes aux pietons et cyclistes qui traversent. SANS passage pieton : MEME regle, tu cedes aussi aux pietons et cyclistes."},
+                    {piege: "Changement de direction = NON prioritaire sur le pieton. Avec OU sans passage pieton."}
+                ]
+            }
+        ],
+        recap: {
+            items: [
+                {titre: "Avant de tourner : verifie les signaux", text: "Interdiction (rond rouge), obligation (rond bleu), indication (carre bleu). Pouvoir != devoir."},
+                {titre: "A droite : 4 etapes", text: "Verifier, danger, retro, cligno. Simple mais toujours ceder aux pietons et cyclistes qui traversent."},
+                {titre: "A gauche : + ceder au sens inverse + roues droites", text: "Tu coupes la trajectoire -> tu cedes. En attendant : roues droites pour ta securite."},
+                {titre: "Changement de direction = pieton prioritaire", text: "Toujours, avec ou sans passage pieton."}
+            ]
+        }
     }
 };
 
@@ -1510,7 +1567,8 @@ var MENU_STRUCTURE = [
             {id:"LECON_23",label:"Lecon 2.3 - Zone 30, residentielle et pietonne",match:function(item){ return item.sousCat === "Lecon 2.3"; }},
             {id:"LECON_24",label:"Lecon 2.4 - Train, tram et bus",match:function(item){ return item.sousCat === "Lecon 2.4"; }},
             {id:"LECON_25",label:"Lecon 2.5 - La piste cyclable",match:function(item){ return item.sousCat === "Lecon 2.5"; }},
-            {id:"LECON_31",label:"Lecon 3.1 - Les regles de priorite",match:function(item){ return item.sousCat === "Lecon 3.1"; }}
+            {id:"LECON_31",label:"Lecon 3.1 - Les regles de priorite",match:function(item){ return item.sousCat === "Lecon 3.1"; }},
+            {id:"LECON_32",label:"Lecon 3.2 - Les changements de direction",match:function(item){ return item.sousCat === "Lecon 3.2"; }}
         ],
         data:COURS_VIDEO
     }
