@@ -747,7 +747,19 @@ var COURS_VIDEO = [
     {id:"cours_710",titre:"Bande bus",cat:"COURS",sousCat:"Lecon 2.4",desc:"Ligne DISCONTINUE, reservee au bus. Tu peux y circuler pour contourner un obstacle, acceder a un stationnement ou changer de direction au carrefour. Depuis avril 2023 : interdit d'y circuler, s'arreter, stationner."},
     {id:"cours_711",titre:"Piege : site special vs bande bus",cat:"COURS",sousCat:"Lecon 2.4",desc:"Difference cle : la bande bus, tu peux y aller pour tourner au carrefour. Le site special du tram, NON."},
     {id:"cours_712",titre:"Interdit de s'immobiliser sur un passage a niveau",cat:"COURS",sousCat:"Lecon 2.4",desc:"Embouteillage ? Arrete-toi AVANT ou APRES, jamais dessus. 4eme degre = -5 points + retrait de permis."},
-    {id:"cours_713",titre:"A retenir - Lecon 2.4",cat:"COURS",sousCat:"Lecon 2.4",desc:"Passage a niveau : avec barrieres = tout depasser, sans barrieres sans feux = uniquement les cyclistes. Feux rouges/barrieres/signal = STOP (-5 pts). Le tram a quasi toujours la priorite : seuls les agents qualifies et ses feux sont au-dessus de lui. Site special = ligne CONTINUE, bande bus = DISCONTINUE (bande bus : tu peux tourner au carrefour, site special : non). Interdit de s'immobiliser sur un passage a niveau."}
+    {id:"cours_713",titre:"A retenir - Lecon 2.4",cat:"COURS",sousCat:"Lecon 2.4",desc:"Passage a niveau : avec barrieres = tout depasser, sans barrieres sans feux = uniquement les cyclistes. Feux rouges/barrieres/signal = STOP (-5 pts). Le tram a quasi toujours la priorite : seuls les agents qualifies et ses feux sont au-dessus de lui. Site special = ligne CONTINUE, bande bus = DISCONTINUE (bande bus : tu peux tourner au carrefour, site special : non). Interdit de s'immobiliser sur un passage a niveau."},
+    // Lecon 2.5 - La piste cyclable
+    {id:"cours_801",titre:"La piste cyclable",cat:"COURS",sousCat:"Lecon 2.5",desc:"Partie de la voie publique reservee aux cyclistes. Panneau bleu d'obligation = tu DOIS l'utiliser."},
+    {id:"cours_802",titre:"Qui peut circuler sur la piste cyclable ?",cat:"COURS",sousCat:"Lecon 2.5",desc:"Cyclistes (obligatoire si praticable), cyclomoteurs classe A (max 25 km/h), classe B et speed pedelecs (max 45 km/h)."},
+    {id:"cours_803",titre:"Piege : velo sur le trottoir",cat:"COURS",sousCat:"Lecon 2.5",desc:"Interdit en agglo SAUF enfants de moins de 10 ans. Hors agglo sans piste cyclable, les cyclistes peuvent rouler sur le trottoir ou l'accotement."},
+    {id:"cours_804",titre:"Piste cyclable vs bande cyclable suggeree",cat:"COURS",sousCat:"Lecon 2.5",desc:"Piste cyclable : ne fait PAS partie de la chaussee, 2 lignes blanches discontinues paralleles ou panneau bleu, interdit d'y circuler/s'arreter/stationner. Bande cyclable suggeree : FAIT partie de la chaussee, couleur differente au sol avec dessins de velo, pas de panneau bleu, les voitures peuvent y circuler."},
+    {id:"cours_805",titre:"Le passage pour cyclistes",cat:"COURS",sousCat:"Lecon 2.5",desc:"Carres ou parallelogrammes blancs au sol. Le cycliste n'a PAS la priorite pour s'engager, mais une fois engage tu le laisses finir. Interdit de s'arreter/stationner dessus et a moins de 5 m avant."},
+    {id:"cours_806",titre:"La zone avancee pour cyclistes",cat:"COURS",sousCat:"Lecon 2.5",desc:"Espace entre 2 lignes d'arret au feu rouge, reserve aux velos et cyclomoteurs 2 roues. Toi en voiture, arrete-toi a la 1ere ligne. Panneau fleche jaune sous le feu = les cyclistes peuvent passer au rouge dans cette direction."},
+    {id:"cours_807",titre:"La zone cyclable",cat:"COURS",sousCat:"Lecon 2.5",desc:"Le velo est roi. Vitesse max = 30 km/h. Tu ne peux PAS depasser un cycliste. Depuis avril 2023, « zone cyclable » remplace l'ancien terme « rue cyclable » : c'est la meme chose."},
+    {id:"cours_808",titre:"Circulation en zone cyclable",cat:"COURS",sousCat:"Lecon 2.5",desc:"Les cyclistes peuvent utiliser : en rue a sens unique, toute la largeur de la chaussee ; en rue a double sens, la moitie droite de la chaussee."},
+    {id:"cours_809",titre:"Distance de depassement d'un cycliste",cat:"COURS",sousCat:"Lecon 2.5",desc:"En agglomeration : 1 m minimum. Hors agglomeration : 1,5 m minimum. Tu ne peux pas garder cette distance ? Tu ne depasses PAS, point."},
+    {id:"cours_810",titre:"Piege : cyclistes en groupe",cat:"COURS",sousCat:"Lecon 2.5",desc:"Cyclistes en groupe (15 a 150) = JAMAIS COUPER = faute grave ! Tu ne peux jamais couper un groupe de cyclistes, ni un rang d'enfants, ni un cortege. 15+ cyclistes : pas obliges d'emprunter la piste cyclable, peuvent rouler a 2 de front. 51+ cyclistes : minimum 2 capitaines de route (21 ans min)."},
+    {id:"cours_811",titre:"A retenir - Lecon 2.5",cat:"COURS",sousCat:"Lecon 2.5",desc:"Piste cyclable != bande suggeree : piste = hors chaussee, interdit d'y rouler ; bande suggeree = sur la chaussee, voitures autorisees. Zone cyclable = 30 km/h, pas de depassement, le velo est roi. Distance de depassement : 1 m en agglo, 1,5 m hors agglo, pas assez de place = tu ne depasses pas. Jamais couper un groupe de cyclistes (15+ = sur la chaussee, 51+ = 2 capitaines) : faute grave."}
 ];
 
 // Cours video sous forme de lecture continue (chapitres, encadres, schemas reels),
@@ -1145,6 +1157,73 @@ var COURS_ARTICLES = {
                 {titre: "Interdit de s'immobiliser sur un passage a niveau", text: "Embouteillage = arrete-toi AVANT ou APRES, jamais dessus. 4eme degre = -5 pts + retrait de permis."}
             ]
         }
+    },
+    LECON_25: {
+        titre: "Lecon 2.5 - La piste cyclable",
+        chapitres: [
+            {
+                titre: "La piste cyclable",
+                blocks: [
+                    {sousTitre: "Reservee aux cyclistes (et parfois plus)."},
+                    {panels: ["D7"], caption: "Panneau bleu d'obligation = tu DOIS utiliser la piste cyclable."},
+                    {def: "Partie de la voie publique reservee aux cyclistes."},
+                    {sousTitre: "Qui peut circuler dessus ?"},
+                    {def: "Cyclistes (obligatoire si praticable), cyclomoteurs classe A (max 25 km/h), classe B et speed pedelecs (max 45 km/h)."},
+                    {tip: "Velo sur le trottoir : interdit en agglo SAUF enfants de moins de 10 ans. Hors agglo sans piste cyclable, les cyclistes peuvent rouler sur le trottoir ou l'accotement."}
+                ]
+            },
+            {
+                titre: "Piste vs bande suggeree",
+                blocks: [
+                    {sousTitre: "Ca se ressemble, mais c'est pas la meme chose."},
+                    {img: "cyc_piste_vs_bande.png", caption: "Piste cyclable : ne fait PAS partie de la chaussee, 2 lignes blanches discontinues paralleles ou panneau bleu, interdit d'y circuler, s'arreter, stationner. Bande cyclable suggeree : FAIT partie de la chaussee, couleur differente au sol avec dessins de velo, pas de panneau bleu, les voitures peuvent y circuler."}
+                ]
+            },
+            {
+                titre: "Passages et zone avancee",
+                blocks: [
+                    {sousTitre: "2 situations a connaitre."},
+                    {img: "cyc_passage_cyclistes.png", caption: "Passage pour cyclistes : carres ou parallelogrammes blancs au sol. Le cycliste n'a PAS la priorite pour s'engager, mais une fois engage tu le laisses finir. Interdit de s'arreter ou stationner dessus et a moins de 5 m avant."},
+                    {img: "cyc_zone_avancee.png", caption: "Zone avancee : espace entre 2 lignes d'arret au feu rouge, reservee aux velos et cyclomoteurs 2 roues. Toi en voiture, arrete-toi a la 1ere ligne."},
+                    {tip: "Panneau fleche jaune sous le feu = les cyclistes peuvent passer au rouge dans cette direction."}
+                ]
+            },
+            {
+                titre: "La zone cyclable",
+                blocks: [
+                    {sousTitre: "Le velo est roi."},
+                    {img: "cyc_zone_cyclable_panels.png", caption: "Panneaux de debut et de fin de zone cyclable."},
+                    {alerte: "Vitesse max = 30 km/h. Tu ne peux PAS depasser un cycliste."},
+                    {tip: "Depuis avril 2023, « zone cyclable » remplace l'ancien terme « rue cyclable » : c'est la meme chose."},
+                    {sousTitre: "Les cyclistes peuvent utiliser :"},
+                    {table: [
+                        ["Rue a sens unique", "Toute la largeur de la chaussee"],
+                        ["Rue a double sens", "La moitie droite de la chaussee"]
+                    ]}
+                ]
+            },
+            {
+                titre: "Dépasser un cycliste",
+                blocks: [
+                    {sousTitre: "La distance qui sauve des vies."},
+                    {table: [
+                        ["En agglomeration", "1 m minimum"],
+                        ["Hors agglomeration", "1,5 m minimum"]
+                    ]},
+                    {piege: "Tu ne peux pas garder cette distance ? Tu ne depasses PAS, point."},
+                    {alerte: "Cyclistes en groupe (15 a 150) = JAMAIS COUPER = faute grave ! Tu ne peux jamais couper un groupe de cyclistes, ni un rang d'enfants, ni un cortege."},
+                    {def: "15+ cyclistes : pas obliges d'emprunter la piste cyclable, peuvent rouler a 2 de front. 51+ cyclistes : minimum 2 capitaines de route (21 ans min)."}
+                ]
+            }
+        ],
+        recap: {
+            items: [
+                {titre: "Piste cyclable != bande suggeree", text: "Piste = hors chaussee, interdit d'y rouler. Bande suggeree = sur la chaussee, voitures autorisees."},
+                {titre: "Zone cyclable = 30 km/h, pas de depassement", text: "Le velo est roi. Tu restes derriere. Depuis 2023 : « zone cyclable » remplace « rue cyclable »."},
+                {titre: "Distance de depassement : 1 m / 1,5 m", text: "1 m en agglo, 1,5 m hors agglo. Pas assez de place = tu ne depasses pas."},
+                {titre: "Jamais couper un groupe de cyclistes (-5 pts)", text: "15+ = sur la chaussee, 51+ = 2 capitaines. Couper un groupe = faute grave."}
+            ]
+        }
     }
 };
 
@@ -1340,7 +1419,8 @@ var MENU_STRUCTURE = [
             {id:"LECON_21",label:"Lecon 2.1 - Agglomeration",match:function(item){ return item.sousCat === "Lecon 2.1"; }},
             {id:"LECON_22",label:"Lecon 2.2 - L'autoroute et la route pour automobiles",match:function(item){ return item.sousCat === "Lecon 2.2"; }},
             {id:"LECON_23",label:"Lecon 2.3 - Zone 30, residentielle et pietonne",match:function(item){ return item.sousCat === "Lecon 2.3"; }},
-            {id:"LECON_24",label:"Lecon 2.4 - Train, tram et bus",match:function(item){ return item.sousCat === "Lecon 2.4"; }}
+            {id:"LECON_24",label:"Lecon 2.4 - Train, tram et bus",match:function(item){ return item.sousCat === "Lecon 2.4"; }},
+            {id:"LECON_25",label:"Lecon 2.5 - La piste cyclable",match:function(item){ return item.sousCat === "Lecon 2.5"; }}
         ],
         data:COURS_VIDEO
     }
