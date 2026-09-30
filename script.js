@@ -1851,7 +1851,7 @@ function renderHome() {
     } else {
         $('searchCount').textContent = '';
         $('menuGrid').innerHTML = MENU_STRUCTURE.map(function(cat) {
-            return '<button class="practice" onclick="showCategorie(\'' + cat.id + '\')"><span class="practice-icon">' + cat.icon + '</span><span class="practice-copy"><b>' + escapeHTML(cat.label) + '</b><small>' + escapeHTML(cat.description) + '</small></span><span aria-hidden="true">→</span></button>';
+            return '<button class="practice" style="--accent:' + cat.color + '" onclick="showCategorie(\'' + cat.id + '\')"><span class="practice-icon">' + cat.icon + '</span><span class="practice-copy"><b>' + escapeHTML(cat.label) + '</b><small>' + escapeHTML(cat.description) + '</small></span><span class="practice-arrow" aria-hidden="true">→</span></button>';
         }).join('');
     }
 }
@@ -1890,13 +1890,13 @@ function showSousCategorie(id) {
 function backToCategory() { if (currentMenuCategory) showCategorie(currentMenuCategory.id); else goHome(); }
 function applyTheme() {
     var dark = theme === 'dark' || (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    document.body.classList.toggle('dark', dark);
+    document.documentElement.classList.toggle('dark', dark);
     $('themeButton').textContent = dark ? '☀️' : '🌙';
     $('themeButton').setAttribute('aria-label', dark ? 'Activer le mode clair' : 'Activer le mode sombre');
 }
 var theme = 'auto';
 function toggleTheme() {
-    theme = document.body.classList.contains('dark') ? 'light' : 'dark';
+    theme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
     try { localStorage.setItem('readingTheme', theme); } catch (e) {}
     applyTheme();
 }
