@@ -2154,6 +2154,11 @@ function setCoursProgress(id, status) {
         }
     } catch (e) {}
 }
+var COURS_CHAPITRE_TITRES = {
+    "1": "Les usagers et les règles de base",
+    "2": "Les voies et infrastructures",
+    "3": "Priorité et manœuvres"
+};
 function renderCoursVideoMap() {
     var progress = getCoursProgress();
     var subs = currentMenuCategory.subCategories;
@@ -2181,7 +2186,8 @@ function renderCoursVideoMap() {
             var meta = chapCount ? (chapCount + ' chapitre' + (chapCount > 1 ? 's' : '')) : '';
             return '<button class="cours-map-card" onclick="showSousCategorie(\'' + sc.id + '\')">' + badge + '<b>' + escapeHTML(sc.label) + '</b><span>' + escapeHTML(meta) + '</span></button>';
         }).join('');
-        return '<section class="cours-map-chapter"><h2>Chapitre ' + num + '<small>' + chapDone + '/' + lessons.length + '</small></h2><div class="cours-map-grid">' + cards + '</div></section>';
+        var chapTitre = COURS_CHAPITRE_TITRES[num] ? ' · ' + COURS_CHAPITRE_TITRES[num] : '';
+        return '<section class="cours-map-chapter"><h2>Chapitre ' + num + escapeHTML(chapTitre) + '<small>' + chapDone + '/' + lessons.length + '</small></h2><div class="cours-map-grid">' + cards + '</div></section>';
     }).join('');
     return html;
 }
