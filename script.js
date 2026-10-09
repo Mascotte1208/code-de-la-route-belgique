@@ -1747,6 +1747,15 @@ function renderLeconArticle(sousCatId) {
             });
         }, { rootMargin: "-20% 0px -70% 0px" });
         sections.forEach(function(s) { obs.observe(s); });
+        var recapEl = document.getElementById("chap-recap");
+        if (recapEl) {
+            var recapObs = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) { setCoursProgress(sousCatId, "termine"); recapObs.disconnect(); }
+                });
+            }, { threshold: 0.2 });
+            recapObs.observe(recapEl);
+        }
     }
     if (pillEls[0]) pillEls[0].classList.add("active");
 }
@@ -2133,6 +2142,49 @@ MENU_STRUCTURE.splice(3, 0, {
 var currentMenuCategory = null;
 var currentSousCategorie = null;
 var chapterObserver = null;
+function getCoursProgress() {
+    try { return JSON.parse(localStorage.getItem('coursVideoProgress') || '{}'); } catch (e) { return {}; }
+}
+function setCoursProgress(id, status) {
+    try {
+        var p = getCoursProgress();
+        if (status === 'termine' || !p[id]) {
+            p[id] = status;
+            localStorage.setItem('coursVideoProgress', JSON.stringify(p));
+        }
+    } catch (e) {}
+}
+function renderCoursVideoMap() {
+    var progress = getCoursProgress();
+    var subs = currentMenuCategory.subCategories;
+    var chapters = {};
+    var order = [];
+    subs.forEach(function(sc) {
+        var m = /Lecon (\d+)\.(\d+)/.exec(sc.label);
+        var chapNum = m ? m[1] : '?';
+        if (!chapters[chapNum]) { chapters[chapNum] = []; order.push(chapNum); }
+        chapters[chapNum].push(sc);
+    });
+    var total = subs.length;
+    var done = subs.filter(function(sc) { return progress[sc.id] === 'termine'; }).length;
+    var pct = total ? Math.round(done / total * 100) : 0;
+    var html = '<div class="cours-map-progress"><div class="cours-map-progress-head"><b>' + done + ' / ' + total + ' leçons terminées</b><span>' + pct + '%</span></div><div class="cours-map-bar"><span style="width:' + pct + '%"></span></div></div>';
+    html += '<button class="ghost" onclick="showAllCategory()">Tout consulter (fiches)</button>';
+    html += order.map(function(num) {
+        var lessons = chapters[num];
+        var chapDone = lessons.filter(function(sc) { return progress[sc.id] === 'termine'; }).length;
+        var cards = lessons.map(function(sc) {
+            var status = progress[sc.id] || '';
+            var badge = status === 'termine' ? '<span class="cours-map-badge done">✓ Terminée</span>' : (status === 'vu' ? '<span class="cours-map-badge seen">● Commencée</span>' : '<span class="cours-map-badge new">Nouveau</span>');
+            var article = COURS_ARTICLES[sc.id];
+            var chapCount = article ? article.chapitres.length : 0;
+            var meta = chapCount ? (chapCount + ' chapitre' + (chapCount > 1 ? 's' : '')) : '';
+            return '<button class="cours-map-card" onclick="showSousCategorie(\'' + sc.id + '\')">' + badge + '<b>' + escapeHTML(sc.label) + '</b><span>' + escapeHTML(meta) + '</span></button>';
+        }).join('');
+        return '<section class="cours-map-chapter"><h2>Chapitre ' + num + '<small>' + chapDone + '/' + lessons.length + '</small></h2><div class="cours-map-grid">' + cards + '</div></section>';
+    }).join('');
+    return html;
+}
 function normalizeSearch(value) {
     return String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 }
@@ -2172,10 +2224,16 @@ function showCategorie(id) {
     $('categoryTitle').textContent = currentMenuCategory.icon + ' ' + currentMenuCategory.label;
     $('categoryDesc').textContent = currentMenuCategory.description;
     $('categorySearch').value = '';
-    $('subCategories').innerHTML = '<button class="ghost" onclick="showAllCategory()">Tout consulter</button>' + currentMenuCategory.subCategories.map(function(sc) {
-        return '<button class="ghost" onclick="showSousCategorie(\'' + sc.id + '\')">' + escapeHTML(sc.label) + '</button>';
-    }).join('');
-    renderCategory();
+    if (id === 'cours_video') {
+        $('subCategories').innerHTML = renderCoursVideoMap();
+        $('categoryCount').textContent = '';
+        $('categoryList').innerHTML = '';
+    } else {
+        $('subCategories').innerHTML = '<button class="ghost" onclick="showAllCategory()">Tout consulter</button>' + currentMenuCategory.subCategories.map(function(sc) {
+            return '<button class="ghost" onclick="showSousCategorie(\'' + sc.id + '\')">' + escapeHTML(sc.label) + '</button>';
+        }).join('');
+        renderCategory();
+    }
 }
 function showAllCategory() {
     currentSousCategorie = null; $('categorySearch').value = ''; renderCategory();
@@ -2192,6 +2250,7 @@ function renderCategory() {
 function showSousCategorie(id) {
     currentSousCategorie = id;
     if (currentMenuCategory.id === 'cours_video' && COURS_ARTICLES[id]) {
+        setCoursProgress(id, 'vu');
         reveal('lesson'); $('lessonTitle').textContent = COURS_ARTICLES[id].titre;
         renderLeconArticle(id);
     } else { $('categorySearch').value = ''; renderCategory(); }
