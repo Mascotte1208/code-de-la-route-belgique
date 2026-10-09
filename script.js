@@ -784,7 +784,20 @@ var COURS_VIDEO = [
     {id:"cours_1006",titre:"Piege : garder les roues droites",cat:"COURS",sousCat:"Lecon 3.2",desc:"En attendant pour tourner a gauche : garde tes ROUES DROITES. Si quelqu'un te percute par l'arriere, tu ne seras pas projete vers le sens inverse."},
     {id:"cours_1007",titre:"Tourner a gauche en sens unique",cat:"COURS",sousCat:"Lecon 3.2",desc:"Serre-toi le plus possible a GAUCHE (personne n'arrive en face). Clignotant + retroviseur + angle mort."},
     {id:"cours_1008",titre:"Changement de direction : jamais prioritaire sur le pieton",cat:"COURS",sousCat:"Lecon 3.2",desc:"Avec passage pieton : tu cedes aux pietons et cyclistes qui traversent. SANS passage pieton : MEME regle, tu cedes aussi. Changement de direction = NON prioritaire sur le pieton, avec OU sans passage pieton."},
-    {id:"cours_1009",titre:"A retenir - Lecon 3.2",cat:"COURS",sousCat:"Lecon 3.2",desc:"Avant de tourner : verifie les signaux (interdiction = rond rouge, obligation = rond bleu, indication = carre bleu, pouvoir != devoir). A droite : 4 etapes (verifier, danger, retro, cligno), toujours ceder aux pietons et cyclistes qui traversent. A gauche : + ceder au sens inverse + roues droites en attendant. Changement de direction = pieton toujours prioritaire, avec ou sans passage pieton."}
+    {id:"cours_1009",titre:"A retenir - Lecon 3.2",cat:"COURS",sousCat:"Lecon 3.2",desc:"Avant de tourner : verifie les signaux (interdiction = rond rouge, obligation = rond bleu, indication = carre bleu, pouvoir != devoir). A droite : 4 etapes (verifier, danger, retro, cligno), toujours ceder aux pietons et cyclistes qui traversent. A gauche : + ceder au sens inverse + roues droites en attendant. Changement de direction = pieton toujours prioritaire, avec ou sans passage pieton."},
+    // Lecon 3.3 - Croisement et depassement
+    {id:"cours_1101",titre:"Le croisement : par la droite",cat:"COURS",sousCat:"Lecon 3.3",desc:"Le croisement se fait par la DROITE. La regle ? Serre a droite, distance laterale, ralentis si necessaire."},
+    {id:"cours_1102",titre:"Croisement : sans et avec fleches au sol",cat:"COURS",sousCat:"Lecon 3.3",desc:"Sans fleches au sol : croisement par la DROITE. Avec fleches au sol : SUIS les fleches, meme si ca ne correspond pas a la droite."},
+    {id:"cours_1103",titre:"Piege : chaussee trop etroite",cat:"COURS",sousCat:"Lecon 3.3",desc:"Chaussee trop etroite pour croiser ? Tu peux emprunter l'accotement. Mais JAMAIS la piste cyclable (une bande suggeree reste autorisee)."},
+    {id:"cours_1104",titre:"Piege : retrecissement, qui cede ?",cat:"COURS",sousCat:"Lecon 3.3",desc:"Retrecissement : celui qui RENCONTRE l'obstacle doit ceder le passage. Erreur a l'examen = -5 points !"},
+    {id:"cours_1105",titre:"Le depassement : par la gauche",cat:"COURS",sousCat:"Lecon 3.3",desc:"Depassement UNIQUEMENT quand le vehicule depasse est en mouvement. A l'arret ? On contourne, ce n'est pas un depassement. Par la gauche, et verifie TOUT avant."},
+    {id:"cours_1106",titre:"Avant de depasser : la checklist",cat:"COURS",sousCat:"Lecon 3.3",desc:"Avant de depasser, verifie que : aucun signal ou marquage ne l'interdit, la voie est libre sur une distance suffisante, personne derriere toi n'a commence a te depasser, tu peux te rabattre sans gener les autres."},
+    {id:"cours_1107",titre:"Piege : on te depasse",cat:"COURS",sousCat:"Lecon 3.3",desc:"On te depasse ? Garde la meme allure, NE PAS accelerer, serre a droite."},
+    {id:"cours_1108",titre:"Depasser par la droite : interdit sauf 2 exceptions",cat:"COURS",sousCat:"Lecon 3.3",desc:"Exception 1 : le vehicule devant toi veut tourner a gauche (il a mis son clignotant ET s'est place a gauche) -> tu peux le depasser par la droite. Exception 2 : le tram, tu le depasses toujours par la DROITE, sauf si passage etroit, obstacle, ou chaussee a sens unique."},
+    {id:"cours_1109",titre:"Ce qui n'est PAS un depassement",cat:"COURS",sousCat:"Lecon 3.3",desc:"En agglomeration, si tu suis simplement ta bande de circulation sans changer de trajectoire, ce n'est pas considere comme un depassement."},
+    {id:"cours_1110",titre:"5 situations ou il est interdit de depasser",cat:"COURS",sousCat:"Lecon 3.3",desc:"1. Carrefour a priorite de droite ou avec signal cedez/STOP. 2. Sommet d'une cote ou virage a visibilite insuffisante (autorise si bandes de circulation ET pas de ligne continue). 3. Devant un passage pietons ou un conducteur est arrete (autorise si regle par agent ou signaux lumineux). 4. Sur un dispositif surelevé (exception : velo, trottinette, cavalier). 5. Sur un passage a niveau SANS barrieres ni feux (avec barrieres ou feux = depassement autorise)."},
+    {id:"cours_1111",titre:"Tripler : dangereux et interdit, sauf 2 cas",cat:"COURS",sousCat:"Lecon 3.3",desc:"Tripler = depasser un vehicule qui est lui-meme en train de depasser. En regle generale c'est INTERDIT, c'est dangereux. Autorise dans 2 cas seulement : la chaussee a au moins 3 bandes dans le meme sens (ex. autoroute 3 bandes), ou le vehicule devant toi depasse un deux-roues (velo, cyclo, moto) bien a droite. A l'examen : pars du principe que tripler est interdit, sauf si la situation correspond clairement a une exception."},
+    {id:"cours_1112",titre:"A retenir - Lecon 3.3",cat:"COURS",sousCat:"Lecon 3.3",desc:"Croisement = par la DROITE (avec fleches au sol -> suis les fleches ; retrecissement -> celui qui rencontre l'obstacle cede). Depassement = par la GAUCHE (verifie tout avant ; on te depasse -> garde ta vitesse, ne freine pas, serre a droite). Par la droite : 2 exceptions (vehicule qui tourne a gauche ; tram, toujours par la droite sauf exceptions). 5 interdictions de depasser : carrefour priorite droite/STOP, cote, passage pietons, dispositif surelevé, passage a niveau sans barrieres."}
 ];
 
 // Cours video sous forme de lecture continue (chapitres, encadres, schemas reels),
@@ -1370,6 +1383,73 @@ var COURS_ARTICLES = {
                 {titre: "Changement de direction = pieton prioritaire", text: "Toujours, avec ou sans passage pieton."}
             ]
         }
+    },
+    LECON_33: {
+        titre: "Lecon 3.3 - Croisement et depassement",
+        chapitres: [
+            {
+                titre: "Le croisement",
+                blocks: [
+                    {sousTitre: "Par la droite. Toujours. Sauf..."},
+                    {def: "Le croisement se fait par la DROITE. La regle ? Serre a droite, distance laterale, ralentis si necessaire."},
+                    {img: "crois_fleches.png", caption: "Sans fleches au sol : croisement par la DROITE. Avec fleches au sol : SUIS les fleches, meme si ca ne correspond pas forcement a la droite."},
+                    {tip: "Chaussee trop etroite ? Tu peux emprunter l'accotement. Mais JAMAIS la piste cyclable (une bande suggeree reste autorisee)."},
+                    {piege: "Retrecissement : celui qui RENCONTRE l'obstacle doit ceder le passage. Erreur a l'examen = -5 points !"},
+                    {img: "crois_retrecissement.png", caption: "La voiture rouge rencontre l'obstacle (chantier) en premier : elle cede le passage a la voiture qui vient en face."}
+                ]
+            },
+            {
+                titre: "Le dépassement",
+                blocks: [
+                    {sousTitre: "Par la gauche. Et verifie TOUT avant."},
+                    {def: "Depassement UNIQUEMENT quand le vehicule depasse est en mouvement. A l'arret ? On contourne, ce n'est pas un depassement."},
+                    {img: "depass_scurve.png", caption: "Trajectoire du depassement : tu te deportes a gauche, tu depasses, puis tu te rabats a droite sans gener personne."},
+                    {sousTitre: "Avant de depasser, verifie que :"},
+                    {ok: "Aucun signal ou marquage ne l'interdit."},
+                    {ok: "La voie est libre sur une distance suffisante."},
+                    {ok: "Personne derriere toi n'a commence a te depasser."},
+                    {ok: "Tu peux te rabattre sans gener les autres."},
+                    {tip: "On te depasse ? Garde la meme allure. NE PAS accelerer. Serre a droite."}
+                ]
+            },
+            {
+                titre: "Dépasser par la droite ?",
+                blocks: [
+                    {sousTitre: "Interdit, sauf 2 exceptions."},
+                    {img: "depass_droite_exceptions.png", caption: "Exception 1 : le vehicule devant toi veut tourner a gauche, il a mis son clignotant ET s'est place a gauche -> tu peux le depasser par la droite. Exception 2 : le tram, tu le depasses toujours par la DROITE, sauf si passage etroit, obstacle, ou chaussee a sens unique."},
+                    {def: "Ce qui n'est PAS considere comme un depassement : en agglomeration, si tu suis simplement ta bande -> ce n'est pas un depassement."}
+                ]
+            },
+            {
+                titre: "Interdit de dépasser : 5 situations",
+                blocks: [
+                    {sousTitre: "5 situations a retenir."},
+                    {def: "1. Carrefour a priorite de droite ou avec signal « cedez/STOP »."},
+                    {def: "2. Sommet d'une cote ou virage avec visibilite insuffisante. Autorise si bandes de circulation ET pas de ligne continue."},
+                    {def: "3. Devant un passage pietons ou un conducteur est arrete. Autorise si regle par agent ou signaux lumineux."},
+                    {def: "4. Sur un dispositif surelevé. Exception : velo, trottinette, cavalier."},
+                    {def: "5. Sur un passage a niveau SANS barrieres ni feux. Avec barrieres ou feux = depassement autorise."}
+                ]
+            },
+            {
+                titre: "Tripler",
+                blocks: [
+                    {sousTitre: "Depasser un vehicule qui depasse. Dangereux."},
+                    {alerte: "En regle generale, tripler est INTERDIT. C'est dangereux."},
+                    {sousTitre: "Autorise dans 2 cas :"},
+                    {img: "tripler_cas.png", caption: "La chaussee a au moins 3 bandes dans le meme sens (ex : autoroute 3 bandes). Ou le vehicule devant toi depasse un deux-roues (velo, cyclo, moto) qui est bien a droite."},
+                    {tip: "A l'examen : pars du principe que tripler est interdit, sauf si la situation correspond clairement a une exception."}
+                ]
+            }
+        ],
+        recap: {
+            items: [
+                {titre: "Croisement = par la DROITE", text: "Avec fleches au sol -> suis les fleches. Retrecissement -> celui qui rencontre l'obstacle cede."},
+                {titre: "Depassement = par la GAUCHE", text: "Verifie tout avant. On te depasse ? Garde ta vitesse, ne freine pas, serre a droite."},
+                {titre: "Par la droite : 2 exceptions", text: "Vehicule qui tourne a gauche (cligno + place). Tram = toujours par la droite sauf exceptions."},
+                {titre: "5 interdictions de depasser", text: "Carrefour priorite droite/STOP, cote, passage pietons, dispositif surelevé, passage a niveau sans barrieres."}
+            ]
+        }
     }
 };
 
@@ -1568,7 +1648,8 @@ var MENU_STRUCTURE = [
             {id:"LECON_24",label:"Lecon 2.4 - Train, tram et bus",match:function(item){ return item.sousCat === "Lecon 2.4"; }},
             {id:"LECON_25",label:"Lecon 2.5 - La piste cyclable",match:function(item){ return item.sousCat === "Lecon 2.5"; }},
             {id:"LECON_31",label:"Lecon 3.1 - Les regles de priorite",match:function(item){ return item.sousCat === "Lecon 3.1"; }},
-            {id:"LECON_32",label:"Lecon 3.2 - Les changements de direction",match:function(item){ return item.sousCat === "Lecon 3.2"; }}
+            {id:"LECON_32",label:"Lecon 3.2 - Les changements de direction",match:function(item){ return item.sousCat === "Lecon 3.2"; }},
+            {id:"LECON_33",label:"Lecon 3.3 - Croisement et depassement",match:function(item){ return item.sousCat === "Lecon 3.3"; }}
         ],
         data:COURS_VIDEO
     }
